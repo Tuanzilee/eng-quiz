@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>英文刷題系統 v1.0</title>
+<style>
+:root {
+  --bg: #0f1115; --card: #1a1d24; --card-hover: #232730;
+  --border: #2a2f3a; --text: #e8eaed; --text-dim: #9aa0a6;
+  --accent: #8ab4f8; --green: #81c995; --red: #f28b82;
+  --yellow: #fdd663; --orange: #fbbc04;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+header { position: sticky; top: 0; z-index: 10;
+  background: rgba(15,17,21,0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border); padding: 10px 16px; }
+header h1 { margin: 0; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+#mock-timer-display { font-size: 14px; font-weight: 600; color: var(--yellow);
+  margin-left: auto; padding: 4px 10px; background: rgba(253,214,99,0.1);
+  border: 1px solid rgba(253,214,99,0.3); border-radius: 6px; }
+#mock-timer-display.urgent { color: var(--red); background: rgba(242,139,130,0.1);
+  border-color: rgba(242,139,130,0.3); }
+
+.tabs { display: flex; gap: 2px; margin: 14px 0; border-bottom: 1px solid var(--border); }
+.tab { padding: 10px 16px; cursor: pointer; color: var(--text-dim);
+  border-bottom: 2px solid transparent; font-size: 14px; white-space: nowrap; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab .badge { display: inline-block; margin-left: 4px; padding: 1px 6px;
+  background: var(--red); color: var(--bg); border-radius: 8px;
+  font-size: 10px; font-weight: 600; }
+
+.sub-tabs { display: flex; gap: 0; margin-bottom: 14px; }
+.sub-tab { padding: 7px 14px; cursor: pointer; color: var(--text-dim); font-size: 13px;
+  border: 1px solid var(--border); background: var(--card); }
+.sub-tab:first-child { border-radius: 6px 0 0 6px; }
+.sub-tab:last-child { border-radius: 0 6px 6px 0; border-left: none; }
+.sub-tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
+.pill { padding: 5px 12px; border-radius: 20px; background: var(--card);
+  border: 1px solid var(--border); cursor: pointer; font-size: 13px;
+  color: var(--text-dim); transition: all 0.15s; }
+.pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.pill:hover:not(.active) { background: var(--card-hover); color: var(--text); }
+.filter-label { font-size: 12px; color: var(--text-dim); margin-right: 2px; }
+
+.q-list { display: flex; flex-direction: column; gap: 8px; }
+.q-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; cursor: pointer; transition: all 0.15s; }
+.q-item:hover { background: var(--card-hover); border-color: var(--accent); }
+.q-item .head { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.q-item .id { font-family: monospace; color: var(--accent); font-size: 11px; }
+.q-item .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 11px; padding: 2px 6px; background: rgba(138,180,248,0.15); color: var(--accent); border-radius: 4px; }
+.tag.topic { background: rgba(253,214,99,0.15); color: var(--yellow); }
+.tag.diff-easy { background: rgba(129,201,149,0.15); color: var(--green); }
+.tag.diff-medium { background: rgba(253,214,99,0.15); color: var(--yellow); }
+.tag.diff-hard { background: rgba(242,139,130,0.15); color: var(--red); }
+.q-item .text { font-size: 13px; color: var(--text); font-style: italic; }
+.progress-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
+.progress-dot.correct { background: var(--green); }
+.progress-dot.wrong { background: var(--red); }
+
+.q-detail { background: var(--card); border-radius: 12px; padding: 18px; margin-top: 10px; }
+.q-detail .meta { color: var(--text-dim); font-size: 12px; margin-bottom: 6px; }
+.q-detail .question { font-size: 17px; font-weight: 400; margin: 8px 0 14px; line-height: 1.7; font-style: italic; }
+.blank { display: inline-block; min-width: 56px; border-bottom: 2px solid var(--accent); padding: 0 6px; color: var(--accent); }
+
+.options { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+.option { padding: 9px 13px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; cursor: pointer; transition: all 0.1s;
+  display: flex; gap: 10px; align-items: center; }
+.option:hover { border-color: var(--accent); }
+.option.selected { border-color: var(--accent); background: rgba(138,180,248,0.1); }
+.option.correct { border-color: var(--green); background: rgba(129,201,149,0.15); }
+.option.wrong { border-color: var(--red); background: rgba(242,139,130,0.15); }
+.option .letter { display: inline-block; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--card); text-align: center; line-height: 24px;
+  font-weight: 600; font-size: 13px; flex-shrink: 0; }
+.option.correct .letter { background: var(--green); color: var(--bg); }
+.option.wrong .letter { background: var(--red); color: var(--bg); }
+
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.btn { padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--card);
+  color: var(--text); font-size: 14px; font-family: inherit; transition: all 0.1s; }
+.btn:hover { background: var(--card-hover); }
+.btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+.btn.primary:hover { background: #aac7f9; }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 5px 11px; font-size: 12px; }
+.btn.danger { background: var(--red); color: var(--bg); border-color: var(--red); font-weight: 600; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn.flagged { color: var(--yellow); border-color: var(--yellow); }
+
+.reveal { margin-top: 14px; padding: 14px; border-radius: 10px;
+  background: var(--bg); border: 1px solid var(--border); }
+.reveal.correct { border-left: 4px solid var(--green); }
+.reveal.wrong { border-left: 4px solid var(--red); }
+.reveal h3 { margin: 0 0 10px; font-size: 12px; color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.reveal .ans-text { color: var(--text); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+.reveal .ans-text:last-child { margin-bottom: 0; }
+.reveal .ans-text strong { color: var(--accent); }
+
+.word-card { background: var(--card); border-radius: 8px; padding: 12px 14px; margin: 8px 0; }
+.word-card .wc-main { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 3px; }
+.word-card .wc-zh { font-size: 13px; color: var(--text-dim); margin-bottom: 7px; }
+.word-card .wc-def { font-size: 13px; margin-bottom: 7px; line-height: 1.6; }
+.word-card .wc-ex { font-size: 13px; color: var(--text-dim); font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 10px; }
+.sentence-zh { background: var(--card); border-radius: 8px; padding: 11px 14px; margin: 8px 0;
+  border-left: 3px solid var(--accent); }
+.sentence-zh-label { font-size: 11px; color: var(--text-dim); margin-bottom: 5px; font-weight: 500; }
+.sentence-zh-text { font-size: 14px; line-height: 1.7; }
+.distractor-list { font-size: 13px; line-height: 1.8; }
+.distractor-list .di-word { color: var(--text); font-weight: 500; }
+
+/* Notebook */
+.notebook-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 15px; margin-bottom: 8px; border-left: 3px solid var(--red); }
+.notebook-card.known { border-left-color: var(--green); opacity: 0.65; }
+.notebook-card.grammar-type { border-left-color: var(--yellow); }
+.notebook-card .word-row { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+.notebook-card .word-en { font-size: 17px; font-weight: 600; color: var(--accent); }
+.notebook-card .word-zh { font-size: 13px; color: var(--text-dim); }
+.notebook-card .stat-line { font-size: 11px; color: var(--text-dim); margin-bottom: 7px; }
+.notebook-card .word-def { font-size: 13px; line-height: 1.6; margin-bottom: 5px; }
+.notebook-card .word-example { font-size: 13px; color: var(--text-dim); font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 9px; margin-bottom: 9px; }
+
+/* Weakness */
+.weakness-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 15px; margin-bottom: 8px; }
+.weakness-card.weak { border-left: 3px solid var(--red); }
+.weakness-card.medium { border-left: 3px solid var(--yellow); }
+.weakness-card.strong { border-left: 3px solid var(--green); }
+.weakness-card.untouched { border-left: 3px solid var(--text-dim); opacity: 0.7; }
+.weakness-card .top { display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 7px; gap: 10px; flex-wrap: wrap; }
+.weakness-card .topic-name { font-weight: 500; }
+.weakness-card .stats-text { font-size: 12px; color: var(--text-dim); }
+.bar-bg { width: 100%; height: 5px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; transition: width 0.3s; }
+.bar-fill.weak { background: var(--red); }
+.bar-fill.medium { background: var(--yellow); }
+.bar-fill.strong { background: var(--green); }
+
+/* Summary stats */
+.summary-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px; margin-bottom: 18px; }
+.summary-stats .stat { background: var(--card); padding: 11px; border-radius: 10px;
+  border: 1px solid var(--border); text-align: center; }
+.summary-stats .num { font-size: 22px; font-weight: 600; color: var(--accent); }
+.summary-stats .num.warn { color: var(--red); }
+.summary-stats .num.good { color: var(--green); }
+.summary-stats .label { font-size: 12px; color: var(--text-dim); }
+
+/* Mock exam */
+.mock-setup-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; margin-bottom: 12px; }
+.mock-setup-card h3 { margin: 0 0 14px; font-size: 15px; }
+.slider-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.slider-row label { font-size: 13px; color: var(--text-dim); min-width: 80px; }
+.slider-row input[type=range] { flex: 1; min-width: 120px; accent-color: var(--accent); }
+.slider-row .val { font-size: 14px; font-weight: 600; color: var(--accent); min-width: 70px; }
+
+.mock-progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 14px; overflow: hidden; }
+.mock-progress-fill { height: 100%; background: var(--accent); transition: width 0.2s; }
+
+.mock-q-nav { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 14px; }
+.mock-q-dot { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; color: var(--text-dim); transition: all 0.1s; }
+.mock-q-dot.answered { background: rgba(138,180,248,0.2); border-color: var(--accent); color: var(--accent); }
+.mock-q-dot.flagged { border-color: var(--yellow); color: var(--yellow); }
+.mock-q-dot.current { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.mock-q-dot.correct { background: rgba(129,201,149,0.2); border-color: var(--green); color: var(--green); }
+.mock-q-dot.review-wrong { background: rgba(242,139,130,0.2); border-color: var(--red); color: var(--red); }
+
+.score-banner { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; text-align: center; margin-bottom: 16px; }
+.score-banner .score-big { font-size: 40px; font-weight: 700; color: var(--accent); }
+.score-banner .score-sub { font-size: 14px; color: var(--text-dim); margin-top: 4px; }
+.score-breakdown { display: flex; gap: 16px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.score-breakdown .sb-item { font-size: 13px; }
+.score-breakdown .sb-item .sb-val { font-weight: 600; }
+.score-breakdown .sb-item .sb-val.good { color: var(--green); }
+.score-breakdown .sb-item .sb-val.bad { color: var(--red); }
+
+.review-q { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 8px; overflow: hidden; }
+.review-q .review-head { padding: 12px 14px; cursor: pointer; display: flex;
+  align-items: center; gap: 10px; }
+.review-q .review-head:hover { background: var(--card-hover); }
+.review-q .ri-icon { font-size: 16px; flex-shrink: 0; }
+.review-q .ri-text { font-size: 13px; color: var(--text-dim); flex: 1; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+.review-q .ri-meta { font-size: 11px; color: var(--text-dim); flex-shrink: 0; }
+.review-q .review-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
+.review-q.open .review-body { display: block; }
+
+.section-title { font-size: 13px; font-weight: 500; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; }
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text-dim); }
+@media (max-width: 600px) {
+  .container { padding: 12px; }
+  .q-detail { padding: 14px; }
+  .q-detail .question { font-size: 15px; }
+  .pill { padding: 5px 10px; font-size: 12px; }
+  .tab { padding: 8px 12px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container" style="padding:0; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <h1>英文刷題系統 <span style="color:var(--text-dim);font-size:13px;font-weight:normal">v1.0</span></h1>
+      <div class="sub" id="header-sub">載入中⋯</div>
+    </div>
+    <div id="mock-timer-display" style="display:none">⏱ --:--</div>
+  </div>
+</header>
+
+<div class="container">
+<div class="tabs">
+  <div class="tab active" data-tab="vocab">字彙</div>
+  <div class="tab" data-tab="grammar">文法</div>
+  <div class="tab" data-tab="notebook">錯題本 <span class="badge" id="notebook-badge" style="display:none">0</span></div>
+  <div class="tab" data-tab="mock">模考</div>
+</div>
+
+<!-- ═══ 字彙 ═══ -->
+<div id="page-vocab">
+  <div class="sub-tabs">
+    <div class="sub-tab active" id="v-stab-browse" onclick="switchVPhase('browse')">瀏覽</div>
+    <div class="sub-tab" id="v-stab-practice" onclick="switchVPhase('practice')">練習中</div>
+  </div>
+  <div id="v-browse">
+    <div class="filters" id="v-school-filters"></div>
+    <div class="filters" id="v-diff-filters"></div>
+    <div class="filters" id="v-status-filters"></div>
+    <div class="btn-row"><button class="btn primary" id="v-smart-btn">載入中⋯</button></div>
+    <div id="v-count" style="font-size:12px;color:var(--text-dim);margin:6px 0"></div>
+    <div class="q-list" id="v-list"></div>
+  </div>
+  <div id="v-practice" style="display:none"><div id="v-practice-content"></div></div>
+</div>
+
+<!-- ═══ 文法 ═══ -->
+<div id="page-grammar" style="display:none">
+  <div class="sub-tabs">
+    <div class="sub-tab active" id="g-stab-browse" onclick="switchGPhase('browse')">瀏覽</div>
+    <div class="sub-tab" id="g-stab-practice" onclick="switchGPhase('practice')">練習中</div>
+  </div>
+  <div id="g-browse">
+    <div class="filters" id="g-topic-filters"></div>
+    <div class="filters" id="g-diff-filters"></div>
+    <div class="filters" id="g-status-filters"></div>
+    <div class="btn-row">
+      <button class="btn primary" id="g-weak-btn">🎯 從弱點練</button>
+      <button class="btn" id="g-random-btn">🎲 隨機一題</button>
+    </div>
+    <div id="g-count" style="font-size:12px;color:var(--text-dim);margin:6px 0"></div>
+    <div class="q-list" id="g-list"></div>
+  </div>
+  <div id="g-practice" style="display:none"><div id="g-practice-content"></div></div>
+</div>
+
+<!-- ═══ 錯題本 ═══ -->
+<div id="page-notebook" style="display:none">
+  <div class="summary-stats" id="nb-stats"></div>
+  <div class="filters" id="nb-type-filters"></div>
+  <div class="filters" id="nb-mastery-filters"></div>
+  <div id="nb-list"></div>
+  <div id="nb-weakness"></div>
+</div>
+
+<!-- ═══ 模考 ═══ -->
+<div id="page-mock" style="display:none">
+  <div id="mock-setup"></div>
+  <div id="mock-running" style="display:none"></div>
+  <div id="mock-review" style="display:none"></div>
+</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA & STORAGE
+// ════════════════════════════════════════════════════════════
+let VOCAB_Q = [], GRAMMAR_Q = [];
+
+const VPROG_KEY  = 'vocab_progress_v1';
+const VKNOWN_KEY = 'vocab_known_v1';
+const GPROG_KEY  = 'grammar_progress_v1';
+
+let vProg = {}, vKnown = {}, gProg = {};
+try { vProg  = JSON.parse(localStorage.getItem(VPROG_KEY)  || '{}'); } catch(e){}
+try { vKnown = JSON.parse(localStorage.getItem(VKNOWN_KEY) || '{}'); } catch(e){}
+try { gProg  = JSON.parse(localStorage.getItem(GPROG_KEY)  || '{}'); } catch(e){}
+
+function saveVProg()  { try { localStorage.setItem(VPROG_KEY,  JSON.stringify(vProg));  } catch(e){} }
+function saveVKnown() { try { localStorage.setItem(VKNOWN_KEY, JSON.stringify(vKnown)); } catch(e){} }
+function saveGProg()  { try { localStorage.setItem(GPROG_KEY,  JSON.stringify(gProg));  } catch(e){} }
+
+function recordV(qid, ok) {
+  const p = vProg[qid] || {count:0, correct_count:0};
+  vProg[qid] = { result: ok?'correct':'wrong', last: today(),
+    count: p.count+1, correct_count: p.correct_count+(ok?1:0) };
+  saveVProg();
+}
+function recordG(qid, ok) {
+  const p = gProg[qid] || {count:0, correct_count:0};
+  gProg[qid] = { result: ok?'correct':'wrong', last: today(),
+    count: p.count+1, correct_count: p.correct_count+(ok?1:0) };
+  saveGProg();
+}
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+const state = {
+  tab: 'vocab',
+  // vocab
+  vPhase:'browse', vFilterSchool:'all', vFilterDiff:'all', vFilterStatus:'all',
+  vCurrentQ:null, vSelected:null, vRevealed:false,
+  // grammar
+  gPhase:'browse', gFilterTopic:'all', gFilterDiff:'all', gFilterStatus:'all',
+  gCurrentQ:null, gSelected:null, gRevealed:false,
+  // notebook
+  nbType:'all', nbMastery:'learning',
+  // mock
+  mockPhase:'setup',
+  mockSettings:{ total:30, vocabPct:70, minutes:30 },
+  mockQs:[], mockAnswers:{}, mockFlagged:{}, mockIdx:0,
+  mockTimeLeft:0, mockTimer:null
+};
+
+// ════════════════════════════════════════════════════════════
+// UTILITIES
+// ════════════════════════════════════════════════════════════
+function today() { return new Date().toISOString().slice(0,10); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function renderBlank(text, revealedWord) {
+  if (revealedWord) return text.replace(/___/g, `<span class="blank" style="color:var(--green)">${esc(revealedWord)}</span>`);
+  return text.replace(/___/g, '<span class="blank">___</span>');
+}
+function getQText(q) { return q.sentence || q.question || ''; }
+function diffClass(d) { return d==='easy'?'diff-easy':d==='hard'?'diff-hard':'diff-medium'; }
+
+// ════════════════════════════════════════════════════════════
+// VOCAB — filter + list
+// ════════════════════════════════════════════════════════════
+function vFiltered() {
+  return VOCAB_Q.filter(q => {
+    if (state.vFilterSchool !== 'all' && q.source !== state.vFilterSchool) return false;
+    if (state.vFilterDiff   !== 'all' && q.difficulty !== state.vFilterDiff) return false;
+    if (state.vFilterStatus !== 'all') {
+      const p = vProg[q.id];
+      if (state.vFilterStatus==='untouched' && p) return false;
+      if (state.vFilterStatus==='wrong'     && (!p||p.result!=='wrong')) return false;
+      if (state.vFilterStatus==='correct'   && (!p||p.result!=='correct')) return false;
+    }
+    return true;
+  });
+}
+
+function renderVFilters() {
+  const schools = [...new Set(VOCAB_Q.map(q=>q.source))].sort();
+  document.getElementById('v-school-filters').innerHTML =
+    '<span class="filter-label">學校</span>' +
+    ['all',...schools].map(s=>`<div class="pill${state.vFilterSchool===s?' active':''}" data-vs="${s}">${s==='all'?'全部':s}</div>`).join('');
+  document.getElementById('v-diff-filters').innerHTML =
+    '<span class="filter-label">難度</span>' +
+    ['all','easy','medium','hard'].map(d=>`<div class="pill${state.vFilterDiff===d?' active':''}" data-vd="${d}">${d==='all'?'全部':d}</div>`).join('');
+  document.getElementById('v-status-filters').innerHTML =
+    '<span class="filter-label">狀態</span>' +
+    [{k:'all',l:'全部'},{k:'untouched',l:'未做'},{k:'wrong',l:'答錯過'},{k:'correct',l:'答對過'}]
+    .map(x=>`<div class="pill${state.vFilterStatus===x.k?' active':''}" data-vm="${x.k}">${x.l}</div>`).join('');
+
+  document.querySelectorAll('#v-school-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterSchool=p.dataset.vs;renderVFilters();renderVList();});
+  document.querySelectorAll('#v-diff-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterDiff=p.dataset.vd;renderVFilters();renderVList();});
+  document.querySelectorAll('#v-status-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterStatus=p.dataset.vm;renderVFilters();renderVList();});
+}
+
+function renderVList() {
+  const qs = vFiltered();
+  document.getElementById('v-count').textContent = `顯示 ${qs.length} / ${VOCAB_Q.length} 題`;
+  if (!qs.length) { document.getElementById('v-list').innerHTML='<div class="empty-state">沒有符合條件的題目</div>'; return; }
+  document.getElementById('v-list').innerHTML = qs.map(q => {
+    const p = vProg[q.id];
+    const dot = p ? `<span class="progress-dot ${p.result}"></span>` : '';
+    return `<div class="q-item" data-qid="${q.id}">
+      <div class="head">
+        <span class="id">${q.id}${dot}</span>
+        <div class="tags">
+          <span class="tag">${q.source}</span>
+          <span class="tag ${diffClass(q.difficulty)}">${q.difficulty}</span>
+          ${q.format==='meta_vocab'?'<span class="tag">meta</span>':''}
+        </div>
+      </div>
+      <div class="text">${esc(getQText(q).slice(0,80))}…</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#v-list .q-item').forEach(el=>el.onclick=()=>openVocab(el.dataset.qid));
+}
+
+function updateVSmartBtn() {
+  const btn = document.getElementById('v-smart-btn');
+  if (!btn) return;
+  const unseen = VOCAB_Q.filter(q=>!vProg[q.id]);
+  const wrongWords = getVWrongWords().filter(w=>!vKnown[w.word]);
+  if (unseen.length>0) {
+    btn.textContent=`📖 開始練（剩 ${unseen.length} 題）`;
+    btn.onclick=()=>openVocab(unseen[Math.floor(Math.random()*unseen.length)].id);
+  } else if (wrongWords.length>0) {
+    btn.textContent=`🔁 複習錯題（${wrongWords.length} 字）`;
+    btn.onclick=()=>{const w=wrongWords[Math.floor(Math.random()*wrongWords.length)];openVocab(w.qids[0]);};
+  } else {
+    btn.textContent='🎲 隨機複習';
+    btn.onclick=()=>openVocab(VOCAB_Q[Math.floor(Math.random()*VOCAB_Q.length)].id);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// VOCAB — practice
+// ════════════════════════════════════════════════════════════
+function openVocab(qid) {
+  state.vCurrentQ = VOCAB_Q.find(q=>q.id===qid);
+  state.vSelected = null; state.vRevealed = false;
+  switchVPhase('practice');
+}
+
+function renderVPractice() {
+  const q = state.vCurrentQ;
+  if (!q) { document.getElementById('v-practice-content').innerHTML='<div class="empty-state">請先從瀏覽頁選一題</div>'; return; }
+  const letters=['A','B','C','D'];
+  const optHTML = q.options.map((o,i)=>{
+    let cls='';
+    if (state.vRevealed) {
+      if (letters[i]===q.answer) cls='correct';
+      else if (letters[i]===state.vSelected) cls='wrong';
+    } else if (letters[i]===state.vSelected) cls='selected';
+    return `<div class="option ${cls}" data-l="${letters[i]}">
+      <span class="letter">${letters[i]}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+
+  let reveal='';
+  if (state.vRevealed) {
+    const ok = state.vSelected===q.answer;
+    reveal = `<div class="reveal ${ok?'correct':'wrong'}">
+      <h3>${ok?'✓ 答對了':'✗ 答錯了'} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</h3>
+      ${q.sentence_zh?`<div class="sentence-zh"><div class="sentence-zh-label">📖 題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
+      <div class="word-card">
+        <div class="wc-main">${esc(q.target_word)}</div>
+        <div class="wc-zh">${esc(q.chinese||'')}</div>
+        <div class="wc-def">${esc(q.definition||'')}</div>
+        ${q.example?`<div class="wc-ex">${esc(q.example)}</div>`:''}
+      </div>
+      ${q.distractor_notes?`<div class="ans-text"><strong>選項解析：</strong></div>
+      <div class="distractor-list">${Object.entries(q.distractor_notes).map(([w,n])=>
+        `<div class="item"><span class="di-word">${esc(w)}</span>　<span class="meaning">${n.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</span></div>`
+      ).join('')}</div>`:''}
+    </div>`;
+  }
+
+  const btns = state.vRevealed
+    ? `<button class="btn primary" id="v-next-btn">下一題 →</button><button class="btn ghost" id="v-back-btn">← 返回列表</button>`
+    : `<button class="btn primary" id="v-reveal-btn"${!state.vSelected?' disabled':''}>確認答案</button><button class="btn ghost" id="v-back-btn">← 返回列表</button>`;
+
+  document.getElementById('v-practice-content').innerHTML = `
+    <div class="q-detail">
+      <div class="meta">${q.id} · ${q.source} ${q.year} · ${q.difficulty}${q.format==='meta_vocab'?' · meta_vocab':''}</div>
+      <div class="question">${renderBlank(esc(getQText(q)), state.vRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">${btns}</div>
+      ${reveal}
+    </div>`;
+
+  document.querySelectorAll('#v-practice-content .option').forEach(el=>el.onclick=()=>{
+    if (state.vRevealed) return;
+    state.vSelected=el.dataset.l; renderVPractice();
+  });
+  const rb=document.getElementById('v-reveal-btn');
+  if (rb) rb.onclick=()=>{ state.vRevealed=true; recordV(q.id,state.vSelected===q.answer); updateVSmartBtn(); updateNBBadge(); renderVPractice(); };
+  const nb2=document.getElementById('v-next-btn');
+  if (nb2) nb2.onclick=()=>vSmartNext();
+  document.querySelectorAll('#v-back-btn').forEach(b=>b.onclick=()=>switchVPhase('browse'));
+}
+
+function vSmartNext() {
+  const unseen = VOCAB_Q.filter(q=>!vProg[q.id]&&q.id!==state.vCurrentQ?.id);
+  if (unseen.length) { openVocab(unseen[Math.floor(Math.random()*unseen.length)].id); return; }
+  const wrongs = VOCAB_Q.filter(q=>vProg[q.id]?.result==='wrong'&&q.id!==state.vCurrentQ?.id);
+  if (wrongs.length) { openVocab(wrongs[Math.floor(Math.random()*wrongs.length)].id); return; }
+  const others = VOCAB_Q.filter(q=>q.id!==state.vCurrentQ?.id);
+  openVocab(others[Math.floor(Math.random()*others.length)].id);
+}
+
+// ════════════════════════════════════════════════════════════
+// GRAMMAR — filter + list
+// ════════════════════════════════════════════════════════════
+function gFiltered() {
+  return GRAMMAR_Q.filter(q => {
+    if (state.gFilterTopic  !== 'all' && q.grammar_topic !== state.gFilterTopic) return false;
+    if (state.gFilterDiff   !== 'all' && q.difficulty !== state.gFilterDiff) return false;
+    if (state.gFilterStatus !== 'all') {
+      const p = gProg[q.id];
+      if (state.gFilterStatus==='untouched' && p) return false;
+      if (state.gFilterStatus==='wrong'     && (!p||p.result!=='wrong')) return false;
+      if (state.gFilterStatus==='correct'   && (!p||p.result!=='correct')) return false;
+    }
+    return true;
+  });
+}
+
+function renderGFilters() {
+  const topics = [...new Set(GRAMMAR_Q.map(q=>q.grammar_topic))].sort();
+  document.getElementById('g-topic-filters').innerHTML =
+    '<span class="filter-label">觀念</span>' +
+    ['all',...topics].map(t=>`<div class="pill${state.gFilterTopic===t?' active':''}" data-gt="${t}">${t==='all'?'全部':t}</div>`).join('');
+  document.getElementById('g-diff-filters').innerHTML =
+    '<span class="filter-label">難度</span>' +
+    ['all','easy','medium','hard'].map(d=>`<div class="pill${state.gFilterDiff===d?' active':''}" data-gd="${d}">${d==='all'?'全部':d}</div>`).join('');
+  document.getElementById('g-status-filters').innerHTML =
+    '<span class="filter-label">狀態</span>' +
+    [{k:'all',l:'全部'},{k:'untouched',l:'未做'},{k:'wrong',l:'答錯過'},{k:'correct',l:'答對過'}]
+    .map(x=>`<div class="pill${state.gFilterStatus===x.k?' active':''}" data-gm="${x.k}">${x.l}</div>`).join('');
+
+  document.querySelectorAll('#g-topic-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterTopic=p.dataset.gt;renderGFilters();renderGList();});
+  document.querySelectorAll('#g-diff-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterDiff=p.dataset.gd;renderGFilters();renderGList();});
+  document.querySelectorAll('#g-status-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterStatus=p.dataset.gm;renderGFilters();renderGList();});
+}
+
+function renderGList() {
+  const qs = gFiltered();
+  document.getElementById('g-count').textContent=`顯示 ${qs.length} / ${GRAMMAR_Q.length} 題`;
+  if (!qs.length) { document.getElementById('g-list').innerHTML='<div class="empty-state">沒有符合條件的題目</div>'; return; }
+  document.getElementById('g-list').innerHTML = qs.map(q=>{
+    const p=gProg[q.id];
+    const dot=p?`<span class="progress-dot ${p.result}"></span>`:'';
+    return `<div class="q-item" data-qid="${q.id}">
+      <div class="head">
+        <span class="id">${q.id}${dot}</span>
+        <div class="tags">
+          <span class="tag topic">${q.grammar_topic}</span>
+          <span class="tag ${diffClass(q.difficulty)}">${q.difficulty}</span>
+        </div>
+      </div>
+      <div class="text">${esc(getQText(q).slice(0,80))}…</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#g-list .q-item').forEach(el=>el.onclick=()=>openGrammar(el.dataset.qid));
+}
+
+// ════════════════════════════════════════════════════════════
+// GRAMMAR — practice
+// ════════════════════════════════════════════════════════════
+function openGrammar(qid) {
+  state.gCurrentQ = GRAMMAR_Q.find(q=>q.id===qid);
+  state.gSelected = null; state.gRevealed = false;
+  switchGPhase('practice');
+}
+
+function renderGPractice() {
+  const q = state.gCurrentQ;
+  if (!q) { document.getElementById('g-practice-content').innerHTML='<div class="empty-state">請先從瀏覽頁選一題</div>'; return; }
+  const letters=['A','B','C','D'];
+  const optHTML = q.options.map((o,i)=>{
+    let cls='';
+    if (state.gRevealed) {
+      if (letters[i]===q.answer) cls='correct';
+      else if (letters[i]===state.gSelected) cls='wrong';
+    } else if (letters[i]===state.gSelected) cls='selected';
+    return `<div class="option ${cls}" data-l="${letters[i]}"><span class="letter">${letters[i]}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+
+  let reveal='';
+  if (state.gRevealed) {
+    const ok=state.gSelected===q.answer;
+    reveal=`<div class="reveal ${ok?'correct':'wrong'}">
+      <h3>${ok?'✓ 答對了':'✗ 答錯了'} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</h3>
+      <div class="ans-text"><strong>解析：</strong>${esc(q.explanation||'')}</div>
+      ${q.common_mistakes?`<div class="ans-text"><strong>常見錯誤：</strong>${esc(q.common_mistakes)}</div>`:''}
+    </div>`;
+  }
+
+  const btns = state.gRevealed
+    ? `<button class="btn primary" id="g-next-btn">下一題 →</button><button class="btn ghost" id="g-back-btn">← 返回列表</button>`
+    : `<button class="btn primary" id="g-reveal-btn"${!state.gSelected?' disabled':''}>確認答案</button><button class="btn ghost" id="g-back-btn">← 返回列表</button>`;
+
+  document.getElementById('g-practice-content').innerHTML=`
+    <div class="q-detail">
+      <div class="meta">${q.id} · ${q.grammar_topic} · ${q.difficulty}</div>
+      <div class="question">${renderBlank(esc(getQText(q)), state.gRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">${btns}</div>
+      ${reveal}
+    </div>`;
+
+  document.querySelectorAll('#g-practice-content .option').forEach(el=>el.onclick=()=>{
+    if (state.gRevealed) return;
+    state.gSelected=el.dataset.l; renderGPractice();
+  });
+  const rb=document.getElementById('g-reveal-btn');
+  if (rb) rb.onclick=()=>{ state.gRevealed=true; recordG(q.id,state.gSelected===q.answer); updateNBBadge(); renderGPractice(); };
+  const nb2=document.getElementById('g-next-btn');
+  if (nb2) nb2.onclick=()=>gSmartNext();
+  document.querySelectorAll('#g-back-btn').forEach(b=>b.onclick=()=>switchGPhase('browse'));
+}
+
+function gSmartNext() {
+  const stats = computeTopicStats();
+  const weakTopics = stats.filter(s=>s.attempted>=2&&s.accuracy<0.7).sort((a,b)=>a.accuracy-b.accuracy);
+  let c=null;
+  for (const t of weakTopics) { c=GRAMMAR_Q.find(q=>q.grammar_topic===t.topic&&!gProg[q.id]&&q.id!==state.gCurrentQ?.id); if(c)break; }
+  if (!c) c=GRAMMAR_Q.find(q=>!gProg[q.id]&&q.id!==state.gCurrentQ?.id);
+  if (!c) { const o=GRAMMAR_Q.filter(q=>q.id!==state.gCurrentQ?.id); c=o[Math.floor(Math.random()*o.length)]; }
+  if (c) openGrammar(c.id);
+}
+
+function computeTopicStats() {
+  return [...new Set(GRAMMAR_Q.map(q=>q.grammar_topic))].map(topic=>{
+    const qs=GRAMMAR_Q.filter(q=>q.grammar_topic===topic);
+    let attempted=0,totalCount=0,totalCorrect=0;
+    qs.forEach(q=>{ const p=gProg[q.id]; if(p){attempted++;totalCount+=p.count;totalCorrect+=p.correct_count;} });
+    return {topic,total:qs.length,attempted,totalCount,totalCorrect,accuracy:totalCount>0?totalCorrect/totalCount:0};
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// NOTEBOOK
+// ════════════════════════════════════════════════════════════
+function getVWrongWords() {
+  const stats={};
+  Object.entries(vProg).forEach(([qid,p])=>{
+    const q=VOCAB_Q.find(x=>x.id===qid); if(!q) return;
+    const w=q.target_word||'';
+    if (!stats[w]) stats[w]={word:w,chinese:q.chinese||'',definition:q.definition||'',
+      example:q.example||'',wrongCount:0,totalCount:0,qids:[],lastWrong:null};
+    stats[w].totalCount+=p.count; stats[w].wrongCount+=(p.count-p.correct_count);
+    stats[w].qids.push(qid);
+    if (p.result==='wrong'&&(!stats[w].lastWrong||p.last>stats[w].lastWrong)) stats[w].lastWrong=p.last;
+  });
+  return Object.values(stats).filter(s=>s.wrongCount>0);
+}
+
+function getGWrongQs() {
+  return GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='wrong');
+}
+
+function renderNotebook() {
+  const vWrongs = getVWrongWords();
+  const gWrongs = getGWrongQs();
+  const vLearning = vWrongs.filter(w=>!vKnown[w.word]);
+  const vKnownArr = vWrongs.filter(w=>vKnown[w.word]);
+  const totalWrong = vWrongs.length + gWrongs.length;
+
+  document.getElementById('nb-stats').innerHTML=`
+    <div class="stat"><div class="num warn">${vLearning.length}</div><div class="label">字彙待熟</div></div>
+    <div class="stat"><div class="num warn">${gWrongs.length}</div><div class="label">文法待熟</div></div>
+    <div class="stat"><div class="num good">${vKnownArr.length}</div><div class="label">已標熟</div></div>
+    <div class="stat"><div class="num">${totalWrong}</div><div class="label">錯題總數</div></div>`;
+
+  // type filter
+  document.getElementById('nb-type-filters').innerHTML='<span class="filter-label">類型</span>'+
+    [{k:'all',l:'全部'},{k:'vocab',l:'字彙'},{k:'grammar',l:'文法'}]
+    .map(x=>`<div class="pill${state.nbType===x.k?' active':''}" data-nt="${x.k}">${x.l}</div>`).join('');
+  document.querySelectorAll('#nb-type-filters .pill').forEach(p=>p.onclick=()=>{state.nbType=p.dataset.nt;renderNotebook();});
+
+  // mastery filter (only for vocab)
+  const showMastery = state.nbType!=='grammar';
+  document.getElementById('nb-mastery-filters').innerHTML = showMastery ?
+    '<span class="filter-label">字彙</span>'+
+    [{k:'learning',l:`待熟記 (${vLearning.length})`},{k:'known',l:`已標熟 (${vKnownArr.length})`},{k:'all',l:`全部 (${vWrongs.length})`}]
+    .map(x=>`<div class="pill${state.nbMastery===x.k?' active':''}" data-nm="${x.k}">${x.l}</div>`).join('') : '';
+  document.querySelectorAll('#nb-mastery-filters .pill').forEach(p=>p.onclick=()=>{state.nbMastery=p.dataset.nm;renderNotebook();});
+
+  let html='';
+
+  // Vocab section
+  if (state.nbType!=='grammar') {
+    const showV = state.nbMastery==='learning'?vLearning:state.nbMastery==='known'?vKnownArr:vWrongs;
+    showV.sort((a,b)=>(b.lastWrong||'')>(a.lastWrong||'')?1:-1);
+    if (state.nbType==='vocab'&&showV.length===0) html+='<div class="empty-state">沒有字彙錯題</div>';
+    html += showV.map(w=>{
+      const isKnown=!!vKnown[w.word];
+      const acc=w.totalCount>0?Math.round((w.totalCount-w.wrongCount)/w.totalCount*100):0;
+      return `<div class="notebook-card ${isKnown?'known':''}">
+        <div class="word-row"><span class="word-en">${esc(w.word)}</span><span class="word-zh">${esc(w.chinese)}</span></div>
+        <div class="stat-line">答對 ${w.totalCount-w.wrongCount}/${w.totalCount} (${acc}%) ${w.lastWrong?`· 最近錯：${w.lastWrong}`:''}</div>
+        <div class="word-def">${esc(w.definition)}</div>
+        <div class="word-example">${esc(w.example)}</div>
+        <div class="btn-row" style="margin:0">
+          <button class="btn small" data-action="vpractice" data-qid="${w.qids[0]}">再練一次</button>
+          ${isKnown
+            ?`<button class="btn small ghost" data-action="unmark" data-word="${esc(w.word)}">取消已熟</button>`
+            :`<button class="btn small ghost" data-action="mark" data-word="${esc(w.word)}">✓ 標為已熟</button>`}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Grammar section
+  if (state.nbType!=='vocab') {
+    if (gWrongs.length===0 && state.nbType==='grammar') html+='<div class="empty-state">沒有文法錯題</div>';
+    else if (gWrongs.length>0) {
+      if (state.nbType==='all') html+=`<div class="section-title">文法錯題（${gWrongs.length}）</div>`;
+      html += gWrongs.map(q=>`
+        <div class="notebook-card grammar-type">
+          <div class="word-row">
+            <span class="word-en" style="font-size:14px">${esc(getQText(q).slice(0,60))}…</span>
+            <span class="word-zh"><span class="tag topic">${esc(q.grammar_topic)}</span></span>
+          </div>
+          <div class="stat-line">${q.id} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</div>
+          <div class="word-def">${esc(q.explanation||'')}</div>
+          <div class="btn-row" style="margin:0">
+            <button class="btn small" data-action="gpractice" data-qid="${q.id}">再練一次</button>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  document.getElementById('nb-list').innerHTML = html || (totalWrong===0?'<div class="empty-state">還沒有錯題，去練習吧！</div>':'');
+
+  document.querySelectorAll('#nb-list [data-action]').forEach(b=>{
+    b.onclick=()=>{
+      const a=b.dataset.action;
+      if (a==='vpractice') { openVocab(b.dataset.qid); switchTab('vocab'); }
+      else if (a==='gpractice') { openGrammar(b.dataset.qid); switchTab('grammar'); }
+      else if (a==='mark')   { vKnown[b.dataset.word]=true;  saveVKnown(); renderNotebook(); updateNBBadge(); updateVSmartBtn(); }
+      else if (a==='unmark') { delete vKnown[b.dataset.word]; saveVKnown(); renderNotebook(); updateNBBadge(); updateVSmartBtn(); }
+    };
+  });
+
+  // Weakness analysis
+  renderWeakness();
+}
+
+function renderWeakness() {
+  const stats = computeTopicStats().sort((a,b)=>{
+    if (!a.attempted&&!b.attempted) return 0;
+    if (!a.attempted) return 1; if (!b.attempted) return -1;
+    return a.accuracy-b.accuracy;
+  });
+  if (!stats.length) { document.getElementById('nb-weakness').innerHTML=''; return; }
+  let html=`<div class="section-title">文法弱點分析</div>`;
+  html+=stats.map(s=>{
+    let level='untouched';
+    if (s.attempted>0) level=s.accuracy<0.6?'weak':s.accuracy<0.85?'medium':'strong';
+    const pct=s.totalCount>0?Math.round(s.accuracy*100):0;
+    const statsText=s.attempted===0?'尚未練習':`${s.totalCorrect}/${s.totalCount} 答對 · ${s.attempted}/${s.total} 題練過`;
+    return `<div class="weakness-card ${level}">
+      <div class="top"><span class="topic-name">${esc(s.topic)}</span><span class="stats-text">${statsText}${s.attempted>0?` · <strong>${pct}%</strong>`:''}</span></div>
+      ${s.attempted>0?`<div class="bar-bg"><div class="bar-fill ${level}" style="width:${pct}%"></div></div>`:''}
+      <div class="btn-row" style="margin:8px 0 0"><button class="btn ghost" data-wtopic="${esc(s.topic)}" style="font-size:12px;padding:5px 11px">練這個觀念 →</button></div>
+    </div>`;
+  }).join('');
+  document.getElementById('nb-weakness').innerHTML=html;
+  document.querySelectorAll('[data-wtopic]').forEach(b=>b.onclick=()=>{
+    state.gFilterTopic=b.dataset.wtopic; switchTab('grammar'); renderGFilters(); renderGList();
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// MOCK EXAM
+// ════════════════════════════════════════════════════════════
+function renderMockSetup() {
+  stopMockTimer();
+  const s=state.mockSettings;
+  const nv=Math.round(s.total*s.vocabPct/100), ng=s.total-nv;
+  document.getElementById('mock-setup').innerHTML=`
+    <div class="mock-setup-card">
+      <h3>⚙️ 模考設置</h3>
+      <div class="slider-row">
+        <label>題數</label>
+        <input type="range" min="10" max="50" value="${s.total}" id="ms-total">
+        <span class="val" id="ms-total-val">${s.total} 題</span>
+      </div>
+      <div class="slider-row">
+        <label>字彙比例</label>
+        <input type="range" min="0" max="100" step="10" value="${s.vocabPct}" id="ms-ratio">
+        <span class="val" id="ms-ratio-val">${nv} 字彙 / ${ng} 文法</span>
+      </div>
+      <div class="slider-row">
+        <label>計時</label>
+        <input type="range" min="10" max="60" step="5" value="${s.minutes}" id="ms-time">
+        <span class="val" id="ms-time-val">${s.minutes} 分鐘</span>
+      </div>
+      <div class="btn-row" style="margin-top:4px">
+        <button class="btn primary" id="ms-start-btn" style="min-width:120px">開始模考 ▶</button>
+      </div>
+    </div>`;
+
+  const updateVals=()=>{
+    const t=+document.getElementById('ms-total').value;
+    const r=+document.getElementById('ms-ratio').value;
+    const m=+document.getElementById('ms-time').value;
+    state.mockSettings={total:t,vocabPct:r,minutes:m};
+    const nv2=Math.round(t*r/100);
+    document.getElementById('ms-total-val').textContent=`${t} 題`;
+    document.getElementById('ms-ratio-val').textContent=`${nv2} 字彙 / ${t-nv2} 文法`;
+    document.getElementById('ms-time-val').textContent=`${m} 分鐘`;
+  };
+  ['ms-total','ms-ratio','ms-time'].forEach(id=>document.getElementById(id).oninput=updateVals);
+  document.getElementById('ms-start-btn').onclick=startMock;
+}
+
+function pickRandom(arr, n) {
+  const shuffled=[...arr].sort(()=>Math.random()-0.5);
+  return shuffled.slice(0,Math.min(n,shuffled.length));
+}
+
+function startMock() {
+  const {total,vocabPct,minutes}=state.mockSettings;
+  const nv=Math.round(total*vocabPct/100), ng=total-nv;
+
+  const vUnseen=VOCAB_Q.filter(q=>!vProg[q.id]);
+  const vWrong=VOCAB_Q.filter(q=>vProg[q.id]?.result==='wrong');
+  const vOther=VOCAB_Q.filter(q=>vProg[q.id]?.result==='correct');
+  const gUnseen=GRAMMAR_Q.filter(q=>!gProg[q.id]);
+  const gWrong=GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='wrong');
+  const gOther=GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='correct');
+
+  function drawPool(unseen, wrong, other, n) {
+    const out=[];
+    const u=pickRandom(unseen,n); out.push(...u);
+    if (out.length<n) { const w=pickRandom(wrong.filter(q=>!out.includes(q)),n-out.length); out.push(...w); }
+    if (out.length<n) { const o=pickRandom(other.filter(q=>!out.includes(q)),n-out.length); out.push(...o); }
+    return out.slice(0,n);
+  }
+
+  const vQs=drawPool(vUnseen,vWrong,vOther,nv).map(q=>({...q,_type:'vocab'}));
+  const gQs=drawPool(gUnseen,gWrong,gOther,ng).map(q=>({...q,_type:'grammar'}));
+  const combined=[...vQs,...gQs].sort(()=>Math.random()-0.5);
+
+  if (!combined.length) { alert('題庫不足，請先確認兩個 JSON 已載入。'); return; }
+
+  state.mockQs=combined;
+  state.mockAnswers={}; state.mockFlagged={};
+  state.mockIdx=0;
+  state.mockPhase='running';
+  state.mockTimeLeft=minutes*60;
+
+  document.getElementById('mock-setup').style.display='none';
+  document.getElementById('mock-running').style.display='';
+  document.getElementById('mock-review').style.display='none';
+
+  const timerEl=document.getElementById('mock-timer-display');
+  timerEl.style.display='';
+  updateMockTimer();
+  state.mockTimer=setInterval(()=>{
+    state.mockTimeLeft--;
+    updateMockTimer();
+    if (state.mockTimeLeft<=0) submitMock(true);
+  },1000);
+
+  renderMockRunning();
+}
+
+function updateMockTimer() {
+  const el=document.getElementById('mock-timer-display');
+  if (!el) return;
+  const m=Math.floor(state.mockTimeLeft/60), s=state.mockTimeLeft%60;
+  el.textContent=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.className=state.mockTimeLeft<=300?'urgent':'';
+}
+
+function stopMockTimer() {
+  if (state.mockTimer) { clearInterval(state.mockTimer); state.mockTimer=null; }
+  const el=document.getElementById('mock-timer-display');
+  if (el) el.style.display='none';
+}
+
+function renderMockRunning() {
+  const qs=state.mockQs, idx=state.mockIdx, q=qs[idx];
+  if (!q) return;
+  const total=qs.length;
+  const answered=Object.keys(state.mockAnswers).length;
+
+  const navDots=qs.map((qi,i)=>{
+    let cls='';
+    if (i===idx) cls='current';
+    else if (state.mockFlagged[qi.id]) cls='flagged';
+    else if (state.mockAnswers[qi.id]) cls='answered';
+    return `<div class="mock-q-dot ${cls}" data-mi="${i}">${i+1}</div>`;
+  }).join('');
+
+  const letters=['A','B','C','D'];
+  const sel=state.mockAnswers[q.id];
+  const optHTML=q.options.map((o,i)=>`
+    <div class="option ${sel===letters[i]?'selected':''}" data-ml="${letters[i]}">
+      <span class="letter">${letters[i]}</span><span>${esc(o)}</span>
+    </div>`).join('');
+
+  const isFlagged=!!state.mockFlagged[q.id];
+
+  document.getElementById('mock-running').innerHTML=`
+    <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px">
+      題目 ${idx+1} / ${total} &nbsp;·&nbsp; 已作答 ${answered}/${total}
+      &nbsp;·&nbsp; <span class="tag ${q._type==='vocab'?'':'topic'}">${q._type==='vocab'?q.source||'MOCK':q.grammar_topic}</span>
+    </div>
+    <div class="mock-progress-bar"><div class="mock-progress-fill" style="width:${(idx+1)/total*100}%"></div></div>
+    <div class="mock-q-nav">${navDots}</div>
+    <div class="q-detail" style="margin:0">
+      <div class="meta">${q.id} · ${q.difficulty}</div>
+      <div class="question">${esc(getQText(q)).replace(/___/g,'<span class="blank">___</span>')}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">
+        <button class="btn" id="mock-prev-btn"${idx===0?' disabled':''}>← 上一題</button>
+        ${idx<total-1
+          ?`<button class="btn primary" id="mock-next-btn">下一題 →</button>`
+          :`<button class="btn danger" id="mock-submit-btn">交卷</button>`}
+        <button class="btn ${isFlagged?'flagged':''}" id="mock-flag-btn">${isFlagged?'⚑ 已標記':'⚐ 標記'}</button>
+      </div>
+    </div>`;
+
+  document.querySelectorAll('#mock-running .option').forEach(el=>el.onclick=()=>{
+    state.mockAnswers[q.id]=el.dataset.ml; renderMockRunning();
+  });
+  document.querySelectorAll('.mock-q-dot').forEach(el=>el.onclick=()=>{state.mockIdx=+el.dataset.mi;renderMockRunning();});
+  document.getElementById('mock-prev-btn').onclick=()=>{state.mockIdx--;renderMockRunning();};
+  const nb=document.getElementById('mock-next-btn');
+  if (nb) nb.onclick=()=>{state.mockIdx++;renderMockRunning();};
+  const sb=document.getElementById('mock-submit-btn');
+  if (sb) sb.onclick=()=>submitMock(false);
+  document.getElementById('mock-flag-btn').onclick=()=>{
+    state.mockFlagged[q.id]=!state.mockFlagged[q.id]; renderMockRunning();
+  };
+}
+
+function submitMock(timeUp=false) {
+  stopMockTimer();
+  // Grade and record
+  let correct=0, vCorrect=0, gCorrect=0;
+  state.mockQs.forEach(q=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    if (ok) { correct++; if(q._type==='vocab')vCorrect++; else gCorrect++; }
+    else if(sel) { // only record if answered
+      if (q._type==='vocab') recordV(q.id, false);
+      else recordG(q.id, false);
+    }
+    // also record correct answers
+    if (ok) { if(q._type==='vocab') recordV(q.id,true); else recordG(q.id,true); }
+  });
+  updateNBBadge();
+
+  state.mockPhase='review';
+  document.getElementById('mock-running').style.display='none';
+  document.getElementById('mock-review').style.display='';
+
+  const total=state.mockQs.length;
+  const vTotal=state.mockQs.filter(q=>q._type==='vocab').length;
+  const gTotal=state.mockQs.filter(q=>q._type==='grammar').length;
+  const pct=total>0?Math.round(correct/total*100):0;
+
+  const reviewItems=state.mockQs.map((q,i)=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    const noAns=!sel;
+    const icon=noAns?'⬜':ok?'✅':'❌';
+    const ansIdx='ABCD'.indexOf(q.answer);
+    const correctAns=q.options[ansIdx]||'';
+
+    let detailHTML='';
+    if (q._type==='vocab') {
+      detailHTML=`
+        <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
+        ${sel&&!ok?`<div style="font-size:13px;color:var(--red);margin-bottom:6px">你選了 ${sel}: ${esc(q.options['ABCD'.indexOf(sel)])}</div>`:''}
+        ${q.sentence_zh?`<div class="sentence-zh" style="margin:6px 0"><div class="sentence-zh-label">題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
+        <div class="word-card">
+          <div class="wc-main">${esc(q.target_word||'')}</div>
+          <div class="wc-zh">${esc(q.chinese||'')}</div>
+          <div class="wc-def">${esc(q.definition||'')}</div>
+          ${q.example?`<div class="wc-ex">${esc(q.example)}</div>`:''}
+        </div>`;
+    } else {
+      detailHTML=`
+        <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
+        ${sel&&!ok?`<div style="font-size:13px;color:var(--red);margin-bottom:6px">你選了 ${sel}: ${esc(q.options['ABCD'.indexOf(sel)])}</div>`:''}
+        <div class="ans-text"><strong>解析：</strong>${esc(q.explanation||'')}</div>
+        ${q.common_mistakes?`<div class="ans-text"><strong>常見錯誤：</strong>${esc(q.common_mistakes)}</div>`:''}`;
+    }
+
+    return `<div class="review-q" id="rq-${i}">
+      <div class="review-head" onclick="toggleReview(${i})">
+        <span class="ri-icon">${icon}</span>
+        <span class="ri-text">${esc(getQText(q).slice(0,60))}…</span>
+        <span class="ri-meta">${q.id}</span>
+      </div>
+      <div class="review-body">${detailHTML}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('mock-review').innerHTML=`
+    ${timeUp?`<div style="color:var(--yellow);font-size:14px;margin-bottom:10px;text-align:center">⏰ 時間到，自動交卷</div>`:''}
+    <div class="score-banner">
+      <div class="score-big">${correct}/${total}</div>
+      <div class="score-sub">${pct}%${pct>=90?'　🎉 目標達成！':pct>=70?'　👍 不錯！':'　繼續加油'}</div>
+      <div class="score-breakdown">
+        <div class="sb-item">字彙 <span class="sb-val ${vCorrect/Math.max(vTotal,1)>=0.7?'good':'bad'}">${vCorrect}/${vTotal}</span></div>
+        <div class="sb-item">文法 <span class="sb-val ${gCorrect/Math.max(gTotal,1)>=0.7?'good':'bad'}">${gCorrect}/${gTotal}</span></div>
+        <div class="sb-item">答錯 <span class="sb-val bad">${total-correct}</span></div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn primary" onclick="resetMock()">再來一次</button>
+      <button class="btn" onclick="switchTab('notebook')">查看錯題本</button>
+    </div>
+    <div class="section-title">逐題檢討（點展開）</div>
+    ${reviewItems}`;
+}
+
+function toggleReview(i) {
+  const el=document.getElementById(`rq-${i}`);
+  if (el) el.classList.toggle('open');
+}
+
+function resetMock() {
+  state.mockPhase='setup';
+  document.getElementById('mock-running').style.display='none';
+  document.getElementById('mock-review').style.display='none';
+  document.getElementById('mock-setup').style.display='';
+  renderMockSetup();
+}
+
+// ════════════════════════════════════════════════════════════
+// TAB / PHASE SWITCHING
+// ════════════════════════════════════════════════════════════
+function switchTab(tab) {
+  if (state.tab!=='mock'||tab!=='mock') stopMockTimer();
+  state.tab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  ['vocab','grammar','notebook','mock'].forEach(t=>{
+    document.getElementById(`page-${t}`).style.display=t===tab?'':'none';
+  });
+  if (tab==='notebook') renderNotebook();
+  if (tab==='mock'&&state.mockPhase==='setup') renderMockSetup();
+}
+
+function switchVPhase(phase) {
+  state.vPhase=phase;
+  document.getElementById('v-stab-browse').classList.toggle('active',phase==='browse');
+  document.getElementById('v-stab-practice').classList.toggle('active',phase==='practice');
+  document.getElementById('v-browse').style.display=phase==='browse'?'':'none';
+  document.getElementById('v-practice').style.display=phase==='practice'?'':'none';
+  if (phase==='practice') renderVPractice();
+}
+
+function switchGPhase(phase) {
+  state.gPhase=phase;
+  document.getElementById('g-stab-browse').classList.toggle('active',phase==='browse');
+  document.getElementById('g-stab-practice').classList.toggle('active',phase==='practice');
+  document.getElementById('g-browse').style.display=phase==='browse'?'':'none';
+  document.getElementById('g-practice').style.display=phase==='practice'?'':'none';
+  if (phase==='practice') renderGPractice();
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.tab));
+
+// ════════════════════════════════════════════════════════════
+// HEADER & BADGE
+// ════════════════════════════════════════════════════════════
+function updateHeader() {
+  const vDone=Object.keys(vProg).length, gDone=Object.keys(gProg).length;
+  document.getElementById('header-sub').textContent=
+    `字彙 ${VOCAB_Q.length} 題（已練 ${vDone}）· 文法 ${GRAMMAR_Q.length} 題（已練 ${gDone}）`;
+}
+
+function updateNBBadge() {
+  const n=getVWrongWords().filter(w=>!vKnown[w.word]).length+getGWrongQs().length;
+  const badge=document.getElementById('notebook-badge');
+  badge.textContent=n; badge.style.display=n>0?'':'none';
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+async function init() {
+  try {
+    const [vRes, gRes] = await Promise.all([
+      fetch('vocab_data.json',   {cache:'no-cache'}),
+      fetch('grammar_data.json', {cache:'no-cache'})
+    ]);
+    if (!vRes.ok) throw new Error(`vocab_data.json: HTTP ${vRes.status}`);
+    if (!gRes.ok) throw new Error(`grammar_data.json: HTTP ${gRes.status}`);
+    VOCAB_Q   = await vRes.json();
+    GRAMMAR_Q = await gRes.json();
+  } catch(err) {
+    document.body.innerHTML=`<div style="max-width:600px;margin:60px auto;padding:32px;color:#e2e8f0;font-family:system-ui">
+      <h2 style="color:#f87171">⚠ 題庫載入失敗</h2>
+      <p>錯誤：<code style="background:#1e293b;padding:2px 6px;border-radius:4px">${err.message}</code></p>
+      <p>請確認 <code>vocab_data.json</code> 和 <code>grammar_data.json</code> 與 HTML 在同一目錄，並透過 GitHub Pages 或 local server 開啟。</p>
+      <pre style="background:#1e293b;padding:14px;border-radius:6px">python3 -m http.server 8000</pre>
+    </div>`;
+    return;
+  }
+
+  updateHeader();
+  updateNBBadge();
+  renderVFilters();
+  renderVList();
+  updateVSmartBtn();
+  renderGFilters();
+  renderGList();
+  document.getElementById('g-weak-btn').onclick=()=>{state.gCurrentQ=null;gSmartNext();};
+  document.getElementById('g-random-btn').onclick=()=>{openGrammar(GRAMMAR_Q[Math.floor(Math.random()*GRAMMAR_Q.length)].id);};
+}
+
+init();
+</script>
+</body>
+</html>

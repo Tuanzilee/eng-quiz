@@ -1,0 +1,1700 @@
+[
+  {
+    "id": "GR_TENSE_001",
+    "grammar_topic": "時態",
+    "difficulty": "medium",
+    "question": "By the time we arrive at the airport, the plane ___ for half an hour.",
+    "options": [
+      "will leave",
+      "will be leaving",
+      "will have left",
+      "leaves"
+    ],
+    "answer": "C",
+    "explanation": "未來完成式（will have + p.p.）用來表達在未來某時間點之前『已經完成』或『已持續一段時間』的動作。「By the time + 現在式」搭配未來完成式是固定句型。",
+    "common_mistakes": "易誤選 A『will leave』，但題目強調 for half an hour，需要完成式表達『已過了多久』。"
+  },
+  {
+    "id": "GR_TENSE_002",
+    "grammar_topic": "時態",
+    "difficulty": "easy",
+    "question": "She ___ in this company since 2015.",
+    "options": [
+      "works",
+      "worked",
+      "has worked",
+      "is working"
+    ],
+    "answer": "C",
+    "explanation": "since + 過去時間點 → 主要子句用『現在完成式』(have/has + p.p.)，表示從過去延續至今的動作或狀態。",
+    "common_mistakes": "中文沒有完成式概念，常誤選 works。記住：since/for 出現 → 想完成式。"
+  },
+  {
+    "id": "GR_TENSE_003",
+    "grammar_topic": "時態",
+    "difficulty": "hard",
+    "question": "When I called yesterday, you ___ a shower, so you didn't hear the phone.",
+    "options": [
+      "took",
+      "were taking",
+      "had taken",
+      "have taken"
+    ],
+    "answer": "B",
+    "explanation": "過去進行式（was/were + V-ing）描述過去某時間點正在進行的動作。題目情境：在我打電話的『那一刻』你正在洗澡。",
+    "common_mistakes": "易誤選 took（簡單過去式），但簡單過去式只描述完成的動作，無法表達『動作正在進行中』。"
+  },
+  {
+    "id": "GR_TENSE_004",
+    "grammar_topic": "時態",
+    "difficulty": "medium",
+    "question": "Do you think you got enough sleep ___?",
+    "options": [
+      "in two weeks",
+      "this past week",
+      "since two weeks ago",
+      "for over the two weeks"
+    ],
+    "answer": "B",
+    "explanation": "got 是簡單過去式，需搭配指向過去的時間副詞。this past week「過去這一週」是已結束的時間區間，與簡單過去式相容。",
+    "common_mistakes": "(A) in two weeks「（從某時起）兩週後」表未來時間（如 I'll be there in two weeks），與過去式 got 不合; (C) since two weeks ago「兩週前以來」需搭配現在完成式（have got），不能搭配簡單過去式; (D) for over the two weeks 結構錯誤——the 是定冠詞但 two weeks 沒有特指對象，應為 for over two weeks（不加 the）。時態與時間副詞配對：簡單過去式（yesterday, last week, this past week）vs 現在完成式（since, for + 時間長度, recently, already）。",
+    "exam_section": "NCCU_109_ENG_Q16"
+  },
+  {
+    "id": "GR_COND_001",
+    "grammar_topic": "假設語氣",
+    "difficulty": "medium",
+    "question": "If I ___ you, I would think twice before signing that contract.",
+    "options": [
+      "am",
+      "was",
+      "were",
+      "had been"
+    ],
+    "answer": "C",
+    "explanation": "與現在事實相反的假設句，be 動詞一律用 were（不分主詞）。這是英文中保留的虛擬語氣形式。",
+    "common_mistakes": "口語中『If I was you』雖偶有出現，但正式英文與考試一律以 were 為標準。"
+  },
+  {
+    "id": "GR_COND_002",
+    "grammar_topic": "假設語氣",
+    "difficulty": "hard",
+    "question": "Had she taken my advice, she ___ in this mess now.",
+    "options": [
+      "wouldn't be",
+      "wouldn't have been",
+      "isn't",
+      "won't be"
+    ],
+    "answer": "A",
+    "explanation": "混合假設句（mixed conditional）：條件子句指過去（Had she taken... = If she had taken...），但結果子句指現在（now）。過去條件 + 現在結果 → would + 原形動詞。",
+    "common_mistakes": "易誤選 B『wouldn't have been』形成完整的『與過去事實相反』，但題目 now 表示現在結果，需用混合句型。另外 Had she taken... 是 if 省略後的倒裝。"
+  },
+  {
+    "id": "GR_COND_003",
+    "grammar_topic": "假設語氣",
+    "difficulty": "hard",
+    "question": "Forgetting to bring my purse on my first date with the girl, I felt so embarrassed that ___.",
+    "options": [
+      "I could have died",
+      "I wish I'm dead",
+      "I look as if dead",
+      "I might be dead"
+    ],
+    "answer": "A",
+    "explanation": "「I could have died」是過去條件式（could + have + V-en）的慣用表達，意為「我簡直要死了 / 真想死掉」（誇飾用法表達極度的尷尬感受）。整句：第一次約會忘了帶錢包，尷尬到簡直想死。",
+    "common_mistakes": "(B) wish 後需接過去式假設語氣（I wish I were/was dead），不接現在式 I'm；(C) as if 後也需接過去式假設（as if I were dead），且 look as if dead 缺主詞與動詞，結構不完整；(D) I might be dead 是現在可能性，但前句 felt 是過去式，時態不符。假設語氣時態規則：①與現在事實相反 → 過去式（were / V-ed）②與過去事實相反 → 過去完成式（had V-en / could have V-en）。",
+    "exam_section": "NCKU_107_ENG_Q21"
+  },
+  {
+    "id": "GR_REL_001",
+    "grammar_topic": "關係子句",
+    "difficulty": "medium",
+    "question": "The professor, ___ research focuses on neural plasticity, will give a talk tomorrow.",
+    "options": [
+      "who",
+      "whose",
+      "which",
+      "that"
+    ],
+    "answer": "B",
+    "explanation": "whose 是關係代名詞的所有格形式，可修飾人或物，後接名詞（research）。意思相當於 her/his research。",
+    "common_mistakes": "易誤選 who，但 who 後面要接動詞，不會直接接名詞。看到『關係詞 + 名詞』就想 whose。"
+  },
+  {
+    "id": "GR_REL_002",
+    "grammar_topic": "關係子句",
+    "difficulty": "easy",
+    "question": "This is the café ___ we first met.",
+    "options": [
+      "which",
+      "that",
+      "where",
+      "when"
+    ],
+    "answer": "C",
+    "explanation": "先行詞為地點（café）且在子句中作地方副詞使用時，用關係副詞 where（= in which）。後面接的子句 we first met 已是完整句。",
+    "common_mistakes": "易誤選 which，但 which 在子句中要當主詞或受詞。we first met 不缺主詞也不缺受詞，缺的是地方副詞。"
+  },
+  {
+    "id": "GR_REL_003",
+    "grammar_topic": "關係子句",
+    "difficulty": "medium",
+    "question": "It was determination and a desire to succeed ___ the local baseball team to finally win the national competition.",
+    "options": [
+      "which motivates",
+      "that motivated",
+      "while motivating",
+      "which motivate"
+    ],
+    "answer": "B",
+    "explanation": "這是「It was X that Y」的強調句型（cleft sentence），用來強調 X 的部分。強調句型中的關係詞優先用 that（無論被強調的是人或物）。時態判斷：finally win the national competition 暗示是過去已完成的事件，因此動詞用過去式 motivated。",
+    "common_mistakes": "(A) which motivates：強調句型中通常用 that 而非 which，且時態 motivates 是現在式，與後文「最終贏得比賽」的過去事件不符；(C) while motivating 是分詞構句，會讓整句變成「決心和欲望（在）激勵球隊時⋯」，缺少主要動詞，句子不完整；(D) which motivate 主詞動詞不一致——若把先行詞當作 determination and a desire to succeed（複數）勉強可通，但強調句型仍偏好 that 且時態錯誤。",
+    "exam_section": "NTU_109_ENG_Q19"
+  },
+  {
+    "id": "GR_REL_004",
+    "grammar_topic": "關係子句",
+    "difficulty": "easy",
+    "question": "The robber managed to escape from the police, but left behind crucial evidence ___ the discovery of his identity.",
+    "options": [
+      "that led to",
+      "by the time of",
+      "in case of",
+      "as though"
+    ],
+    "answer": "A",
+    "explanation": "that led to 是限定關係子句修飾先行詞 evidence（關鍵證據），子句中 that 當主格關係代名詞，led to（導致）為過去式動詞，與整句時態一致。句意：竊賊雖逃脫警方，但留下了「導致他身分曝光」的關鍵證據。",
+    "common_mistakes": "(B) by the time of（在…的時候）是介系詞片語，無法連接 evidence 與 the discovery 形成因果關係；(C) in case of（萬一、以防）表假設用法，與「證據導致發現」的事實陳述不符；(D) as though（彷彿）引導比喻子句，後接子句而非名詞片語 the discovery，且語意不通。",
+    "exam_section": "NTU_109_ENG_Q20"
+  },
+  {
+    "id": "GR_PART_001",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "___ from the long journey, the travelers checked into the hotel and went straight to bed.",
+    "options": [
+      "Exhausting",
+      "Exhausted",
+      "Having exhausted",
+      "To exhaust"
+    ],
+    "answer": "B",
+    "explanation": "原句為 Because they were exhausted...（被動）→ 簡化為分詞構句時，去掉主詞與 be 動詞，留下過去分詞 Exhausted。表示『被使疲憊』的被動意義。",
+    "common_mistakes": "Exhausting 是現在分詞，意思變成『令人疲憊的』。be exhausted 是被動結構，分詞構句保留過去分詞。"
+  },
+  {
+    "id": "GR_PART_002",
+    "grammar_topic": "分詞構句",
+    "difficulty": "easy",
+    "question": "___, there will be a penalty charge for overweight luggage.",
+    "options": [
+      "Mentioning above",
+      "As above mentions",
+      "As mentioning above",
+      "As mentioned above"
+    ],
+    "answer": "D",
+    "explanation": "「As mentioned above」（如上所述）是固定書面用語，源自 as it is/was mentioned above 的省略。「被提到」是被動概念，因此用過去分詞 mentioned。",
+    "common_mistakes": "(A) Mentioning 是現在分詞主動意，但「上述被提及」需要被動語態；且邏輯主詞變成主句的 there（不通）；(B) above 是副詞不能當主詞，above mentions 結構錯誤；(C) 同樣用主動形 mentioning，與被動語意不合。",
+    "exam_section": "NTU_107_ENG_Q4"
+  },
+  {
+    "id": "GR_PART_003",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "___ the ferocious dog inside, the burglar tip-toed away.",
+    "options": [
+      "Aware of",
+      "Beware of",
+      "Worried",
+      "Wary"
+    ],
+    "answer": "A",
+    "explanation": "句首為形容詞片語當分詞構句使用，等同於 Being aware of... 的省略。aware of（察覺到）後接受詞，邏輯主詞為 the burglar——竊賊察覺到屋裡的猛犬，因此躡腳離開。",
+    "common_mistakes": "(B) beware 通常只用於命令句（Beware of the dog!），不能當分詞構句；(C) worried 後需接 about 才能接受詞（worried about the dog），單獨 worried 後直接接名詞不通；(D) wary 雖可表達『警覺』，但需 wary of 才能接受詞，選項中沒有 of，文法不完整。",
+    "exam_section": "NTU_107_ENG_Q8"
+  },
+  {
+    "id": "GR_PART_004",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Any employee should be hired based on his or her merit, ___ his or her gender, race, and sexual orientation.",
+    "options": [
+      "regarding",
+      "disregarding",
+      "regardless",
+      "in regard of"
+    ],
+    "answer": "B",
+    "explanation": "disregarding 是現在分詞當分詞構句使用，意思為『不顧、不考慮』，後接受詞。與前面 based on his or her merit 形成對比——『應根據能力錄用，而不是性別、種族與性傾向』。",
+    "common_mistakes": "(A) regarding 意為『關於』，與句意相反；(C) regardless 必須接 of 才能引導受詞（regardless of his gender），單獨 regardless 是副詞不能直接接名詞；(D) in regard of 不是標準英文用法，正確為 in regard to 或 with regard to，且意思仍是『關於』，與句意不符。",
+    "exam_section": "NTU_107_ENG_Q13"
+  },
+  {
+    "id": "GR_PART_005",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "___ 2 million people, according to the organizers, marched the streets of Hong Kong in by far the largest turnout against a controversial extradition bill proposed by Hong Kong government.",
+    "options": [
+      "An estimate",
+      "An estimation",
+      "An estimated",
+      "An estimation of"
+    ],
+    "answer": "C",
+    "explanation": "「An estimated + 數字 + 複數名詞」是新聞與正式英文的固定結構，意為「估計約有…」。estimated 是過去分詞當形容詞用，修飾後面的「2 million people」整體數量。冠詞 An 是搭配 estimated 開頭的母音發音，這個片語整體被視為一個量詞單位。",
+    "common_mistakes": "(A) An estimate 是名詞，「An estimate 2 million people」變成兩個名詞並列，不通；(B) An estimation 同樣是名詞，文法問題同上；(D) An estimation of 後面 of 結構需要的是抽象估計值（estimation of the cost），不是直接接「2 million people 大規模上街」這種事實主詞。",
+    "exam_section": "NTU_108_ENG_Q13"
+  },
+  {
+    "id": "GR_PART_006",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "\"Now we are engaged in a great civil war, ___ whether that nation, or any nation so conceived and so dedicated, can long endure.\"",
+    "options": [
+      "tested",
+      "testing",
+      "which is tested",
+      "which test"
+    ],
+    "answer": "B",
+    "explanation": "現在分詞 testing 引導分詞片語，補充說明 a great civil war 的影響——這場內戰「正在考驗」國家能否存續。原句邏輯為 a civil war is testing whether...，簡化為分詞構句即 testing whether...。語出林肯〈葛底斯堡演說〉。",
+    "common_mistakes": "(A) tested 是過去分詞表被動「被考驗」，但 test 在此為主動及物（後接受詞 whether 子句），語態不合；(C) which is tested 為被動，且 test 後缺直接受詞；(D) which test 中 test 動詞原形錯誤（先行詞 war 為單數應用 tests），且結構整體不通順。",
+    "exam_section": "NTU_108_ENG_Q14"
+  },
+  {
+    "id": "GR_PART_007",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Nations already ___ resources will prove more vulnerable in tackling the crisis brought about by climate change.",
+    "options": [
+      "lack",
+      "lacking in",
+      "lack of",
+      "in lack"
+    ],
+    "answer": "B",
+    "explanation": "lacking in 是現在分詞片語當後位形容詞，修飾前面的 Nations，相當於省略了 which are 的關係子句（Nations [which are] already lacking in resources）。後位修飾的分詞片語讓主詞 Nations 與真正的主要動詞 will prove 中間有了補充說明。",
+    "common_mistakes": "(A) lack 是動詞原形，但句中已有主要動詞 will prove，再加 lack 變成兩個動詞，文法錯誤；(C) lack of 是名詞片語結構（the lack of resources），不能直接接在主詞 Nations 後修飾；(D) in lack 不是慣用搭配，正確的介系詞片語是 in (a/the) lack of。記住：lack 當動詞時及物（lack resources），但加介系詞時改用形容詞形 lacking in。",
+    "exam_section": "NTU_112_ENG_Q30"
+  },
+  {
+    "id": "GR_PART_008",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Kerstin Schotte, WHO technical officer, notes a steeper decline in the prevalence of smoking in wealthier countries, ___ to poorer ones.",
+    "options": [
+      "to compare",
+      "comparable",
+      "comparing",
+      "compared"
+    ],
+    "answer": "D",
+    "explanation": "「compared to」是過去分詞片語的固定結構，意為「與…相比」，等同於 when [it is] compared to... 的省略。前句陳述富國吸菸率下降較快，後接 compared to poorer ones 形成對比。",
+    "common_mistakes": "(A) to compare 是不定詞，無法引導對比片語；(B) comparable 是形容詞「相當於、可比擬」（comparable to），語意是「與…在某方面對等」而非「與…相比較」；(C) comparing 是現在分詞表主動「正在比較」，邏輯主詞應為比較行為的執行者（人），但此處需要的是被動性的比較關係。記住固定結構：compared to / compared with = 與…相比（這是寫作常用片語）。",
+    "exam_section": "NCCU_108_ENG_Q17"
+  },
+  {
+    "id": "GR_PART_009",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Among other studies, research ___ in the International Journal of Geriatric Psychiatry found that Laughter Yoga was more effective than physical exercise in reducing the effects of depression in older women.",
+    "options": [
+      "published",
+      "has published",
+      "had been published",
+      "was published"
+    ],
+    "answer": "A",
+    "explanation": "句子的主要動詞是 found（過去式），所以空格不能再是主要動詞，必須是修飾 research 的分詞片語。published 為過去分詞，等同於省略 that was 的關係子句：research [that was] published in...（被刊登在…的研究）。",
+    "common_mistakes": "(B) has published 是現在完成式主動，會變成第二個主要動詞，且時態與主要動詞 found 不一致；(C) had been published 是過去完成被動，也是主要動詞形式；(D) was published 是過去簡單被動，同樣是主要動詞形式——若選此會造成「research was published... found that...」兩個動詞無連接詞並列，文法錯誤。判斷重點：先找出主要動詞，剩下的位置只能是分詞或子句修飾語。",
+    "exam_section": "NCCU_111_ENG_Q15"
+  },
+  {
+    "id": "GR_PART_010",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Numerous institutions have also partnered with companies to develop specialized training courses ___ to industry needs.",
+    "options": [
+      "to tailor",
+      "tailor",
+      "tailored",
+      "tailoring"
+    ],
+    "answer": "C",
+    "explanation": "過去分詞 tailored 後位修飾 courses，等同於省略 that are 的關係子句：courses [that are] tailored to industry needs（為產業需求量身打造的課程）。tailor 主動是「為…量身打造」，被動用 tailored to。",
+    "common_mistakes": "(A) to tailor 是不定詞，雖可後位修飾名詞表用途（a tool to tailor clothes），但「課程要去 tailor 業界」方向錯誤——課程是被打造的對象不是執行者；(B) tailor 是動詞原形，無法後位修飾名詞；(D) tailoring 是現在分詞表主動「課程在 tailor 業界」，但課程不是 tailoring 的執行者。判斷重點：被修飾的名詞是「動作執行者」用 V-ing（主動），是「動作接受者」用 V-ed（被動）。",
+    "exam_section": "NCCU_114_ENG_Q14"
+  },
+  {
+    "id": "GR_PART_011",
+    "grammar_topic": "分詞構句",
+    "difficulty": "hard",
+    "question": "These laws, taken in the largest sense, ___ Growth with reproduction; Inheritance which is almost implied by reproduction; Variability from the indirect and direct action of the conditions of life...",
+    "options": [
+      "being",
+      "been",
+      "do",
+      "have"
+    ],
+    "answer": "A",
+    "explanation": "being 是現在分詞，引導同位語片語闡述前面 These laws 包含的內容（成長、遺傳、變異等）。整段是達爾文《物種起源》結尾段落特有的維多利亞式長句結構：以 being 帶出一系列同位語清單。",
+    "common_mistakes": "(B) been 是過去分詞，需配合 having（having been）才能使用；(C) do 與 (D) have 是助動詞/主要動詞，但句構上「These laws... do/have Growth with reproduction」語意不通——laws 不能 do 或 have 這些抽象概念。判斷重點：當主詞需要「被解釋為一系列項目」時，用 being（= 即是 / 也就是）引導同位語清單。這種結構在現代英文較少見但在學術正式寫作中仍可見。",
+    "exam_section": "NTU_113_ENG_Q35"
+  },
+  {
+    "id": "GR_INV_001",
+    "grammar_topic": "倒裝句",
+    "difficulty": "hard",
+    "question": "Not only ___ the deadline, but he also exceeded the original requirements.",
+    "options": [
+      "he met",
+      "did he meet",
+      "he did meet",
+      "met he"
+    ],
+    "answer": "B",
+    "explanation": "否定副詞片語（Not only, Never, Hardly, Seldom 等）置於句首時，主要子句要倒裝：助動詞 + 主詞 + 原形動詞。一般動詞用 do/does/did 倒裝。",
+    "common_mistakes": "中式英文常忽略倒裝，寫成『Not only he met...』。看到 Not only 開頭 = 觸發倒裝。"
+  },
+  {
+    "id": "GR_INV_002",
+    "grammar_topic": "倒裝句",
+    "difficulty": "medium",
+    "question": "\"___ pause to answer criticism of my work and ideas.\"",
+    "options": [
+      "Do I seldom",
+      "Seldom do I",
+      "Seldom I do",
+      "none of the above"
+    ],
+    "answer": "B",
+    "explanation": "Seldom 是否定副詞，置於句首必須觸發倒裝：助動詞 + 主詞 + 原形動詞 → Seldom do I pause...。類似觸發倒裝的否定副詞還有 Never, Rarely, Hardly, Scarcely, Not only, Not until, No sooner 等。",
+    "common_mistakes": "(A) Do I seldom 是把 do 提前但 seldom 留在原位，變成疑問句結構，破壞了「否定副詞置首」的倒裝前提；(C) Seldom I do 完全沒倒裝（仍為 S + V），錯誤；(D) 因為 (B) 正確，所以 none of the above 不對。",
+    "exam_section": "NTU_108_ENG_Q16"
+  },
+  {
+    "id": "GR_INV_003",
+    "grammar_topic": "倒裝句",
+    "difficulty": "medium",
+    "question": "___ had the air-raid alarm ended ___ the citizens fled the shelter.",
+    "options": [
+      "No sooner / when",
+      "No sooner / than",
+      "Hardly / then",
+      "so / that"
+    ],
+    "answer": "B",
+    "explanation": "「No sooner had S + V-ed... than S + V-ed」是固定的倒裝句型，表「一…就…」。No sooner 置首觸發倒裝（had + S + V-ed），第二空必定搭配 than（不是 when）。",
+    "common_mistakes": "(A) No sooner 配的是 than，不是 when；hardly...when 才用 when 容易混淆；(C) Hardly 配 when 不配 then，且 hardly 倒裝後也要 had + S + V-ed；(D) so/that 是「如此…以至於」表結果，與本句無因果關係。記住兩組固定搭配：No sooner...than / Hardly...when。",
+    "exam_section": "NTU_112_ENG_Q6"
+  },
+  {
+    "id": "GR_PASS_001",
+    "grammar_topic": "被動語態",
+    "difficulty": "medium",
+    "question": "The new bridge ___ by next December.",
+    "options": [
+      "will complete",
+      "will be completed",
+      "will have been completed",
+      "is completed"
+    ],
+    "answer": "C",
+    "explanation": "By + 未來時間 → 搭配未來完成式（will have + p.p.）。橋樑是被建造，需用被動 → will have been + p.p.",
+    "common_mistakes": "易誤選 B『will be completed』(單純未來被動)，但 by next December 表示『在那之前完成』，需要完成式來強調動作的完成性。"
+  },
+  {
+    "id": "GR_PASS_002",
+    "grammar_topic": "被動語態",
+    "difficulty": "hard",
+    "question": "The five people who have been missing since going on a deep sea dive destined for the Titanic shipwreck ___, officials said.",
+    "options": [
+      "believe to be dead",
+      "believe to have been dead",
+      "are believe to die",
+      "are believed to have died"
+    ],
+    "answer": "D",
+    "explanation": "兩個文法重點：(1) 主詞 The five people 是「被認為」的對象 → 用被動 are believed（be + V-ed）；(2) 死亡的動作發生在「被認為」之前 → 用完成式不定詞 to have died。整體結構：S + are believed + to have V-ed = 被認為已經做了某事。常見句型：S is said / believed / thought / reported + to V（同時或未來）或 + to have V-ed（先發生）。",
+    "common_mistakes": "(A) believe to be dead 缺 be 動詞（應為 are believed），且非被動形；(B) believe to have been dead 同樣缺被動結構；(C) are believe to die 中 believe 應為過去分詞 believed，且 to die 是未發生的動作（與「失蹤者推測已死」的時序矛盾）。",
+    "exam_section": "NTU_112_ENG_Q23"
+  },
+  {
+    "id": "GR_PASS_003",
+    "grammar_topic": "被動語態",
+    "difficulty": "easy",
+    "question": "An employee does well. He's rewarded with a promotion. He does well in that job, and ___ again.",
+    "options": [
+      "promotes",
+      "is promoted",
+      "has promoted",
+      "is promoting"
+    ],
+    "answer": "B",
+    "explanation": "員工是「被」升遷的對象（前句 He's rewarded with a promotion 已是被動式），and 後省略主詞 he，動作仍是被動 → is promoted（現在式被動）。整段：員工做得好被升遷，到新職位也做得好，再次被升遷。",
+    "common_mistakes": "(A) promotes 是主動現在式，意思變成「他升遷別人」，與「員工被升遷」的語意相反; (C) has promoted 是現在完成式主動，「他升遷過某人」，主動語態不對; (D) is promoting 是現在進行式主動「他正在升遷某人」。判斷被動關鍵：主詞是動作的「接受者」還是「執行者」？此處員工是「被」升遷的對象，動作的執行者是雇主。",
+    "exam_section": "NCCU_109_ENG_Q13"
+  },
+  {
+    "id": "GR_PASS_004",
+    "grammar_topic": "被動語態",
+    "difficulty": "easy",
+    "question": "There is grandeur in this view of life, with its several powers, having been originally breathed ___ the Creator into a few forms or into one...",
+    "options": [
+      "at",
+      "upon",
+      "with",
+      "by"
+    ],
+    "answer": "D",
+    "explanation": "被動語態中，動作的執行者用 by 引導（passive agent）。整句：生命起初由造物主吹入少數形態之中。被動語態完整結構：be / get + V-ed + by + 動作執行者。",
+    "common_mistakes": "(A) at 表地點/時間/對象，不引介執行者；(B) upon 表「在…之上」或「依據」，不引介執行者；(C) with 引介工具或方式（breathe with mouth = 用嘴呼吸），不引介動作的「執行者」。記住：被動語態的動作執行者恆用 by（不論是人、神、自然力或抽象概念）：The book was written by Hemingway. / The forest was destroyed by the fire. / Life was created by nature.",
+    "exam_section": "NTU_113_ENG_Q39"
+  },
+  {
+    "id": "GR_SVA_001",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "Neither the manager nor the employees ___ satisfied with the new policy.",
+    "options": [
+      "is",
+      "are",
+      "was",
+      "has been"
+    ],
+    "answer": "B",
+    "explanation": "Neither A nor B 句型中，動詞與『最靠近的主詞』(the employees, 複數) 一致 → are。這稱為『就近原則』(proximity rule)。Either... or...、Not only... but also... 同樣適用。",
+    "common_mistakes": "易誤選 is 因為把 Neither 當作單數主詞。實際看 nor 後面的名詞決定。"
+  },
+  {
+    "id": "GR_SVA_002",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "The negotiations have come to a standstill, as ___ side shows any sign of budging on the key issues.",
+    "options": [
+      "neither",
+      "either",
+      "well",
+      "all"
+    ],
+    "answer": "A",
+    "explanation": "neither + 單數名詞 + 單數動詞，意為「兩方都沒有」。後面 any sign 屬於否定極性詞（negative polarity item），需搭配否定語境，neither 提供的否定意義剛好滿足這個條件。",
+    "common_mistakes": "(B) either side 是肯定意義（任一方），與 any sign 否定語意衝突；(C) well 是副詞，不能當限定詞修飾名詞；(D) all 後通常接複數名詞（all sides），且 all 是肯定意義，與 any 不合。",
+    "exam_section": "NTU_108_ENG_Q2"
+  },
+  {
+    "id": "GR_SVA_003",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "Dante's poetry, together with his use of the vernacular, ___ literary criticism to the present time.",
+    "options": [
+      "have influenced",
+      "has influenced",
+      "influence",
+      "had influenced"
+    ],
+    "answer": "B",
+    "explanation": "主詞 Dante's poetry 是單數，中間 together with his use of the vernacular 是「插入語」（不算並列主詞），不影響動詞數。又 to the present time 表「持續至今」需用現在完成式 → has influenced。",
+    "common_mistakes": "(A) have influenced 是被 together with... 誤導以為主詞變複數。類似插入語還有 along with, as well as, in addition to, accompanied by 都不影響主詞數，動詞依「真主詞」決定。(C) influence 為現在式，與 to the present time 表持續至今的語意不合；(D) had influenced 是過去完成式，需要另一個過去動作為參照點，但句中沒有。",
+    "exam_section": "NTU_108_ENG_Q7"
+  },
+  {
+    "id": "GR_SVA_004",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "In part, this happens because hearing others laugh, even for no apparent reason, ___ us laugh, too.",
+    "options": [
+      "making",
+      "to make",
+      "make",
+      "makes"
+    ],
+    "answer": "D",
+    "explanation": "主詞 hearing others laugh（動名詞片語）視為單數，動詞用第三人稱單數 makes。中間 even for no apparent reason 是插入語，不影響主詞動詞一致。整句：聽別人笑（即使沒明顯原因）會讓我們也跟著笑。",
+    "common_mistakes": "(A) making 是現在分詞，不能獨立當主要動詞；(B) to make 是不定詞，也不能獨立當主要動詞；(C) make 是原形動詞，需搭配複數主詞或助動詞，但動名詞片語當主詞時視為單數。記住「當主詞時視為單數」的三類：①動名詞 / 動名詞片語 ②不定詞片語 ③名詞子句（that 子句、whether 子句、wh- 子句）。",
+    "exam_section": "NCCU_111_ENG_Q12"
+  },
+  {
+    "id": "GR_SVA_005",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "Some figures, such as the first female justice of the US Supreme Court and the first female presidential candidate, ___ as proof of this trend.",
+    "options": [
+      "serving",
+      "serve",
+      "serves",
+      "has served"
+    ],
+    "answer": "B",
+    "explanation": "主詞 Some figures 是複數，動詞需用複數形 serve。中間 such as the first female justice... and the first female presidential candidate 是舉例插入語（用逗號隔開），不影響真主詞與動詞的一致性。整句：一些代表人物作為這個趨勢的證明。",
+    "common_mistakes": "(A) serving 是現在分詞，不能獨立當主要動詞；(C) serves 是第三人稱單數，易被插入語裡的單數名詞（the first female justice / the first female presidential candidate）誤導；(D) has served 同樣是單數動詞形式。判斷重點：先找出真正的主詞（不是插入語裡的舉例名詞），動詞依真主詞變化。類似的插入語標記：such as、including、along with、as well as、together with。",
+    "exam_section": "NCCU_113_ENG_Q12"
+  },
+  {
+    "id": "GR_SVA_006",
+    "grammar_topic": "主詞動詞一致",
+    "difficulty": "medium",
+    "question": "New study ___ that mammals that sleep more have more immune cells and fewer parasites.",
+    "options": [
+      "shows",
+      "plan",
+      "warns",
+      "proof"
+    ],
+    "answer": "A",
+    "explanation": "主詞 New study 是單數，動詞需用第三人稱單數形 shows。整句：新研究顯示睡得多的哺乳動物有更多免疫細胞與較少寄生蟲。",
+    "common_mistakes": "(B) plan 是動詞原形，主詞單數時應為 plans（且語意上「研究計劃...」不通）；(D) proof 是名詞「證據」不是動詞——動詞形是 prove，名詞無法當主要動詞使用；(C) warns 文法正確（單數動詞）但語意上「研究警告...」隱含負面危險訊息，與「免疫細胞較多、寄生蟲較少」的中性正面研究發現不合。判斷重點：先確認選項是否為動詞且符合主詞數，再看語意。",
+    "exam_section": "NCKU_107_ENG_Q11"
+  },
+  {
+    "id": "GR_GER_001",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "hard",
+    "question": "I clearly remember ___ the keys on the kitchen counter, but they're gone now.",
+    "options": [
+      "leaving",
+      "to leave",
+      "having left",
+      "left"
+    ],
+    "answer": "A",
+    "explanation": "remember + V-ing 表示『記得做過某事』(過去動作)；remember + to V 表示『記得要去做某事』(未來動作)。題目情境：記得當時把鑰匙放下來了 → V-ing。",
+    "common_mistakes": "Having left（完成式分詞）也表達過去，文法可通，但 remember 慣用搭配是 V-ing。類似動詞還有 forget、regret、stop、try。"
+  },
+  {
+    "id": "GR_GER_002",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "hard",
+    "question": "Select the sentence that makes better sense grammatically.",
+    "options": [
+      "He keeps finding his lost wallet in the dark.",
+      "As a big fan of Ethan, she kept noticing his concerts all the time.",
+      "He keeps finding undiscovered pleasures through close attention to his songs.",
+      "The empire couldn't look for new territories to conquer when finding the last frontier."
+    ],
+    "answer": "C",
+    "explanation": "「keep + V-ing」表示反覆或持續做某事。(C)『keeps finding undiscovered pleasures』（不斷發現未被發掘的樂趣）符合『持續地發現新事物』的合理語境，文法與語意皆通順。",
+    "common_mistakes": "(A) 邏輯不通：失物只會被找到一次，不會『不斷找到同一個錢包』；(B) notice 是『察覺、注意到』，無法用於演唱會這種事件本身（搭配怪異），且 all the time 與單次 noticing 矛盾；(D) when + V-ing 的邏輯主詞需與主句一致，且『找到最後邊疆時就不能再找新疆土』與『couldn't look for』時序矛盾。",
+    "exam_section": "NTU_107_ENG_Q5"
+  },
+  {
+    "id": "GR_GER_003",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "hard",
+    "question": "Vinyl collectors spend a ton of time and money building an enviable record collection, ___ be faced with the dilemma that it takes even more time to listen to all that music.",
+    "options": [
+      "turns to",
+      "but also to",
+      "only to",
+      "afterwards"
+    ],
+    "answer": "C",
+    "explanation": "「only to + 原形動詞」是固定結構，表達『結果卻…』的意外、諷刺或失望結果。句意：黑膠收藏家花大把時間金錢建立令人羨慕的收藏，結果卻面臨『沒時間聽完』的困境。",
+    "common_mistakes": "(A) turns to 主詞應為單數第三人稱，但前句主詞 collectors 是複數，且語意也不對；(B) but also to 須與 not only 配對使用（not only... but also...），但前句沒有 not only；(D) afterwards 是副詞，後不可直接接原形動詞 be。",
+    "exam_section": "NTU_107_ENG_Q20"
+  },
+  {
+    "id": "GR_GER_004",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "medium",
+    "question": "Home owners spend a considerable sum of money on interior decoration with a view ___ their houses beautiful.",
+    "options": [
+      "in making",
+      "of making",
+      "to making",
+      "for making"
+    ],
+    "answer": "C",
+    "explanation": "「with a view to + V-ing」是固定片語，意為「以…為目的、為了…」。注意這裡的 to 是介系詞（不是不定詞符號），所以後面接動名詞 V-ing 而非原形動詞。",
+    "common_mistakes": "易誤以為 to 是不定詞而選 to make。類似結構還有：be used to V-ing（習慣於）、look forward to V-ing（期待）、object to V-ing（反對）、be devoted to V-ing 等，這些 to 都是介系詞。其他選項 in / of / for + making 都不是慣用搭配。",
+    "exam_section": "NTU_108_ENG_Q5"
+  },
+  {
+    "id": "GR_GER_005",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "medium",
+    "question": "Gordon decided to shift tracks and pursue a culinary career, ___ find dismal prospects in the job market.",
+    "options": [
+      "due to",
+      "only to",
+      "no sooner",
+      "rather than"
+    ],
+    "answer": "B",
+    "explanation": "「only to + 原形動詞」表示「結果卻⋯」的失望或意外結局。Gordon 決定轉換跑道追求烹飪事業，結果卻發現就業市場前景慘淡。",
+    "common_mistakes": "(A) due to 是介系詞片語，後應接名詞而非原形動詞 find；(C) no sooner 須與 than 配對使用（no sooner...than），且須倒裝；(D) rather than 表「而非」，雖然後可接原形動詞，但需有對比的另一動作（如 He chose to walk rather than drive）。",
+    "exam_section": "NTU_112_ENG_Q3"
+  },
+  {
+    "id": "GR_GER_006",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "medium",
+    "question": "Their data show that the best salespeople were more ___ to be promoted and perform poorly as managers.",
+    "options": [
+      "about",
+      "readily",
+      "likely",
+      "concerned"
+    ],
+    "answer": "C",
+    "explanation": "be likely to + V 是固定結構，意為「可能做某事」。more likely to be promoted = 更有可能被升遷。",
+    "common_mistakes": "(A) be about to V 是「即將要做某事」表近未來，但 more about to 不是慣用搭配; (B) readily 是副詞「樂意地、迅速地」，無法構成 more readily to V 結構，正確用法是 more readily V-ed（副詞 + 動詞）; (D) be concerned to V 表「關心做…」較罕見，且與此處中性陳述語氣不合。類似結構：be likely / unlikely / apt / prone / inclined to V，這些 be + adj + to V 都是固定搭配。",
+    "exam_section": "NCCU_109_ENG_Q15"
+  },
+  {
+    "id": "GR_GER_007",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "medium",
+    "question": "To avoid ___ prey to such deception, one should refrain from disclosing personal information.",
+    "options": [
+      "having fallen",
+      "falling",
+      "become",
+      "having become"
+    ],
+    "answer": "B",
+    "explanation": "兩個文法重點：(1) avoid + V-ing 是固定結構（avoid 後接動名詞，不接不定詞或原形動詞）；(2) fall prey to = 成為…的受害者（固定 idiom，用 fall 而非 become）。整句：為了避免成為這類詐騙的受害者，應克制透露個人資訊。",
+    "common_mistakes": "(A) having fallen 是完成式動名詞，文法可通但表「曾經陷入」，與「未來避免」的時序不合，簡單動名詞 falling 更自然；(C) become 是原形動詞，avoid 後不接原形動詞；(D) having become 結構雖通，但「become prey」不是慣用搭配，標準說法是 fall prey to。記住 avoid 後接 V-ing 的同類動詞：avoid / enjoy / finish / mind / suggest / consider / postpone / escape / risk / deny / practice。",
+    "exam_section": "NCCU_114_ENG_Q18"
+  },
+  {
+    "id": "GR_GER_008",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "easy",
+    "question": "Before I left for the exam, Mom told me ___ worry too much.",
+    "options": [
+      "not to",
+      "did not",
+      "should not",
+      "to not"
+    ],
+    "answer": "A",
+    "explanation": "tell sb (not) to V 是固定結構。否定不定詞的標準形式是 not + to + V（not 在 to 之前），不是 to + not + V（後者稱為「分裂不定詞」，現代英文雖有人用但傳統文法視為不正規）。",
+    "common_mistakes": "(B) did not 是過去式助動詞 + 否定，但 tell sb 後接不定詞，不能接完整子句結構；(C) should not 是助動詞片語，同樣不能直接接在 told me 之後；(D) to not 是分裂不定詞——把 not 插在 to 與 V 之間，傳統文法不接受。記住口訣：否定不定詞 = not + to + V（先否定，再不定詞）。",
+    "exam_section": "NCKU_107_ENG_Q16"
+  },
+  {
+    "id": "GR_GER_009",
+    "grammar_topic": "動名詞與不定詞",
+    "difficulty": "medium",
+    "question": "Fear sometimes ruins my public performance, but it also ___ me to practice more frequently and patiently.",
+    "options": [
+      "prevents",
+      "motivates",
+      "inhibits",
+      "memorizes"
+    ],
+    "answer": "B",
+    "explanation": "motivate + sb + to V 是固定結構，意為「激勵某人做某事」。題幹後接 me to practice，需用搭配「sb + to V」的動詞。",
+    "common_mistakes": "(A) prevent 的固定結構是 prevent + sb + from + V-ing（阻止某人做某事），不接 to V；(C) inhibit 同樣搭 from V-ing（inhibit sb from doing），不接 to V；(D) memorize（背誦）不搭配 sb + to V 結構，且語意「恐懼背誦我去練習」不通。記住兩組對立的動詞模式：促使類 → encourage / motivate / persuade / urge / get / force + sb + to V；阻止類 → prevent / stop / keep / discourage / prohibit + sb + from + V-ing。",
+    "exam_section": "NCKU_107_ENG_Q18"
+  },
+  {
+    "id": "GR_CONJ_001",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "___ his lack of experience, he was given the leadership role.",
+    "options": [
+      "Although",
+      "Despite",
+      "Because",
+      "Since"
+    ],
+    "answer": "B",
+    "explanation": "Despite / In spite of 是『介系詞』，後接名詞或名詞片語（his lack of experience）。Although 是『連接詞』，後面要接完整子句（S + V）。兩者意思接近但語法功能不同。",
+    "common_mistakes": "口訣：Although + 子句、Despite + 名詞。看到後面是名詞片語就選 Despite。"
+  },
+  {
+    "id": "GR_CONJ_002",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "The patient followed strictly a healthy diet after the surgery, ___ suggested by the physician.",
+    "options": [
+      "as",
+      "being",
+      "after",
+      "while"
+    ],
+    "answer": "A",
+    "explanation": "「as + 過去分詞」是常見的省略結構，等同於 as it was suggested by...（如同醫生所建議的）。as 在此是連接詞，引導一個省略主詞與 be 動詞的子句，用來補充說明前面動作的方式或依據。",
+    "common_mistakes": "(B) being suggested 文法雖通但語意冗贅，且 being + V-ed 通常表『正在被…』，與整句過去式時序不合；(C) after 與句首 after the surgery 重複，邏輯也不通；(D) while suggested by 不是慣用結構，while 後通常接同時進行的動態子句。",
+    "exam_section": "NTU_107_ENG_Q3"
+  },
+  {
+    "id": "GR_CONJ_003",
+    "grammar_topic": "連接詞",
+    "difficulty": "easy",
+    "question": "The candidate's poll numbers are suffering partly because his die-hard fans have been polarizing people and have, in fact, put off a lot of potential supporters with their \"you're either with us, ___ against us\" approach and mentality.",
+    "options": [
+      "nor",
+      "not",
+      "or",
+      "do"
+    ],
+    "answer": "C",
+    "explanation": "「either A or B」是固定的相關連接詞，表「兩者擇一」。題目引號內為知名的二分法言論「你不是支持我們，就是反對我們」，必須用 or 連接兩個對立的介系詞片語（with us / against us）。",
+    "common_mistakes": "(A) nor 是與 neither 配對使用（neither A nor B）的否定相關連接詞，但句中是 either，文法不匹配；(B) not 是副詞，不能連接兩個對等的片語；(D) do 是動詞，無連接詞功能。",
+    "exam_section": "NTU_108_ENG_Q1"
+  },
+  {
+    "id": "GR_CONJ_004",
+    "grammar_topic": "連接詞",
+    "difficulty": "hard",
+    "question": "___ I support their ultimate goal, I cannot agree with the method they used to achieve that goal.",
+    "options": [
+      "As soon as",
+      "As much as",
+      "As for",
+      "As regards"
+    ],
+    "answer": "B",
+    "explanation": "「as much as」當連接詞使用時，意思相當於 although / even though（雖然、儘管），引導讓步子句。句意：儘管我支持他們的終極目標，我仍不能同意他們達成目標的方法。",
+    "common_mistakes": "(A) As soon as 表「一…就…」的時間關係，句意不合；(C) As for 與 (D) As regards 都意為「至於、關於」，是介系詞片語，後面要接名詞而非完整子句（I support...）。",
+    "exam_section": "NTU_108_ENG_Q3"
+  },
+  {
+    "id": "GR_CONJ_005",
+    "grammar_topic": "連接詞",
+    "difficulty": "easy",
+    "question": "Unfortunately, she ran into a car accident ___ she received her driver's license.",
+    "options": [
+      "while",
+      "until",
+      "as soon as",
+      "momentarily"
+    ],
+    "answer": "C",
+    "explanation": "as soon as 是時間連接詞「一…就…」，表示前後兩動作緊接著發生。句意：她一拿到駕照就出車禍。",
+    "common_mistakes": "(A) while 表「當…的時候」表同時進行，與「拿到駕照後出車禍」的前後時序不合；(B) until 通常搭配 not...until 表「直到才」，但句中無否定詞且邏輯不通；(D) momentarily 是副詞「立即、暫時」，不是連接詞，不能引導子句。",
+    "exam_section": "NTU_112_ENG_Q5"
+  },
+  {
+    "id": "GR_CONJ_006",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "___ his atrocious grades in the undergraduate program, Peter succeeded in being admitted to the graduate institute.",
+    "options": [
+      "Although",
+      "Despite",
+      "In spite",
+      "Owing to"
+    ],
+    "answer": "B",
+    "explanation": "Despite + 名詞片語（his atrocious grades）是介系詞用法，意為「儘管」。整句：儘管大學成績糟糕，Peter 仍成功被研究所錄取。",
+    "common_mistakes": "(A) Although 是連接詞，後需接完整子句（Although his grades were atrocious...），不能直接接名詞片語；(C) In spite 結構不完整，必須是 In spite of 才能接名詞，這裡少了 of；(D) Owing to 雖也是介系詞片語接名詞，但意為「由於」表原因，與「成績糟卻仍錄取」的轉折語意相反。",
+    "exam_section": "NTU_112_ENG_Q9"
+  },
+  {
+    "id": "GR_CONJ_007",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "The World Health Organization reports that globally, the prevalence of smoking has gone down from 27 percent in 2000 to 20 percent in 2016. ___, the WHO notes that the number of tobacco users worldwide has remained stable at 1.1 billion because of population growth.",
+    "options": [
+      "However",
+      "As a result",
+      "Likewise",
+      "In other words"
+    ],
+    "answer": "A",
+    "explanation": "前後兩句語意對比——前句「吸菸率下降」，後句「但總使用人數因人口成長而維持穩定」。兩個矛盾的事實需要轉折連接副詞 However 來銜接。",
+    "common_mistakes": "(B) As a result 表因果關係（A 導致 B），但「吸菸率下降」不會「導致」總人數穩定，邏輯不通；(C) Likewise 表「同樣地」表並列關係，但兩句是對比不是同向；(D) In other words 表「換句話說」會把後句解讀為前句的同義改寫，但這兩句講的是不同統計數據（百分比 vs 絕對人數）。判斷轉折詞的關鍵：先看前後句邏輯關係（對比/因果/並列/重述），再選對應的連接副詞。",
+    "exam_section": "NCCU_108_ENG_Q16"
+  },
+  {
+    "id": "GR_CONJ_008",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "Or maybe it was that, ___ Dr. Peter meant the book as satire, it was all too often true.",
+    "options": [
+      "as much as",
+      "by all means",
+      "every so often",
+      "as soon as"
+    ],
+    "answer": "A",
+    "explanation": "as much as 當連接詞使用時意思相當於 although / even though（雖然、儘管），引導讓步子句。句意：儘管 Peter 博士本來把這本書當諷刺寫，但書中的現象實在太常為真。",
+    "common_mistakes": "(B) by all means 是副詞片語「無論如何、當然可以」，不能引導子句; (C) every so often 是副詞片語「偶爾」，也不能引導子句; (D) as soon as 是「一…就…」表時序，與「儘管…仍然…」的讓步語意不合。注意：as much as 既可表「跟…一樣多」（數量比較），也可作連接詞表「雖然」（讓步），需從上下文判斷。",
+    "exam_section": "NCCU_109_ENG_Q12"
+  },
+  {
+    "id": "GR_CONJ_009",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "Specifically, the sessions begin with exercises that mimic the physical activity of laughter. ___, the fake laughter transforms into genuine laughter.",
+    "options": [
+      "Therefore",
+      "Subsequently",
+      "However",
+      "For example"
+    ],
+    "answer": "B",
+    "explanation": "Subsequently 表「隨後、接著」，描述時間順序的下一步。前句說療程開始時做模仿大笑的動作，後句說假笑接著轉變為真笑——是時序上的接續發展，不是因果論證。",
+    "common_mistakes": "(A) Therefore 表因果關係（A 導致 B），雖然語意上勉強可通（做動作→變真笑），但描述「療程的下一階段」用時序連接詞更自然；(C) However 表轉折，但兩句沒有對立關係；(D) For example 表舉例，但後句不是前句的例子，而是事件流程的下一個階段。判斷重點：時序（Subsequently / Then / Afterwards）vs 因果（Therefore / As a result）vs 轉折（However）vs 舉例（For example）。",
+    "exam_section": "NCCU_111_ENG_Q11"
+  },
+  {
+    "id": "GR_CONJ_010",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "___, Laughter Yoga's impact on depression has been scientifically validated.",
+    "options": [
+      "In contrast",
+      "By comparison",
+      "Instead",
+      "Moreover"
+    ],
+    "answer": "D",
+    "explanation": "Moreover 表「此外、再者」，補充另一個支持論點。前文提供腦科學證據（大腦對笑聲有生理回應），此句再加上「對憂鬱症的影響也獲科學驗證」——同向加強的補充證據。",
+    "common_mistakes": "(A) In contrast 與 (B) By comparison 都表對比，但前後兩段都是支持「笑瑜珈有效」的證據，沒有對比關係；(C) Instead 表「反而、取代」，需有被取代的對象，但此處不是取代前文而是補充。判斷加強型 vs 對比型轉折：先確認前後句立場是同向（加強）還是反向（對比），再從對應的連接副詞中選擇。",
+    "exam_section": "NCCU_111_ENG_Q14"
+  },
+  {
+    "id": "GR_CONJ_011",
+    "grammar_topic": "連接詞",
+    "difficulty": "easy",
+    "question": "The knowledge of a language consisted of a set of habits demonstrated by the language user. ___ this view, learning a second language essentially equaled learning a new set of habits.",
+    "options": [
+      "Despite",
+      "Contrary to",
+      "According to",
+      "Except for"
+    ],
+    "answer": "C",
+    "explanation": "According to + 名詞 = 根據…，引導觀點/意見的歸屬。前後文都在闡述行為主義對語言學習的觀點（語言知識 = 一套習慣 → 學二語 = 學新一套習慣），需要的是延伸闡釋的銜接詞，而非對立或例外。",
+    "common_mistakes": "(A) Despite + 名詞 = 儘管…，表讓步轉折，但後句並未否定前句觀點而是延伸；(B) Contrary to = 與…相反，後句若是反向陳述才適用，但此處明顯同向；(D) Except for = 除了…之外（排除例外），不適合引介整個觀點。判斷介系詞片語當連接詞時：先看後句與前句的邏輯關係（同向延伸 / 對立 / 排除 / 讓步），再選對應介系詞。",
+    "exam_section": "NCCU_111_ENG_Q19"
+  },
+  {
+    "id": "GR_CONJ_012",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "The brunettes were more often perceived as seeming unpleasant or bossy, ___ the blondes scored higher on warmth and appeal because of existing stereotypes.",
+    "options": [
+      "while",
+      "because",
+      "however",
+      "where"
+    ],
+    "answer": "A",
+    "explanation": "while 作連接詞時可表「然而、相反地」（對比用法），引導對比子句。整句對比兩組受試者：棕髮女性被認為冷漠強勢，而金髮女性因刻板印象被評為溫暖討喜。",
+    "common_mistakes": "(B) because 表因果（A 因為 B），但「棕髮被認為冷漠」並非「因為金髮被認為溫暖」，邏輯不通；(C) however 是連接副詞不是連接詞，無法直接連接兩個子句（需用分號或句點：S+V; however, S+V）；(D) where 表地點關係，與此處抽象的對比內容不合。記住 while 兩種用法：①時間「當…的時候」②對比「然而、相反地」，從上下文判斷。",
+    "exam_section": "NCCU_113_ENG_Q13"
+  },
+  {
+    "id": "GR_CONJ_013",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "This creative idea gradually caught on, and hot dogs with buns became an American classic. ___, Feltman's contribution is just one of the many theories about the origin of this successful pair.",
+    "options": [
+      "In fact",
+      "In contrast",
+      "Instead",
+      "Likewise"
+    ],
+    "answer": "A",
+    "explanation": "In fact 表「事實上」，常用於引介澄清、限定或補充事實的轉折。前句敘述 Feltman 對熱狗的貢獻廣為流傳，後句澄清「事實上他的貢獻只是眾多起源理論之一」——是對前述的緩和與限定。",
+    "common_mistakes": "(B) In contrast 表對比，但後句不是與前句立場相反，而是補充事實限定；(C) Instead 表「反而、取代」，需有被取代的對象，但此處不是取代 Feltman 的故事而是補充說明；(D) Likewise 表「同樣地」用於並列加強，但「他的貢獻只是眾多理論之一」是限定而非加強。In fact 的功能：澄清/限定先前的概括陳述，類似的還有 actually、indeed、to be precise。",
+    "exam_section": "NCCU_113_ENG_Q20"
+  },
+  {
+    "id": "GR_CONJ_014",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "Traditional lectures are gradually giving way to interactive learning experiences, such as online courses and virtual reality simulations. ___, these universities are making significant investments in digital infrastructure to accommodate these changes.",
+    "options": [
+      "Likewise",
+      "Meanwhile",
+      "Nevertheless",
+      "Consequently"
+    ],
+    "answer": "B",
+    "explanation": "Meanwhile 表「同時、與此同時」，引介另一個並行發生的相關發展。前句說教學方式轉型（傳統講課讓位給互動式學習），後句說大學同時也在投資數位基礎建設——兩個平行發生的相關趨勢。",
+    "common_mistakes": "(A) Likewise 表「同樣地」強調相同性質的動作或類比，但「轉變教學方式」與「投資基礎建設」不是同類動作；(C) Nevertheless 表轉折「儘管如此」，但兩句立場一致沒有對立關係；(D) Consequently 表因果（A 導致 B），但投資基礎建設不是教學轉變的結果而是同步的配套措施。判斷重點：Meanwhile（並行同時）vs Likewise（性質類比）vs Nevertheless（轉折）vs Consequently（因果）。",
+    "exam_section": "NCCU_114_ENG_Q12"
+  },
+  {
+    "id": "GR_CONJ_015",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "As teaching methods evolve, universities continue to lead in research and influence industry innovation. ___ academics, their contributions extend to economic growth, medical breakthroughs, and scientific innovations that address pressing global challenges.",
+    "options": [
+      "Against",
+      "Beyond",
+      "Despite",
+      "Regarding"
+    ],
+    "answer": "B",
+    "explanation": "Beyond + 名詞 = 除了…之外、超越…，引介「在某範圍之外還有更多」的延伸論述。前句談大學的學術貢獻，後句延伸到經濟、醫療、科學創新等更廣的範疇。",
+    "common_mistakes": "(A) Against 表「反對、抵抗」，與「延伸論述」語意相反；(C) Despite 表讓步「儘管」，但後句並非與前句立場相反，而是同向延伸；(D) Regarding 表「關於」，僅引介話題，無「超越某範圍」的擴張意涵。「擴張範圍類」介系詞還有：In addition to / Apart from / Aside from / On top of，都可用於延伸前述範圍。",
+    "exam_section": "NCCU_114_ENG_Q15"
+  },
+  {
+    "id": "GR_CONJ_016",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "Police said the man's death was an \"accidental shooting\" but the cause would not be known ___ the autopsy.",
+    "options": [
+      "as soon as",
+      "until after",
+      "right before",
+      "followed by"
+    ],
+    "answer": "B",
+    "explanation": "until after + 名詞 = 直到…之後（複合介系詞接名詞）。整句：直到驗屍之後死因才會知道。",
+    "common_mistakes": "(A) as soon as 是從屬連接詞需接子句（S + V），不能直接接名詞 the autopsy——若要用須改為 as soon as the autopsy is done；(C) right before 結構雖通但語意不對——死因不會在「驗屍前」就知道；(D) followed by 是過去分詞片語，無法作時間連接詞，且「死因不會被知道，被驗屍跟著」結構不通。判斷重點：時間表達式分為「接子句」（as soon as / when 後接 S+V）vs「接名詞」（before / after / until / since 也可作介系詞接名詞）。",
+    "exam_section": "NCKU_107_ENG_Q15"
+  },
+  {
+    "id": "GR_CONJ_017",
+    "grammar_topic": "連接詞",
+    "difficulty": "medium",
+    "question": "___ that she didn't find time to have her haircut.",
+    "options": [
+      "She's been so busy",
+      "Being very busy so",
+      "She's too busy to",
+      "She's busy so"
+    ],
+    "answer": "A",
+    "explanation": "so + adj + that + 子句 = 如此…以致於…（固定的結果連接詞結構）。整句：她忙到沒時間去剪頭髮。",
+    "common_mistakes": "(B) Being very busy so：Being 是分詞但缺主要動詞，且 so 後若接 that 子句需配合形容詞才形成完整結構；(C) She's too busy to：too...to... 是「太...而不能...」，後接「to + V 原形」（She's too busy to have her haircut），不接 that 子句；(D) She's busy so：缺強化詞 so 修飾 busy 才能引出 that 子句——「so + adj + that」三者缺一不可。對比兩種類似但功能不同的結構：①so + adj + that + 子句（如此...以致）②too + adj + to + V（太...而不能）。",
+    "exam_section": "NCKU_107_ENG_Q27"
+  },
+  {
+    "id": "GR_NOUN_001",
+    "grammar_topic": "名詞子句",
+    "difficulty": "medium",
+    "question": "It is essential that every student ___ the safety guidelines before entering the lab.",
+    "options": [
+      "reads",
+      "read",
+      "is reading",
+      "has read"
+    ],
+    "answer": "B",
+    "explanation": "在 It is + 表必要/建議的形容詞（essential, necessary, important, crucial...）+ that 子句中，子句動詞用『原形動詞』(虛擬語氣)，無論主詞單複數或時態。可視為 should 的省略：should read → read。",
+    "common_mistakes": "易誤選 reads（依主詞 student 加 s），但這是虛擬語氣的特殊用法。類似動詞：suggest, recommend, demand, insist 後的 that 子句也適用。"
+  },
+  {
+    "id": "GR_NOUN_002",
+    "grammar_topic": "名詞子句",
+    "difficulty": "hard",
+    "question": "\"I am happy to join with you today in ___ will go down in history as the greatest demonstration for freedom in the history of our nation.\"",
+    "options": [
+      "which",
+      "whereas",
+      "when",
+      "what"
+    ],
+    "answer": "D",
+    "explanation": "what 在此是複合關係代名詞（= the thing that），引導名詞子句作介系詞 in 的受詞。整句「in what will go down in history」意為「在這個將會載入史冊的事件中」。語出馬丁路德金恩〈我有一個夢想〉演說。",
+    "common_mistakes": "(A) which 是關係代名詞，需要先行詞——介系詞 in 後沒有名詞作先行詞；(B) whereas 是連接詞「然而」，引導對比子句，但這裡需要的是名詞性結構作 in 的受詞；(C) when 是關係副詞或從屬連接詞，需要時間先行詞或表時間關係，與此結構不合。記住：what = 沒有先行詞、自身就含先行詞含義（= that which）。",
+    "exam_section": "NTU_108_ENG_Q15"
+  },
+  {
+    "id": "GR_NOUN_003",
+    "grammar_topic": "名詞子句",
+    "difficulty": "hard",
+    "question": "\"This is ___ the tobacco industry is going at the moment,\" she said.",
+    "options": [
+      "how",
+      "where",
+      "when",
+      "what"
+    ],
+    "answer": "B",
+    "explanation": "where 在此引導名詞子句作 is 的補語（主詞補語），意為「煙草業正在朝什麼方向發展」。go 在此為比喻用法，指事物的「走向、發展方向」，因此用表方向/地點的 where。This is where + 子句 = 這就是 X 的走向。",
+    "common_mistakes": "(A) how 表「方式」（如何運作），但與後文「他們知道在歐美已是失敗的事業，所以轉向中低收入國家」的方向性陳述不貼合；(C) when 表時間，「煙草業何時去」邏輯不通；(D) what 引導名詞子句須在子句內部當主詞或受詞，但「the tobacco industry is going」這個子句不缺主詞也不缺受詞——going 是不及物動詞，缺的是地方副詞。判斷重點：先看子句內缺什麼成分，再選對應的關係詞。",
+    "exam_section": "NCCU_108_ENG_Q18"
+  },
+  {
+    "id": "GR_NOUN_004",
+    "grammar_topic": "名詞子句",
+    "difficulty": "medium",
+    "question": "Fitting Charlotte Brontë's ___ that \"a ruffled mind makes a restless pillow,\" sleep disruption further contributes to all major psychiatric conditions.",
+    "options": [
+      "considerable influence",
+      "preposterous suggestion",
+      "prophetic wisdom",
+      "irrevocable decision"
+    ],
+    "answer": "C",
+    "explanation": "「名詞 + that 子句」的同位語結構中，that 子句用以闡明前面名詞的內容。能接 that 同位語的名詞通常是「可被報導/陳述的概念」如 idea, suggestion, wisdom, claim, fact, belief, theory, hope。語意上又需符合「Bronte 的話被現代科學驗證」的脈絡——prophetic wisdom（先知般的智慧）最貼切。",
+    "common_mistakes": "(A) influence 通常搭 on（influence on something），不接 that 子句作同位語——「Bronte 的影響說煩躁的心⋯」結構不通; (D) decision 雖可搭 that 子句但通常表「決定（去做某事）」（decision that we should...），且 decision 後常接 to V，不適合接「描述性名言」; (B) suggestion 結構上可接 that 子句，但 preposterous（荒謬的）與後文「睡眠科學印證 Bronte 的洞察」的肯定語氣矛盾。判斷兩步驟：先排除結構上不能接 that 子句的名詞，再從語意選最貼切的。",
+    "exam_section": "NCCU_109_ENG_Q20"
+  },
+  {
+    "id": "GR_NOUN_005",
+    "grammar_topic": "名詞子句",
+    "difficulty": "medium",
+    "question": "Does anyone know ___?",
+    "options": [
+      "when the office be open",
+      "what time's the office hours",
+      "when does the office open",
+      "what time the office opens"
+    ],
+    "answer": "D",
+    "explanation": "名詞子句作受詞時用「直述句」語序（S + V），不保留疑問句的倒裝。「what time the office opens」是名詞子句作 know 的受詞。",
+    "common_mistakes": "(A) when the office be open：be 動詞錯誤，應為 is（且整句結構也不對）；(B) what time's the office hours：'s = is，但 hours 是複數，主詞動詞不一致；(C) when does the office open：保留了直接問句的倒裝（does + S + V），但在名詞子句中應改為直述語序「when the office opens」。判斷重點：名詞子句要「去除」疑問句的倒裝結構，回歸 S + V 語序——這是英文間接問句的核心規則。",
+    "exam_section": "NCKU_107_ENG_Q22"
+  },
+  {
+    "id": "GR_PREP_001",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "The growing addiction of many youngsters ___ mobile phones may partly be explained by their heightened obsession ___ the social media.",
+    "options": [
+      "to / of",
+      "with / for",
+      "with / for",
+      "to / with"
+    ],
+    "answer": "D",
+    "explanation": "兩個名詞的固定搭配介系詞：addiction to（對…成癮）+ obsession with（對…著迷）。第一空填 to，第二空填 with。",
+    "common_mistakes": "(A) 第一格 to 對，但 obsession of 不是固定搭配（of 表所屬，意義不對）；(B)(C) 兩個選項相同（疑似試卷印刷錯誤），且 addiction with 不對；記住：addict 動詞用 to（be addicted to），名詞 addiction 也用 to；obsession 永遠搭配 with。",
+    "exam_section": "NTU_107_ENG_Q2"
+  },
+  {
+    "id": "GR_PREP_002",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Select the grammatically correct sentence.",
+    "options": [
+      "I agree his opinion.",
+      "I accept his apologies.",
+      "I arise his curiosity.",
+      "I arriv'e the party."
+    ],
+    "answer": "B",
+    "explanation": "(B) accept 是及物動詞，後面直接接受詞 his apologies，文法正確。其他三句都犯了動詞用法錯誤。",
+    "common_mistakes": "(A) agree 後需接介系詞：agree with someone（同意某人）或 agree to something（同意某事），不可直接接 his opinion，正確說法是 I agree with his opinion；(C) arise 是不及物動詞（升起、出現），不能直接接受詞——應用 arouse his curiosity（引起他的好奇）；(D) 拼字錯誤（arriv'e）且 arrive 是不及物動詞，需用 arrive at the party。",
+    "exam_section": "NTU_107_ENG_Q6"
+  },
+  {
+    "id": "GR_PREP_003",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "The recent spate of online condemnations reminds her ___ a traumatic experience of sexual harassment.",
+    "options": [
+      "for",
+      "of",
+      "with",
+      "through"
+    ],
+    "answer": "B",
+    "explanation": "remind sb of sth = 使某人想起某事，是固定的「動詞 + 介系詞」搭配。",
+    "common_mistakes": "易混淆的 remind 三種用法：remind sb of sth（使某人想起某事）、remind sb to do sth（提醒某人做某事）、remind sb that...（提醒某人某事）。其他介系詞 for / with / through 都不是 remind 的固定搭配。",
+    "exam_section": "NTU_112_ENG_Q8"
+  },
+  {
+    "id": "GR_PREP_004",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Which verb is hardly ever followed by preposition \"to\"?",
+    "options": [
+      "consist",
+      "appeal",
+      "lead",
+      "contribute"
+    ],
+    "answer": "A",
+    "explanation": "consist 後通常接 of（consist of = 由…組成）或 in（consist in = 在於…），幾乎不接 to。其他三個動詞都常與 to 搭配：appeal to（向…呼籲、吸引）、lead to（導致）、contribute to（貢獻於）。",
+    "common_mistakes": "易混淆的 consist 用法：consist of（由…構成，最常見）、consist in（在於…，較罕見）、be consistent with（與…一致——這是 consistent 形容詞才接 with，與 consist 動詞無關）。記住一句話：consist 不接 to。",
+    "exam_section": "NTU_112_ENG_Q12"
+  },
+  {
+    "id": "GR_PREP_005",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "These include the creation of smoke-free environments, imposing a ban ___ all forms of tobacco advertising, promotion and sponsorship.",
+    "options": [
+      "for",
+      "in",
+      "on",
+      "at"
+    ],
+    "answer": "C",
+    "explanation": "ban on = 對…的禁令（固定搭配）。常見動詞搭配：impose / place / put a ban on something（實施禁令）、lift a ban on something（解除禁令）。",
+    "common_mistakes": "易混淆的「對…的限制/禁令類」搭配都用 on：a ban on（禁令）、a tax on（稅）、an embargo on（禁運）、restrictions on（限制）、a crackdown on（取締）。其他介系詞 for / in / at 都不是 ban 的固定搭配。",
+    "exam_section": "NCCU_108_ENG_Q20"
+  },
+  {
+    "id": "GR_PREP_006",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "In 1968, Dr. Laurence J. Peter asserted in his book that Peter Principle was the ___ to an understanding of the whole structure of civilization.",
+    "options": [
+      "bottom",
+      "cause",
+      "key",
+      "fact"
+    ],
+    "answer": "C",
+    "explanation": "the key to + 名詞/V-ing 是固定搭配，意為「理解…的關鍵」。空格後的介系詞 to 已固定，需選一個與 to 搭配的名詞——只有 key 自然搭配 to。",
+    "common_mistakes": "(A) bottom 應搭 of（the bottom of the matter）; (B) cause 應搭 of（the cause of the problem）; (D) fact 應搭 of 或 that 子句（the fact of / the fact that...）。「方法/答案類」的名詞才搭 to：the key to / the answer to / the solution to / the approach to / the secret to。",
+    "exam_section": "NCCU_109_ENG_Q11"
+  },
+  {
+    "id": "GR_PREP_007",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Short sleeping increases the ___ of your coronary arteries becoming blocked and brittle, setting you on a path toward cardiovascular disease.",
+    "options": [
+      "problem",
+      "fact",
+      "reason",
+      "likelihood"
+    ],
+    "answer": "D",
+    "explanation": "「the likelihood of + V-ing」是固定搭配，意為「…發生的可能性」。increase the likelihood of X = 增加 X 發生的可能性。",
+    "common_mistakes": "(A) problem 通常搭 with（the problem with X）或 of + 名詞（the problem of unemployment）；雖然 problem of V-ing 文法可通，但 increase the problem 語意奇怪（增加問題？）; (B) fact 通常搭 that 子句（the fact that...）或 about（the fact about），不接 of V-ing; (C) reason 應搭 for（the reason for + 名詞/V-ing），不搭 of。記住「可能性類」名詞都搭 of V-ing：the likelihood / probability / possibility / chance / risk / odds of V-ing。",
+    "exam_section": "NCCU_109_ENG_Q19"
+  },
+  {
+    "id": "GR_PREP_008",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "A study with brain scans revealed that our brains respond ___ another person's laughter by preparing our facial muscles to join in.",
+    "options": [
+      "with",
+      "for",
+      "to",
+      "on"
+    ],
+    "answer": "C",
+    "explanation": "respond to = 對…回應/反應，是固定的動詞 + 介系詞搭配。名詞形 response 也接 to（in response to）。",
+    "common_mistakes": "易混淆的「回應/回覆類」動詞搭配都用 to：respond to / reply to / react to / reaction to / response to。其他介系詞（with / for / on）都不是 respond 的固定搭配。注意 answer 反例外：answer 當動詞時直接接受詞（answer the question 不加 to），但 give an answer to 又要 to。",
+    "exam_section": "NCCU_111_ENG_Q13"
+  },
+  {
+    "id": "GR_PREP_009",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Reading poetry is a good way to spend time. It cleanses the mental palate and scrubs ___ the emotional cobwebs.",
+    "options": [
+      "for",
+      "with",
+      "on",
+      "away"
+    ],
+    "answer": "D",
+    "explanation": "scrub away = 刷掉、清除（片語動詞，away 是表「去除、離開」方向的副詞質詞）。整句以清潔比喻：閱讀詩歌像清潔劑，把情緒上的蜘蛛網刷掉。",
+    "common_mistakes": "(A) for 表目的或對象（scrub for X = 為了 X 擦洗），與「去除蜘蛛網」語意相反；(B) with 表工具或伴隨（scrub with X = 用 X 擦洗），但蜘蛛網是被去除的對象不是工具；(C) on 表「在…上面」，scrub on X 是「在 X 上擦洗」，方向相反。記住「去除類」動詞常配 away 或 off：wash away（沖走）、wipe away（擦掉）、scrub off（刷掉）、brush off（撥掉）。",
+    "exam_section": "NCCU_112_ENG_Q12"
+  },
+  {
+    "id": "GR_PREP_010",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "But you will find a condensed drama of the movements of the heart as it trundles ___ life.",
+    "options": [
+      "as",
+      "of",
+      "through",
+      "out"
+    ],
+    "answer": "C",
+    "explanation": "through 表「貫穿、經歷」的時間或空間關係。trundle through life = 緩慢地走過人生。整句比喻：你會看到內心的戲劇濃縮版，因內心緩慢地走過人生。",
+    "common_mistakes": "(A) as 是連接詞/介系詞表「作為、當…時」，無法搭配 trundle 表移動方向；(B) of 表所屬（the movement of life），無法表「穿越人生」的動態；(D) out 表「向外」，trundle out 雖可指「滾出某處」但需有具體起點，不能搭配抽象名詞 life。「貫穿一段時間/旅程」固定用 through：through life / through the years / through history / through the difficulties。",
+    "exam_section": "NCCU_112_ENG_Q15"
+  },
+  {
+    "id": "GR_PREP_011",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "I wrote it out, word for word, in the center of the page, and then wrote commentary ___ the edges.",
+    "options": [
+      "for",
+      "around",
+      "in",
+      "with"
+    ],
+    "answer": "B",
+    "explanation": "around the edges = 沿著邊緣、環繞著邊緣（around 表「環繞、圍繞」的空間關係）。前後文：詩寫在頁面中央（in the center），評註則寫在邊緣周圍（around the edges），形成中央 vs 周邊的空間對比。",
+    "common_mistakes": "(A) for 表目的或對象，「為了邊緣寫評註」邏輯不通；(C) in 表「在…裡面」，但 edges 是邊界線不是容器，無法「在裡面」；(D) with 表工具或伴隨，「用邊緣寫評註」不合理。空間介系詞快速對照：on（接觸面上）、in（容器內）、at（精確點）、around（環繞）、along（沿著線狀物）、across（橫越）。",
+    "exam_section": "NCCU_112_ENG_Q18"
+  },
+  {
+    "id": "GR_PREP_012",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Sweetheart scams ___ individuals fabricating false identities on dating platforms in order to cultivate emotional attachments and subsequently solicit money.",
+    "options": [
+      "involves",
+      "assumes",
+      "consists",
+      "results"
+    ],
+    "answer": "A",
+    "explanation": "involve 是及物動詞，可直接接受詞表「涉及、包含」。題幹後直接接受詞 individuals，需選不需介系詞的 involves。（註：原題主詞 scams 為複數，動詞應為 involve；此處依試題答案保留 involves，但語意不變。）",
+    "common_mistakes": "(B) assumes 是「假設、假定」，與「詐騙包含個人偽造身分」的「組成關係」語意不合；(C) consists 必須搭配 of（consist of = 由…構成），「scams consists individuals」缺介系詞，文法錯誤；(D) results 必須搭配 in（導致）或 from（起因於），單獨用 results 接直接受詞文法錯誤。記住「組成/涉及類」動詞的介系詞慣用：involve（直接接受詞）、include（直接接受詞）、comprise（直接接受詞）、consist of、be composed of。",
+    "exam_section": "NCCU_114_ENG_Q16"
+  },
+  {
+    "id": "GR_PREP_013",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "To avoid falling prey to such deception, one should refrain ___ personal information—such as one's home address, phone number, or financial data—until having met the individual in person and verified their identity.",
+    "options": [
+      "from disclosing",
+      "to disclose",
+      "disclosing",
+      "with disclosing"
+    ],
+    "answer": "A",
+    "explanation": "refrain from + V-ing = 克制不做、避免做（固定結構）。from 是必要介系詞，後接動名詞作受詞。",
+    "common_mistakes": "(B) to disclose 是不定詞，refrain 不搭配不定詞；(C) disclosing 缺介系詞 from——refrain 是不及物動詞，無法直接接動名詞作受詞；(D) with 不是 refrain 的固定搭配介系詞。記住「克制/禁止類」動詞全部用 from + V-ing：refrain from / abstain from / desist from / prevent ... from / prohibit ... from / discourage ... from / stop ... from。",
+    "exam_section": "NCCU_114_ENG_Q19"
+  },
+  {
+    "id": "GR_PREP_014",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "It is interesting to contemplate a tangled bank, clothed ___ many plants of many kinds, with birds singing on the bushes...",
+    "options": [
+      "with",
+      "to",
+      "on",
+      "at"
+    ],
+    "answer": "A",
+    "explanation": "clothed with = 覆蓋著、點綴著（被動分詞 + with，with 表「以…覆蓋/裝飾」的伴隨關係）。整句比喻：一個雜亂的河岸，被各種植物覆蓋著。",
+    "common_mistakes": "clothe 的標準搭配：clothe X with/in Y（給 X 穿上/覆蓋 Y），被動形也用 clothed with / clothed in。其他選項 to / on / at 都不是 clothe 的固定搭配。類似的「以…裝飾/填滿/覆蓋」結構都用 with：covered with / decorated with / adorned with / filled with / packed with / equipped with。",
+    "exam_section": "NTU_113_ENG_Q31"
+  },
+  {
+    "id": "GR_PREP_015",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "...with various insects flitting ___, and with worms crawling through the damp earth...",
+    "options": [
+      "again",
+      "about",
+      "among",
+      "akimbo"
+    ],
+    "answer": "B",
+    "explanation": "flit about = 到處飛舞、四處飄動（about 是表「四處、各處」方向的副詞質詞）。整句畫面：各種昆蟲在四處飛舞。",
+    "common_mistakes": "(A) again 是表重複的時間副詞，不能描述空間方向；(C) among 是介系詞需受詞（flitting among the bushes），但題幹後直接接逗號沒有受詞；(D) akimbo 主要用於 with arms/legs akimbo（雙手叉腰），不能用於昆蟲。類似「四處」用法：walk about / wander about / move about / look about / scatter about。",
+    "exam_section": "NTU_113_ENG_Q32"
+  },
+  {
+    "id": "GR_PREP_016",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "...these elaborately constructed forms, so different from each other, and dependent ___ each other in so complex a manner, have all been produced by laws acting around us.",
+    "options": [
+      "at",
+      "upon",
+      "with",
+      "by"
+    ],
+    "answer": "B",
+    "explanation": "dependent upon / dependent on = 依賴、相互依存（固定搭配，upon 是 on 的較正式或文學版本）。整句：這些建構複雜的生物形態彼此差異很大但又以複雜方式相互依存。",
+    "common_mistakes": "depend / dependent 唯一固定搭配 on / upon，沒有 at / with / by 等變體。同類「依賴/依靠」動詞全部用 on：rely on / count on / lean on / bank on / depend on。記住一個口訣：「依賴類」動詞配 on / upon。",
+    "exam_section": "NTU_113_ENG_Q33"
+  },
+  {
+    "id": "GR_PREP_017",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "These laws, taken ___ the largest sense, being Growth with reproduction; Inheritance which is almost implied by reproduction...",
+    "options": [
+      "to",
+      "of",
+      "out",
+      "in"
+    ],
+    "answer": "D",
+    "explanation": "in the largest / broadest / strictest sense = 在最廣 / 最嚴格的意義上（固定片語，sense 表「意義、含義」時恆配 in）。「taken in the largest sense」= 從最廣義來理解。",
+    "common_mistakes": "「sense（意義）」前面固定用 in：in this sense / in a certain sense / in every sense / in some sense / in a literal sense。但 make sense（合理）不加介系詞——sense 在這裡是名詞 + 動詞 make 的固定搭配。其他介系詞 to / of / out 都不與 sense 搭配表「意義上」。",
+    "exam_section": "NTU_113_ENG_Q34"
+  },
+  {
+    "id": "GR_PREP_018",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "...a Ratio ___ Increase so high as to lead to a Struggle for Life, and as a consequence to Natural Selection...",
+    "options": [
+      "to",
+      "of",
+      "out",
+      "in"
+    ],
+    "answer": "B",
+    "explanation": "ratio of = …的比率（ratio 後固定用 of 引介內容）。a ratio of increase = 增加的比率 / 增長率。",
+    "common_mistakes": "ratio 表「比率」固定搭配 of：a ratio of A to B（A 對 B 的比例）、a high ratio of X。「比例/數量類」名詞全部用 of 引介內容：a number of / an amount of / a percentage of / a fraction of / a quantity of / a majority of / a couple of。",
+    "exam_section": "NTU_113_ENG_Q36"
+  },
+  {
+    "id": "GR_PREP_019",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "...a Ratio of Increase so high as to lead to a Struggle ___ Life, and as a consequence to Natural Selection...",
+    "options": [
+      "from",
+      "with",
+      "for",
+      "by"
+    ],
+    "answer": "C",
+    "explanation": "struggle for = 為了…而奮鬥（爭取的對象用 for 引導）。Struggle for Life 是達爾文《物種起源》核心概念，意為「為生存而奮鬥」。",
+    "common_mistakes": "(B) struggle with = 與…搏鬥（struggle with difficulties），with 強調對抗的對象（敵人/問題），不適合 Life 這種要爭取的目標；(A) struggle from 與 (D) struggle by 都不是固定搭配。「奮鬥/競爭/爭取」類動詞全部用 for 表追求目標：struggle for / fight for / compete for / strive for / work for / aim for。",
+    "exam_section": "NTU_113_ENG_Q37"
+  },
+  {
+    "id": "GR_PREP_020",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "hard",
+    "question": "As expected, financial difficulty ___ his aggressive behavior.",
+    "options": [
+      "contributed to",
+      "lead to",
+      "traced back",
+      "comprises of"
+    ],
+    "answer": "A",
+    "explanation": "contribute to = 促成、導致（固定搭配，to 是必要介系詞）。題幹 As expected... 表示這是過去發生且符合預期的事實，故用過去式 contributed to。",
+    "common_mistakes": "(B) lead to：lead 是動詞原形/現在式，與「As expected... 過去事實」的時態不合，應為過去式 led to；(C) traced back：缺介系詞 to——固定結構是 trace back to（追溯到）；(D) comprises of：comprise 是及物動詞，直接接受詞不加 of（financial difficulty comprises X，不是 comprises of X）。記住「組成/包含類」搭配：comprise（直接接受詞）vs consist of vs be composed of vs include（直接接受詞）vs constitute（直接接受詞）。",
+    "exam_section": "NCKU_107_ENG_Q24"
+  },
+  {
+    "id": "GR_PREP_021",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "She lost her house and possessions ___ an arson fire that is suspected to have been set by opponents of her AIDS project.",
+    "options": [
+      "to",
+      "under",
+      "against",
+      "over"
+    ],
+    "answer": "A",
+    "explanation": "lose [something] to [destruction agent / cause] = 因…而失去某物（固定搭配，to 引介造成失去的原因）。常見搭配：lose X to fire（火災）/ lose X to cancer（癌症）/ lose X to war（戰爭）/ lose X to time（時間）。",
+    "common_mistakes": "(B) under「在…之下」表位置或情況，「在火災下失去」結構不通；(C) against「對抗」用於對立關係（fight against / protest against），不引介失去的原因；(D) over「超過 / 關於」也不引介因果。記住「失去/屈服類」動詞配 to 表原因或對象：lose to / surrender to / fall to / succumb to / give in to。",
+    "exam_section": "NCKU_107_ENG_Q26"
+  },
+  {
+    "id": "GR_PREP_022",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "easy",
+    "question": "The government has portrayed the crackdown as a fight ___ terrorism.",
+    "options": [
+      "from",
+      "against",
+      "in",
+      "to"
+    ],
+    "answer": "B",
+    "explanation": "fight against = 對抗、抵抗（against 表「對立、抗衡」的關係）。整句：政府將這次取締描繪為對抗恐怖主義的戰鬥。",
+    "common_mistakes": "(A) fight from 不是固定搭配；(C) fight in 表「在某地戰鬥」（fight in the war / fight in Asia）但這裡 terrorism 不是地點；(D) fight to 表「為達某目標而戰」（fight to win），與「對抗某對象」語意不同。「對抗類」名詞/動詞固定配 against：fight against / war against / struggle against / battle against / protest against / discriminate against。",
+    "exam_section": "NCKU_108_ENG_Q1"
+  },
+  {
+    "id": "GR_PREP_023",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Taipei City will ban smoking in public areas in front of several convenience stores and coffee shop chains ___ effect from September.",
+    "options": [
+      "with",
+      "to",
+      "of",
+      "at"
+    ],
+    "answer": "A",
+    "explanation": "with effect from + 日期 = 自...起生效（官方/法律用語的固定片語）。整句：自 9 月起生效。",
+    "common_mistakes": "(B) to effect 不是固定搭配；(C) of effect 不是固定搭配；(D) at effect 也不是。注意 effect 相關的常見片語：with effect from（自...起生效）、in effect（實際上 / 生效中）、take effect（生效）、to that effect（大意如此）、to the effect that...（大意是說...）。各介系詞與 effect 搭配時意義不同，需逐一記憶。",
+    "exam_section": "NCKU_108_ENG_Q2"
+  },
+  {
+    "id": "GR_PREP_024",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "hard",
+    "question": "He said something ___ the effect that he was sorry.",
+    "options": [
+      "in",
+      "with",
+      "to",
+      "of"
+    ],
+    "answer": "C",
+    "explanation": "to the effect that... = 大意是說...（固定慣用語，effect 在此意為「意旨、要旨」不是「效果」）。整句：他說了大意是道歉的話。",
+    "common_mistakes": "(A) in effect = 實際上 / 生效中（與「大意」無關）；(B) with effect = 通常配 from（with effect from + 日期 = 自...起生效）；(D) of effect 不是固定搭配。effect 表「意旨」時固定搭配 to：to the effect that + 子句 / to that effect / words to that effect（類似的話）。這是新聞英語常見表達。",
+    "exam_section": "NCKU_108_ENG_Q3"
+  },
+  {
+    "id": "GR_PREP_025",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "Bad weather accounted ___ the long delay.",
+    "options": [
+      "to",
+      "by",
+      "for",
+      "on"
+    ],
+    "answer": "C",
+    "explanation": "account for = 解釋、是...的原因（account 為不及物動詞，表原因時固定配 for）。整句：壞天氣是長時間延誤的原因。",
+    "common_mistakes": "(A) account to = 對...負責（account to your boss = 向上司負責），語意不同；(B) account by 不是固定搭配；(D) account on 不是固定搭配。account 多種搭配：①account for 解釋/佔（the cause / 比例）②account to 對...負責 ③on account of 因為（介系詞片語）④take into account 考慮在內（不加介系詞）。",
+    "exam_section": "NCKU_108_ENG_Q4"
+  },
+  {
+    "id": "GR_PREP_026",
+    "grammar_topic": "介系詞慣用",
+    "difficulty": "medium",
+    "question": "The fans danced ___ triumph after their team won.",
+    "options": [
+      "in",
+      "by",
+      "from",
+      "with"
+    ],
+    "answer": "A",
+    "explanation": "in triumph = 凱旋地、勝利地（in + 抽象名詞表達「處於某種情緒/狀態」的副詞功能）。整句：球迷在球隊獲勝後凱旋而舞。",
+    "common_mistakes": "(B) by 表方式或行為主體；(C) from 表來源；(D) with 表伴隨工具或情緒（with joy 倒可表伴隨喜悅，但 with triumph 較不自然，搭配上 in triumph 更慣用）。「in + 抽象名詞」表狀態的常見搭配：in triumph（凱旋）、in despair（絕望）、in tears（含淚）、in vain（徒勞）、in shock（震驚）、in rage（憤怒）、in haste（匆忙）、in silence（默默地）。",
+    "exam_section": "NCKU_108_ENG_Q5"
+  },
+  {
+    "id": "GR_SENT_001",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "___ agreement among scientists as to whether there is life on other planets such as Mars.",
+    "options": [
+      "Generally speaking, no",
+      "No general",
+      "Although we see",
+      "There is no general"
+    ],
+    "answer": "D",
+    "explanation": "完整句必須有「主詞 + 主要動詞」。「There is no general agreement among scientists...」以 there is 帶出存在句型，是完整的主要子句。as to whether... 是介系詞片語，補充說明 agreement 的範圍。",
+    "common_mistakes": "(A) Generally speaking, no agreement... 是副詞片語 + 名詞片語，缺主要動詞；(B) No general agreement among... 整段只是名詞片語，沒有動詞；(C) Although we see agreement... 是從屬連接詞引導的副詞子句，沒有主要子句仍不完整。判斷句子是否完整：先找主要動詞——若題幹本身沒有，選項必須補上。",
+    "exam_section": "NTU_108_ENG_Q8"
+  },
+  {
+    "id": "GR_SENT_002",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "The concept is funny; the reality, for those unfortunate enough to run into it, ___ not.",
+    "options": [
+      "is",
+      "be",
+      "being",
+      "have been"
+    ],
+    "answer": "A",
+    "explanation": "前後兩句平行對照：「the concept IS funny；the reality IS not (funny)」。第二句的主要動詞需與前句平行（簡單現在式 be 動詞），且主詞 the reality 是單數，故用 is。中間 for those unfortunate enough to run into it 是插入的介系詞片語，不影響主要動詞的形式。",
+    "common_mistakes": "(B) be 是原形動詞，無法獨立當主要動詞（除非命令句或假設語氣）; (C) being 是分詞，不能獨立當主要動詞，整句會變成沒有主要動詞的不完整片語; (D) have been 是現在完成式，與前句 is funny（簡單現在式）不平行。判斷重點：先找出與前句平行的時態與主詞數，再選對應的動詞形式。",
+    "exam_section": "NCCU_109_ENG_Q14"
+  },
+  {
+    "id": "GR_SENT_003",
+    "grammar_topic": "句型結構",
+    "difficulty": "hard",
+    "question": "___ throughout all developed nations fail to obtain the recommended eight hours of nightly sleep.",
+    "options": [
+      "Two-third of the adult",
+      "Most of adults",
+      "Two-thirds of adults",
+      "The most of the adults"
+    ],
+    "answer": "C",
+    "explanation": "兩個關鍵文法點：(1) 分數的英文表達——分子用基數、分母用序數，當分子大於 1 時分母要加 -s（two-thirds, three-fourths）；(2) 「分數 + of + 名詞」結構中，名詞為複數時動詞用複數（of adults → fail）。",
+    "common_mistakes": "(A) two-third 缺 -s（分子 2 大於 1 時分母需 thirds），且 the adult 是單數與複數動詞 fail 不合; (B) Most of adults 缺 the——most of 後若接複數可數名詞需加 the（Most of the adults）或直接用 Most adults（不加 of）; (D) The most of 結構錯誤——most 表「大多數」時不加 the，加 the 變最高級「最多的」語意改變。記住三種正確用法：①Most adults / ②Most of the adults / ③Two-thirds of (the) adults。",
+    "exam_section": "NCCU_109_ENG_Q17"
+  },
+  {
+    "id": "GR_SENT_004",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "Routinely sleeping less than six or seven hours a night demolishes your immune system, ___ doubling your risk of cancer.",
+    "options": [
+      "more than",
+      "as",
+      "for",
+      "or"
+    ],
+    "answer": "A",
+    "explanation": "「more than + V-ing」結構中，more than 是程度副詞，修飾分詞 doubling，意為「不只是加倍、超過加倍」。整句：經常睡眠不足摧毀免疫系統，更不只是讓癌症風險加倍。",
+    "common_mistakes": "(B) as + V-ing 表「正在…的時候」（as doing = while doing），但「免疫系統被摧毀『的同時』風險加倍」邏輯雖通卻語意冗贅，且 as 後通常不直接接 doubling 這種結果性動作; (C) for + V-ing 表目的或原因，「為了讓風險加倍」邏輯不通——你不會為了讓風險加倍而睡不夠; (D) or + V-ing 表「或是」提供替代，但「摧毀免疫系統」與「讓風險加倍」是因果連續而非二選一。判斷要點：分詞片語前的修飾語決定它與主要子句的邏輯關係（程度/時間/目的/選擇）。",
+    "exam_section": "NCCU_109_ENG_Q18"
+  },
+  {
+    "id": "GR_SENT_005",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "In the first half of the twentieth century, many psychologists believed that only externally observable, ___ behavior was relevant for study.",
+    "options": [
+      "limbo",
+      "outward",
+      "backflash",
+      "excerpt"
+    ],
+    "answer": "B",
+    "explanation": "空格須與 externally observable 平行作為形容詞，修飾後面的 behavior。四個選項中只有 outward 是形容詞「外在的、向外的」，其他三個都是名詞，無法放在這個位置。語意上 outward 也與 externally observable 同義（外在可觀察的行為）。",
+    "common_mistakes": "(A) limbo 是名詞「邊緣狀態」，詞性錯誤；(C) backflash 是名詞「倒敘 / 逆火」，詞性錯誤；(D) excerpt 是名詞「摘錄」，詞性錯誤。判斷並列形容詞題的兩步驟：①先用詞性篩選——並列項目（adj1, adj2 + noun）必須同詞性；②再用語意決勝。即使單字本身陌生，看不懂的選項只要詞性不對就能直接排除。",
+    "exam_section": "NCCU_111_ENG_Q16"
+  },
+  {
+    "id": "GR_SENT_006",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "Rather than focusing solely on young students, many universities now offer programs designed for professionals who wish to enhance their knowledge and stay ___ in the workforce.",
+    "options": [
+      "compete",
+      "competing",
+      "competitive",
+      "competitively"
+    ],
+    "answer": "C",
+    "explanation": "stay 是連繫動詞（linking verb），後接形容詞作主詞補語表「保持某狀態」。stay competitive = 保持有競爭力。類似的連繫動詞還有 be、become、remain、keep、seem、appear、look、feel、sound、taste、smell。",
+    "common_mistakes": "(A) compete 是動詞原形，連繫動詞 stay 後不接原形動詞；(B) competing 是現在分詞，stay + V-ing 雖可表「持續做某動作」（如 keep waiting），但這裡固定搭配是 stay competitive；(D) competitively 是副詞，不能作 stay 的主詞補語——連繫動詞後接形容詞不接副詞。判斷重點：連繫動詞後接形容詞（不接副詞），這是英文與中文最不同的地方之一。",
+    "exam_section": "NCCU_114_ENG_Q13"
+  },
+  {
+    "id": "GR_SENT_007",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "It won't be easy to ___ such a heavy box without any help.",
+    "options": [
+      "lift",
+      "rise",
+      "raise",
+      "pick"
+    ],
+    "answer": "A",
+    "explanation": "lift 是及物動詞，可直接接受詞 such a heavy box（舉起這麼重的箱子）。判斷重點：及物動詞才能直接接受詞，不及物動詞需加介系詞或質詞。",
+    "common_mistakes": "(B) rise 是不及物動詞，無法直接接受詞——「the sun rises / prices rise」都沒有受詞；(C) raise 是及物動詞但語意上多用於抽象（raise prices / raise hands / raise a question / raise children），用於物理重物時 lift 較自然；(D) pick 單獨用是「挑選」，要表「拿起」需用 pick up（片語動詞需加 up）。記住及物 vs 不及物的常見對比：rise (intr.) vs raise (tr.)、lie 躺下 (intr.) vs lay 放置 (tr.)、sit (intr.) vs set 放置 (tr.)。",
+    "exam_section": "NCKU_107_ENG_Q10"
+  },
+  {
+    "id": "GR_SENT_008",
+    "grammar_topic": "句型結構",
+    "difficulty": "medium",
+    "question": "How does the tone in each of the following three passages ___?",
+    "options": [
+      "differ from one another",
+      "different from each other",
+      "different from one another",
+      "differ than each other"
+    ],
+    "answer": "A",
+    "explanation": "兩個重點：(1) 句中已有助動詞 does，後面需接「動詞原形」而非形容詞——differ 是動詞，different 是形容詞；(2) 表「與…不同」固定搭配 differ from / different from，不接 than。",
+    "common_mistakes": "(B) different from each other 與 (C) different from one another：different 是形容詞，與助動詞 does 不搭（does 後需動詞原形）；(D) differ than each other：differ 是對的詞性，但介系詞錯誤——比較類動詞才用 than（X is bigger than Y），「differ / different」表「不同」一律用 from。記住「不同類」固定搭配：differ from / different from / be distinct from / vary from。",
+    "exam_section": "NCKU_107_ENG_Q23"
+  },
+  {
+    "id": "GR_MOD_001",
+    "grammar_topic": "助動詞",
+    "difficulty": "medium",
+    "question": "You ___ join us on the volunteer team in Africa, but you ___ if you like.",
+    "options": [
+      "shouldn't / were able to",
+      "mustn't / needn't",
+      "can't / shouldn't",
+      "needn't / can"
+    ],
+    "answer": "D",
+    "explanation": "整句語意：「你不必加入志工團，但如果你想要的話可以」。前句需要「沒有義務但不禁止」→ needn't（不必）；後句需要「允許」→ can（可以）。",
+    "common_mistakes": "(A) shouldn't 是「不應該」（道德/建議性禁止），與後句「if you like 隨你」邏輯衝突；(B) mustn't 是「禁止」+ needn't「不必」前後矛盾——既禁止你做又說不必做？不通；(C) can't「不能」+ shouldn't「不應該」變成兩重否定，無法搭配「if you like」的允許語意。關鍵區分：mustn't = 不可以（禁止）vs needn't = 不必（沒有義務但不禁止）——這是英文助動詞最常考的對比。",
+    "exam_section": "NTU_112_ENG_Q7"
+  },
+  {
+    "id": "GR_PRON_001",
+    "grammar_topic": "代名詞",
+    "difficulty": "hard",
+    "question": "As for the \"dog\" part, it's a playful joke to compare the meat of the sausage to ___ of a dog—specifically, a dachshund.",
+    "options": [
+      "which",
+      "one",
+      "that",
+      "part"
+    ],
+    "answer": "C",
+    "explanation": "that 在此作代名詞使用，代替前面的不可數名詞 meat（避免重複「the meat of the sausage to the meat of a dog」）。代名詞替代規則：one 代替可數單數、ones 代替可數複數、that / those 代替前面提過的特定名詞或不可數名詞。",
+    "common_mistakes": "(A) which 是關係代名詞，需有先行詞並引導關係子句，但這裡需要的是介系詞 to 的受詞而非子句；(B) one 只能代替可數單數名詞（如 the red car → the red one），但 meat 是不可數名詞，不能用 one；(D) part 是名詞但需要冠詞或所有格（the part of a dog），單獨用 part 結構不通。代名詞快速對照：可數單數→one、可數複數→ones、不可數/特指→that / those。",
+    "exam_section": "NCCU_113_ENG_Q17"
+  },
+  {
+    "id": "GR_COMP_001",
+    "grammar_topic": "比較級",
+    "difficulty": "medium",
+    "question": "Thus, from the war of nature, from famine and death, the ___ exalted object which we are capable of conceiving, namely, the production of the higher animals, directly follows.",
+    "options": [
+      "least",
+      "mediocre",
+      "more",
+      "most"
+    ],
+    "answer": "D",
+    "explanation": "the most + 多音節形容詞 = 最…的（最高級）。語境：能設想到的最崇高之物——即更高等動物的演化。多音節形容詞 exalted 的最高級必用 the most exalted。",
+    "common_mistakes": "(A) the least exalted = 最不崇高的，與後文「higher animals 更高等動物」的正面語意相反；(B) mediocre 是獨立形容詞「平庸的」，不能與另一個形容詞 exalted 並列修飾名詞（兩個形容詞並列無比較意義）；(C) the more exalted 是比較級需要 than 引導比較對象，但句中沒有比較對象。比較級/最高級規則：①單音節 → -er / -est（tall / taller / tallest）②雙音節含 -y → -ier / -iest（happy / happier / happiest）③多音節 → more / most（exalted / more exalted / most exalted）④the + 最高級表「最…的」。",
+    "exam_section": "NTU_113_ENG_Q38"
+  },
+  {
+    "id": "GR_QUANT_001",
+    "grammar_topic": "量詞",
+    "difficulty": "medium",
+    "question": "They were hysterically joyful and hiccupping with ___ laughter.",
+    "options": [
+      "plenty",
+      "so much",
+      "as many",
+      "a few"
+    ],
+    "answer": "B",
+    "explanation": "laughter 是不可數名詞，需用搭配不可數名詞的量詞 so much。整句：他們歡笑到打嗝，因為笑得實在太多了。",
+    "common_mistakes": "(A) plenty 後需接 of 才能修飾名詞（plenty of laughter），單獨 plenty 不能直接修飾名詞；(C) as many 用於可數名詞複數（as many cars / as many books），不適用不可數的 laughter；(D) a few 用於可數名詞複數（a few books），不適用不可數名詞。可數 vs 不可數量詞對照：可數複數 → many / few / a few / several / a number of；不可數 → much / little / a little / a great deal of / a large amount of；通用兩者 → some / any / a lot of / lots of / plenty of / no。",
+    "exam_section": "NCKU_107_ENG_Q25"
+  },
+  {
+    "id": "GR_PART_012",
+    "grammar_topic": "分詞構句",
+    "difficulty": "medium",
+    "question": "Vitamin C discovered in 1932, ___ first vitamin for which the molecular structure was established.",
+    "options": [
+      "as the",
+      "being the",
+      "was the",
+      "were the"
+    ],
+    "answer": "C",
+    "explanation": "主詞是 Vitamin C，「discovered in 1932」是緊跟其後的過去分詞片語（= which was discovered），功能是修飾主詞，並非句子的主要動詞。主詞後仍需要限定動詞（finite verb）來完成句子，選 was the 形成完整主謂結構：Vitamin C... was the first vitamin...。",
+    "common_mistakes": "看到 discovered 就誤以為動詞已有了，但分詞片語只是修飾語，無法充當主要謂語。(A) as the：介系詞片語，不能當主要謂語；(B) being the：非限定動詞（現在分詞），整句沒有限定動詞即構成片段句（fragment）；(D) were the：主詞 Vitamin C 是單數，應用 was，不是 were。核心規則：-ed/-ing 分詞 ＝ 修飾語，句子仍需要限定動詞作主要謂語。",
+    "exam_section": "MOCK_115_R1_Q11"
+  },
+  {
+    "id": "GR_SENT_009",
+    "grammar_topic": "句型結構",
+    "difficulty": "hard",
+    "question": "A Republican, ___, from 1926 to 1928.",
+    "options": [
+      "mayor of Seattle, Washington, Berthan Landers",
+      "and mayor of Seattle, Washington, Bertha Landers",
+      "Bertha Landers was mayor of Seattle, Washington",
+      "Bertha Landers, mayor of Seattle, Washington"
+    ],
+    "answer": "C",
+    "explanation": "完整句：A Republican, Bertha Landers was mayor of Seattle, Washington, from 1926 to 1928.「A Republican」是前置同位語，放在主詞之前補充說明身份；主詞是 Bertha Landers，主要動詞是 was。結構：[前置同位語], [主詞] [動詞] [補語], [時間副詞]。",
+    "common_mistakes": "(A) mayor of Seattle, Washington, Berthan Landers：純名詞片語、人名拼錯（Berthan → Bertha），整句缺主要動詞；(B) and mayor...：and 是對等連接詞，前方沒有可對應的成分，結構無法成立；(D) Bertha Landers, mayor of Seattle, Washington：名詞片語作同位語，整句依然缺限定動詞，是不完整句（fragment）。核心陷阱：A 和 D 都是名詞片語，放入空格後整句沒有動詞——句子最終必須有限定動詞才完整。",
+    "exam_section": "MOCK_115_R1_Q13"
+  },
+  {
+    "id": "GR_REL_005",
+    "grammar_topic": "關係子句",
+    "difficulty": "medium",
+    "question": "The corporation whose ___ first will host the delegation for lunch.",
+    "options": [
+      "visit we plant",
+      "we plant visit",
+      "plant we visit",
+      "visit plant we"
+    ],
+    "answer": "C",
+    "explanation": "whose 引導關係子句，內部維持 S + V 陳述語序，不倒裝。whose 代替所有格，後面緊接被修飾的名詞（plant），再接子句的主詞（we）和動詞（visit）：whose [plant] [we] [visit] first。整句語意：我們第一個前往參觀工廠的那間公司，將舉辦午宴招待代表團。",
+    "common_mistakes": "(A) visit we plant：動詞提前，是疑問句倒裝語序，關係子句不適用；(B) we plant visit：主詞在前但名詞順序錯，plant 是 whose 修飾的名詞，必須緊跟 whose；(D) visit plant we：主詞跑到最後，完全不符合英文語序。關鍵規則：whose + 名詞 + 主詞 + 動詞（不倒裝）。對照記憶：疑問句「Which plant do we visit first?」→ 嵌入關係子句後「whose plant we visit first」，去掉 do、語序還原正常。",
+    "exam_section": "MOCK_115_R1_Q16"
+  }
+]
