@@ -6450,5 +6450,1355 @@
       "pragmatists": "pragmatists 是「務實主義者」，注重實際效果而非理想。務實者傾向於透過協商而非街頭抗議達成目標，與句中描述的行動模式不符。"
     },
     "sentence_zh": "一群社運人士聚集在大使館外，手持標語、高呼口號，呼籲外界正視人權侵害問題。"
+  },
+  {
+    "id": "NTU_107_V20",
+    "source": "NTU",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NTU_107_Q42",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "Smartphones have become so ___ in daily life that many people feel anxious when they are without one for even a few hours.",
+    "options": [
+      "ubiquitous",
+      "conspicuous",
+      "ambiguous",
+      "unanimous"
+    ],
+    "answer": "A",
+    "target_word": "ubiquitous",
+    "chinese": "無所不在的；到處都是的",
+    "definition": "Present, appearing, or found everywhere; seemingly omnipresent.",
+    "example": "Surveillance cameras have become ubiquitous in modern cities.",
+    "distractor_notes": {
+      "conspicuous": "**最大陷阱**——conspicuous 是「顯眼的；引人注目的」，強調「因突出而被注意到」，與 ubiquitous「無所不在」的意思不同；conspicuous 強調醒目，ubiquitous 強調數量之多、範圍之廣。",
+      "ambiguous": "ambiguous 是「模糊的；含糊不清的；有歧義的」，如 an ambiguous statement。語意完全無關。",
+      "unanimous": "unanimous 是「全體一致的；無異議的」，如 a unanimous vote，用於描述意見或決定，不用於描述事物的普及程度。"
+    },
+    "sentence_zh": "智慧型手機在日常生活中已無所不在，許多人只要幾個小時沒有手機就會感到焦慮。"
+  },
+  {
+    "id": "NTU_107_V21",
+    "source": "NTU",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NTU_107_Q36",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "The doctor prescribed a strict ___ of medication and physical therapy to support the patient's long-term recovery.",
+    "options": [
+      "regimen",
+      "regime",
+      "regiment",
+      "regulation"
+    ],
+    "answer": "A",
+    "target_word": "regimen",
+    "chinese": "（醫療/健康）療程；規律計畫",
+    "definition": "A systematic plan or course of action, especially in medicine or health, intended to achieve a desired result.",
+    "example": "She followed a strict exercise regimen recommended by her physical therapist.",
+    "distractor_notes": {
+      "regime": "**最大陷阱**——regime 最常見的意思是「政治體制；政權」，如 a military regime；雖然 regime 也可指「規律計畫」（較舊式用法），但現代英文此義已基本被 regimen 取代，在醫療/健康語境幾乎只用 regimen。",
+      "regiment": "regiment 是「軍團；團（軍事單位）」，動詞形式有「嚴格管理」之意，但作名詞使用時與健康計畫語境完全不符。",
+      "regulation": "regulation 是「規定；法規；管制」，如 government regulations。指外部施加的規則，而非個人遵循的健康計畫。"
+    },
+    "sentence_zh": "醫生開立了一套嚴格的藥物治療與物理治療療程，以支持患者的長期康復。"
+  },
+  {
+    "id": "PSYCH_V01",
+    "source": "PSYCH",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NTU_107_Reading1",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The researcher argued that ___ — the tendency to strongly favor one's own group and view outsiders with suspicion — is far more powerful in shaping political behavior than most analysts acknowledge.",
+    "options": [
+      "tribalism",
+      "nationalism",
+      "altruism",
+      "individualism"
+    ],
+    "answer": "A",
+    "target_word": "tribalism",
+    "chinese": "部落主義；族群認同感；圈內排外思想",
+    "definition": "The behavior and attitudes that stem from strong loyalty to one's own social group, often combined with hostility or distrust toward outsiders; a key concept in social identity theory.",
+    "example": "Political tribalism makes it difficult for voters to evaluate policies objectively when party loyalty is at stake.",
+    "distractor_notes": {
+      "nationalism": "**最大陷阱**——nationalism 是「民族主義；國家認同」，與 tribalism 都涉及群體認同，但 nationalism 聚焦於「國家層次的認同」，tribalism 則更廣泛，涵蓋任何群體（宗教、地區、家族、球隊等）。社會心理學研究中兩者需嚴格區分。",
+      "altruism": "altruism 是「利他主義；無私助人」，與 tribalism 幾乎相反——altruism 強調對他人（包括外群體）的關懷，tribalism 強調對內群體的排他性忠誠。",
+      "individualism": "individualism 是「個人主義；重視個體自主」，與 tribalism 的「群體優先」形成對立，常在文化心理學中作為 collectivism 的對照概念。"
+    },
+    "sentence_zh": "研究者主張，「部落主義」——強烈偏袒自己所屬群體、對外人抱持猜疑的傾向——在塑造政治行為方面遠比大多數分析家所承認的更具影響力。"
+  },
+  {
+    "id": "PSYCH_V02",
+    "source": "PSYCH",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NTU_107_Q31",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "The conflict between the two communities was not ethnic but ___, rooted in centuries of rivalry between different religious factions within the same country.",
+    "options": [
+      "sectarian",
+      "secular",
+      "sensational",
+      "systematic"
+    ],
+    "answer": "A",
+    "target_word": "sectarian",
+    "chinese": "宗派的；派系的；（因宗教或政治派別差異引起的）",
+    "definition": "Relating to or caused by differences between religious or political sects; denoting hostility between different groups within the same religion or political movement.",
+    "example": "Sectarian violence between Sunni and Shia communities has destabilized the region for decades.",
+    "distractor_notes": {
+      "secular": "**最大陷阱**——secular 是「世俗的；非宗教的」，如 a secular government，語意幾乎與 sectarian 相反：sectarian 是「因宗教派系而起的」，secular 是「脫離宗教的」，字形相近但意義對立。",
+      "sensational": "sensational 是「聳人聽聞的；轟動的」，用於描述媒體報導或事件的誇張性質，與宗派衝突的成因無關。",
+      "systematic": "systematic 是「有系統的；有條理的」，描述方法或過程，不描述衝突的宗教根源。"
+    },
+    "sentence_zh": "這兩個社群之間的衝突並非出於民族差異，而是宗派性的，根植於同一國家內不同宗教派系之間長達數百年的競爭對立。"
+  },
+  {
+    "id": "NTU_108_V09",
+    "source": "NTU",
+    "year": 108,
+    "year_ad": 2019,
+    "exam_section": "NTU_108_Q33",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "In order to preserve the freedoms of the many, the personal liberties of each individual must sometimes be ___.",
+    "options": [
+      "curtailed",
+      "extended",
+      "reinforced",
+      "proclaimed"
+    ],
+    "answer": "A",
+    "target_word": "curtail",
+    "chinese": "縮減；限制；削減",
+    "definition": "To reduce or impose a restriction on something; to limit the extent, quantity, or range of something.",
+    "example": "The government introduced measures to curtail public spending during the recession.",
+    "distractor_notes": {
+      "extended": "**反義陷阱**——extended 是「延伸的；擴大的」，與 curtailed 構成完美反義對。NTU 108 Q33 正是考這個陷阱：題目要求找出「不能替換 curtailed 的詞」，答案就是 extended，因為兩者意思相反。",
+      "reinforced": "reinforced 是「加強的；鞏固的」，如 reinforced concrete。語意是「強化、增加」，而非「削減限制」，方向相反。",
+      "proclaimed": "proclaimed 是「宣告的；聲明的」，如 proclaimed independence。與限制自由的語意毫無關聯。"
+    },
+    "sentence_zh": "為了維護多數人的自由，每個個體的人身自由有時必須受到一定程度的限制。"
+  },
+  {
+    "id": "NTU_108_V10",
+    "source": "NTU",
+    "year": 108,
+    "year_ad": 2019,
+    "exam_section": "NTU_108_Q25",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Despite years of progress in other industries, Asian Americans have consistently ___ their counterparts in terms of representation in mainstream media and sports.",
+    "options": [
+      "lagged behind",
+      "lived up to",
+      "looked into",
+      "logged onto"
+    ],
+    "answer": "A",
+    "target_word": "lag behind",
+    "chinese": "落後；跟不上",
+    "definition": "To fall behind others in progress, development, or achievement; to move or develop more slowly than expected.",
+    "example": "Many developing countries still lag behind in access to clean water and basic healthcare.",
+    "distractor_notes": {
+      "lived up to": "**最大陷阱**——lived up to 是「達到（期望）；不負（標準）」，如 live up to expectations，語意是「符合標準」，與 lag behind 的「落後」完全相反；兩者都是三字片語，容易混淆。",
+      "looked into": "looked into 是「調查；深入研究」，如 look into a complaint，是調查行為而非描述進度落後的狀態。",
+      "logged onto": "logged onto 是「登入（電腦系統）」的科技術語，與「文化能見度落後」語境完全不相干。"
+    },
+    "sentence_zh": "儘管在其他產業已取得多年進展，亞裔美國人在主流媒體與體育界的代表性方面，仍持續落後於其他族群。"
+  },
+  {
+    "id": "NTU_108_V11",
+    "source": "NTU",
+    "year": 108,
+    "year_ad": 2019,
+    "exam_section": "NTU_108_Q27",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Contrary to the stereotype, many tech executives are highly ___ communicators who excel at networking and public speaking.",
+    "options": [
+      "adept",
+      "inept",
+      "oblivious",
+      "impulsive"
+    ],
+    "answer": "A",
+    "target_word": "adept",
+    "chinese": "擅長的；熟練的",
+    "definition": "Very skilled or proficient at something; expert in a particular activity.",
+    "example": "She became adept at navigating the complex bureaucracy after years of working in the public sector.",
+    "distractor_notes": {
+      "inept": "**反義陷阱**——inept 是「不稱職的；笨拙的」，與 adept 構成完美反義對（同為 -ept 字根）。NTU 108 Q27 正是測驗能否區分這兩個字：題目描述的刻板印象是 geeky（書呆氣）＋ socially inept（社交笨拙），而 adept 是「不符合此刻板印象」的那個選項。",
+      "oblivious": "oblivious 是「渾然不知的；漠不關心的」，如 oblivious to the danger。雖帶負面含義，但描述的是「注意力」而非「技能熟練度」。",
+      "impulsive": "impulsive 是「衝動的；容易一時興起行事的」，描述的是行為模式，不是技能水準，與形容溝通能力的語境不符。"
+    },
+    "sentence_zh": "與刻板印象相反，許多科技高管是極為擅長溝通的人才，在建立人脈與公開演講方面表現出色。"
+  },
+  {
+    "id": "PSYCH_V03",
+    "source": "PSYCH",
+    "year": 108,
+    "year_ad": 2019,
+    "exam_section": "NTU_108_Q41",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Critics argue that ___ — where parents monitor and intervene in nearly every aspect of their children's academic and social lives — may undermine the development of autonomy and resilience in young adults.",
+    "options": [
+      "helicopter parenting",
+      "authoritative parenting",
+      "permissive parenting",
+      "attachment parenting"
+    ],
+    "answer": "A",
+    "target_word": "helicopter parenting",
+    "chinese": "直升機式教養；過度介入的育兒方式",
+    "definition": "A parenting style characterized by excessive involvement in a child's life; parents hover over their children's activities, decisions, and problems, often preventing the development of independent problem-solving skills.",
+    "example": "Research suggests that helicopter parenting, while well-intentioned, may increase anxiety and reduce self-efficacy in adolescents.",
+    "distractor_notes": {
+      "authoritative parenting": "**最大陷阱**——authoritative parenting（權威型教養）是心理學 Baumrind 的四大教養類型之一，特點是「高要求 + 高回應」，強調規則但也尊重孩子的自主性。與 helicopter parenting 不同：helicopter 強調「過度干涉」，authoritative 強調「平衡管教」。",
+      "permissive parenting": "permissive parenting（放任型教養）是「低要求 + 高回應」，父母幾乎不設限制，與 helicopter parenting 的「過度干涉」完全相反——兩者是干涉程度的兩個極端。",
+      "attachment parenting": "attachment parenting（依附型教養）強調親密的親子連結（如母乳哺育、親子同睡），重點在早期情感連結，不同於 helicopter parenting 的「長期監控和介入」。"
+    },
+    "sentence_zh": "批評者認為，直升機式教養——父母幾乎介入孩子學業與社交生活的每一個層面——可能會阻礙年輕人自主性與心理韌性的發展。"
+  },
+  {
+    "id": "PSYCH_V04",
+    "source": "PSYCH",
+    "year": 108,
+    "year_ad": 2019,
+    "exam_section": "NTU_108_Q47",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Educational psychology research consistently shows that students driven by ___ — a genuine curiosity and passion for the subject — demonstrate greater persistence and creativity than those who study only for grades or external rewards.",
+    "options": [
+      "intrinsic motivation",
+      "extrinsic motivation",
+      "cognitive dissonance",
+      "self-efficacy"
+    ],
+    "answer": "A",
+    "target_word": "intrinsic motivation",
+    "chinese": "內在動機；自發性動力",
+    "definition": "Motivation that comes from within the individual — driven by personal interest, enjoyment, or satisfaction — rather than from external rewards or pressures.",
+    "example": "Children who read for pleasure show higher intrinsic motivation and tend to develop stronger literacy skills over time.",
+    "distractor_notes": {
+      "extrinsic motivation": "**反義陷阱**——extrinsic motivation（外在動機）是指由外部獎懲（成績、薪水、讚美）驅動的行為。與 intrinsic motivation 構成心理學的核心對立概念（Deci & Ryan 自我決定理論）。句中強調「genuine curiosity and passion」，是內在特質，對應 intrinsic。",
+      "cognitive dissonance": "cognitive dissonance（認知失調）是指同時持有相互矛盾的信念或行為時產生的心理不適感（Festinger，1957）。雖是重要心理學概念，但與動機類型無關。",
+      "self-efficacy": "self-efficacy（自我效能感）是指個人對自己能否完成特定任務的信心（Bandura）。雖然與學習表現高度相關，但 self-efficacy 是「信心程度」，intrinsic motivation 是「動力來源」，兩者不可互換。"
+    },
+    "sentence_zh": "教育心理學的研究一再顯示，受內在動機驅使的學生——對學科抱持真誠的好奇心與熱情——在長期毅力與創造力方面，表現優於那些只為成績或外在獎勵而學習的人。"
+  },
+  {
+    "id": "NTU_109_V18",
+    "source": "NTU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "NTU_109_Q25",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The film delivers a sharp social critique, portraying a world with a troubling ___ of empathy — where self-interest consistently overrides concern for others.",
+    "options": [
+      "deficit",
+      "surplus",
+      "overflow",
+      "abundance"
+    ],
+    "answer": "A",
+    "target_word": "deficit",
+    "chinese": "赤字；不足；缺乏（某種品質）",
+    "definition": "A deficiency or lack of something required; commonly used in economics (budget deficit) but also in psychology and social commentary to describe an absence of desirable qualities.",
+    "example": "Researchers identified an empathy deficit in participants who scored high on narcissism scales.",
+    "distractor_notes": {
+      "surplus": "**反義陷阱**——surplus 是「剩餘；過剩」，與 deficit 構成完美反義對（budget surplus vs. budget deficit）。句子描述的是「不足」，surplus 表示「太多」，方向完全相反。",
+      "overflow": "overflow 是「溢出；氾濫」，如 an overflow of data，強調超出容量，而非缺乏。與 deficit 語意相反。",
+      "abundance": "abundance 是「豐富；充裕」，如 an abundance of resources。同樣表示「多」，與表示「不足」的 deficit 方向相反。"
+    },
+    "sentence_zh": "這部電影對現代社會提出了犀利的批判，刻畫出一個同理心嚴重匱乏的世界——在那裡，自我利益始終凌駕於對他人的關懷之上。"
+  },
+  {
+    "id": "NTU_109_V19",
+    "source": "NTU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "NTU_109_Q37",
+    "format": "meta_vocab",
+    "difficulty": "hard",
+    "sentence": "After the surgery, he was advised to stay home and ___ for several weeks before gradually returning to his daily routine.",
+    "options": [
+      "convalesce",
+      "deteriorate",
+      "deliberate",
+      "dissipate"
+    ],
+    "answer": "A",
+    "target_word": "convalesce",
+    "chinese": "（病後）靜養；康復",
+    "definition": "To recover gradually from an illness or medical procedure; to regain health and strength through rest.",
+    "example": "She went to stay with her parents to convalesce after the operation.",
+    "distractor_notes": {
+      "deteriorate": "**反義陷阱**——deteriorate 是「惡化；變差」，與 convalesce 的「逐漸康復」方向完全相反。常見於描述病情或狀況走下坡，如 his condition deteriorated rapidly。",
+      "deliberate": "deliberate 當動詞是「深思熟慮；仔細考量」，如 deliberate on a decision。語意與健康康復毫無關聯，只是字形和 convalesce 同樣是多音節詞。",
+      "dissipate": "dissipate 是「消散；揮霍（精力/財富）」，如 the fog dissipated / dissipate one's energy。雖可指精力散去，但不用於描述病後的靜養恢復過程。"
+    },
+    "sentence_zh": "手術後，醫生建議他在家靜養數週，再逐步恢復日常作息。"
+  },
+  {
+    "id": "NTU_109_V20",
+    "source": "NTU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "NTU_109_Q34",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Topics like vaccine mandates and school discipline policies have become ___ issues among parents, with deeply held and often opposing views on every side.",
+    "options": [
+      "hot-button",
+      "off-limits",
+      "cut-and-dried",
+      "tongue-in-cheek"
+    ],
+    "answer": "A",
+    "target_word": "hot-button",
+    "chinese": "高度敏感的；引發強烈意見的（議題）",
+    "definition": "Describing a topic or issue that provokes strong emotional reactions and sharply divided opinions; a subject on which many people hold deeply entrenched views.",
+    "example": "Gun control has long been a hot-button issue in American politics.",
+    "distractor_notes": {
+      "off-limits": "off-limits 是「禁止進入的；不得觸碰的」，如 that area is off-limits to civilians。強調「被禁止、不得討論或進入」，而 hot-button 強調「引發激烈爭論」——前者是禁忌，後者是爭議。",
+      "cut-and-dried": "cut-and-dried 是「一清二楚的；毫無爭議的」，如 a cut-and-dried case，指的是答案已明確、無需討論的事。與 hot-button「充滿爭議」完全相反。",
+      "tongue-in-cheek": "tongue-in-cheek 是「半開玩笑的；不當真的」，如 a tongue-in-cheek comment。強調語氣輕鬆、帶諷刺意味，而 hot-button 描述的是令人情緒激動的嚴肅議題。"
+    },
+    "sentence_zh": "疫苗施打規定和學校管教政策已成為家長之間高度敏感的議題，各方立場鮮明，往往針鋒相對。"
+  },
+  {
+    "id": "PSYCH_V05",
+    "source": "PSYCH",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "NTU_109_PassageA",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Researchers have long established that prolonged ___ — a lack of meaningful social contact — is a significant risk factor for depression, anxiety, and accelerated cognitive decline in older adults.",
+    "options": [
+      "social isolation",
+      "social anxiety",
+      "social conformity",
+      "social comparison"
+    ],
+    "answer": "A",
+    "target_word": "social isolation",
+    "chinese": "社會孤立；與外界缺乏聯繫的狀態",
+    "definition": "A state of complete or near-complete lack of contact between an individual and society, often associated with significant physical and mental health consequences.",
+    "example": "The pandemic drastically increased rates of social isolation, particularly among elderly populations living alone.",
+    "distractor_notes": {
+      "social anxiety": "**最大陷阱**——social anxiety（社交焦慮）是指對社交場合感到強烈恐懼，害怕被評判；social isolation（社會孤立）則是缺乏社交接觸的客觀狀態。兩者互為因果但概念不同：social anxiety 可能導致 social isolation，但並非同義。",
+      "social conformity": "social conformity（社會從眾）是指個人的態度或行為因群體壓力而改變以符合群體規範。與孤立狀態語意完全不同，在此語境毫不相關。",
+      "social comparison": "social comparison（社會比較）是 Festinger（1954）提出的概念，指個人透過與他人比較來評估自身能力與觀點。這是社會認知過程，而非孤立狀態。"
+    },
+    "sentence_zh": "研究人員早已確認，長期的社會孤立——與他人缺乏有意義的社交接觸——是老年人罹患憂鬱症、焦慮症以及認知能力加速衰退的重要危險因子。"
+  },
+  {
+    "id": "NTU_111_V01",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q03",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Sociologists had spent much of the 20th century trying to understand poverty and shifting class stratifications across the ___.",
+    "options": [
+      "spectrum",
+      "spell",
+      "senility",
+      "sophistication"
+    ],
+    "answer": "A",
+    "target_word": "spectrum",
+    "chinese": "光譜；範圍；（事物的）全域",
+    "definition": "A wide range or scope of related things; originally referring to the distribution of light, now broadly used to describe a continuum of qualities, opinions, or social groups.",
+    "example": "The policy drew criticism from across the political spectrum, from conservatives to progressives alike.",
+    "distractor_notes": {
+      "spell": "spell 作名詞是「一段時間；咒語；符咒」，如 a spell of cold weather 或 cast a spell。前者指短暫時期，後者是魔法語境，皆與「社會階層分布的範圍」毫無關聯。",
+      "senility": "senility 是「老年癡呆；老衰」，指因年齡增長導致的認知和體能退化。雖然也是社會議題，但與描述「社會階層分布廣度」的語境完全不符。",
+      "sophistication": "**最大陷阱**——sophistication 是「精緻；複雜；成熟度」，如 a high level of sophistication。在學術語境中十分常見，但指的是「某事物的複雜程度或品質水準」，而非「涵蓋某種分布範圍」。"
+    },
+    "sentence_zh": "社會學家在二十世紀大部分時間裡，都在嘗試理解貫穿整個社會階層光譜的貧窮問題與階級變動現象。"
+  },
+  {
+    "id": "NTU_111_V02",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q10",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Despite its innocent appearance, the newly approved regulation is anything ___ straightforward — its actual implementation requires navigating dozens of contradictory sub-clauses.",
+    "options": [
+      "but",
+      "yet",
+      "less",
+      "more"
+    ],
+    "answer": "A",
+    "target_word": "anything but",
+    "chinese": "一點也不；絕非（與表面相反）",
+    "definition": "An idiomatic expression meaning 'not at all' or 'the complete opposite of what is stated'; used to strongly negate a quality that appears to be implied.",
+    "example": "The procedure sounds simple, but the reality is anything but.",
+    "distractor_notes": {
+      "yet": "\"anything yet\" is not a standard English idiom and is grammatically awkward in this position. \"Yet\" functions as a conjunction or adverb (e.g., \"not yet\"), but cannot form a negating idiom with \"anything\" in this construction.",
+      "less": "\"anything less straightforward\" would mean the regulation is somewhat straightforward but could theoretically be less so — the opposite of what the sentence intends. The sentence needs a total negation, not a relative comparison.",
+      "more": "\"anything more straightforward\" would mean it is actually straightforward (or even more so), completely reversing the meaning. The sentence sets up a contrast between appearance and reality, requiring negation."
+    },
+    "sentence_zh": "儘管表面上看似無害，這項新批准的法規絕非簡單易懂——其實際執行需要在數十條相互矛盾的子條款中周旋。"
+  },
+  {
+    "id": "NTU_111_V03",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q15",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "A great editor is someone whose intelligence is exactly ___ to the writer's voice — able to sense what the author intends without imposing their own style.",
+    "options": [
+      "attuned",
+      "attached",
+      "atoned",
+      "attempted"
+    ],
+    "answer": "A",
+    "target_word": "attuned",
+    "chinese": "（對某事）敏銳感知的；協調一致的",
+    "definition": "Adjusted or adapted to be receptive and responsive to something; in harmony with or sensitive to a particular environment, mood, or need.",
+    "example": "Years of fieldwork had made her deeply attuned to the subtle cultural cues of the community she studied.",
+    "distractor_notes": {
+      "attached": "**最大陷阱**——attached 是「依附的；連接的；喜愛的」，如 attached to a cause 或 attached files。字型與 attuned 相近，但 attached 強調「連結或情感依附」，attuned 強調「敏銳感知與協調」，兩者細微差異容易混淆。",
+      "atoned": "atoned 是 atone 的過去分詞，意為「贖罪；補償」，如 atone for one's mistakes。與「感知協調」語意毫無關聯，只是字型相近造成混淆。",
+      "attempted": "attempted 是「嘗試的；未遂的」，如 an attempted robbery。動作義與描述「敏銳感知狀態」的 attuned 性質根本不同。"
+    },
+    "sentence_zh": "一位優秀的編輯，正是那種與作者聲音高度協調的人——能夠感知到作者的意圖，而不將自己的風格強加其上。"
+  },
+  {
+    "id": "NTU_111_V04",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q20",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "The investigative journalist ___ attended several closed-door meetings, pretending to be a janitor in order to document the executives' private discussions.",
+    "options": [
+      "surreptitiously",
+      "serenely",
+      "superstitiously",
+      "swervingly"
+    ],
+    "answer": "A",
+    "target_word": "surreptitiously",
+    "chinese": "暗中地；偷偷摸摸地；秘密進行地",
+    "definition": "Done in a way intended to avoid notice; kept secret, especially because it would not be approved of if known; stealthily.",
+    "example": "She surreptitiously checked her phone under the desk during the lecture.",
+    "distractor_notes": {
+      "serenely": "serenely 是「平靜地；安詳地」，如 she smiled serenely。語意是「心境平和」，而非「秘密行動」，兩者方向截然不同。",
+      "superstitiously": "superstitiously 是「迷信地；出於迷信地」，如 superstitiously avoiding the number 13。與「秘密行動」無關，只是字型長度相近造成混淆。",
+      "swervingly": "swervingly 是「偏離地；轉向地」，字根 swerve 指「突然轉向」，如 swerve to avoid a collision。在此語境中既不自然也不合文法，屬於干擾型選項。"
+    },
+    "sentence_zh": "那位調查記者偽裝成清潔工，暗中出席了數場閉門會議，以記錄高管們的私下討論內容。"
+  },
+  {
+    "id": "NTU_111_V05",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q22",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The attacker's violent rampage was ___ by a group of bystanders who intervened before police arrived.",
+    "options": [
+      "thwarted",
+      "abated",
+      "abetted",
+      "tended"
+    ],
+    "answer": "A",
+    "target_word": "thwart",
+    "chinese": "阻撓；挫敗；阻止（計劃或行動）",
+    "definition": "To prevent someone from accomplishing something; to oppose and block a plan, ambition, or action successfully.",
+    "example": "The police thwarted the robbery attempt before the suspects could escape.",
+    "distractor_notes": {
+      "abated": "abated 是「減弱；平息」（abate 的過去分詞），如 the storm abated。強調自然消退或強度降低，而 thwarted 強調「被人為積極阻止」——前者是自然衰退，後者是主動干預。",
+      "abetted": "**反義陷阱**——abetted 是「協助；縱容（不法行為）」，如 aided and abetted a crime，語意與 thwarted 完全相反。abetted 是「幫助完成」，thwarted 是「阻止完成」；兩個字同為不常見動詞，ab- 開頭也容易混淆。",
+      "tended": "tended 是「照料；傾向於」，如 tended to the wounded 或 tends to overcomplicate things。無論哪種語意，都與「阻止暴力行為」無關。"
+    },
+    "sentence_zh": "攻擊者的暴力行動在警方抵達之前，被一群挺身而出的旁觀者成功制止。"
+  },
+  {
+    "id": "NTU_111_V06",
+    "source": "NTU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q35",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "The politician's sudden announcement about tax reform turned out to be a ___ herring — designed to distract the public from the ongoing corruption investigation.",
+    "options": [
+      "red",
+      "blue",
+      "yellow",
+      "white"
+    ],
+    "answer": "A",
+    "target_word": "red herring",
+    "chinese": "障眼法；轉移注意力的事物；煙幕彈",
+    "definition": "Something that misleads or distracts from the relevant issue; a clue or piece of information that is intended to be misleading or distracting.",
+    "example": "The detective realized that the mysterious letter was just a red herring planted to throw investigators off the trail.",
+    "distractor_notes": {
+      "blue": "\"blue herring\" is not an established English idiom. \"Blueprint\" or \"blue-chip\" exist, but no equivalent misleading-distraction idiom uses blue. The color in this idiom is fixed: only red herring is correct.",
+      "yellow": "\"yellow herring\" does not exist. \"Yellow\" in English idioms relates to cowardice (yellow-bellied) or journalism (yellow press), not distraction or misdirection.",
+      "white": "\"white herring\" is not a standard English expression. \"White flag\" (surrender) and \"white lie\" (harmless lie) exist, but white does not form a misdirection idiom with herring."
+    },
+    "sentence_zh": "那位政治人物突然宣布的稅改計畫最終被證明不過是一個障眼法——目的是轉移公眾對正在進行中的貪污調查的注意力。"
+  },
+  {
+    "id": "PSYCH_V06",
+    "source": "PSYCH",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NTU_111_Q16-20",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "Clinicians working with domestic violence survivors note that the ___ — alternating phases of tension, incident, reconciliation, and calm — creates a psychological trap that makes it extremely difficult for victims to leave abusive relationships.",
+    "options": [
+      "cycle of abuse",
+      "learned helplessness",
+      "Stockholm syndrome",
+      "trauma response"
+    ],
+    "answer": "A",
+    "target_word": "cycle of abuse",
+    "chinese": "暴力循環；受虐循環（家暴模式）",
+    "definition": "A pattern in abusive relationships proposed by Lenore Walker (1979), consisting of recurring phases: tension building, incident (acute explosion), reconciliation/honeymoon, and calm — which repeat cyclically and create psychological dependency.",
+    "example": "Understanding the cycle of abuse helped the social worker explain to clients why leaving an abusive partner is rarely a single decision.",
+    "distractor_notes": {
+      "learned helplessness": "**最大陷阱**——learned helplessness（習得性無助，Seligman, 1975）是指個體在反覆無法控制的有害情境後，形成「無論如何努力都無法改變結果」的信念，進而放棄行動。雖然 cycle of abuse 可能導致 learned helplessness，但兩者是不同概念：前者是「關係中的行為模式」，後者是「認知層面的無助感」。",
+      "Stockholm syndrome": "Stockholm syndrome（斯德哥爾摩症候群）是指人質或受害者與施害者之間形成的情感依附，以1973年瑞典銀行劫案命名。與 cycle of abuse 相關但不同：Stockholm syndrome 強調「對施暴者的情感認同」，cycle of abuse 強調「關係中反覆循環的行為模式」。",
+      "trauma response": "trauma response（創傷反應）是指個體對創傷事件的生理和心理反應（如 fight/flight/freeze），是廣義的神經生理反應，而非特指親密關係中的行為循環模式。"
+    },
+    "sentence_zh": "處理家庭暴力倖存者的臨床工作者指出，暴力循環——緊張期、爆發期、和好期與平靜期反覆交替——製造了一個心理陷阱，使受害者極難離開施暴關係。"
+  },
+  {
+    "id": "NTU_113_V32",
+    "source": "NTU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NTU_113_Q47",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "The phrase \"living death\" is a classic ___ — two seemingly contradictory words placed together to create a striking and paradoxical effect.",
+    "options": [
+      "oxymoron",
+      "metaphor",
+      "euphemism",
+      "alliteration"
+    ],
+    "answer": "A",
+    "target_word": "oxymoron",
+    "chinese": "矛盾修辭法；自相矛盾的詞語組合",
+    "definition": "A figure of speech in which apparently contradictory terms are combined for expressive or rhetorical effect, creating a paradox that reveals a deeper truth.",
+    "example": "Classic oxymorons include 'deafening silence,' 'bittersweet,' and 'clearly confused.'",
+    "distractor_notes": {
+      "metaphor": "metaphor（隱喻）是「不用 like 或 as 的直接比喻」，如 life is a journey。隱喻不要求兩詞矛盾，而 oxymoron 的核心正是「並置矛盾字詞」——兩者都是修辭手法，但性質不同。",
+      "euphemism": "euphemism（委婉語）是「用溫和或模糊的說法替代直接或刺耳的表達」，如用 'passed away' 代替 'died'。委婉語的目的是「軟化語氣」，oxymoron 的目的是「製造矛盾張力」，兩者方向相反。",
+      "alliteration": "alliteration（頭韻法）是「同一句或短語中，多個詞以相同子音開頭」，如 Peter Piper picked a peck。這是聲音層面的修辭；oxymoron 是語意層面的矛盾，兩者完全不同。"
+    },
+    "sentence_zh": "「活生生的死亡」（living death）是一個典型的矛盾修辭——將兩個表面上互相矛盾的詞語並置，製造出強烈而弔詭的表達效果。"
+  },
+  {
+    "id": "NTU_113_V33",
+    "source": "NTU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NTU_113_Q49",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "Despite the patient's ___— knocking repeatedly and begging to be seen at once — the receptionist calmly insisted that he wait his turn.",
+    "options": [
+      "importunities",
+      "inconsistencies",
+      "indiscretions",
+      "improvisations"
+    ],
+    "answer": "A",
+    "target_word": "importunity",
+    "chinese": "糾纏不休的要求；一再強求；死纏爛打",
+    "definition": "Persistent, pressing requests or demands that are difficult to ignore; the quality of being overly insistent or troublesomely persistent in soliciting something.",
+    "example": "The charity volunteer finally gave in to the children's importunities and let them have extra cookies.",
+    "distractor_notes": {
+      "inconsistencies": "inconsistencies 是「不一致；矛盾之處」，如 inconsistencies in the data。指邏輯或事實上的矛盾，與「一再追求或強求某事」的行為語意毫無關聯。",
+      "indiscretions": "indiscretions 是「失言；不謹慎的行為」，如 youthful indiscretions（年少時的輕率之舉）。描述的是「不夠謹慎的言行」，而非「持續強求」的行為模式。",
+      "improvisations": "improvisations 是「即興創作；臨場發揮」，如 jazz improvisations。強調「沒有準備、當場發揮」的創造性行為，與「死纏爛打地要求」完全不同。"
+    },
+    "sentence_zh": "儘管那位病人一再糾纏——反覆敲門、懇求立刻就診——接待員仍冷靜地堅持請他等候叫號。"
+  },
+  {
+    "id": "NTU_114_V31",
+    "source": "NTU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NTU_114_Q41",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Despite early ___ from critics who dismissed their paintings as unfinished, the Impressionists eventually gained widespread recognition for their innovative approach.",
+    "options": [
+      "skepticism",
+      "enthusiasm",
+      "indifference",
+      "consensus"
+    ],
+    "answer": "A",
+    "target_word": "skepticism",
+    "chinese": "懷疑主義；質疑的態度",
+    "definition": "A tendency to question, doubt, or withhold belief in accepted ideas, claims, or supposed facts; an attitude of critical doubt rather than automatic acceptance.",
+    "example": "Scientific progress depends on healthy skepticism — the willingness to question even well-established theories when new evidence emerges.",
+    "distractor_notes": {
+      "enthusiasm": "**反義陷阱**——enthusiasm 是「熱情；熱忱」，是對某事充滿正面期待的態度，與 skepticism 的「懷疑、質疑」完全相反。",
+      "indifference": "indifference 是「冷漠；漠不關心」，不關注某件事；skepticism 是「積極質疑、帶有批判眼光」，兩者雖然都不是正面接受，但 indifference 是缺乏關注，skepticism 是主動懷疑。",
+      "consensus": "consensus 是「共識；一致同意」，是多方達成相同看法，與表示「懷疑」的 skepticism 方向完全相反。"
+    },
+    "sentence_zh": "儘管批評者起初對他們的畫作抱持懷疑態度，認為這些作品未經完善，印象派畫家最終仍因其創新的藝術手法而獲得廣泛的認可。"
+  },
+  {
+    "id": "NTU_114_V32",
+    "source": "NTU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NTU_114_Q35",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Traditional prostheses were designed primarily with ___ in mind — to resemble missing limbs — offering little in terms of actual functional improvement.",
+    "options": [
+      "aesthetics",
+      "functionality",
+      "affordability",
+      "durability"
+    ],
+    "answer": "A",
+    "target_word": "aesthetics",
+    "chinese": "美觀；外觀的視覺吸引力；美學",
+    "definition": "The branch of philosophy concerned with beauty and taste; in practical contexts, refers to the visual or sensory appeal and appearance of something.",
+    "example": "The architect balanced aesthetics with sustainability, creating a building that was both beautiful and environmentally responsible.",
+    "distractor_notes": {
+      "functionality": "**反義陷阱**——functionality 是「功能性；實用性」，與 aesthetics 的「外觀美感」構成完美對立。NTU 114 的段落正是用這個對比關係來說明傳統義肢重外觀輕功能的問題。",
+      "affordability": "affordability 是「可負擔性；價格親民程度」，討論的是成本因素，與「外觀美感」無關。文章後段才討論仿生義肢的價格問題，屬於不同段落的主題。",
+      "durability": "durability 是「耐用性；使用壽命」，討論的是材質的抗磨損能力，與 aesthetics 的「視覺吸引力」屬於不同評估維度。"
+    },
+    "sentence_zh": "傳統義肢的設計主要以美觀為考量——盡可能模仿缺失肢體的外形——在實際功能的提升方面幾乎毫無貢獻。"
+  },
+  {
+    "id": "NTU_114_V33",
+    "source": "NTU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NTU_114_Q39",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Following the accident, surgeons had no choice but to perform an ___ of the lower leg to prevent the spread of infection.",
+    "options": [
+      "amputation",
+      "incision",
+      "transplant",
+      "resection"
+    ],
+    "answer": "A",
+    "target_word": "amputation",
+    "chinese": "截肢；截除（四肢或身體部位）",
+    "definition": "The surgical removal of a limb or part of a limb, typically performed due to injury, disease, or infection that cannot otherwise be treated.",
+    "example": "Advances in bionic technology have significantly improved the quality of life for individuals who have undergone amputation.",
+    "distractor_notes": {
+      "incision": "incision 是「切口；（外科手術的）切開」，指在手術中劃開皮膚或組織，是許多手術的步驟之一，不特指「截除肢體」。",
+      "transplant": "transplant 是「器官移植；移植手術」，指將器官或組織從一個身體轉移到另一個。與 amputation 的「切除」方向相反——一個是移出，一個是移入。",
+      "resection": "**最大陷阱**——resection 是「切除術」，在醫學上指切除身體組織或腫瘤，如 tumor resection（腫瘤切除）。與 amputation 最接近，但 resection 通常不指整個肢體的截除，範圍更廣；amputation 特指四肢截除。"
+    },
+    "sentence_zh": "事故發生後，為了防止感染擴散，外科醫生別無選擇，只能對小腿進行截肢手術。"
+  },
+  {
+    "id": "NTU_114_V34",
+    "source": "NTU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NTU_114_Q50",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The civil rights movement left an enduring ___ — not only changing laws, but fundamentally reshaping how societies understand equality and human dignity.",
+    "options": [
+      "legacy",
+      "anecdote",
+      "pretext",
+      "trajectory"
+    ],
+    "answer": "A",
+    "target_word": "legacy",
+    "chinese": "遺產；留存於後世的影響或成就",
+    "definition": "Something handed down or left by a predecessor; the long-lasting impact or contribution that a person, movement, or era leaves for future generations.",
+    "example": "Marie Curie's legacy in science continues to inspire generations of researchers, particularly women in STEM.",
+    "distractor_notes": {
+      "anecdote": "anecdote 是「趣聞；軼事」，指短小有趣的真實故事，通常用來說明某個道理。它描述的是一個具體的小插曲，而 legacy 描述的是跨越時代的深遠影響。",
+      "pretext": "pretext 是「藉口；假借的理由」，如 under the pretext of helping。語意帶有欺騙性，與 legacy 的「真實長遠的貢獻」完全相反。",
+      "trajectory": "trajectory 是「軌跡；發展路徑」，如 career trajectory 或 the trajectory of a missile。描述的是過程中的走向，不像 legacy 那樣強調「留給後世的影響」。"
+    },
+    "sentence_zh": "民權運動留下了深遠的歷史遺產——不僅改變了法律，更從根本上重塑了社會對平等與人類尊嚴的理解。"
+  },
+  {
+    "id": "NCKU_107_V14",
+    "source": "NCKU",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NCKU_107_Q37",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Unlike casual fans who tune in only for major events, ___ follow every game, memorize player statistics, and plan their schedules around match days.",
+    "options": [
+      "zealots",
+      "spectators",
+      "enthusiasts",
+      "observers"
+    ],
+    "answer": "A",
+    "target_word": "zealot",
+    "chinese": "狂熱份子；死忠信徒；極端的熱衷者",
+    "definition": "A person who is fanatically devoted to a cause, belief, or activity; someone whose enthusiasm crosses into extreme or obsessive territory.",
+    "example": "The hard-core zealots in the fan base memorized every statistic and never missed a single game.",
+    "distractor_notes": {
+      "spectators": "spectators 是「（在場觀賞的）觀眾；旁觀者」，只描述「在場觀看」的人，語氣中性，不含「狂熱」成分；zealot 特指那些超乎一般程度的極端熱衷者。",
+      "enthusiasts": "**最大陷阱**——enthusiasts 是「熱衷者；愛好者」，與 zealot 最接近，但程度不同。enthusiast 是健康正面的「喜好」，zealot 帶有「過頭、偏執」的含義。兩者差異：an enthusiast collects stamps; a zealot reorganizes their entire life around it。",
+      "observers": "observers 是「觀察者；旁觀者」，強調客觀旁觀，與 zealot 的「主動狂熱投入」幾乎相反。"
+    },
+    "sentence_zh": "不同於只在大型賽事才收看的一般球迷，死忠的狂熱球迷場場都看，能背出球員統計數據，還會特意空出比賽日的時間。"
+  },
+  {
+    "id": "NCKU_107_V15",
+    "source": "NCKU",
+    "year": 107,
+    "year_ad": 2018,
+    "exam_section": "NCKU_107_Q35",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Even as the world changed rapidly around them, many traditionalists ___ the old customs and refused to adapt their way of life.",
+    "options": [
+      "clung to",
+      "referred to",
+      "accustomed to",
+      "addicted to"
+    ],
+    "answer": "A",
+    "target_word": "cling to",
+    "chinese": "緊抓；執著於；堅守（信念/習慣）",
+    "definition": "To hold tightly to something, literally or figuratively; to stubbornly maintain a belief, habit, or relationship even when circumstances suggest change.",
+    "example": "She clung to the hope that he would return, even years after he had left.",
+    "distractor_notes": {
+      "referred to": "referred to 是「提及；指稱」，描述的是語言上的引用或說明，而非「緊抓不放的行為」。語意與 clung to 毫無交集。",
+      "accustomed to": "**最大陷阱**——accustomed to 是「習慣於」，如 accustomed to cold weather。與 clung to 都描述對某事物的長期關係，但 accustomed to 強調「已習慣」（被動適應），clung to 強調「主動緊抓、不願放手」。",
+      "addicted to": "addicted to 是「上癮於；沉迷於」，帶有無法自控的負面含義，如 addicted to gambling。雖同樣描述難以擺脫的依附，但 addiction 強調「生理或心理依賴」，cling to 強調「情感上的依戀與執著」。"
+    },
+    "sentence_zh": "即使周遭世界快速變遷，許多保守人士仍緊守舊有習俗，拒絕調整自己的生活方式。"
+  },
+  {
+    "id": "NCKU_111_V01",
+    "source": "NCKU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q07",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "For nearly a century, the world has been trying to ___ a limitless clean energy process called nuclear fusion, yet a commercially viable solution remains elusive.",
+    "options": [
+      "envision",
+      "entertain",
+      "manufacture",
+      "encounter"
+    ],
+    "answer": "A",
+    "target_word": "envision",
+    "chinese": "設想；展望；構想（未來的可能性）",
+    "definition": "To imagine or picture something as a future possibility; to form a mental image of what could exist or happen.",
+    "example": "The city planners envisioned a downtown area with green spaces, cycling paths, and pedestrian-only zones.",
+    "distractor_notes": {
+      "entertain": "**最大陷阱**——entertain 除了「娛樂」之外，也有「考慮（某個想法）」的意思，如 entertain the possibility。但 envision 強調「在腦海中具體構想出未來景象」，entertain 僅指「納入考量」而不必然涉及視覺化或積極描繪。",
+      "manufacture": "manufacture 是「製造；生產（實體產品）」，也可指「捏造（謊言）」。前者語意是物質生產，後者帶負面含義，兩者皆與「設想未來」無關。",
+      "encounter": "encounter 是「遭遇；偶然碰見」，描述意外相遇，如 encounter a problem。語意方向完全不同——envision 是主動想像，encounter 是被動遭遇。"
+    },
+    "sentence_zh": "近百年來，世界一直試圖設想出一種稱為核融合的無限清潔能源程序，然而商業上可行的解決方案至今仍難以實現。"
+  },
+  {
+    "id": "NCKU_111_V02",
+    "source": "NCKU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q08",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "A therapist who truly ___ with a client does not merely feel sorry for their struggles, but actually understands them from the inside, as if experiencing those feelings personally.",
+    "options": [
+      "empathizes",
+      "sympathizes",
+      "condoles",
+      "mourns"
+    ],
+    "answer": "A",
+    "target_word": "empathize",
+    "chinese": "感同身受；設身處地理解他人的感受",
+    "definition": "To understand and share the feelings of another person by imagining oneself in their situation; a deeper, more personal form of understanding than sympathy.",
+    "example": "A good counselor empathizes with clients without becoming overwhelmed by their emotions.",
+    "distractor_notes": {
+      "sympathizes": "**最大陷阱**——這是心理學中最重要的詞義辨析之一。sympathize（同情）是「對他人的困境感到遺憾或憐憫」，觀察者站在自己的立場向外看；empathize（感同身受）是「進入他人的情緒世界、從內部理解其感受」，需要視角轉換。句中「as if experiencing those feelings personally」正是 empathize 的定義。",
+      "condoles": "condoles 是「致哀；表示慰問」，如 condole with the bereaved family，通常用於喪事場合，且多為正式語境，語意範圍遠比 empathize 窄。",
+      "mourns": "mourns 是「哀悼；悲傷（因失去某人/某物）」，如 mourn the loss of a friend。描述的是自身的悲傷情緒，而非對他人感受的理解，與 empathize 的「設身處地」完全不同。"
+    },
+    "sentence_zh": "一位真正能感同身受的治療師，不僅僅是對個案的困境感到遺憾，而是真正從內部理解其感受，彷彿親身經歷了那些情緒一般。"
+  },
+  {
+    "id": "NCKU_111_V03",
+    "source": "NCKU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q20",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "It took years for the community to come to ___ with the fact that the factory closure was permanent and that the jobs were never coming back.",
+    "options": [
+      "terms",
+      "grips",
+      "sense",
+      "conclusion"
+    ],
+    "answer": "A",
+    "target_word": "come to terms with",
+    "chinese": "接受；與（某事）達成和解；不再抗拒",
+    "definition": "To accept a difficult or unpleasant situation; to reach a state of emotional or psychological acceptance after a period of resistance or denial.",
+    "example": "She eventually came to terms with her diagnosis and began focusing on what she could still do.",
+    "distractor_notes": {
+      "grips": "\"come to grips with\" 是另一個常見片語，意思是「開始認真處理（困難的問題）」，如 come to grips with the complexity of the issue。與 \"come to terms with\" 相比，grips 強調「開始積極應對」，terms 強調「情感上的接受」——語意重疊但有細微差距。",
+      "sense": "\"come to sense\" is not a standard English phrase. \"Come to one's senses\" (恢復理智) exists, but \"come to sense with\" the fact does not work grammatically or idiomatically.",
+      "conclusion": "\"come to a conclusion\" (得出結論) 是常見片語，但結構不同——\"come to a conclusion about something\"，而非 \"come to conclusion with the fact that...\"。語意也不符：come to a conclusion 是邏輯推理結果，come to terms with 是情感接受過程。"
+    },
+    "sentence_zh": "這個社區花了數年時間才接受工廠關閉是永久性決定的事實，以及那些工作機會再也不會回來的現實。"
+  },
+  {
+    "id": "NCKU_111_V04",
+    "source": "NCKU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q31",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "The chaplain told a Buddhist ___ about a man shot with a poisoned arrow who demands to know who fired it before allowing treatment — illustrating how obsessing over explanations can delay healing.",
+    "options": [
+      "parable",
+      "paraphrase",
+      "paradigm",
+      "paradox"
+    ],
+    "answer": "A",
+    "target_word": "parable",
+    "chinese": "寓言；道德故事；含有教義的短篇故事",
+    "definition": "A short, simple story that illustrates a moral or spiritual lesson; a narrative designed to convey a deeper truth through an accessible, often everyday scenario.",
+    "example": "The Parable of the Prodigal Son is one of the most well-known parables in the Bible.",
+    "distractor_notes": {
+      "paraphrase": "**最大陷阱**——paraphrase 是「用自己的話重新表述（他人的話或文章）」，指語言層面的改寫，而非帶有道德教訓的故事。NCKU 111 Q31 正是考這個陷阱：paraphrase 是 parable「不同義」的那個選項。",
+      "paradigm": "paradigm 是「典範；範式；思考框架」，如 a paradigm shift in science。指的是某個領域的主流思維模式，與講述故事以傳遞道義的 parable 語意全然不同。",
+      "paradox": "paradox 是「矛盾；似是而非的悖論」，如 the paradox of choice（越多選擇反而越難決定）。指邏輯上看似矛盾但實為真理的陳述，不是以故事形式呈現道德教訓。"
+    },
+    "sentence_zh": "那位牧師講述了一則佛教寓言，說的是一個被毒箭射中的人，在允許治療之前執意追問是誰射出了箭——藉此說明執著於尋找解釋可能反而延誤了療癒。"
+  },
+  {
+    "id": "NCKU_111_V05",
+    "source": "NCKU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q39",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "A researcher ___ in the traditions of qualitative inquiry is unlikely to see statistical significance as the ultimate measure of a study's value.",
+    "options": [
+      "steeped",
+      "drenched",
+      "equipped",
+      "embedded"
+    ],
+    "answer": "A",
+    "target_word": "steeped in",
+    "chinese": "深深浸淫於；充分受到（某種傳統/思想）影響的",
+    "definition": "Deeply immersed in or thoroughly familiar with a particular tradition, culture, or ideology through long exposure; to be thoroughly imbued with something.",
+    "example": "Growing up in a family steeped in music, she could identify composers by their first few notes.",
+    "distractor_notes": {
+      "drenched": "drenched 是「濕透的；被大量液體浸濕」，如 drenched in rain。主要用於字面意義（被淋濕），極少用於「深受某種文化影響」的比喻語境，且語感比 steeped 更為極端、帶有不適感。",
+      "equipped": "equipped 是「配備了；具備了（技能/工具）」，如 equipped with the necessary skills。強調「具有某種能力或工具」，而非「長期浸染在某種文化或思想中」。",
+      "embedded": "**最大陷阱**——embedded 是「深嵌入的；深植的」，如 embedded in the culture 或 embedded journalist，確實有「深深融入」的含義。但 steeped in 特別強調「透過長時間的浸潤而深受影響」，embedded 則更強調位置上的「嵌入」。在描述人受傳統影響時，steeped in 是固定且更自然的搭配。"
+    },
+    "sentence_zh": "一位深深浸淫於質性研究傳統的學者，不太可能將統計顯著性視為衡量研究價值的最終標準。"
+  },
+  {
+    "id": "PSYCH_V07",
+    "source": "PSYCH",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "NCKU_111_Q17",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "Research by Amy Edmondson at Harvard shows that teams with high ___ — where members feel safe to voice ideas, ask questions, or admit mistakes without fear of punishment — consistently outperform teams where such openness is absent.",
+    "options": [
+      "psychological safety",
+      "emotional intelligence",
+      "self-efficacy",
+      "growth mindset"
+    ],
+    "answer": "A",
+    "target_word": "psychological safety",
+    "chinese": "心理安全感（成員在群體中感到可以無懼表達的信任感）",
+    "definition": "A shared belief among team or group members that the environment is safe for interpersonal risk-taking — expressing disagreement, admitting errors, or raising concerns without fear of ridicule or punishment (Edmondson, 1999).",
+    "example": "Teachers who foster psychological safety in the classroom find that students are more willing to participate, make mistakes, and engage deeply with difficult material.",
+    "distractor_notes": {
+      "emotional intelligence": "**最大陷阱**——emotional intelligence（情緒智力，EI/EQ，Goleman）是「辨識、理解和管理自身及他人情緒的能力」，屬於個人特質；psychological safety 是群體層面的環境氛圍，兩者一個是個人能力，一個是集體感知，不可混淆。",
+      "self-efficacy": "self-efficacy（自我效能感，Bandura）是「個人對自己能否完成特定任務的信心」，同樣是個人層面的認知評估。psychological safety 則是團隊成員對「群體環境是否安全」的共同感知，層次不同。",
+      "growth mindset": "growth mindset（成長心態，Dweck）是「相信能力可以透過努力發展」的個人信念系統，強調個人態度；psychological safety 強調群體環境的特性，而非個人信念。"
+    },
+    "sentence_zh": "哈佛大學 Amy Edmondson 的研究顯示，心理安全感高的團隊——成員可以無懼懲罰地表達想法、提出疑問或承認錯誤——其表現持續優於缺乏此種開放氛圍的團隊。"
+  },
+  {
+    "id": "NCKU_112_V01",
+    "source": "NCKU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "NCKU_112_Q12",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "I didn't say anything like that. You are purposely ___ my ideas to prove your point.",
+    "options": [
+      "distorting",
+      "revising",
+      "contradicting",
+      "distracting"
+    ],
+    "answer": "A",
+    "target_word": "distort",
+    "chinese": "扭曲；曲解；使變形",
+    "definition": "To change something so it is no longer accurate or true; to misrepresent facts, ideas, or perceptions in a misleading way.",
+    "example": "The media was accused of distorting the politician's words to create a more dramatic headline.",
+    "distractor_notes": {
+      "revising": "revising 是「修改；校訂」，如 revise an essay，通常帶有「改善」的意圖。distorting 則特指「使意義偏離事實」，帶有蓄意誤導的含義——兩者方向相反。",
+      "contradicting": "**最大陷阱**——contradicting 是「反駁；與⋯矛盾」，如 contradict someone's statement。反駁是「直接否定」，而 distorting 是「曲解、扭曲使其失真」，不是否定而是變形；兩者都可描述言語攻擊，但性質不同。",
+      "distracting": "distracting 是「使分心；令人分散注意力」，如 a distracting noise。與「扭曲他人想法」的語意毫不相干，只是字形相近造成混淆。"
+    },
+    "sentence_zh": "我根本沒說過那樣的話。你是在故意曲解我的意思來證明你的論點。"
+  },
+  {
+    "id": "NCKU_112_V02",
+    "source": "NCKU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "NCKU_112_Q05",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "She has lived in the neighborhood for only six months, yet she seems to be ___ with virtually everyone on the street.",
+    "options": [
+      "acquainted",
+      "accepted",
+      "admitted",
+      "admired"
+    ],
+    "answer": "A",
+    "target_word": "acquainted",
+    "chinese": "認識的；熟悉的（用於 be acquainted with）",
+    "definition": "Having personal knowledge of someone or something; familiar with a person or subject through experience or introduction.",
+    "example": "You should familiarize yourself with the system — are you acquainted with the new software?",
+    "distractor_notes": {
+      "accepted": "accepted 是「被接受的」，如 accepted by the community。強調「被群體認可接納」，而 acquainted 強調「雙方相互認識」——前者是單方向被接受，後者是雙向的熟識關係。",
+      "admitted": "admitted 是「被錄取的；被承認的」，如 admitted to a university 或 admitted to hospital。語意完全不同，且搭配介系詞是 to，不是 with。",
+      "admired": "**最大陷阱**——admired 是「被欽佩的；被讚賞的」，帶有正面情感評價，如 admired for her courage。而 acquainted 只描述「認識/熟悉」的事實狀態，不涉及情感評價。"
+    },
+    "sentence_zh": "她搬到這個街區才短短六個月，但似乎跟街上幾乎每個人都認識了。"
+  },
+  {
+    "id": "NCKU_112_V03",
+    "source": "NCKU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "NCKU_112_Q16",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The manager reprimanded her for maintaining a ___ tone when speaking with customers, warning that it was damaging the store's reputation.",
+    "options": [
+      "hostile",
+      "impartial",
+      "mild",
+      "opposing"
+    ],
+    "answer": "A",
+    "target_word": "hostile",
+    "chinese": "敵意的；對立的；充滿敵視的",
+    "definition": "Showing or feeling opposition or resistance; unfriendly and aggressive in manner toward someone or something.",
+    "example": "The hostile crowd booed the speaker before he had even finished his opening sentence.",
+    "distractor_notes": {
+      "impartial": "**反義陷阱**——impartial 是「公正的；不偏袒的」，如 an impartial judge。與 hostile 的「帶有敵意」正好相反；impartial 是中立客觀，hostile 是主動對立。",
+      "mild": "mild 是「溫和的；溫柔的；輕微的」，如 a mild manner 或 mild weather。同樣與 hostile 意思相反——mild 是柔和，hostile 是尖銳對立。",
+      "opposing": "opposing 是「對立的；反對的」，如 opposing views。雖然也含「對立」意味，但 opposing 偏向「立場上的對立」（如辯論），hostile 強調「情緒和態度上的敵意」，兩者使用情境不同。"
+    },
+    "sentence_zh": "那位經理訓誡她，指出她對待客人時態度充滿敵意，警告這樣下去將損害店裡的聲譽。"
+  },
+  {
+    "id": "NCKU_112_V04",
+    "source": "NCKU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "NCKU_112_Q21",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The new environmental regulations were finally ___ after years of lobbying by conservation groups and mounting scientific evidence.",
+    "options": [
+      "put into effect",
+      "put together",
+      "looked down upon",
+      "left out"
+    ],
+    "answer": "A",
+    "target_word": "put into effect",
+    "chinese": "實施；使生效；付諸執行",
+    "definition": "To start using a plan, law, or policy; to implement something so that it becomes active or operational.",
+    "example": "The safety protocols were put into effect immediately after the accident.",
+    "distractor_notes": {
+      "put together": "put together 是「組合；整合；拼湊」，如 put together a team 或 put together a report。強調「將部分聚合成整體」，而 put into effect 強調「使某政策/計畫開始運作」。",
+      "looked down upon": "looked down upon 是「輕視；瞧不起」，如 looked down upon by peers。帶有社會評判含義，與法規實施完全無關。",
+      "left out": "left out 是「被排除在外；遺漏」，如 left out of the meeting。語意與「使生效」相反——left out 是「沒被包含進去」，put into effect 是「正式啟動執行」。"
+    },
+    "sentence_zh": "經過保育團體多年的遊說以及越來越多的科學佐證，這批新的環境法規終於正式付諸實施。"
+  },
+  {
+    "id": "PSYCH_V08",
+    "source": "PSYCH",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "NCKU_112_Q40",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "___ is a neurological phenomenon in which individuals with damage to the visual cortex can respond to visual stimuli — such as pointing to an object's location — despite having no conscious awareness of seeing anything.",
+    "options": [
+      "Blindsight",
+      "Peripheral vision",
+      "Visual agnosia",
+      "Inattentional blindness"
+    ],
+    "answer": "A",
+    "target_word": "blindsight",
+    "chinese": "盲視；盲覺（視覺皮質受損者在無意識狀態下仍能對視覺刺激作出反應的現象）",
+    "definition": "A neuropsychological phenomenon in which a person with damage to the primary visual cortex (V1) is unable to consciously perceive objects in their blind field, yet can still accurately respond to visual stimuli (e.g., detecting movement or pointing to objects) without awareness.",
+    "example": "Research on blindsight challenges the assumption that conscious perception is necessary for all visually guided behavior.",
+    "distractor_notes": {
+      "peripheral vision": "peripheral vision（周邊視覺）是指視野邊緣的視覺感知，屬於正常視覺功能的一部分。blindsight 患者通常對整個視野區域都無法有意識地感知，不只是邊緣問題。",
+      "visual agnosia": "**最大陷阱**——visual agnosia（視覺認知不能症）是指患者雖然能看到物體，但無法辨識其為何物（如 Oliver Sacks《錯把太太當帽子的人》）。與 blindsight 的差異：agnosia 是「看得到但認不出」，blindsight 是「意識上看不到但行為上能反應」——兩者都是視覺神經心理學的重要現象，但機制不同。",
+      "inattentional blindness": "inattentional blindness（不注意盲視）是指因注意力集中在別處而未察覺到明顯刺激（如「大猩猩實驗」），屬於注意力現象，不涉及視覺皮質損傷，與 blindsight 的神經生理基礎完全不同。"
+    },
+    "sentence_zh": "盲視是一種神經學現象，指視覺皮質受損的患者，儘管在意識上沒有任何視覺感知，仍能對視覺刺激作出反應——例如能指出物體的位置。"
+  },
+  {
+    "id": "NCKU_113_V01",
+    "source": "NCKU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Q03",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "The committee is ___ making hasty decisions without sufficient data, preferring to delay action until the evidence is clearer.",
+    "options": [
+      "averse to",
+      "curious about",
+      "worthy of",
+      "renowned for"
+    ],
+    "answer": "A",
+    "target_word": "averse to",
+    "chinese": "反感的；厭惡的；不願意的（用於 be averse to）",
+    "definition": "Having a strong dislike or opposition to something; reluctant or unwilling to engage with something.",
+    "example": "He is not averse to the idea of relocating for work, but he would prefer to stay close to his family.",
+    "distractor_notes": {
+      "curious about": "curious about 是「對⋯感到好奇」，帶有正面探究的態度。與 averse to 的「排斥」方向完全相反——averse 是不想做，curious 是主動想了解。",
+      "worthy of": "worthy of 是「值得⋯的；配得上」，如 worthy of attention。描述某事物本身的價值，不描述主語的心理傾向，語境不符。",
+      "renowned for": "renowned for 是「以⋯聞名」，如 renowned for its cuisine。同樣描述客觀特質，而非心理上的排斥態度，與 averse to 語意無關。"
+    },
+    "sentence_zh": "這個委員會不願在沒有充分數據的情況下倉促做出決定，傾向於等到證據更加明確後再採取行動。"
+  },
+  {
+    "id": "NCKU_113_V02",
+    "source": "NCKU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Q04",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "___ his impressive credentials and decades of experience, the consultant failed to convince the board that his restructuring plan would work.",
+    "options": [
+      "For all",
+      "Considering",
+      "As for",
+      "Concerning"
+    ],
+    "answer": "A",
+    "target_word": "for all",
+    "chinese": "儘管；雖然（= despite，強調事與願違）",
+    "definition": "An idiomatic expression meaning 'despite' or 'in spite of'; used before a noun phrase to indicate that something is true even though a contrasting condition exists.",
+    "example": "For all her hard work, she still didn't get the promotion she deserved.",
+    "distractor_notes": {
+      "Considering": "considering 是「考量到；鑑於」，如 considering his age，有「將某因素納入評估」的含義，不像 for all 帶有「儘管如此反而⋯」的轉折語氣。",
+      "As for": "as for 是「至於；關於」，用於轉換話題或補充說明，如 as for the cost, that's another matter。引導新話題，不表示「讓步/轉折」。",
+      "Concerning": "concerning 是「關於；有關」，如 concerning your application，與 as for 類似，是介紹話題的介系詞，不含「儘管」的讓步語氣。"
+    },
+    "sentence_zh": "儘管擁有令人印象深刻的資歷和數十年的工作經驗，這位顧問仍未能說服董事會相信他的重組計畫可行。"
+  },
+  {
+    "id": "NCKU_113_V03",
+    "source": "NCKU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Q07",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Living in a coastal area, the residents are often ___ hurricanes, leading to evacuations and property damage during storm seasons.",
+    "options": [
+      "at the mercy of",
+      "at the cost of",
+      "at the chance of",
+      "at the brink of"
+    ],
+    "answer": "A",
+    "target_word": "at the mercy of",
+    "chinese": "任憑⋯擺布；完全受⋯控制；無力抵抗",
+    "definition": "Completely in the power of someone or something; having no ability to resist or control what happens.",
+    "example": "Without adequate savings, workers are completely at the mercy of their employers when it comes to wages and conditions.",
+    "distractor_notes": {
+      "at the cost of": "at the cost of 是「以⋯為代價」，如 at the cost of his health，強調犧牲了什麼來換取某結果；at the mercy of 強調「完全無力抵抗某力量」，兩者語境不同。",
+      "at the chance of": "\"at the chance of\" is not a standard English idiom. \"On the chance of\" (抱著⋯的希望) exists, but \"at the chance of hurricanes\" is not natural or idiomatic.",
+      "at the brink of": "**最大陷阱**——at the brink of 是「在⋯的邊緣；即將發生」，如 at the brink of war 或 at the brink of collapse。強調「臨界點」，而 at the mercy of 強調「持續受控於某力量」；颶風季節是長期處於風暴控制下，不是「在邊緣上」的概念。"
+    },
+    "sentence_zh": "住在沿海地區，居民在颶風季節往往任憑風暴擺布，一旦颶風來襲便不得不疏散撤離，財物也難逃損毀。"
+  },
+  {
+    "id": "NCKU_113_V04",
+    "source": "NCKU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Q14",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "With the gourmet restaurant fully booked, the diners had to ___ a quick meal from a nearby café.",
+    "options": [
+      "make do with",
+      "find out",
+      "stay away with",
+      "go without"
+    ],
+    "answer": "A",
+    "target_word": "make do with",
+    "chinese": "將就用；湊合；勉強應付",
+    "definition": "To manage with less than ideal resources or conditions; to accept what is available even if it is not exactly what was wanted.",
+    "example": "We didn't have all the ingredients, so we had to make do with what was in the fridge.",
+    "distractor_notes": {
+      "find out": "find out 是「發現；查明」，如 find out the truth。語意是「獲取資訊」，與「將就使用現有資源」毫無關聯。",
+      "stay away with": "\"stay away with\" is not a standard English phrase. \"Stay away from\" (遠離) exists, but stay away with something is not idiomatic.",
+      "go without": "**最大陷阱**——go without 是「沒有⋯也撐過去；忍受沒有某物」，如 go without food。與 make do with 的差異：make do with 是「接受替代品將就用」，go without 是「完全沒有某東西但仍繼續」——前者有找到替代方案，後者是完全放棄。"
+    },
+    "sentence_zh": "由於那家高級餐廳訂位已滿，用餐者只能湊合著在附近的咖啡館簡單吃一頓。"
+  },
+  {
+    "id": "NCKU_113_V05",
+    "source": "NCKU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Q21",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Financial literacy ___ individuals to make confident, informed decisions about budgeting, saving, and investing for their future.",
+    "options": [
+      "empowers",
+      "endangers",
+      "enriches",
+      "encounters"
+    ],
+    "answer": "A",
+    "target_word": "empower",
+    "chinese": "賦權；賦予能力；使有能力掌控",
+    "definition": "To give someone the authority, confidence, or means to do something; to enable people to take control of their own situation.",
+    "example": "Education empowers individuals to challenge injustice and advocate for their own rights.",
+    "distractor_notes": {
+      "endangers": "**反義陷阱**——endangers 是「使陷入危險」，如 endangers lives。語意完全相反：empower 是「增強能力」，endanger 是「帶來威脅」。",
+      "enriches": "enriches 是「豐富；使富裕」，如 enriches the culture。語意上也為正面，但 enriches 強調「增加內容或財富」，empower 強調「賦予主動掌控的能力」——前者是量的增加，後者是自主力的賦予。",
+      "encounters": "encounters 是「遭遇；邂逅」，如 encounter difficulties。動詞語意是「接觸某事物」，而非「賦予能力」，語意與語境皆不符。"
+    },
+    "sentence_zh": "財務素養使個人能夠自信、知情地做出有關預算、儲蓄和投資的決策，掌控自己的財務未來。"
+  },
+  {
+    "id": "PSYCH_V09",
+    "source": "PSYCH",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "NCKU_113_Reading_Q34",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "In developmental psychology, ___ refers not merely to bouncing back from adversity, but to the dynamic process of positive adaptation — and sometimes growth — in the face of significant stress, trauma, or hardship.",
+    "options": [
+      "resilience",
+      "persistence",
+      "endurance",
+      "tolerance"
+    ],
+    "answer": "A",
+    "target_word": "resilience",
+    "chinese": "心理韌性；復原力；從逆境中恢復的能力",
+    "definition": "The capacity to recover from difficulties, trauma, or stress and adapt positively; in psychology, it describes not just survival but the ability to maintain or regain functioning under adversity.",
+    "example": "Research shows that strong social support networks are one of the most reliable predictors of resilience in children who have experienced adverse childhood events.",
+    "distractor_notes": {
+      "persistence": "**最大陷阱**——persistence（堅持；不屈不撓）是「持續努力不放棄」，強調「繼續進行的意志」；resilience 強調「從挫折中復原的能力」。兩者都描述面對困難的正面特質，但 persistence 是「繼續前進」，resilience 是「被打倒後站起來」。",
+      "endurance": "endurance（忍耐；持久力）是「承受困難或痛苦的能力」，偏向被動的「撐過去」；resilience 更強調主動的「復原與適應」，並常包含「從中學習或成長」的積極維度（Bonanno, 2004）。",
+      "tolerance": "tolerance（容忍；耐受性）是「忍受不喜歡或不舒適事物的能力」，如 pain tolerance（疼痛耐受度）或 tolerance for ambiguity（對模糊的容忍）。Resilience 是面對逆境後的「復原力」，tolerance 是面對不適的「忍耐力」，兩個心理學構念不可互換。"
+    },
+    "sentence_zh": "在發展心理學中，心理韌性不僅是指從逆境中「彈回原狀」，而是指在面對重大壓力、創傷或困境時，積極適應——乃至從中成長——的動態歷程。"
+  },
+  {
+    "id": "NCKU_114_V01",
+    "source": "NCKU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NCKU_114_Q01",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Many patients require long-term rehabilitation care after ___ from hospital, particularly those recovering from stroke or major surgery.",
+    "options": [
+      "discharge",
+      "dispose",
+      "disengagement",
+      "disillusionment"
+    ],
+    "answer": "A",
+    "target_word": "discharge",
+    "chinese": "出院；正式釋放；排放；（職責的）履行",
+    "definition": "In medical contexts, the official release of a patient from hospital care; more broadly, to release someone from a duty, obligation, or place of confinement.",
+    "example": "Following discharge from the rehabilitation unit, patients are typically referred to outpatient therapy.",
+    "distractor_notes": {
+      "dispose": "dispose 是「處置；丟棄；消除」，如 dispose of waste 或 dispose of evidence。語意與「從醫院釋出」毫無關聯，僅是 dis- 開頭造成混淆。",
+      "disengagement": "disengagement 是「脫離接觸；解除（承諾或關係）」，如 military disengagement 或 emotional disengagement。描述「退出某種關係或狀態」，但不用於描述正式的醫療出院程序。",
+      "disillusionment": "**最大陷阱**——disillusionment 是「幻滅；不再抱有幻想」，如 growing disillusionment with the government。字形最長，讀起來最像「正式術語」，但語意是心理層面的「信念破滅」，與醫療出院語境毫無關係。"
+    },
+    "sentence_zh": "許多病患在出院後仍需要長期的復健照護，尤其是正在從中風或重大手術中恢復的患者。"
+  },
+  {
+    "id": "NCKU_114_V02",
+    "source": "NCKU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NCKU_114_Q07",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Due to her great sense of guilt, Jennifer has developed an ___ with cleanliness and has to wash her hands many times a day.",
+    "options": [
+      "obsession",
+      "affection",
+      "oppression",
+      "addiction"
+    ],
+    "answer": "A",
+    "target_word": "obsession",
+    "chinese": "強迫性念頭；執念；無法擺脫的想法或行為",
+    "definition": "A persistent, intrusive preoccupation with an idea, image, or desire that is difficult to control; in clinical psychology, a key feature of Obsessive-Compulsive Disorder (OCD).",
+    "example": "His obsession with perfection made it impossible for him to submit any work he considered less than flawless.",
+    "distractor_notes": {
+      "affection": "affection 是「情感；喜愛；溫情」，帶正面情緒含義，如 show affection for children。與 obsession 的「無法控制的強迫念頭」語意相反——affection 是健康的情感，obsession 帶有負面的強迫性。",
+      "oppression": "oppression 是「壓迫；壓制」，如 political oppression 或 the oppression of minorities。描述的是外部施加的不公正壓制，而 obsession 是內在產生的強迫性想法，兩者一外一內，截然不同。",
+      "addiction": "**最大陷阱**——addiction（成癮）與 obsession（強迫念頭）在日常語言中常被混用，但心理學上有嚴格區別：addiction 涉及物質或行為的「生理/心理依賴」，通常帶來愉悅感；obsession 是 OCD 的核心症狀，為「自我不願接受的侵入性念頭」，往往引發焦慮而非快感。"
+    },
+    "sentence_zh": "由於強烈的罪惡感，珍妮弗對清潔產生了一種執念，每天必須多次洗手。"
+  },
+  {
+    "id": "NCKU_114_V03",
+    "source": "NCKU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NCKU_114_Q08",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "If you want to bring your dog with you on your trip abroad, you have to put it in ___ one week before you depart for the airport.",
+    "options": [
+      "quarantine",
+      "quantum",
+      "questionnaire",
+      "queue"
+    ],
+    "answer": "A",
+    "target_word": "quarantine",
+    "chinese": "隔離；檢疫隔離（防止疾病傳播的強制措施）",
+    "definition": "A period of isolation imposed on people, animals, or goods that may have been exposed to contagious disease, in order to prevent the spread of infection.",
+    "example": "Returning travelers were required to quarantine for ten days during the height of the pandemic.",
+    "distractor_notes": {
+      "quantum": "quantum 是「量子；（物理學）能量的最小單位」，如 quantum mechanics 或 quantum computing。與隔離措施毫無關聯，只是字型相近（qu-開頭）。",
+      "questionnaire": "questionnaire 是「問卷；調查表」，如 fill out a questionnaire。同樣是 qu- 開頭的多音節詞，但語意是「蒐集資訊的工具」，不是「防止疾病傳播的措施」。",
+      "queue": "queue 是「排隊；等待行列」，如 join the queue。Q 開頭最短的單字，但 put someone in a queue 不是給動物準備出境的標準程序——quarantine 才是出境前的強制措施。"
+    },
+    "sentence_zh": "如果你想在出國旅行時帶上你的狗，必須在出發前一週將牠送去接受隔離檢疫。"
+  },
+  {
+    "id": "NCKU_114_V04",
+    "source": "NCKU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NCKU_114_Q15",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Jennifer lost her only son during the earthquake. Since then, she has never recovered from this ___ experience and often wept whenever she was alone.",
+    "options": [
+      "traumatic",
+      "terrific",
+      "tremendous",
+      "transparent"
+    ],
+    "answer": "A",
+    "target_word": "traumatic",
+    "chinese": "造成心理創傷的；引起精神創傷的",
+    "definition": "Deeply distressing or disturbing; causing lasting psychological harm; relating to or causing trauma.",
+    "example": "Witnessing violence at a young age can have traumatic effects that persist well into adulthood.",
+    "distractor_notes": {
+      "terrific": "terrific 是「極好的；精彩的；巨大的」，現代用法幾乎都是正面含義，如 a terrific performance。雖然語源上與恐怖有關，但現代英文中 terrific = wonderful，與描述負面心理衝擊的 traumatic 相反。",
+      "tremendous": "tremendous 是「巨大的；了不起的；驚人的」，如 tremendous pressure 或 tremendous achievement。可用於負面語境（如 tremendous loss），但強調「程度巨大」而非「造成心理創傷」。",
+      "transparent": "transparent 是「透明的；顯而易見的；坦誠的」，如 a transparent policy 或 transparent glass。語意與描述心理創傷的 traumatic 毫無關聯，字形相近是唯一干擾因素。"
+    },
+    "sentence_zh": "珍妮弗在地震中失去了她唯一的兒子。從那以後，她就再也無法從這段創傷性的經歷中走出來，每當一個人獨處時都會哭泣。"
+  },
+  {
+    "id": "PSYCH_V10",
+    "source": "PSYCH",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "NCKU_114_Cloze_Depression",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "According to the ___, mental disorders such as depression cannot be fully explained by biology alone — they arise from the complex interaction of biological vulnerabilities, psychological factors like cognitive patterns, and social determinants such as poverty and isolation.",
+    "options": [
+      "biopsychosocial model",
+      "cognitive behavioral model",
+      "medical model",
+      "diathesis-stress model"
+    ],
+    "answer": "A",
+    "target_word": "biopsychosocial model",
+    "chinese": "生理心理社會模型（整合三個維度解釋健康與疾病的框架）",
+    "definition": "A framework proposed by George Engel (1977) that explains health and illness as the product of the interaction among biological factors (genetics, brain chemistry), psychological factors (emotions, cognitions, behavior), and social factors (relationships, culture, socioeconomic status).",
+    "example": "The biopsychosocial model is now the dominant framework in clinical psychology and psychiatry, replacing the purely biomedical approach to mental illness.",
+    "distractor_notes": {
+      "cognitive behavioral model": "**最大陷阱**——cognitive behavioral model（認知行為模型）是 CBT 的理論基礎，強調思維模式（認知）如何影響情緒和行為，是心理層面的模型；biopsychosocial model 範圍更廣，整合了生理、心理和社會三個維度，CBT 只是其中心理維度的一部分。",
+      "medical model": "medical model（醫療模型）將疾病視為純粹的生理問題——由生理原因引起、用生理方法治療。這是 biopsychosocial model 明確批判和取代的框架；Engel 提出 biopsychosocial model 的目的，正是為了克服 medical model 的局限性。",
+      "diathesis-stress model": "diathesis-stress model（素質-壓力模型）認為心理疾病由先天脆弱性（diathesis）與環境壓力（stress）的共同作用引發。雖然也是整合模型，但 biopsychosocial model 的三維框架更為全面，且已成為臨床教育的標準模型；diathesis-stress 更常見於解釋精神分裂症或憂鬱症的發病機制。"
+    },
+    "sentence_zh": "根據生理心理社會模型，憂鬱症等心理疾病無法僅用生物因素加以完整解釋——它們源於生理脆弱性、認知模式等心理因素，以及貧困與社會孤立等社會決定因素之間複雜的交互作用。"
   }
 ]
