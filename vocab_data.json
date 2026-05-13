@@ -7800,5 +7800,680 @@
       "diathesis-stress model": "diathesis-stress model（素質-壓力模型）認為心理疾病由先天脆弱性（diathesis）與環境壓力（stress）的共同作用引發。雖然也是整合模型，但 biopsychosocial model 的三維框架更為全面，且已成為臨床教育的標準模型；diathesis-stress 更常見於解釋精神分裂症或憂鬱症的發病機制。"
     },
     "sentence_zh": "根據生理心理社會模型，憂鬱症等心理疾病無法僅用生物因素加以完整解釋——它們源於生理脆弱性、認知模式等心理因素，以及貧困與社會孤立等社會決定因素之間複雜的交互作用。"
+  },
+  {
+    "id": "SCU_109_V01",
+    "source": "SCU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "SCU_109_Q07",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "The ___ of COVID-19 has caused great inconvenience to many families across Taiwan and the rest of the world.",
+    "options": [
+      "outbreak",
+      "destiny",
+      "contempt",
+      "isolation"
+    ],
+    "answer": "A",
+    "target_word": "outbreak",
+    "chinese": "（疾病、衝突等的）爆發；突然發生",
+    "definition": "A sudden occurrence of something unwelcome, such as war, disease, or violence; the moment when something harmful begins to spread rapidly.",
+    "example": "The outbreak of the disease was traced back to a single food processing facility.",
+    "distractor_notes": {
+      "destiny": "destiny 是「命運；天命」，描述某人或某事最終注定的走向。與「疾病突然爆發」的語意毫無關聯，僅是填入「某種名詞」的干擾。",
+      "contempt": "contempt 是「蔑視；輕視」，如 contempt for authority 或 contempt of court。描述的是態度，與疾病傳播完全不同語域。",
+      "isolation": "**最大陷阱**——isolation（隔離；孤立）在 COVID 語境中確實高頻出現，如 social isolation 或 isolation ward。但 isolation 是疾病「管控手段」，outbreak 是疾病「開始爆發的事件」——前者是應對措施，後者是觸發事件。"
+    },
+    "sentence_zh": "新冠肺炎的爆發對臺灣及全球許多家庭造成了極大的不便。"
+  },
+  {
+    "id": "SCU_109_V02",
+    "source": "SCU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "SCU_109_Q08",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "During a _____, many people become unemployed and very few new jobs are available, as companies cut costs to survive.",
+    "options": [
+      "recession",
+      "prediction",
+      "fluctuation",
+      "infection"
+    ],
+    "answer": "A",
+    "target_word": "recession",
+    "chinese": "經濟衰退；不景氣（GDP 連續兩季負成長）",
+    "definition": "A significant decline in economic activity lasting more than a few months; technically defined as two consecutive quarters of negative GDP growth.",
+    "example": "The global recession of 2008 led to millions of job losses and a sharp drop in consumer spending.",
+    "distractor_notes": {
+      "prediction": "prediction 是「預測；預言」，描述對未來事件的估計，不是描述一種使人失業的經濟狀況。",
+      "fluctuation": "fluctuation 是「波動；起伏」，如 fluctuation in prices。描述上下波動的過程，而非持續下滑的衰退狀態；且 fluctuation 不直接造成大量失業，recession 才是主要成因。",
+      "infection": "**最大陷阱**——infection 是「感染；傳染」，在 COVID 語境中出題時容易讓人聯想 Q7 的答案。但 infection 描述疾病，recession 描述經濟，兩者連語域都不同；「infection 使人失業」邏輯上也不成立。"
+    },
+    "sentence_zh": "在經濟衰退期間，許多人失去工作，幾乎沒有新職缺出現，因為企業都在削減成本以求生存。"
+  },
+  {
+    "id": "SCU_109_V03",
+    "source": "SCU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "SCU_109_Q15",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "All his hard work in the past three years has _____ now that the student has graduated with top honors.",
+    "options": [
+      "paid off",
+      "given in",
+      "fallen apart",
+      "come along"
+    ],
+    "answer": "A",
+    "target_word": "pay off",
+    "chinese": "（努力、犧牲）得到回報；奏效；值得",
+    "definition": "To produce a good result after effort; to be successful or profitable after investment of time, money, or work.",
+    "example": "Her years of dedicated practice finally paid off when she won the national competition.",
+    "distractor_notes": {
+      "given in": "given in 是「讓步；投降」，如 give in to pressure。強調「放棄堅持，接受對方的要求」，語意與「努力得到回報」相反。",
+      "fallen apart": "**反義陷阱**——fallen apart 是「崩潰；瓦解；四分五裂」，如 the plan fell apart。強調徹底失敗，與 paid off 的「成功」完全相反——同一語境下最容易與 paid off 形成反差。",
+      "come along": "come along 是「進展；出現；一起來」，如 how is your work coming along? 語意是「進展如何」或「要不要一起來」，不表示「終於獲得回報」的完成結果。"
+    },
+    "sentence_zh": "這位學生在過去三年裡的全力付出如今終於得到了回報，他以最優異的成績畢業了。"
+  },
+  {
+    "id": "SCU_109_V04",
+    "source": "SCU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "SCU_109_Q20",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "His behavior at the dinner party seemed rather _____ — he kept interrupting people mid-sentence and ignoring basic social etiquette.",
+    "options": [
+      "out of place",
+      "out of practice",
+      "out of politeness",
+      "out of pity"
+    ],
+    "answer": "A",
+    "target_word": "out of place",
+    "chinese": "不合時宜的；格格不入的；不得體的",
+    "definition": "Not appropriate for a particular situation; seeming wrong or awkward in a specific context; not fitting in with the surroundings or circumstances.",
+    "example": "The casual jokes felt completely out of place at such a somber memorial service.",
+    "distractor_notes": {
+      "out of practice": "out of practice 是「生疏了；久未練習」，如 I'm a bit out of practice at tennis。描述技能因缺乏練習而退步，與描述行為不得體的語境不同。",
+      "out of politeness": "out of politeness 是「出於禮貌」，如 he stayed out of politeness。表示動機是禮貌，語意方向完全相反——out of politeness 是有禮，out of place 是不禮貌。",
+      "out of pity": "out of pity 是「出於同情」，如 she helped him out of pity。同樣描述動機，不描述行為是否得體。這四個 out of 片語在同一題出現是典型的詞組辨析陷阱。"
+    },
+    "sentence_zh": "他在晚宴上的行為顯得相當不得體——他不斷打斷別人說話，完全無視基本的社交禮儀。"
+  },
+  {
+    "id": "SCU_109_V05",
+    "source": "SCU",
+    "year": 109,
+    "year_ad": 2020,
+    "exam_section": "SCU_109_Reading_Q07",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "Before making a decision, she always imagined the _____ — what would happen if everything went wrong — so she could prepare herself mentally for the worst possible outcome.",
+    "options": [
+      "worst-case scenario",
+      "best possible outcome",
+      "likely consequence",
+      "probable resolution"
+    ],
+    "answer": "A",
+    "target_word": "worst-case scenario",
+    "chinese": "最壞的情況；情況最糟糕時的假設",
+    "definition": "The most negative or unfavorable possible outcome of a situation; a planning concept used to prepare for or evaluate the most extreme negative possibilities.",
+    "example": "In cognitive behavioral therapy, clients are often asked to examine their worst-case scenario and evaluate how likely it actually is.",
+    "distractor_notes": {
+      "best possible outcome": "best possible outcome 是「最好的可能結果」，與 worst-case scenario 構成完美反義對。兩者都是決策分析和心理治療中的常見框架：worst-case 考慮最壞，best-case 考慮最好。",
+      "likely consequence": "likely consequence 是「可能的後果」，描述根據現實機率最可能發生的結果，不強調「最壞的極端情況」；worst-case scenario 特指所有可能結果中最糟糕的那一種，不論其機率高低。",
+      "probable resolution": "probable resolution 是「可能的解決方式」，描述問題被解決的方向，語意指向「解決」而非「最壞情況的預演」。"
+    },
+    "sentence_zh": "在做任何決定之前，她總是會設想最壞的情況——如果一切都出了差錯會怎樣——以便在心理上做好迎接最不利結果的準備。"
+  },
+  {
+    "id": "SCU_111_V01",
+    "source": "SCU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "SCU_111_Q08",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "As the factory is downsizing, many workers lose their ______, leaving entire families without a steady source of income.",
+    "options": [
+      "livelihood",
+      "duty",
+      "task",
+      "undertaking"
+    ],
+    "answer": "A",
+    "target_word": "livelihood",
+    "chinese": "生計；謀生方式；維持生活的收入來源",
+    "definition": "A means of earning money or providing for oneself and one's family; the way in which one secures the necessities of life.",
+    "example": "Many fishing communities depend entirely on the sea for their livelihood.",
+    "distractor_notes": {
+      "duty": "duty 是「職責；義務；關稅」，描述「應盡的責任」而非「維持生計的方式」。失去 duty 意味著「被免除義務」，不是陷入生活困境。",
+      "task": "task 是「任務；工作項目」，指特定的、需完成的工作，不描述「長期維持生計的方式」。失去 task 表示「某項工作結束」，不像失去 livelihood 那樣影響整個家庭的生活。",
+      "undertaking": "**最大陷阱**——undertaking 是「承諾；事業；（正式）保證」，如 a major undertaking 或 sign an undertaking。雖然語義上較接近「工作事業」，但 undertaking 強調「承擔的任務或保證」，livelihood 強調「賴以維生的收入來源」，後者涵蓋的生存意義更深。"
+    },
+    "sentence_zh": "隨著工廠縮減規模，許多工人失去了生計，整個家庭頓失穩定的收入來源。"
+  },
+  {
+    "id": "SCU_111_V02",
+    "source": "SCU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "SCU_111_Q10",
+    "format": "cloze",
+    "difficulty": "hard",
+    "sentence": "Millions of people suffer from the catastrophic effects of extreme weather events ___ by climate change, including prolonged droughts, devastating floods, and unprecedented wildfires.",
+    "options": [
+      "exacerbated",
+      "mitigated",
+      "enticed",
+      "reimbursed"
+    ],
+    "answer": "A",
+    "target_word": "exacerbate",
+    "chinese": "加劇；惡化；使（問題）更嚴重",
+    "definition": "To make a problem, situation, or negative condition worse or more severe than it already is.",
+    "example": "The lack of sleep only exacerbated his anxiety, creating a vicious cycle.",
+    "distractor_notes": {
+      "mitigated": "**反義陷阱**——mitigated 是「減輕；緩和」，如 mitigate the effects of pollution。與 exacerbated 構成完美反義對：mitigate 是使問題變小，exacerbate 是使問題變大。兩者都是 C1+ 學術動詞，必須嚴格區分。",
+      "enticed": "enticed 是「誘惑；引誘」，如 enticed by the offer。描述吸引某人做某事，與「使災害嚴重化」語意毫無關聯，只是字型長度相近。",
+      "reimbursed": "reimbursed 是「報銷；賠償；退款」，如 reimbursed for expenses。財務語境，與氣候災害加劇的語境完全不相干。"
+    },
+    "sentence_zh": "數百萬人正在承受極端天氣事件的災難性影響——而這些事件都因氣候變遷而加劇，包括持續的乾旱、毀滅性的洪水以及史無前例的野火。"
+  },
+  {
+    "id": "SCU_111_V03",
+    "source": "SCU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "SCU_111_Q13",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Two of every three deaths in current long-term smokers can be directly ___ smoking, according to a major longitudinal study published last year.",
+    "options": [
+      "attributed to",
+      "obligated to",
+      "qualified for",
+      "compensated for"
+    ],
+    "answer": "A",
+    "target_word": "attribute to",
+    "chinese": "將⋯歸因於；認為⋯是由⋯所造成",
+    "definition": "To regard something as being caused by a particular person, factor, or situation; to assign a cause or credit to a specific source.",
+    "example": "Researchers attributed the rise in anxiety among young people to increased screen time and social media use.",
+    "distractor_notes": {
+      "obligated to": "obligated to 是「有義務做⋯；感到應該做⋯」，如 obligated to respond。描述的是義務關係，而非因果關係；attribute to 是「指出原因」，obligated to 是「承擔責任」。",
+      "qualified for": "qualified for 是「有資格獲得⋯；符合⋯的條件」，如 qualified for the scholarship。描述「達到某標準因而有資格」，與「將死亡歸因於吸煙」語意完全不同。",
+      "compensated for": "compensated for 是「補償；彌補」，如 compensated for the damage。描述「給予補償以抵銷損失」，語意方向完全不同：compensated for 是給予回應，attributed to 是追溯原因。"
+    },
+    "sentence_zh": "根據去年發表的一項重大縱貫性研究，目前長期吸煙者中，每三例死亡就有兩例可以直接歸因於吸煙。"
+  },
+  {
+    "id": "SCU_111_V04",
+    "source": "SCU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "SCU_111_Q16",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "James has been living in the village for years; ______, the villagers still think of him as an outsider who hasn't truly earned their trust.",
+    "options": [
+      "nevertheless",
+      "accordingly",
+      "likewise",
+      "in contrast"
+    ],
+    "answer": "A",
+    "target_word": "nevertheless",
+    "chinese": "儘管如此；然而（表示轉折，用於承認前提後提出反例）",
+    "definition": "In spite of what has just been said; used to introduce a statement that contrasts with or seems to contradict something previously mentioned.",
+    "example": "The evidence against him was overwhelming; nevertheless, the jury acquitted him.",
+    "distractor_notes": {
+      "accordingly": "accordingly 是「因此；相應地」，表示邏輯上的順承，如 the prices rose accordingly。描述「按預期方向的結果」，與 nevertheless 的「出乎意料的反轉」方向相反。",
+      "likewise": "likewise 是「同樣地；照樣」，如 she waved and he did likewise。強調「以相同方式做某事」，表示一致性，與表示對比的 nevertheless 語意相反。",
+      "in contrast": "**最大陷阱**——in contrast 是「相比之下；與之對比」，也表示對比關係，與 nevertheless 最接近。差別：in contrast 通常引導對另一個事物的比較（in contrast to X, Y...），nevertheless 是承認前述情況後引出出人意料的結果（X happens; nevertheless, Y also happens）。"
+    },
+    "sentence_zh": "詹姆斯在這個村子裡住了好幾年；儘管如此，村民們仍然把他視為外來者，認為他尚未真正贏得他們的信任。"
+  },
+  {
+    "id": "SCU_111_V05",
+    "source": "SCU",
+    "year": 111,
+    "year_ad": 2022,
+    "exam_section": "SCU_111_Reading2_Q07",
+    "format": "meta_vocab",
+    "difficulty": "hard",
+    "sentence": "The pandemic pressure on businesses to ___ longstanding practices has given rise to new restaurant concepts and technologies.",
+    "options": [
+      "upend",
+      "manage",
+      "uphold",
+      "restore"
+    ],
+    "answer": "A",
+    "target_word": "upend",
+    "chinese": "顛覆；推翻；使⋯上下翻轉（字面或比喻）",
+    "definition": "To tip over or turn upside down; figuratively, to disrupt, overturn, or fundamentally change an established system, practice, or assumption.",
+    "example": "The rise of smartphones upended the traditional camera industry almost overnight.",
+    "distractor_notes": {
+      "manage": "manage 是「管理；設法做到；勉強應付」，語意指「處理控制」而非「顛覆翻轉」——manage practices 意味著維持現狀，upend practices 意味著徹底推翻。",
+      "uphold": "**反義陷阱**——uphold 是「維護；支持；堅守（標準/規則/決定）」，如 uphold the law 或 uphold a tradition。與 upend 字型相近（都以 up- 開頭），語意卻完全相反：uphold 是「維持」，upend 是「推翻」。",
+      "restore": "restore 是「恢復；修復；重建（原來的狀態）」，如 restore order 或 restore a painting。語意是「讓事物回到原來的樣子」，與 upend 的「打亂原有秩序」方向相反。"
+    },
+    "sentence_zh": "疫情迫使企業顛覆長久以來的慣例，催生出新的餐廳概念與技術。"
+  },
+  {
+    "id": "SCU_112_V01",
+    "source": "SCU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "SCU_112_Q03",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "I'm really ___ for what you have done to help me solve the problem — I couldn't have managed without you.",
+    "options": [
+      "grateful",
+      "appreciate",
+      "considerate",
+      "thoughtful"
+    ],
+    "answer": "A",
+    "target_word": "grateful",
+    "chinese": "感激的；心存感謝的（用於 be grateful for/to）",
+    "definition": "Feeling or showing thanks for something kind that has been done; appreciative of benefits received.",
+    "example": "She was deeply grateful to her mentor for the guidance he had provided throughout her career.",
+    "distractor_notes": {
+      "appreciate": "**最大陷阱**——appreciate 是動詞「感謝；欣賞；理解」，如 I appreciate your help。選項 A 位置需要形容詞（I'm really ___），而 appreciate 是動詞，語法上不能放在連綴動詞後作主詞補語。grateful 是形容詞，語法正確。",
+      "considerate": "considerate 是「體貼的；為他人著想的」，描述某人「主動考慮他人感受」的性格特質；grateful 描述的是「接受幫助後的感謝之情」，兩者雖都正面，但一個是給予者的特質，一個是接受者的感受。",
+      "thoughtful": "thoughtful 是「體貼的；深思熟慮的」，與 considerate 類似，強調「思慮周全」或「對他人細心」。同樣是描述「給予方」的特質，而非「受惠方的感激情緒」。"
+    },
+    "sentence_zh": "我真的非常感激你幫我解決這個問題——沒有你的話我根本撐不過去。"
+  },
+  {
+    "id": "SCU_112_V02",
+    "source": "SCU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "SCU_112_Q06",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "The ___ conference will take place next week. Every company is busy preparing for the once-a-year big event.",
+    "options": [
+      "annual",
+      "renewal",
+      "continual",
+      "additional"
+    ],
+    "answer": "A",
+    "target_word": "annual",
+    "chinese": "每年的；年度的；一年一次的",
+    "definition": "Occurring, done, or produced once every year; relating to or based on a year.",
+    "example": "The company holds an annual general meeting where shareholders vote on major decisions.",
+    "distractor_notes": {
+      "renewal": "renewal 是「更新；續約；重建」，如 contract renewal 或 urban renewal。強調「使某物恢復或再次有效」，不描述「一年一次的頻率」。",
+      "continual": "continual 是「不斷的；時常發生的；反覆的」，如 continual interruptions。強調「頻繁重複發生」，與 annual「每年一次」的頻率完全不同——continual 意味著非常頻繁，annual 意味著一年才一次。",
+      "additional": "additional 是「額外的；附加的」，如 additional fee。描述「在現有基礎上增加」，不描述時間頻率；annual conference 是「年度會議」，additional conference 是「額外增加的會議」，語意迥異。"
+    },
+    "sentence_zh": "這場年度會議將在下週舉行。每家公司都正忙著為這個一年一度的重大活動做準備。"
+  },
+  {
+    "id": "SCU_112_V03",
+    "source": "SCU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "SCU_112_Q15",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "With the deadline approaching fast, the entire team worked through the night to _____ on time.",
+    "options": [
+      "get the job done",
+      "get the job do",
+      "getting the job to do",
+      "getting the job do"
+    ],
+    "answer": "A",
+    "target_word": "get the job done",
+    "chinese": "完成任務；把事情搞定；做完該做的事",
+    "definition": "To successfully complete a task or piece of work, especially under pressure or despite difficulties.",
+    "example": "We don't have the best equipment, but we always find a way to get the job done.",
+    "distractor_notes": {
+      "get the job do": "\"get the job do\" is grammatically incorrect. In the causative structure \"get + object + past participle\", the correct form is \"get the job done\" (past participle), not \"get the job do\" (base form).",
+      "getting the job to do": "\"getting the job to do\" misapplies the infinitive form. \"Get + object + to-infinitive\" means \"persuade someone to do something\" (e.g., get him to do it), but when the object is the thing being acted upon (not an agent), the past participle is required.",
+      "getting the job do": "Both errors combined: wrong -ing form for the main verb in context, and wrong bare infinitive instead of past participle. The standard idiom is the base form \"get the job done\"."
+    },
+    "sentence_zh": "隨著截止日期迫在眉睫，整個團隊徹夜工作，務必準時把任務完成。"
+  },
+  {
+    "id": "SCU_112_V04",
+    "source": "SCU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "SCU_112_Q18",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "Malala won the Nobel Peace Prize because of her ___ to world peace and human rights, particularly her advocacy for girls' education.",
+    "options": [
+      "contribution",
+      "invention",
+      "competition",
+      "destination"
+    ],
+    "answer": "A",
+    "target_word": "contribution",
+    "chinese": "貢獻；對某事物的（正面）影響；捐獻",
+    "definition": "Something given, done, or said to help make something successful; a positive addition to a cause, field, or effort.",
+    "example": "Her contributions to the field of neuroscience have transformed how we understand memory formation.",
+    "distractor_notes": {
+      "invention": "invention 是「發明；創造（新事物）」，如 the invention of the telephone。強調「創造出新事物的行為」，不描述對某事業持續的「貢獻和付出」。",
+      "competition": "competition 是「競爭；比賽」，如 intense competition。語意與「對和平和人權的貢獻」完全不搭——接受諾貝爾和平獎是因為「貢獻」，而非「競爭」。",
+      "destination": "destination 是「目的地；終點站」，如 travel destination。地理語境，與「對某事業的貢獻」語意毫無關聯。"
+    },
+    "sentence_zh": "瑪拉拉獲得諾貝爾和平獎，是因為她對世界和平與人權的卓越貢獻，尤其是她為女孩受教育權利所發起的倡議行動。"
+  },
+  {
+    "id": "SCU_112_V05",
+    "source": "SCU",
+    "year": 112,
+    "year_ad": 2023,
+    "exam_section": "SCU_112_Reading_Q03",
+    "format": "meta_vocab",
+    "difficulty": "medium",
+    "sentence": "He built his criminal career on financial _____ — forging checks, impersonating pilots, and manipulating bank deposit slips to divert money into his own accounts.",
+    "options": [
+      "fraud",
+      "debt",
+      "loan",
+      "exaggeration"
+    ],
+    "answer": "A",
+    "target_word": "fraud",
+    "chinese": "欺詐；詐騙；以欺騙手段獲取利益的行為",
+    "definition": "Wrongful or criminal deception intended to result in financial or personal gain; a person who is not what they pretend to be.",
+    "example": "He was convicted of insurance fraud after filing multiple false claims.",
+    "distractor_notes": {
+      "debt": "debt 是「債務；欠款」，描述「欠他人金錢或義務」的狀態，是合法（雖然有壓力的）的財務狀況；fraud 是「以欺騙手段非法取得利益」，兩者都涉及金錢，但一個是合法借貸，一個是犯罪。",
+      "loan": "loan 是「貸款；借出（的款項）」，描述正式的借貸行為。同樣是合法的金融活動，與 fraud 的「非法欺騙取財」本質不同。",
+      "exaggeration": "exaggeration 是「誇大；誇張陳述」，如 a bit of an exaggeration。誇大雖然不誠實，但不一定是犯罪；fraud 特指以欺騙手段「圖謀利益」的不法行為，法律後果嚴重得多。"
+    },
+    "sentence_zh": "他的犯罪生涯完全建立在金融詐騙之上——偽造支票、冒充飛行員、竄改銀行存款單以將他人資金轉入自己帳戶。"
+  },
+  {
+    "id": "SCU_113_V01",
+    "source": "SCU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "SCU_113_Q14",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Considering the ___ of remote work, companies are carefully evaluating its long-term impact on employee productivity and organizational culture.",
+    "options": [
+      "pros and cons",
+      "to and fro",
+      "up and down",
+      "for and against"
+    ],
+    "answer": "A",
+    "target_word": "pros and cons",
+    "chinese": "優缺點；利弊；正反兩面",
+    "definition": "The advantages and disadvantages of something; the arguments for and against a course of action.",
+    "example": "Before making a decision, it's important to carefully weigh the pros and cons of each option.",
+    "distractor_notes": {
+      "to and fro": "to and fro 是「來回地；反覆地」，如 move to and fro 或 the argument went back and forth，描述來回移動或反覆討論的動態，不描述「優點和缺點」的分析框架。",
+      "up and down": "up and down 是「起伏；上上下下」，如 prices go up and down，描述波動狀態，不描述決策分析中的「利弊評估」。",
+      "for and against": "for and against 是「支持與反對（的論點）」，如 arguments for and against a policy。與 pros and cons 最接近——都描述正反立場——但 for and against 強調「立場對立」，pros and cons 更廣泛指「優點與缺點」，且後者是更固定的慣用語。"
+    },
+    "sentence_zh": "考量到遠端工作的各種利弊，許多公司正在仔細評估它對員工生產力和組織文化的長期影響。"
+  },
+  {
+    "id": "SCU_113_V02",
+    "source": "SCU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "SCU_113_Q17",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Richard reveals how the FIFA World Cup injury left him ______, ending what many believed would be the defining chapter of his career.",
+    "options": [
+      "heartbroken",
+      "heartbreaking",
+      "heartbreaks",
+      "heartbroke"
+    ],
+    "answer": "A",
+    "target_word": "heartbroken",
+    "chinese": "心碎的；極度悲痛的（用於描述人）",
+    "definition": "Overwhelmingly sad or disappointed; suffering great emotional distress from loss, disappointment, or rejection.",
+    "example": "She was heartbroken when she learned that her application had been rejected.",
+    "distractor_notes": {
+      "heartbreaking": "**最大陷阱**——heartbreaking 是「令人心碎的；令人悲痛的」，修飾「造成心碎的事物」，如 a heartbreaking decision；heartbroken 修飾「感到心碎的人」。左括號 leave him ___：動詞 leave 後接受詞補語描述人的狀態，應用 heartbroken（主觀感受），而非 heartbreaking（描述引發感受的事物）。",
+      "heartbreaks": "heartbreaks 是名詞複數，如 the heartbreaks of young love。語法上不能直接放在 leave him 後當主詞補語。",
+      "heartbroke": "heartbroke 不是標準英文形式。心碎的過去分詞形容詞是 heartbroken（-en 結尾），不能省略 -en。"
+    },
+    "sentence_zh": "理查德透露了這次世界盃受傷如何讓他心碎——終結了許多人認為將是他職業生涯最精彩篇章的夢想。"
+  },
+  {
+    "id": "SCU_113_V03",
+    "source": "SCU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "SCU_113_Q10",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "Professor McCarthy will ___ a welcome speech at a scientific conference next Monday, officially opening the three-day event.",
+    "options": [
+      "deliver",
+      "request",
+      "denote",
+      "talk"
+    ],
+    "answer": "A",
+    "target_word": "deliver",
+    "chinese": "發表（演說）；傳遞；遞送；兌現（承諾）",
+    "definition": "In the context of public speaking, to give or present a speech, lecture, or message to an audience; more broadly, to bring, hand over, or fulfill a promise.",
+    "example": "She was asked to deliver the keynote address at the annual psychology conference.",
+    "distractor_notes": {
+      "request": "request 是「請求；要求」，如 request assistance。語意是「提出請求」，而非「發表演講」；request a speech = 要求別人給你一個演講，deliver a speech = 自己發表演講。",
+      "denote": "denote 是「表示；意指；代表（符號/詞語的含義）」，如 the symbol denotes danger。學術語境中常見，但語意是「符號代表意義」，與「發表演說」完全無關。",
+      "talk": "**最大陷阱**——talk 可以當動詞（he talked），但 talk a speech 不是標準搭配，而 deliver a speech 是固定慣用搭配。give 也可以（give a speech），但 talk 不能直接接 speech 當受詞。"
+    },
+    "sentence_zh": "麥卡錫教授將於下週一在一場科學研討會上發表歡迎詞，正式宣布這場為期三天的活動開幕。"
+  },
+  {
+    "id": "SCU_113_V04",
+    "source": "SCU",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "SCU_113_Q20",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "This year's product was made using an ___ manufacturing process designed by the research and development department to reduce waste and improve efficiency.",
+    "options": [
+      "innovative",
+      "complicated",
+      "audit",
+      "application"
+    ],
+    "answer": "A",
+    "target_word": "innovative",
+    "chinese": "創新的；革新的；採用新方法的",
+    "definition": "Featuring new ideas, methods, or approaches; introducing or applying something new and original, especially in a way that is more effective than previous methods.",
+    "example": "The psychologist developed an innovative therapy approach that combined mindfulness with cognitive behavioral techniques.",
+    "distractor_notes": {
+      "complicated": "complicated 是「複雜的；難以理解的」，如 a complicated problem。雖然新製程可能很複雜，但 complicated 帶有「令人困惑、不易處理」的負面含義，而 innovative 強調「創新、突破」的正面特質。",
+      "audit": "audit 是名詞或動詞，意為「審計；查核」，如 conduct an audit。語法上不能作形容詞直接修飾名詞；且語意與「製程創新」無關。",
+      "application": "application 是名詞，意為「應用；申請」，如 a job application 或 the application of technology。語法上同樣不能作形容詞修飾名詞；語意也不描述製程的特性。"
+    },
+    "sentence_zh": "今年的產品採用了一種由研發部門設計的創新製造流程生產，旨在減少廢料並提升效率。"
+  },
+  {
+    "id": "PSYCH_V11",
+    "source": "PSYCH",
+    "year": 113,
+    "year_ad": 2024,
+    "exam_section": "SCU_113_Reading2_Q08",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "Occupational therapists work with children to develop ___ — the ability to control small muscle movements in the hands and fingers — which underpins handwriting, drawing, and many everyday self-care tasks.",
+    "options": [
+      "fine motor skills",
+      "gross motor skills",
+      "cognitive flexibility",
+      "executive function"
+    ],
+    "answer": "A",
+    "target_word": "fine motor skills",
+    "chinese": "精細動作技能（控制手部與手指細小肌肉的能力）",
+    "definition": "The ability to make precise, coordinated movements using the small muscles of the hands, fingers, and wrists; essential for tasks such as writing, drawing, buttoning clothes, and manipulating small objects.",
+    "example": "Handwriting practice strengthens fine motor skills by requiring children to coordinate hand movements with visual feedback.",
+    "distractor_notes": {
+      "gross motor skills": "**反義陷阱**——gross motor skills（粗大動作技能）是「控制手臂、腿部等大肌肉群的能力」，如跑步、跳躍、投擲；fine motor skills 是「控制手指等小肌肉的精細動作」。兩者都是發展心理學和職能治療的核心概念，需嚴格區分。",
+      "cognitive flexibility": "cognitive flexibility（認知彈性）是「在不同規則、任務或情境間切換的心智能力」，屬於執行功能（executive function）的一部分，是認知層面的能力；fine motor skills 是神經肌肉協調的物理能力，兩個維度不同。",
+      "executive function": "executive function（執行功能）是前額葉皮質負責的高階認知能力，涵蓋計劃、工作記憶、抑制控制和認知彈性。雖然 handwriting 也涉及執行功能，但 SCU 113 閱讀文章特別強調的是「動作系統與視覺系統的協調」，指向 fine motor skills。"
+    },
+    "sentence_zh": "職能治療師會協助孩童發展精細動作技能——即控制手部與手指細小肌肉的能力——這項能力是書寫、繪畫以及許多日常自理活動的基礎。"
+  },
+  {
+    "id": "SCU_114_V01",
+    "source": "SCU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "SCU_114_Q10",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "All candidates must submit their applications no later than August 31st, or they will not be ______.",
+    "options": [
+      "considerate",
+      "determined",
+      "distinguished",
+      "eligible"
+    ],
+    "answer": "D",
+    "target_word": "eligible",
+    "chinese": "有資格的；符合條件的",
+    "definition": "Meeting the necessary conditions or requirements for something; having the right to do or receive something.",
+    "example": "Only students with a GPA above 3.0 are eligible to apply for the scholarship.",
+    "distractor_notes": {
+      "considerate": "considerate 是「體貼的；為他人著想的」，如 a considerate colleague。描述性格特質，與「符合申請資格」完全無關。",
+      "determined": "determined 是「堅定的；有決心的」，如 a determined athlete。描述意志力，不描述是否符合申請條件。",
+      "distinguished": "distinguished 是「傑出的；著名的」，如 a distinguished professor。**最大陷阱**——三個干擾項都是正面形容詞，容易誤選，但語意都不符合「是否具備申請資格」的語境。"
+    },
+    "sentence_zh": "所有應試者必須在 8 月 31 日前提交申請，否則將不具申請資格。"
+  },
+  {
+    "id": "SCU_114_V02",
+    "source": "SCU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "SCU_114_Q01",
+    "format": "cloze",
+    "difficulty": "easy",
+    "sentence": "When students study abroad, they often experience a period of ____ as they adjust to a new culture.",
+    "options": [
+      "conviction",
+      "adaptation",
+      "evaluation",
+      "acceleration"
+    ],
+    "answer": "B",
+    "target_word": "adaptation",
+    "chinese": "適應；調整（以配合新環境）",
+    "definition": "The process of changing or adjusting to suit new conditions; becoming accustomed to a new environment or situation.",
+    "example": "Cultural adaptation can be challenging but ultimately rewarding for international students.",
+    "distractor_notes": {
+      "conviction": "conviction 是「信念；（法律）定罪」，如 a strong conviction 或 criminal conviction。與文化適應無關。",
+      "evaluation": "evaluation 是「評估；評價」，如 performance evaluation。描述判斷或考核的過程，不描述適應新環境的歷程。",
+      "acceleration": "acceleration 是「加速；加快」，如 the acceleration of a car。描述速度增加，與文化調適無關。"
+    },
+    "sentence_zh": "留學生出國時，往往會經歷一段適應新文化的過渡期。"
+  },
+  {
+    "id": "SCU_114_V03",
+    "source": "SCU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "SCU_114_Q03",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The government announced a new policy to reduce carbon emissions and promote environmental ____.",
+    "options": [
+      "convention",
+      "reservation",
+      "observation",
+      "preservation"
+    ],
+    "answer": "D",
+    "target_word": "preservation",
+    "chinese": "保護；保存；維護（環境、遺產等）",
+    "definition": "The act of keeping something safe from harm, decay, or destruction; maintaining something in its original or existing state.",
+    "example": "Wildlife preservation efforts have helped several endangered species recover their populations.",
+    "distractor_notes": {
+      "convention": "convention 是「慣例；大型會議」，如 a convention center 或 social convention。與環境保護無關。",
+      "reservation": "**最大陷阱**——reservation 雖有「自然保護區（nature reservation）」之意，但 preservation 才是描述「積極保護行動」的標準詞，environmental preservation 是固定搭配；reservation 強調「保留、預訂」。",
+      "observation": "observation 是「觀察；觀測」，如 scientific observation。描述監測行為，不描述保護行動。"
+    },
+    "sentence_zh": "政府宣布了一項新政策，旨在減少碳排放並推動環境保護。"
+  },
+  {
+    "id": "SCU_114_V04",
+    "source": "SCU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "SCU_114_Q11",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The advertisement was designed to ____ attention and create curiosity among potential customers.",
+    "options": [
+      "distract",
+      "prevent",
+      "capture",
+      "remove"
+    ],
+    "answer": "C",
+    "target_word": "capture",
+    "chinese": "吸引（注意力）；捕捉；攫取",
+    "definition": "To attract and hold someone's attention or imagination; to take or secure something successfully.",
+    "example": "A strong opening sentence should capture the reader's attention immediately.",
+    "distractor_notes": {
+      "distract": "**最大陷阱**——distract 是「使分心；分散注意力」，如 distract someone from work。distract attention = 把注意力引開；capture attention = 吸引並牢牢抓住注意力。兩者都涉及「注意力」，但方向完全相反。",
+      "prevent": "prevent 是「防止；阻止」，如 prevent accidents。廣告目的是「吸引」而非「阻止」，語意不符。",
+      "remove": "remove 是「移除；去除」，如 remove a stain。與吸引注意力無關。"
+    },
+    "sentence_zh": "這則廣告的設計目的是吸引大眾注意，並在潛在顧客之間引發好奇心。"
+  },
+  {
+    "id": "SCU_114_V05",
+    "source": "SCU",
+    "year": 114,
+    "year_ad": 2025,
+    "exam_section": "SCU_114_Q05",
+    "format": "cloze",
+    "difficulty": "medium",
+    "sentence": "The professor asked students to provide ____ evidence to support their argument in the research paper.",
+    "options": [
+      "identical",
+      "portable",
+      "practical",
+      "relevant"
+    ],
+    "answer": "D",
+    "target_word": "relevant",
+    "chinese": "相關的；切題的；有關聯的",
+    "definition": "Closely connected or appropriate to the matter at hand; having a direct bearing on the subject being discussed.",
+    "example": "When writing a research paper, make sure all cited sources are directly relevant to your thesis.",
+    "distractor_notes": {
+      "identical": "identical 是「完全相同的」，如 identical twins。描述相似程度，與「切題性、關聯性」無關。",
+      "portable": "portable 是「可攜帶的；便於移動的」，如 a portable speaker。物理屬性，與學術論文佐證無關。",
+      "practical": "**最大陷阱**——practical evidence（實際的證據）看起來合理，但學術寫作強調的是 relevant（相關的）證據，而非 practical（實用的）。兩者在非學術場合都是正面形容詞，容易混淆；relevant 強調「與論點有直接關聯」。"
+    },
+    "sentence_zh": "教授要求學生在研究論文中提供與論點相關的佐證，以支持其論述。"
   }
 ]
