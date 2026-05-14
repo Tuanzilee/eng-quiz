@@ -183,7 +183,50 @@ header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
 .mock-q-dot.flagged { border-color: var(--yellow); color: var(--yellow); }
 .mock-q-dot.current { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .mock-q-dot.correct { background: rgba(129,201,149,0.2); border-color: var(--green); color: var(--green); }
+.mock-q-dot.guessed { background: rgba(253,214,99,0.2); border-color: var(--yellow); color: var(--yellow); }
 .mock-q-dot.review-wrong { background: rgba(242,139,130,0.2); border-color: var(--red); color: var(--red); }
+
+/* review option rows */
+.review-opt { display:flex; gap:10px; align-items:flex-start; padding:8px 10px;
+  border-radius:8px; margin-bottom:6px; border:1px solid var(--border); background:var(--bg); }
+.review-opt.rv-correct { border-color:var(--green); background:rgba(129,201,149,0.08); }
+.review-opt.rv-wrong   { border-color:var(--red);   background:rgba(242,139,130,0.08); }
+.review-opt .rv-letter { display:inline-flex; align-items:center; justify-content:center;
+  width:24px; height:24px; border-radius:50%; font-weight:600; font-size:13px;
+  flex-shrink:0; background:var(--card); }
+.rv-correct .rv-letter { background:var(--green); color:var(--bg); }
+.rv-wrong   .rv-letter { background:var(--red);   color:var(--bg); }
+.rv-opt-text { font-size:13px; line-height:1.6; flex:1; }
+.rv-note { font-size:12px; color:var(--text-dim); margin-top:4px; line-height:1.6; }
+.rv-note strong { color:var(--red); }
+.flag-badge { display:inline-block; padding:1px 7px; border-radius:4px; font-size:11px;
+  font-weight:600; background:rgba(253,214,99,0.2); color:var(--yellow);
+  border:1px solid rgba(253,214,99,0.4); margin-left:6px; vertical-align:middle; }
+
+/* mock history */
+.history-section-title { font-size:13px; font-weight:500; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:0.5px; margin:24px 0 10px; }
+.history-card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+  padding:13px 15px; margin-bottom:8px; display:flex; align-items:center;
+  gap:14px; flex-wrap:wrap; cursor:default; transition:border-color 0.15s; }
+.history-card:hover { border-color:var(--accent); }
+.history-score { font-size:22px; font-weight:700; min-width:56px; text-align:center; }
+.history-score.good  { color:var(--green); }
+.history-score.ok    { color:var(--yellow); }
+.history-score.bad   { color:var(--red); }
+.history-meta { flex:1; min-width:140px; }
+.history-meta .hm-date { font-size:12px; color:var(--text-dim); margin-bottom:3px; }
+.history-meta .hm-detail { font-size:12px; color:var(--text-dim); }
+.history-breakdown { display:flex; gap:10px; flex-wrap:wrap; }
+.history-breakdown .hb-item { font-size:12px; text-align:center; }
+.history-breakdown .hb-val { font-weight:600; font-size:14px; display:block; }
+.history-breakdown .hb-val.good { color:var(--green); }
+.history-breakdown .hb-val.bad  { color:var(--red); }
+.history-breakdown .hb-val.flag { color:var(--yellow); }
+.history-breakdown .hb-label { color:var(--text-dim); font-size:11px; }
+.history-del { background:none; border:none; color:var(--text-dim); cursor:pointer;
+  padding:4px 7px; border-radius:6px; font-size:13px; transition:all 0.1s; }
+.history-del:hover { background:rgba(242,139,130,0.15); color:var(--red); }
 
 .score-banner { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
   padding: 20px; text-align: center; margin-bottom: 16px; }
@@ -290,6 +333,7 @@ header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
   <div id="mock-setup"></div>
   <div id="mock-running" style="display:none"></div>
   <div id="mock-review" style="display:none"></div>
+  <div id="mock-history"></div>
 </div>
 </div>
 
@@ -302,11 +346,15 @@ let VOCAB_Q = [], GRAMMAR_Q = [];
 const VPROG_KEY  = 'vocab_progress_v1';
 const VKNOWN_KEY = 'vocab_known_v1';
 const GPROG_KEY  = 'grammar_progress_v1';
+const MOCK_HIST_KEY = 'mock_history_v1';
 
-let vProg = {}, vKnown = {}, gProg = {};
+let vProg = {}, vKnown = {}, gProg = {}, mockHistory = [];
 try { vProg  = JSON.parse(localStorage.getItem(VPROG_KEY)  || '{}'); } catch(e){}
 try { vKnown = JSON.parse(localStorage.getItem(VKNOWN_KEY) || '{}'); } catch(e){}
 try { gProg  = JSON.parse(localStorage.getItem(GPROG_KEY)  || '{}'); } catch(e){}
+try { mockHistory = JSON.parse(localStorage.getItem(MOCK_HIST_KEY) || '[]'); } catch(e){}
+
+function saveMockHistory() { try { localStorage.setItem(MOCK_HIST_KEY, JSON.stringify(mockHistory)); } catch(e){} }
 
 function saveVProg()  { try { localStorage.setItem(VPROG_KEY,  JSON.stringify(vProg));  } catch(e){} }
 function saveVKnown() { try { localStorage.setItem(VKNOWN_KEY, JSON.stringify(vKnown)); } catch(e){} }
@@ -813,6 +861,63 @@ function renderMockSetup() {
   };
   ['ms-total','ms-ratio','ms-time'].forEach(id=>document.getElementById(id).oninput=updateVals);
   document.getElementById('ms-start-btn').onclick=startMock;
+  renderMockHistory();
+}
+
+function renderMockHistory() {
+  const el = document.getElementById('mock-history');
+  if (!el) return;
+  if (!mockHistory.length) { el.innerHTML = ''; return; }
+
+  // Trend: last 5 scores for sparkline text
+  const recent = mockHistory.slice(0, 10);
+  const best = Math.max(...recent.map(r => r.correct/r.total));
+  const avg  = Math.round(recent.reduce((s,r)=>s+r.correct/r.total,0)/recent.length*100);
+
+  const cards = mockHistory.map(r => {
+    const pct = Math.round(r.correct/r.total*100);
+    const scoreClass = pct>=90?'good':pct>=70?'ok':'bad';
+    const vPct = r.vTotal ? Math.round(r.vCorrect/r.vTotal*100) : null;
+    const gPct = r.gTotal ? Math.round(r.gCorrect/r.gTotal*100) : null;
+    const flagInfo = r.flaggedTotal
+      ? `<div class="hb-item"><span class="hb-val flag">${r.guessedRight}/${r.flaggedTotal}</span><span class="hb-label">⚑ 猜對</span></div>`
+      : '';
+    const unanswered = r.unanswered
+      ? `<div class="hb-item"><span class="hb-val bad">${r.unanswered}</span><span class="hb-label">未作答</span></div>`
+      : '';
+    return `<div class="history-card">
+      <div class="history-score ${scoreClass}">${r.correct}/${r.total}</div>
+      <div class="history-meta">
+        <div class="hm-date">${r.date} ${r.time}${r.timeUp?' · ⏰ 時間到':''}</div>
+        <div class="hm-detail">${pct}% · ${r.minutes} 分鐘</div>
+      </div>
+      <div class="history-breakdown">
+        ${vPct!==null?`<div class="hb-item"><span class="hb-val ${vPct>=70?'good':'bad'}">${r.vCorrect}/${r.vTotal}</span><span class="hb-label">字彙</span></div>`:''}
+        ${gPct!==null?`<div class="hb-item"><span class="hb-val ${gPct>=70?'good':'bad'}">${r.gCorrect}/${r.gTotal}</span><span class="hb-label">文法</span></div>`:''}
+        ${flagInfo}${unanswered}
+      </div>
+      <button class="history-del" data-hid="${r.id}" title="刪除這筆">✕</button>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="history-section-title">歷史紀錄（${mockHistory.length} 筆）</div>
+    <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px">
+      近 ${recent.length} 次平均 <strong style="color:var(--accent)">${avg}%</strong>
+      ．最高 <strong style="color:var(--green)">${Math.round(best*100)}%</strong>
+    </div>
+    ${cards}`;
+
+  el.querySelectorAll('.history-del').forEach(btn => {
+    btn.onclick = () => {
+      const id = +btn.dataset.hid;
+      if (confirm('刪除這筆紀錄？')) {
+        mockHistory = mockHistory.filter(r => r.id !== id);
+        saveMockHistory();
+        renderMockHistory();
+      }
+    };
+  });
 }
 
 function pickRandom(arr, n) {
@@ -854,6 +959,7 @@ function startMock() {
   document.getElementById('mock-setup').style.display='none';
   document.getElementById('mock-running').style.display='';
   document.getElementById('mock-review').style.display='none';
+  document.getElementById('mock-history').style.display='none';
 
   const timerEl=document.getElementById('mock-timer-display');
   timerEl.style.display='';
@@ -946,16 +1052,36 @@ function submitMock(timeUp=false) {
     const sel=state.mockAnswers[q.id];
     const ok=sel===q.answer;
     if (ok) { correct++; if(q._type==='vocab')vCorrect++; else gCorrect++; }
-    else if(sel) { // only record if answered
+    else if(sel) {
       if (q._type==='vocab') recordV(q.id, false);
       else recordG(q.id, false);
     }
-    // also record correct answers
+    // 答對 + 有標記（猜對）→ 記為 correct 但不升難度，僅顯示標記
     if (ok) { if(q._type==='vocab') recordV(q.id,true); else recordG(q.id,true); }
   });
   updateNBBadge();
 
-  state.mockPhase='review';
+  // ── 儲存歷史紀錄 ──
+  const _now = new Date();
+  const _pad = n => String(n).padStart(2,'0');
+  mockHistory.unshift({
+    id: Date.now(),
+    date: `${_now.getFullYear()}/${_pad(_now.getMonth()+1)}/${_pad(_now.getDate())}`,
+    time: `${_pad(_now.getHours())}:${_pad(_now.getMinutes())}`,
+    total: state.mockQs.length,
+    correct,
+    vTotal: state.mockQs.filter(q=>q._type==='vocab').length,
+    vCorrect,
+    gTotal: state.mockQs.filter(q=>q._type==='grammar').length,
+    gCorrect,
+    minutes: state.mockSettings.minutes,
+    timeUp,
+    flaggedTotal: Object.values(state.mockFlagged).filter(Boolean).length,
+    guessedRight: state.mockQs.filter(q=>state.mockFlagged[q.id]&&state.mockAnswers[q.id]===q.answer).length,
+    unanswered: state.mockQs.filter(q=>!state.mockAnswers[q.id]).length
+  });
+  if (mockHistory.length > 30) mockHistory = mockHistory.slice(0, 30); // 最多保留 30 筆
+  saveMockHistory();
   document.getElementById('mock-running').style.display='none';
   document.getElementById('mock-review').style.display='';
 
@@ -963,43 +1089,80 @@ function submitMock(timeUp=false) {
   const vTotal=state.mockQs.filter(q=>q._type==='vocab').length;
   const gTotal=state.mockQs.filter(q=>q._type==='grammar').length;
   const pct=total>0?Math.round(correct/total*100):0;
+  const flaggedCount=Object.values(state.mockFlagged).filter(Boolean).length;
+  const guessedRight=state.mockQs.filter(q=>state.mockFlagged[q.id]&&state.mockAnswers[q.id]===q.answer).length;
+
+  const letters=['A','B','C','D'];
 
   const reviewItems=state.mockQs.map((q,i)=>{
     const sel=state.mockAnswers[q.id];
     const ok=sel===q.answer;
     const noAns=!sel;
+    const isGuessed=!!state.mockFlagged[q.id]&&ok;
     const icon=noAns?'⬜':ok?'✅':'❌';
     const ansIdx='ABCD'.indexOf(q.answer);
     const correctAns=q.options[ansIdx]||'';
+
+    // Build all-options rows
+    const optRows=q.options.map((o,i)=>{
+      const L=letters[i];
+      const isCorrect=L===q.answer;
+      const isUserWrong=L===sel&&!ok;
+      const cls=isCorrect?'rv-correct':isUserWrong?'rv-wrong':'';
+      let note='';
+      if (q._type==='vocab') {
+        if (isCorrect) {
+          note=`<div class="rv-note" style="color:var(--text)">
+            <strong style="color:var(--green)">${esc(q.target_word||o)}</strong>　${esc(q.chinese||'')}
+            ${q.definition?`<br>${esc(q.definition)}`:''}
+            ${q.example?`<br><em style="color:var(--text-dim)">${esc(q.example)}</em>`:''}
+          </div>`;
+        } else if (q.distractor_notes&&q.distractor_notes[o]) {
+          note=`<div class="rv-note">${q.distractor_notes[o].replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+        }
+      } else {
+        // grammar — no per-option notes, handled below
+      }
+      const selMark=L===sel?`<span style="font-size:10px;margin-left:4px;color:${ok?'var(--green)':'var(--red)'}">${ok?'← 你的選擇 ✓':'← 你的選擇 ✗'}</span>`:'';
+      return `<div class="review-opt ${cls}">
+        <span class="rv-letter">${L}</span>
+        <div class="rv-opt-text">${esc(o)}${selMark}${note}</div>
+      </div>`;
+    }).join('');
 
     let detailHTML='';
     if (q._type==='vocab') {
       detailHTML=`
         <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
-        ${sel&&!ok?`<div style="font-size:13px;color:var(--red);margin-bottom:6px">你選了 ${sel}: ${esc(q.options['ABCD'.indexOf(sel)])}</div>`:''}
-        ${q.sentence_zh?`<div class="sentence-zh" style="margin:6px 0"><div class="sentence-zh-label">題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
-        <div class="word-card">
-          <div class="wc-main">${esc(q.target_word||'')}</div>
-          <div class="wc-zh">${esc(q.chinese||'')}</div>
-          <div class="wc-def">${esc(q.definition||'')}</div>
-          ${q.example?`<div class="wc-ex">${esc(q.example)}</div>`:''}
-        </div>`;
+        ${q.sentence_zh?`<div class="sentence-zh" style="margin:6px 0 10px"><div class="sentence-zh-label">📖 題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
+        <div style="margin-top:8px">${optRows}</div>`;
     } else {
       detailHTML=`
         <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
-        ${sel&&!ok?`<div style="font-size:13px;color:var(--red);margin-bottom:6px">你選了 ${sel}: ${esc(q.options['ABCD'.indexOf(sel)])}</div>`:''}
-        <div class="ans-text"><strong>解析：</strong>${esc(q.explanation||'')}</div>
+        <div style="margin:8px 0">${optRows}</div>
+        <div class="ans-text" style="margin-top:10px"><strong>解析：</strong>${esc(q.explanation||'')}</div>
         ${q.common_mistakes?`<div class="ans-text"><strong>常見錯誤：</strong>${esc(q.common_mistakes)}</div>`:''}`;
     }
+
+    const flagBadge=isGuessed?`<span class="flag-badge">⚑ 猜對</span>`:'';
 
     return `<div class="review-q" id="rq-${i}">
       <div class="review-head" onclick="toggleReview(${i})">
         <span class="ri-icon">${icon}</span>
-        <span class="ri-text">${esc(getQText(q).slice(0,60))}…</span>
+        <span class="ri-text">${esc(getQText(q).slice(0,55))}…${flagBadge}</span>
         <span class="ri-meta">${q.id}</span>
       </div>
       <div class="review-body">${detailHTML}</div>
     </div>`;
+  }).join('');
+
+  // Nav dots for score banner (review mode)
+  const reviewDots=state.mockQs.map((q,i)=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    const isGuessed=!!state.mockFlagged[q.id]&&ok;
+    let cls=!sel?'':ok?(isGuessed?'guessed':'correct'):'review-wrong';
+    return `<div class="mock-q-dot ${cls}" onclick="document.getElementById('rq-${i}').scrollIntoView({behavior:'smooth'});toggleReview(${i})">${i+1}</div>`;
   }).join('');
 
   document.getElementById('mock-review').innerHTML=`
@@ -1011,7 +1174,14 @@ function submitMock(timeUp=false) {
         <div class="sb-item">字彙 <span class="sb-val ${vCorrect/Math.max(vTotal,1)>=0.7?'good':'bad'}">${vCorrect}/${vTotal}</span></div>
         <div class="sb-item">文法 <span class="sb-val ${gCorrect/Math.max(gTotal,1)>=0.7?'good':'bad'}">${gCorrect}/${gTotal}</span></div>
         <div class="sb-item">答錯 <span class="sb-val bad">${total-correct}</span></div>
+        ${flaggedCount?`<div class="sb-item">⚑ 猜對 <span class="sb-val" style="color:var(--yellow)">${guessedRight}/${flaggedCount}</span></div>`:''}
       </div>
+    </div>
+    <div class="mock-q-nav" style="margin-bottom:16px">${reviewDots}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--text-dim);margin-bottom:16px;align-items:center">
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(129,201,149,0.3);border:1px solid var(--green);display:inline-block"></span>答對</span>
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(253,214,99,0.2);border:1px solid var(--yellow);display:inline-block"></span>猜對（有標記）</span>
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(242,139,130,0.2);border:1px solid var(--red);display:inline-block"></span>答錯</span>
     </div>
     <div class="btn-row">
       <button class="btn primary" onclick="resetMock()">再來一次</button>
@@ -1032,6 +1202,7 @@ function resetMock() {
   document.getElementById('mock-review').style.display='none';
   document.getElementById('mock-setup').style.display='';
   renderMockSetup();
+  document.getElementById('mock-history').style.display='';
 }
 
 // ════════════════════════════════════════════════════════════
