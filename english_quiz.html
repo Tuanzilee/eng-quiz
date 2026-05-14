@@ -974,11 +974,17 @@ function startMock() {
 }
 
 function updateMockTimer() {
-  const el=document.getElementById('mock-timer-display');
-  if (!el) return;
   const m=Math.floor(state.mockTimeLeft/60), s=state.mockTimeLeft%60;
-  el.textContent=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-  el.className=state.mockTimeLeft<=300?'urgent':'';
+  const txt=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const urgent=state.mockTimeLeft<=300;
+  const urgentStyle='color:var(--red);background:rgba(242,139,130,0.1);border-color:rgba(242,139,130,0.3)';
+  const normalStyle='color:var(--yellow);background:rgba(253,214,99,0.1);border-color:rgba(253,214,99,0.3)';
+  // header timer
+  const el=document.getElementById('mock-timer-display');
+  if (el) { el.textContent=txt; el.className=urgent?'urgent':''; }
+  // inline timer (re-rendered each question, may not exist)
+  const il=document.getElementById('mock-timer-inline');
+  if (il) { il.textContent=txt; il.style.cssText=`font-size:14px;font-weight:600;padding:3px 10px;border:1px solid;border-radius:6px;font-variant-numeric:tabular-nums;${urgent?urgentStyle:normalStyle}`; }
 }
 
 function stopMockTimer() {
@@ -1011,9 +1017,12 @@ function renderMockRunning() {
   const isFlagged=!!state.mockFlagged[q.id];
 
   document.getElementById('mock-running').innerHTML=`
-    <div style="font-size:12px;color:var(--text-dim);margin-bottom:8px">
-      題目 ${idx+1} / ${total} &nbsp;·&nbsp; 已作答 ${answered}/${total}
-      &nbsp;·&nbsp; <span class="tag ${q._type==='vocab'?'':'topic'}">${q._type==='vocab'?q.source||'MOCK':q.grammar_topic}</span>
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-dim);margin-bottom:8px">
+      <span>題目 ${idx+1} / ${total} &nbsp;·&nbsp; 已作答 ${answered}/${total}
+      &nbsp;·&nbsp; <span class="tag ${q._type==='vocab'?'':'topic'}">${q._type==='vocab'?q.source||'MOCK':q.grammar_topic}</span></span>
+      <span id="mock-timer-inline" style="font-size:14px;font-weight:600;color:var(--yellow);
+        padding:3px 10px;background:rgba(253,214,99,0.1);border:1px solid rgba(253,214,99,0.3);
+        border-radius:6px;font-variant-numeric:tabular-nums">⏱ --:--</span>
     </div>
     <div class="mock-progress-bar"><div class="mock-progress-fill" style="width:${(idx+1)/total*100}%"></div></div>
     <div class="mock-q-nav">${navDots}</div>
@@ -1027,6 +1036,7 @@ function renderMockRunning() {
           ?`<button class="btn primary" id="mock-next-btn">下一題 →</button>`
           :`<button class="btn danger" id="mock-submit-btn">交卷</button>`}
         <button class="btn ${isFlagged?'flagged':''}" id="mock-flag-btn">${isFlagged?'⚑ 已標記':'⚐ 標記'}</button>
+        <button class="btn ghost" id="mock-abandon-btn" style="margin-left:auto;color:var(--text-dim);font-size:13px">✕ 放棄</button>
       </div>
     </div>`;
 
@@ -1041,6 +1051,12 @@ function renderMockRunning() {
   if (sb) sb.onclick=()=>submitMock(false);
   document.getElementById('mock-flag-btn').onclick=()=>{
     state.mockFlagged[q.id]=!state.mockFlagged[q.id]; renderMockRunning();
+  };
+  document.getElementById('mock-abandon-btn').onclick=()=>{
+    if (confirm('放棄這次模考？作答進度不會儲存，也不計入歷史紀錄。')) {
+      stopMockTimer();
+      resetMock();
+    }
   };
 }
 
