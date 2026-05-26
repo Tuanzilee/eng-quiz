@@ -10,6 +10,7 @@
   --border: #2a2f3a; --text: #e8eaed; --text-dim: #9aa0a6;
   --accent: #8ab4f8; --green: #81c995; --red: #f28b82;
   --yellow: #fdd663; --orange: #fbbc04;
+  --safe-bottom: env(safe-area-inset-bottom);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -253,6 +254,119 @@ header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
 .section-title { font-size: 13px; font-weight: 500; color: var(--text-dim);
   text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; }
 .empty-state { text-align: center; padding: 40px 20px; color: var(--text-dim); }
+
+/* Header API key button */
+.header-btn { background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+  width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 15px; font-family: inherit; flex-shrink: 0; transition: all 0.1s; }
+.header-btn:hover { background: var(--card-hover); color: var(--text); }
+.header-btn:active { opacity: 0.7; }
+
+/* API key modal */
+.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100;
+  display: none; align-items: flex-end; }
+.modal-bg.show { display: flex; }
+.modal { background: var(--card); border-top: 1px solid var(--border);
+  border-radius: 18px 18px 0 0; width: 100%; max-width: 680px; margin: 0 auto;
+  max-height: 80vh; overflow-y: auto; padding: 20px 16px;
+  padding-bottom: calc(20px + var(--safe-bottom)); }
+.modal-handle { width: 36px; height: 4px; background: var(--border);
+  border-radius: 2px; margin: 0 auto 16px; }
+.modal-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.action-row { display: flex; gap: 8px; }
+.edit-field { background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); padding: 9px 12px; font-family: inherit; outline: none; }
+.edit-field:focus { border-color: var(--accent); }
+
+/* AI chat overlay (bottom sheet, drag-resizable) */
+.chat-overlay { position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--sheet-height, 60vh); background: var(--bg); z-index: 200;
+  display: flex; flex-direction: column; max-width: 680px; margin: 0 auto;
+  border-radius: 16px 16px 0 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.4); }
+.chat-drag-handle { display: flex; justify-content: center; align-items: center;
+  height: 18px; padding-top: 6px; cursor: row-resize; touch-action: none; flex-shrink: 0; }
+.chat-drag-handle::before { content: ''; display: block; width: 40px; height: 4px;
+  border-radius: 2px; background: var(--border); }
+.chat-topbar { display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px 10px; border-bottom: 1px solid var(--border);
+  flex-shrink: 0; background: var(--bg); }
+.chat-topbar-title { font-size: 14px; font-weight: 700; color: var(--accent); flex: 1; }
+.chat-topbar-sub { font-size: 11px; color: var(--text-dim); font-family: monospace; }
+.chat-messages { flex: 1; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 12px; }
+.chat-msg { display: flex; flex-direction: column; gap: 4px; }
+.chat-msg.user { align-items: flex-end; }
+.chat-msg.ai { align-items: flex-start; }
+.chat-bubble { max-width: 88%; padding: 10px 13px; border-radius: 12px;
+  font-size: 13px; line-height: 1.7; }
+.chat-msg.user .chat-bubble { background: var(--accent); color: var(--bg);
+  border-bottom-right-radius: 4px; font-weight: 500; }
+.chat-msg.ai .chat-bubble { background: var(--card); border: 1px solid var(--border);
+  color: var(--text); border-bottom-left-radius: 4px; }
+.chat-msg.ai .chat-bubble h3 { font-size: 12px; font-weight: 700; color: var(--accent);
+  margin: 10px 0 4px; letter-spacing: 0.03em; }
+.chat-msg.ai .chat-bubble h3:first-child { margin-top: 0; }
+.chat-msg.ai .chat-bubble p { margin: 0 0 4px; }
+.chat-msg.ai .chat-bubble ul { margin: 0 0 6px; padding-left: 16px; }
+.chat-msg.ai .chat-bubble li { margin-bottom: 2px; }
+.chat-msg.ai .chat-bubble .tip { background: rgba(253,214,99,0.12); border-radius: 4px;
+  padding: 6px 10px; font-size: 12px; color: var(--yellow); margin: 4px 0; }
+.chat-input-bar { display: flex; align-items: flex-end; gap: 8px;
+  padding: 10px 14px; padding-bottom: calc(10px + var(--safe-bottom));
+  border-top: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
+.chat-input { flex: 1; background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 14px; line-height: 1.5;
+  padding: 9px 12px; resize: none; font-family: inherit; max-height: 100px; overflow-y: auto; }
+.chat-input:focus { outline: none; border-color: var(--accent); }
+.chat-send-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+  border: none; color: var(--bg); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: opacity .15s; font-weight: 700; }
+.chat-send-btn:disabled { opacity: 0.4; cursor: default; }
+.chat-typing { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+.chat-typing span { width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text-dim); animation: ldot .9s infinite; }
+.chat-typing span:nth-child(2) { animation-delay: .2s; }
+.chat-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes ldot { 0%,80%,100% { opacity: .2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+/* AI 引導 / 錯題分析 觸發按鈕 */
+.ai-guide-btn { width: 100%; padding: 9px 14px; background: rgba(138,180,248,0.1);
+  border: 1px solid rgba(138,180,248,0.3); border-radius: 10px; color: var(--accent);
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; margin: 8px 0 4px; }
+.ai-guide-btn:active { background: rgba(138,180,248,0.18); }
+.ai-wrong-btn { display: inline-block; padding: 5px 11px; background: transparent;
+  border: 1px solid var(--accent); border-radius: 8px; color: var(--accent);
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.ai-wrong-btn:active { background: rgba(138,180,248,0.1); }
+
+/* 我的筆記 */
+.notes-block { background: var(--card-hover); border: 1px solid var(--border);
+  border-left: 3px solid var(--green); border-radius: 10px;
+  padding: 12px 14px; margin-top: 12px; }
+.notes-block-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.notes-block-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--green); text-transform: uppercase; flex: 1; }
+.notes-add-btn { font-size: 11px; padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--green); background: transparent; color: var(--green);
+  cursor: pointer; font-family: inherit; }
+.note-item { display: flex; gap: 8px; padding: 8px 0; border-top: 1px solid var(--border);
+  font-size: 13px; line-height: 1.6; }
+.note-item:first-child { border-top: none; }
+.note-item-text { flex: 1; white-space: pre-wrap; color: var(--text); }
+.note-item-ts { font-size: 10px; color: var(--text-dim); margin-bottom: 4px; font-family: monospace; }
+.note-item-actions { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+.note-action-btn { width: 24px; height: 24px; border-radius: 4px;
+  border: 1px solid var(--border); background: var(--card); color: var(--text-dim);
+  font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.notes-editor { width: 100%; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 10px; color: var(--text); font-size: 13px;
+  line-height: 1.5; resize: vertical; min-height: 60px; font-family: inherit;
+  margin-top: 8px; box-sizing: border-box; }
+.notes-editor-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 6px; }
+
 @media (max-width: 600px) {
   .container { padding: 12px; }
   .q-detail { padding: 14px; }
@@ -265,12 +379,13 @@ header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
 <body>
 
 <header>
-  <div class="container" style="padding:0; display:flex; justify-content:space-between; align-items:center;">
+  <div class="container" style="padding:0; display:flex; justify-content:space-between; align-items:center; gap:10px;">
     <div>
       <h1>英文刷題系統 <span style="color:var(--text-dim);font-size:13px;font-weight:normal">v1.0</span></h1>
       <div class="sub" id="header-sub">載入中⋯</div>
     </div>
     <div id="mock-timer-display" style="display:none">⏱ --:--</div>
+    <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="margin-left:auto">🔑</button>
   </div>
 </header>
 
@@ -531,6 +646,7 @@ function renderVPractice() {
       <div class="question">${renderBlank(esc(getQText(q)), state.vRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
       <div class="options">${optHTML}</div>
       <div class="btn-row">${btns}</div>
+      <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
       ${reveal}
     </div>`;
 
@@ -652,6 +768,7 @@ function renderGPractice() {
       <div class="question">${renderBlank(esc(getQText(q)), state.gRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
       <div class="options">${optHTML}</div>
       <div class="btn-row">${btns}</div>
+      <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
       ${reveal}
     </div>`;
 
@@ -748,8 +865,9 @@ function renderNotebook() {
         <div class="stat-line">答對 ${w.totalCount-w.wrongCount}/${w.totalCount} (${acc}%) ${w.lastWrong?`· 最近錯：${w.lastWrong}`:''}</div>
         <div class="word-def">${esc(w.definition)}</div>
         <div class="word-example">${esc(w.example)}</div>
-        <div class="btn-row" style="margin:0">
+        <div class="btn-row" style="margin:0;align-items:center">
           <button class="btn small" data-action="vpractice" data-qid="${w.qids[0]}">再練一次</button>
+          <button class="ai-wrong-btn" onclick="openWrongAIChat('${escAttr(w.qids[0])}')">💬 AI 一起看</button>
           ${isKnown
             ?`<button class="btn small ghost" data-action="unmark" data-word="${esc(w.word)}">取消已熟</button>`
             :`<button class="btn small ghost" data-action="mark" data-word="${esc(w.word)}">✓ 標為已熟</button>`}
@@ -771,8 +889,9 @@ function renderNotebook() {
           </div>
           <div class="stat-line">${q.id} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</div>
           <div class="word-def">${esc(q.explanation||'')}</div>
-          <div class="btn-row" style="margin:0">
+          <div class="btn-row" style="margin:0;align-items:center">
             <button class="btn small" data-action="gpractice" data-qid="${q.id}">再練一次</button>
+            <button class="ai-wrong-btn" onclick="openWrongAIChat('${escAttr(q.id)}')">💬 AI 一起看</button>
           </div>
         </div>`).join('');
     }
@@ -1268,6 +1387,448 @@ function updateNBBadge() {
   const n=getVWrongWords().filter(w=>!vKnown[w.word]).length+getGWrongQs().length;
   const badge=document.getElementById('notebook-badge');
   badge.textContent=n; badge.style.display=n>0?'':'none';
+}
+
+// ════════════════════════════════════════════════════════════
+// AI 引導 (port 自 psy commit f0b15fe → af46765)
+// ════════════════════════════════════════════════════════════
+const API_KEY_STORAGE = 'eng_anthropic_api_key';
+const chatHistory = {};
+
+function escAttr(s) { return (s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+function escMd(s)   { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function cleanApiKey(s) {
+  return (s || '').trim().replace(/[\u200B-\u200D\uFEFF]/g, '');
+}
+function getApiKey() { return cleanApiKey(localStorage.getItem(API_KEY_STORAGE)); }
+
+function toggleApiKeyVisibility() {
+  const inp = document.getElementById('apikey-input');
+  const btn = document.getElementById('apikey-toggle');
+  if (!inp || !btn) return;
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+
+let savedApiKeyCallback = null;
+function promptApiKey(onSuccess) {
+  const existing = getApiKey();
+  savedApiKeyCallback = onSuccess || null;
+  const html = `
+    <div class="modal-bg show" id="apikey-modal">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-title">設定 Anthropic API Key</div>
+        <div style="font-size:12px;color:var(--text-dim);line-height:1.7;margin-bottom:14px">
+          AI 逐步引導 / 錯題分析需要 Anthropic API Key。<br>
+          Key 只存在你的裝置（localStorage），不會傳出去。<br>
+          <a href="https://console.anthropic.com/" target="_blank" style="color:var(--accent)">→ 前往 console.anthropic.com 取得 Key</a>
+        </div>
+        <div style="display:flex;gap:6px;margin-bottom:14px;align-items:stretch">
+          <input id="apikey-input" class="edit-field" type="password"
+            placeholder="sk-ant-..." value="${escMd(existing)}"
+            style="flex:1;min-width:0;font-family:monospace;font-size:12px">
+          <button type="button" id="apikey-toggle" class="btn"
+            onclick="toggleApiKeyVisibility()" title="顯示／隱藏 Key"
+            style="padding:0 12px;flex-shrink:0;font-size:14px">👁</button>
+        </div>
+        <div class="action-row">
+          <button class="btn" onclick="document.getElementById('apikey-modal').remove()">取消</button>
+          <button class="btn primary" onclick="saveApiKey()">儲存</button>
+        </div>
+      </div>
+    </div>`;
+  document.body.insertAdjacentHTML('beforeend', html);
+  setTimeout(() => document.getElementById('apikey-input')?.focus(), 100);
+}
+
+function saveApiKey() {
+  const val = cleanApiKey(document.getElementById('apikey-input')?.value);
+  if (!val.startsWith('sk-')) { alert('請輸入正確的 API Key（以 sk- 開頭）'); return; }
+  localStorage.setItem(API_KEY_STORAGE, val);
+  document.getElementById('apikey-modal')?.remove();
+  if (savedApiKeyCallback) { savedApiKeyCallback(); savedApiKeyCallback = null; }
+}
+
+function appendUserMessage(text) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg user';
+  div.innerHTML = `<div class="chat-bubble">${escMd(text)}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendAiMessage(markdown) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.innerHTML = `<div class="chat-bubble">${parseMarkdown(markdown)}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendTyping(hintText) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  document.getElementById('chat-typing')?.remove();
+  const div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.id = 'chat-typing';
+  div.innerHTML = hintText
+    ? `<div class="chat-bubble" style="font-size:12px;color:var(--yellow);font-style:italic">${hintText}</div>`
+    : `<div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() { document.getElementById('chat-typing')?.remove(); }
+
+function parseMarkdown(markdown) {
+  let html = '';
+  const lines = markdown.split('\n');
+  let inList = false;
+  for (const line of lines) {
+    let t = line.trim();
+    if (!t) { if (inList) { html += '</ul>'; inList = false; } continue; }
+    t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/\*(.+?)\*/g, '$1');
+    if (/^#{1,3} /.test(t)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<h3>${t.replace(/^#{1,3} /, '')}</h3>`;
+    } else if (/^【.+】/.test(t)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<h3>${t}</h3>`;
+    } else if (t.startsWith('- ') || t.startsWith('• ') || /^\d+\.\s/.test(t)) {
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += `<li>${t.replace(/^[-•]\s|^\d+\.\s/, '')}</li>`;
+    } else if (t.startsWith('⚠') || t.startsWith('💡') || t.startsWith('提醒') || t.startsWith('陷阱')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<div class="tip">${t}</div>`;
+    } else {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p>${t}</p>`;
+    }
+  }
+  if (inList) html += '</ul>';
+  return html;
+}
+
+function closeChatOverlay() {
+  document.getElementById('chat-overlay')?.remove();
+  document.documentElement.style.removeProperty('--sheet-height');
+}
+
+// Bottom-sheet drag resize
+let _sheetDragY = 0, _sheetDragH = 0;
+function chatSheetDragStart(e) {
+  const overlay = document.getElementById('chat-overlay');
+  if (!overlay) return;
+  _sheetDragY = e.clientY;
+  _sheetDragH = overlay.getBoundingClientRect().height;
+  e.target.setPointerCapture(e.pointerId);
+  e.preventDefault();
+}
+function chatSheetDragMove(e) {
+  if (!e.target.hasPointerCapture(e.pointerId)) return;
+  const delta = _sheetDragY - e.clientY;
+  const minH = 180;
+  const maxH = window.innerHeight * 0.9;
+  const newH = Math.max(minH, Math.min(maxH, _sheetDragH + delta));
+  document.documentElement.style.setProperty('--sheet-height', newH + 'px');
+}
+function chatSheetDragEnd(e) {
+  if (e.target.hasPointerCapture(e.pointerId)) e.target.releasePointerCapture(e.pointerId);
+}
+
+async function callAnthropicWithRetry(payload, apiKey, onRetry) {
+  const DELAYS = [2000, 4000, 8000];
+  let lastErr = null;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.error) {
+        const err = new Error(data.error.message || 'unknown error');
+        err.errorType = data.error.type;
+        if (data.error.type !== 'overloaded_error') throw err;
+        lastErr = err;
+      } else {
+        return data;
+      }
+    } catch (e) {
+      if (!e.errorType && e instanceof TypeError) e.errorType = 'network_error';
+      if (e.errorType !== 'overloaded_error') throw e;
+      lastErr = e;
+    }
+    if (attempt < 4) {
+      if (onRetry) onRetry(attempt, 3);
+      await new Promise(r => setTimeout(r, DELAYS[attempt - 1]));
+    }
+  }
+  throw lastErr;
+}
+
+function friendlyAIError(err) {
+  const t = err && err.errorType;
+  if (t === 'overloaded_error')     return '⏰ Anthropic 伺服器忙碌，通常 30 秒內會恢復，請重新點 [💬 AI 引導]';
+  if (t === 'rate_limit_error')     return '⚡ 請求太頻繁，等 30 秒再試';
+  if (t === 'authentication_error') return '🔑 API Key 失效或未設，點右上角 🔑 重設';
+  if (t === 'network_error')        return '📡 網路連線失敗，請檢查網路後重試';
+  return `⚠ ${(err && err.message) || '連線失敗'}`;
+}
+
+async function callEngAI(systemPrompt, messages, qid) {
+  const key = getApiKey();
+  if (!key) return;
+  try {
+    const data = await callAnthropicWithRetry(
+      { model: 'claude-haiku-4-5-20251001', max_tokens: 800, system: systemPrompt, messages },
+      key,
+      (n, t) => appendTyping(`⏳ Anthropic 忙碌，重試中 (${n}/${t})`)
+    );
+    const reply = data.content?.[0]?.text || '無回應';
+    removeTyping();
+    if (!chatHistory[qid]) chatHistory[qid] = [];
+    chatHistory[qid].push({ role: 'assistant', content: reply });
+    appendAiMessage(reply);
+  } catch(e) {
+    removeTyping();
+    appendAiMessage(friendlyAIError(e));
+  }
+}
+
+// ── Vocab prompt builders ─────────────────────────────────────
+function buildVocabStepSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文轉學考字彙家教，引導學生用「上下文 + 詞源 + 詞性 + 易混對比」推理單字題，**不要直接給答案**。
+
+【題目情境】
+題目：${q.sentence || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+target 單字：${q.target_word || ''}
+中文：${q.chinese || ''}
+英文定義：${q.definition || ''}
+${q.example ? '例句：' + q.example : ''}
+${q.sentence_zh ? '題目翻譯：' + q.sentence_zh : ''}
+
+【引導原則】
+1. 先問「你看到這個句子，___ 前後的語意線索是什麼？」引導從上下文猜測語意（例如 transition word、對比、因果）
+2. 帶學生分析空格需要的詞性（動詞？名詞？形容詞？）
+3. 拆 4 個選項的詞源 / 詞綴（拉丁字根、希臘字根、前後綴），引導推測意思
+4. 點出易混單字對比（例：affect/effect、principal/principle、imminent/eminent、adopt/adapt 之類常見陷阱），若選項裡有就特別強調
+5. 從同義 / 反義 / 搭配 (collocation) 角度引導確認
+6. 最後請學生說「我覺得是 X，因為 ___」自己推出答案
+7. **整個過程不要先講正解，學生自己推出來再揭曉**
+
+【風格】
+- 口語、像朋友在解釋
+- 不用 markdown 符號（# *），重點用「【】」標題
+- 一次只問一件事，蘇格拉底式漸進
+- 提到字根 / 詞綴用「字根 -spect-（看）」這種格式
+- 例句用英文，解釋用中文`;
+}
+
+function buildVocabWrongSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文字彙家教，學生剛做錯這題，要用「正解 vs 錯選對比 + 易混點」幫他釐清。
+
+【題目情境】
+題目：${q.sentence || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+target 單字：${q.target_word || ''}
+中文：${q.chinese || ''}
+英文定義：${q.definition || ''}
+${q.example ? '例句：' + q.example : ''}
+${q.distractor_notes ? '誘答選項解析：\n' + Object.entries(q.distractor_notes).map(([k,v])=>`(${k}) ${v}`).join('\n') : ''}
+
+【引導流程】
+1. 先問「你選了哪個？為什麼覺得是那個？」
+2. 從學生回答判斷他卡在「字義不熟」、「混淆同形字」、「沒看上下文」還是「詞性誤判」
+3. 對比【你選的字義 vs 正解字義】的核心差別（用中文 + 英文同義詞點出差距）
+4. ${q.distractor_notes ? '善用上述誘答選項解析點出他可能踩的雷' : '指出易混對比 / 詞綴差異'}
+5. 鼓勵學生用正解單字自己造一個英文短句驗證（送回來給你看也行）
+6. 全程不要直接給完整解答，引導他自己想出來
+
+【風格】
+- 口語、有耐心、像朋友
+- 不用 markdown 符號
+- 一次只問一件事`;
+}
+
+// ── Grammar prompt builders ───────────────────────────────────
+function buildGrammarStepSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文文法家教，引導學生用「句構辨識 + 規則對比」推理文法題，**不要直接給答案**。
+
+【題目情境】
+題目：${q.question || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+文法觀念：${q.grammar_topic || ''}
+${q.explanation ? '解析：' + q.explanation : ''}
+${q.common_mistakes ? '常見錯誤：' + q.common_mistakes : ''}
+
+【引導原則】
+1. 先帶學生**拆句構**：找主詞、找主動詞、判斷有沒有子句 / 分詞片語 / 倒裝
+2. 引導辨識本題在考的文法規則（${q.grammar_topic || '時態 / 假設語氣 / 倒裝 / 主詞動詞一致 / 分詞構句 / 關係子句 / 名詞子句 / 對等連接詞 ...'}）
+3. 對比「為什麼 A 對 B 錯」——不是死背規則，是讓學生看到兩個句子結構的差別
+4. 若涉及時態，問「事件的時間軸是什麼？」（過去 / 現在 / 未來、是否完成、是否持續）
+5. 若涉及假設語氣，問「這是真的假設還是與事實相反？」
+6. 若涉及倒裝句，找否定副詞 / 條件子句省略 if 之類的觸發器
+7. 最後請學生用自己的話複述規則
+8. **整個過程不要先講正解，學生推出答案再揭曉**
+
+【風格】
+- 口語、像朋友在解釋
+- 不用 markdown 符號（# *），重點用「【】」標題
+- 一次只問一件事，蘇格拉底式漸進
+- 文法術語用中文 + 英文（例：分詞構句 participle phrase）`;
+}
+
+function buildGrammarWrongSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文文法家教，學生剛做錯這題，要用「規則對比 + 反例」幫他釐清。
+
+【題目情境】
+題目：${q.question || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+文法觀念：${q.grammar_topic || ''}
+${q.explanation ? '官方解析：' + q.explanation : ''}
+${q.common_mistakes ? '★ 典型錯誤：' + q.common_mistakes : ''}
+
+【引導流程】
+1. 先問「你選了哪個？選的時候在想哪條規則？」
+2. 從學生回答判斷他卡在「規則記錯」、「沒看清句構」、「規則衝突沒分清」還是「特殊用法不知道」
+3. 對比【你選的規則套用 vs 正解的規則套用】——用對比例句說明（兩句只差一個關鍵字、文法卻不同）
+4. ${q.common_mistakes ? '善用上述「典型錯誤」點他可能踩的雷' : '幫他歸納可能誤用的規則'}
+5. 給一個反例（同類陷阱題）讓他自己判斷一次，確認真懂
+6. 全程不要直接給完整解答，引導他自己想出來
+
+【風格】
+- 口語、有耐心、像朋友
+- 不用 markdown 符號
+- 一次只問一件事
+- 文法術語用中文 + 英文`;
+}
+
+// ── Dispatch by question type ─────────────────────────────────
+function findQ(qid) { return VOCAB_Q.find(q=>q.id===qid) || GRAMMAR_Q.find(q=>q.id===qid); }
+function isVocabId(qid) { return VOCAB_Q.some(q=>q.id===qid); }
+
+function buildStepPromptByType(qid) {
+  const q = findQ(qid); if (!q) return '';
+  return isVocabId(qid) ? buildVocabStepSystemPrompt(q) : buildGrammarStepSystemPrompt(q);
+}
+function buildWrongPromptByType(qid) {
+  const q = findQ(qid); if (!q) return '';
+  return isVocabId(qid) ? buildVocabWrongSystemPrompt(q) : buildGrammarWrongSystemPrompt(q);
+}
+
+function openStepAIChat(qid) {
+  const q = findQ(qid); if (!q) return;
+  const key = getApiKey();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'chat-overlay';
+  overlay.id = 'chat-overlay';
+  overlay.innerHTML = `
+    <div class="chat-drag-handle" onpointerdown="chatSheetDragStart(event)" onpointermove="chatSheetDragMove(event)" onpointerup="chatSheetDragEnd(event)" onpointercancel="chatSheetDragEnd(event)"></div>
+    <div class="chat-topbar">
+      <button class="header-btn" onclick="closeChatOverlay()" style="flex-shrink:0">←</button>
+      <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="flex-shrink:0">🔑</button>
+      <div class="chat-topbar-title">💬 AI 引導</div>
+      <div class="chat-topbar-sub">${escMd(q.id)}</div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input-bar">
+      <textarea class="chat-input" id="chat-input" placeholder="輸入你的想法或答案…" rows="1"
+        onkeydown="engChatKeydown(event,'${escAttr(qid)}')" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="chat-send-btn" id="chat-send-btn" onclick="sendStepMessage('${escAttr(qid)}')" disabled>↑</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('chat-input').addEventListener('input', () => {
+    document.getElementById('chat-send-btn').disabled = !document.getElementById('chat-input').value.trim();
+  });
+
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑 按鈕）'); return; }
+
+  const openLine = isVocabId(qid) ? '我要開始看這題單字題，請先引導我從上下文線索切入' : '我要開始看這題文法題，請先引導我拆句構';
+  chatHistory[qid] = [{ role: 'user', content: openLine }];
+  appendTyping();
+  callEngAI(buildStepPromptByType(qid), chatHistory[qid], qid);
+}
+
+function openWrongAIChat(qid) {
+  const q = findQ(qid); if (!q) return;
+  const key = getApiKey();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'chat-overlay';
+  overlay.id = 'chat-overlay';
+  overlay.innerHTML = `
+    <div class="chat-drag-handle" onpointerdown="chatSheetDragStart(event)" onpointermove="chatSheetDragMove(event)" onpointerup="chatSheetDragEnd(event)" onpointercancel="chatSheetDragEnd(event)"></div>
+    <div class="chat-topbar">
+      <button class="header-btn" onclick="closeChatOverlay()" style="flex-shrink:0">←</button>
+      <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="flex-shrink:0">🔑</button>
+      <div class="chat-topbar-title">💬 錯題分析</div>
+      <div class="chat-topbar-sub">${escMd(q.id)}</div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input-bar">
+      <textarea class="chat-input" id="chat-input" placeholder="說說你卡在哪裡…" rows="1"
+        onkeydown="engChatKeydown(event,'${escAttr(qid)}')" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="chat-send-btn" id="chat-send-btn" onclick="sendStepMessage('${escAttr(qid)}')" disabled>↑</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('chat-input').addEventListener('input', () => {
+    document.getElementById('chat-send-btn').disabled = !document.getElementById('chat-input').value.trim();
+  });
+
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑 按鈕）'); return; }
+
+  chatHistory[qid] = [{ role: 'user', content: '我剛做錯這題，幫我分析' }];
+  appendTyping();
+  callEngAI(buildWrongPromptByType(qid), chatHistory[qid], qid);
+}
+
+async function sendStepMessage(qid) {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const key = getApiKey();
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑）'); return; }
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('chat-send-btn').disabled = true;
+  appendUserMessage(text);
+  if (!chatHistory[qid]) chatHistory[qid] = [];
+  chatHistory[qid].push({ role: 'user', content: text });
+  appendTyping();
+  // Continue with same system prompt as the conversation already started with
+  const sys = buildStepPromptByType(qid);
+  callEngAI(sys, chatHistory[qid], qid);
+}
+
+function engChatKeydown(e, qid) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendStepMessage(qid);
+  }
 }
 
 // ════════════════════════════════════════════════════════════
