@@ -102,15 +102,20 @@ eng/
 
 **命名 pattern**:vocab 邏輯前綴 `v`(`vProg` / `vFiltered` / `vSmartNext`)、grammar 用 `g`(`gProg` / `gFiltered` / `gSmartNext`)、兩者通用的 mock 用全名。改/加功能要遵守這個約定。
 
-## 沒有 / 從未有的子系統
+## 政策變更紀錄
 
-明確聲明,**不要自作主張加**:
+### 2026-05-25:解除「不加 AI hint / 個人筆記」政策
 
-- ❌ in-app 勘誤(`openEditPanel` / `corrections` 之類) — 勘誤該直接改源頭 JSON,不該 client 端臨時改
-- ❌ 個人筆記(`personalNotes` / `renderNoteSection`) — 同上理由
-- ❌ AI hint / Anthropic API 對話(`saveApiKey` / `callAI`) — 真考題 + `explanation` + `distractor_notes` 已足夠,刻意不加 AI 對話
+**變更原因**:user 為配合 2026 轉學考準備,需要 AI 逐步引導 (字彙語源/同義反義對比、文法句構辨識) + 個人筆記 (整理錯題感想)。原政策「真考題 + explanation 已足夠」在實戰中發現:**字彙 / 文法的混淆點需要互動式對話、不是讀解析能解的**。
+
+**生效範圍**:
+- ✅ AI 引導 (`openStepAIChat` / `openWrongAIChat` / `callAnthropicWithRetry` / `buildVocabStepSystemPrompt` 等)
+- ✅ 我的筆記 (`renderNotesBlock` / `addNote` / `userNotes` / `eng_notes_v1`)
+
+**仍維持「不加」**:
+- ❌ in-app 勘誤(`openEditPanel`) — 勘誤該直接改源頭 JSON
 - ❌ 匯出題庫鈕(`exportJSON`) — 沒勘誤系統就沒匯出需求
-- ❌ Service Worker / PWA — 想要 iPad 離線再加,目前不需要
+- ❌ Service Worker / PWA — 想要 iPad 離線再加
 - ❌ Build pipeline / Actions / template — 架構簡單到不需要
 
 要加上面任何一個之前,**先問**為什麼非加不可。
