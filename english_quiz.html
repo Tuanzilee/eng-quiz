@@ -648,6 +648,7 @@ function renderVPractice() {
       <div class="btn-row">${btns}</div>
       <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
       ${reveal}
+      ${renderNotesBlock(q.id)}
     </div>`;
 
   document.querySelectorAll('#v-practice-content .option').forEach(el=>el.onclick=()=>{
@@ -770,6 +771,7 @@ function renderGPractice() {
       <div class="btn-row">${btns}</div>
       <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
       ${reveal}
+      ${renderNotesBlock(q.id)}
     </div>`;
 
   document.querySelectorAll('#g-practice-content .option').forEach(el=>el.onclick=()=>{
@@ -1387,6 +1389,118 @@ function updateNBBadge() {
   const n=getVWrongWords().filter(w=>!vKnown[w.word]).length+getGWrongQs().length;
   const badge=document.getElementById('notebook-badge');
   badge.textContent=n; badge.style.display=n>0?'':'none';
+}
+
+// ════════════════════════════════════════════════════════════
+// 我的筆記 (port 自 psy psych_notes_v1 → eng_notes_v1)
+// ════════════════════════════════════════════════════════════
+const NOTES_KEY = 'eng_notes_v1';
+let userNotes = {};
+try { userNotes = JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch(e) {}
+
+function saveNotes() {
+  try { localStorage.setItem(NOTES_KEY, JSON.stringify(userNotes)); } catch(e) {}
+}
+function getNotes(qid) { return userNotes[qid] || []; }
+function addNote(qid, text) {
+  const t = (text || '').trim();
+  if (!t) return null;
+  if (!userNotes[qid]) userNotes[qid] = [];
+  const note = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts: Date.now(), text: t };
+  userNotes[qid].push(note);
+  saveNotes();
+  return note;
+}
+function updateNote(qid, noteId, text) {
+  const t = (text || '').trim();
+  if (!t) return deleteNote(qid, noteId);
+  const arr = userNotes[qid] || [];
+  const n = arr.find(x => x.id === noteId);
+  if (n) { n.text = t; n.ts = Date.now(); saveNotes(); }
+}
+function deleteNote(qid, noteId) {
+  if (!userNotes[qid]) return;
+  userNotes[qid] = userNotes[qid].filter(x => x.id !== noteId);
+  if (userNotes[qid].length === 0) delete userNotes[qid];
+  saveNotes();
+}
+function renderNotesBlock(qid) {
+  const notes = getNotes(qid).slice().sort((a, b) => b.ts - a.ts);
+  const items = notes.map(n => {
+    const d = new Date(n.ts);
+    const ts = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+    return `<div class="note-item" id="note-${n.id}">
+      <div style="flex:1">
+        <div class="note-item-ts">${ts}</div>
+        <div class="note-item-text">${esc(n.text)}</div>
+      </div>
+      <div class="note-item-actions">
+        <button class="note-action-btn" onclick="startEditNote('${escAttr(qid)}','${n.id}')" title="編輯">✏</button>
+        <button class="note-action-btn" onclick="confirmDeleteNote('${escAttr(qid)}','${n.id}')" title="刪除">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="notes-block" id="notes-block-${esc(qid)}">
+    <div class="notes-block-header">
+      <div class="notes-block-label">📝 我的筆記${notes.length > 0 ? ` (${notes.length})` : ''}</div>
+      <button class="notes-add-btn" onclick="startAddNote('${escAttr(qid)}')">+ 新增</button>
+    </div>
+    <div id="notes-list-${esc(qid)}">${items || '<div style="font-size:12px;color:var(--text-dim);padding:4px 0">尚無筆記</div>'}</div>
+    <div id="notes-editor-wrap-${esc(qid)}"></div>
+  </div>`;
+}
+function startAddNote(qid) {
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <textarea class="notes-editor" id="notes-editor-${esc(qid)}" placeholder="我從這題學到 / 易混淆的點..."></textarea>
+    <div class="notes-editor-actions">
+      <button class="btn ghost small" onclick="cancelEditNote('${escAttr(qid)}')">取消</button>
+      <button class="btn primary small" onclick="saveNewNote('${escAttr(qid)}')">儲存</button>
+    </div>`;
+  document.getElementById('notes-editor-' + qid).focus();
+}
+function saveNewNote(qid) {
+  const ta = document.getElementById('notes-editor-' + qid);
+  if (!ta) return;
+  addNote(qid, ta.value);
+  rerenderNotesBlock(qid);
+}
+function startEditNote(qid, noteId) {
+  const arr = getNotes(qid);
+  const n = arr.find(x => x.id === noteId);
+  if (!n) return;
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <textarea class="notes-editor" id="notes-editor-${esc(qid)}">${esc(n.text)}</textarea>
+    <div class="notes-editor-actions">
+      <button class="btn ghost small" onclick="cancelEditNote('${escAttr(qid)}')">取消</button>
+      <button class="btn primary small" onclick="saveEditedNote('${escAttr(qid)}','${n.id}')">儲存</button>
+    </div>`;
+  document.getElementById('notes-editor-' + qid).focus();
+}
+function saveEditedNote(qid, noteId) {
+  const ta = document.getElementById('notes-editor-' + qid);
+  if (!ta) return;
+  updateNote(qid, noteId, ta.value);
+  rerenderNotesBlock(qid);
+}
+function confirmDeleteNote(qid, noteId) {
+  if (!confirm('刪除這則筆記？')) return;
+  deleteNote(qid, noteId);
+  rerenderNotesBlock(qid);
+}
+function cancelEditNote(qid) {
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (wrap) wrap.innerHTML = '';
+}
+function rerenderNotesBlock(qid) {
+  const old = document.getElementById('notes-block-' + qid);
+  if (!old) return;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderNotesBlock(qid);
+  old.replaceWith(tmp.firstElementChild);
 }
 
 // ════════════════════════════════════════════════════════════
