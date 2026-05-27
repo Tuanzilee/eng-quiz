@@ -12,7 +12,7 @@
 
 ```
 eng/
-├── english_quiz.html      ← 主程式(~1,310 行)。源 = 部署檔,直接改
+├── index.html             ← 主程式。源 = 部署檔,直接改(2026-05-27 起檔名改 index.html,根 URL 直接服務)
 ├── vocab_data.json        ← 322 題單字(runtime fetch 載入)
 ├── grammar_data.json      ← 107 題文法(runtime fetch 載入)
 ├── README.md              ← GitHub repo 首頁
@@ -73,7 +73,7 @@ eng/
 }
 ```
 
-→ **改 `english_quiz.html` 不會改變題目資料**;題目資料只在 `vocab_data.json` / `grammar_data.json`。
+→ **改 `index.html` 不會改變題目資料**;題目資料只在 `vocab_data.json` / `grammar_data.json`。
 
 ## 勘誤工作流
 
@@ -125,7 +125,7 @@ eng/
 - **直接動手,做完再報**。不需要逐步請示;只在「會動到大量檔案 / 不可逆操作 / 需求模糊」時才停下確認
 - **改檔優先用 Edit(str_replace),少用 Write 整檔覆蓋**
 - **不要重複問同樣的事**。已經寫進這份 CLAUDE.md 的事,直接照辦
-- 改 `english_quiz.html` 後本機開 `python3 -m http.server 8080` 點一下確認沒事
+- 改 `index.html` 後本機開 `python3 -m http.server 8080` 點一下確認沒事
 - 勘誤改完 push 後,提醒使用者強制重整(Cmd+Shift+R)
 
 ## 已知狀態(2026-05-16)

@@ -15,9 +15,9 @@ cd ~/Desktop/eng
 python3 -m http.server 8080
 ```
 
-打開瀏覽器:`http://localhost:8080/english_quiz.html`
+打開瀏覽器:`http://localhost:8080/`
 
-> ⚠ 不能直接點兩下 `english_quiz.html` 開啟(`fetch()` 在 `file://` 會失敗)
+> ⚠ 不能直接點兩下 `index.html` 開啟(`fetch()` 在 `file://` 會失敗)
 
 ### iPad / 手機刷題
 
@@ -154,7 +154,7 @@ Cmd + Shift + R(強制重新整理)
 ## 七、常見問題
 
 **Q:打開網頁顯示「載入失敗」 / 空白**
-A:確認用 `python3 -m http.server 8080` 啟動,不能直接點兩下 html。網址要進 `/english_quiz.html`。
+A:確認用 `python3 -m http.server 8080` 啟動,不能直接點兩下 html。網址直接打 `http://localhost:8080/` 即可。
 
 **Q:GitHub Pages 網址打不開**
 A:等多幾分鐘,或到 repo Settings → Pages 確認部署狀態。

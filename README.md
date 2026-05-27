@@ -11,9 +11,9 @@ cd ~/Desktop/eng
 python3 -m http.server 8080
 ```
 
-打開瀏覽器:`http://localhost:8080/english_quiz.html`
+打開瀏覽器:`http://localhost:8080/`
 
-> ⚠ 不能直接點兩下 `english_quiz.html` 開啟(`fetch('./*.json')` 在 `file://` 會失敗)。
+> ⚠ 不能直接點兩下 `index.html` 開啟(`fetch('./*.json')` 在 `file://` 會失敗)。
 
 ## 詳細操作 / 勘誤流程
 

@@ -1,11 +1,1985 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-  <meta http-equiv="refresh" content="0; url=english_quiz.html">
-  <title>eng-quiz</title>
-  <link rel="canonical" href="english_quiz.html">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>英文刷題系統 v1.0</title>
+<style>
+:root {
+  --bg: #0f1115; --card: #1a1d24; --card-hover: #232730;
+  --border: #2a2f3a; --text: #e8eaed; --text-dim: #9aa0a6;
+  --accent: #8ab4f8; --green: #81c995; --red: #f28b82;
+  --yellow: #fdd663; --orange: #fbbc04;
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+
+header { position: sticky; top: 0; z-index: 10;
+  background: rgba(15,17,21,0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border); padding: 10px 16px; }
+header h1 { margin: 0; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+#mock-timer-display { font-size: 14px; font-weight: 600; color: var(--yellow);
+  margin-left: auto; padding: 4px 10px; background: rgba(253,214,99,0.1);
+  border: 1px solid rgba(253,214,99,0.3); border-radius: 6px; }
+#mock-timer-display.urgent { color: var(--red); background: rgba(242,139,130,0.1);
+  border-color: rgba(242,139,130,0.3); }
+
+.tabs { display: flex; gap: 2px; margin: 14px 0; border-bottom: 1px solid var(--border); }
+.tab { padding: 10px 16px; cursor: pointer; color: var(--text-dim);
+  border-bottom: 2px solid transparent; font-size: 14px; white-space: nowrap; }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab .badge { display: inline-block; margin-left: 4px; padding: 1px 6px;
+  background: var(--red); color: var(--bg); border-radius: 8px;
+  font-size: 10px; font-weight: 600; }
+
+.sub-tabs { display: flex; gap: 0; margin-bottom: 14px; }
+.sub-tab { padding: 7px 14px; cursor: pointer; color: var(--text-dim); font-size: 13px;
+  border: 1px solid var(--border); background: var(--card); }
+.sub-tab:first-child { border-radius: 6px 0 0 6px; }
+.sub-tab:last-child { border-radius: 0 6px 6px 0; border-left: none; }
+.sub-tab.active { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; align-items: center; }
+.pill { padding: 5px 12px; border-radius: 20px; background: var(--card);
+  border: 1px solid var(--border); cursor: pointer; font-size: 13px;
+  color: var(--text-dim); transition: all 0.15s; }
+.pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.pill:hover:not(.active) { background: var(--card-hover); color: var(--text); }
+.filter-label { font-size: 12px; color: var(--text-dim); margin-right: 2px; }
+
+.q-list { display: flex; flex-direction: column; gap: 8px; }
+.q-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; cursor: pointer; transition: all 0.15s; }
+.q-item:hover { background: var(--card-hover); border-color: var(--accent); }
+.q-item .head { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.q-item .id { font-family: monospace; color: var(--accent); font-size: 11px; }
+.q-item .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.tag { font-size: 11px; padding: 2px 6px; background: rgba(138,180,248,0.15); color: var(--accent); border-radius: 4px; }
+.tag.topic { background: rgba(253,214,99,0.15); color: var(--yellow); }
+.tag.diff-easy { background: rgba(129,201,149,0.15); color: var(--green); }
+.tag.diff-medium { background: rgba(253,214,99,0.15); color: var(--yellow); }
+.tag.diff-hard { background: rgba(242,139,130,0.15); color: var(--red); }
+.q-item .text { font-size: 13px; color: var(--text); font-style: italic; }
+.progress-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
+.progress-dot.correct { background: var(--green); }
+.progress-dot.wrong { background: var(--red); }
+
+.q-detail { background: var(--card); border-radius: 12px; padding: 18px; margin-top: 10px; }
+.q-detail .meta { color: var(--text-dim); font-size: 12px; margin-bottom: 6px; }
+.q-detail .question { font-size: 17px; font-weight: 400; margin: 8px 0 14px; line-height: 1.7; font-style: italic; }
+.blank { display: inline-block; min-width: 56px; border-bottom: 2px solid var(--accent); padding: 0 6px; color: var(--accent); }
+
+.options { display: flex; flex-direction: column; gap: 8px; margin: 14px 0; }
+.option { padding: 9px 13px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; cursor: pointer; transition: all 0.1s;
+  display: flex; gap: 10px; align-items: center; }
+.option:hover { border-color: var(--accent); }
+.option.selected { border-color: var(--accent); background: rgba(138,180,248,0.1); }
+.option.correct { border-color: var(--green); background: rgba(129,201,149,0.15); }
+.option.wrong { border-color: var(--red); background: rgba(242,139,130,0.15); }
+.option .letter { display: inline-block; width: 24px; height: 24px; border-radius: 50%;
+  background: var(--card); text-align: center; line-height: 24px;
+  font-weight: 600; font-size: 13px; flex-shrink: 0; }
+.option.correct .letter { background: var(--green); color: var(--bg); }
+.option.wrong .letter { background: var(--red); color: var(--bg); }
+
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.btn { padding: 9px 16px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--border); background: var(--card);
+  color: var(--text); font-size: 14px; font-family: inherit; transition: all 0.1s; }
+.btn:hover { background: var(--card-hover); }
+.btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600; }
+.btn.primary:hover { background: #aac7f9; }
+.btn.ghost { background: transparent; }
+.btn.small { padding: 5px 11px; font-size: 12px; }
+.btn.danger { background: var(--red); color: var(--bg); border-color: var(--red); font-weight: 600; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn.flagged { color: var(--yellow); border-color: var(--yellow); }
+
+.reveal { margin-top: 14px; padding: 14px; border-radius: 10px;
+  background: var(--bg); border: 1px solid var(--border); }
+.reveal.correct { border-left: 4px solid var(--green); }
+.reveal.wrong { border-left: 4px solid var(--red); }
+.reveal h3 { margin: 0 0 10px; font-size: 12px; color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.reveal .ans-text { color: var(--text); font-size: 14px; line-height: 1.7; margin-bottom: 10px; }
+.reveal .ans-text:last-child { margin-bottom: 0; }
+.reveal .ans-text strong { color: var(--accent); }
+
+.word-card { background: var(--card); border-radius: 8px; padding: 12px 14px; margin: 8px 0; }
+.word-card .wc-main { font-size: 18px; font-weight: 600; color: var(--accent); margin-bottom: 3px; }
+.word-card .wc-zh { font-size: 13px; color: var(--text-dim); margin-bottom: 7px; }
+.word-card .wc-def { font-size: 13px; margin-bottom: 7px; line-height: 1.6; }
+.word-card .wc-ex { font-size: 13px; color: var(--text-dim); font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 10px; }
+.sentence-zh { background: var(--card); border-radius: 8px; padding: 11px 14px; margin: 8px 0;
+  border-left: 3px solid var(--accent); }
+.sentence-zh-label { font-size: 11px; color: var(--text-dim); margin-bottom: 5px; font-weight: 500; }
+.sentence-zh-text { font-size: 14px; line-height: 1.7; }
+.distractor-list { font-size: 13px; line-height: 1.8; }
+.distractor-list .di-word { color: var(--text); font-weight: 500; }
+
+/* Notebook */
+.notebook-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 15px; margin-bottom: 8px; border-left: 3px solid var(--red); }
+.notebook-card.known { border-left-color: var(--green); opacity: 0.65; }
+.notebook-card.grammar-type { border-left-color: var(--yellow); }
+.notebook-card .word-row { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 10px; margin-bottom: 5px; flex-wrap: wrap; }
+.notebook-card .word-en { font-size: 17px; font-weight: 600; color: var(--accent); }
+.notebook-card .word-zh { font-size: 13px; color: var(--text-dim); }
+.notebook-card .stat-line { font-size: 11px; color: var(--text-dim); margin-bottom: 7px; }
+.notebook-card .word-def { font-size: 13px; line-height: 1.6; margin-bottom: 5px; }
+.notebook-card .word-example { font-size: 13px; color: var(--text-dim); font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 9px; margin-bottom: 9px; }
+
+/* Weakness */
+.weakness-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 13px 15px; margin-bottom: 8px; }
+.weakness-card.weak { border-left: 3px solid var(--red); }
+.weakness-card.medium { border-left: 3px solid var(--yellow); }
+.weakness-card.strong { border-left: 3px solid var(--green); }
+.weakness-card.untouched { border-left: 3px solid var(--text-dim); opacity: 0.7; }
+.weakness-card .top { display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 7px; gap: 10px; flex-wrap: wrap; }
+.weakness-card .topic-name { font-weight: 500; }
+.weakness-card .stats-text { font-size: 12px; color: var(--text-dim); }
+.bar-bg { width: 100%; height: 5px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.bar-fill { height: 100%; transition: width 0.3s; }
+.bar-fill.weak { background: var(--red); }
+.bar-fill.medium { background: var(--yellow); }
+.bar-fill.strong { background: var(--green); }
+
+/* Summary stats */
+.summary-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 10px; margin-bottom: 18px; }
+.summary-stats .stat { background: var(--card); padding: 11px; border-radius: 10px;
+  border: 1px solid var(--border); text-align: center; }
+.summary-stats .num { font-size: 22px; font-weight: 600; color: var(--accent); }
+.summary-stats .num.warn { color: var(--red); }
+.summary-stats .num.good { color: var(--green); }
+.summary-stats .label { font-size: 12px; color: var(--text-dim); }
+
+/* Mock exam */
+.mock-setup-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; margin-bottom: 12px; }
+.mock-setup-card h3 { margin: 0 0 14px; font-size: 15px; }
+.slider-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+.slider-row label { font-size: 13px; color: var(--text-dim); min-width: 80px; }
+.slider-row input[type=range] { flex: 1; min-width: 120px; accent-color: var(--accent); }
+.slider-row .val { font-size: 14px; font-weight: 600; color: var(--accent); min-width: 70px; }
+
+.mock-progress-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 14px; overflow: hidden; }
+.mock-progress-fill { height: 100%; background: var(--accent); transition: width 0.2s; }
+
+.mock-q-nav { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 14px; }
+.mock-q-dot { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border);
+  background: var(--card); cursor: pointer; font-size: 11px; font-weight: 600;
+  display: flex; align-items: center; justify-content: center; color: var(--text-dim); transition: all 0.1s; }
+.mock-q-dot.answered { background: rgba(138,180,248,0.2); border-color: var(--accent); color: var(--accent); }
+.mock-q-dot.flagged { border-color: var(--yellow); color: var(--yellow); }
+.mock-q-dot.current { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.mock-q-dot.correct { background: rgba(129,201,149,0.2); border-color: var(--green); color: var(--green); }
+.mock-q-dot.guessed { background: rgba(253,214,99,0.2); border-color: var(--yellow); color: var(--yellow); }
+.mock-q-dot.review-wrong { background: rgba(242,139,130,0.2); border-color: var(--red); color: var(--red); }
+
+/* review option rows */
+.review-opt { display:flex; gap:10px; align-items:flex-start; padding:8px 10px;
+  border-radius:8px; margin-bottom:6px; border:1px solid var(--border); background:var(--bg); }
+.review-opt.rv-correct { border-color:var(--green); background:rgba(129,201,149,0.08); }
+.review-opt.rv-wrong   { border-color:var(--red);   background:rgba(242,139,130,0.08); }
+.review-opt .rv-letter { display:inline-flex; align-items:center; justify-content:center;
+  width:24px; height:24px; border-radius:50%; font-weight:600; font-size:13px;
+  flex-shrink:0; background:var(--card); }
+.rv-correct .rv-letter { background:var(--green); color:var(--bg); }
+.rv-wrong   .rv-letter { background:var(--red);   color:var(--bg); }
+.rv-opt-text { font-size:13px; line-height:1.6; flex:1; }
+.rv-note { font-size:12px; color:var(--text-dim); margin-top:4px; line-height:1.6; }
+.rv-note strong { color:var(--red); }
+.flag-badge { display:inline-block; padding:1px 7px; border-radius:4px; font-size:11px;
+  font-weight:600; background:rgba(253,214,99,0.2); color:var(--yellow);
+  border:1px solid rgba(253,214,99,0.4); margin-left:6px; vertical-align:middle; }
+
+/* mock history */
+.history-section-title { font-size:13px; font-weight:500; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:0.5px; margin:24px 0 10px; }
+.history-card { background:var(--card); border:1px solid var(--border); border-radius:10px;
+  padding:13px 15px; margin-bottom:8px; display:flex; align-items:center;
+  gap:14px; flex-wrap:wrap; cursor:default; transition:border-color 0.15s; }
+.history-card:hover { border-color:var(--accent); }
+.history-score { font-size:22px; font-weight:700; min-width:56px; text-align:center; }
+.history-score.good  { color:var(--green); }
+.history-score.ok    { color:var(--yellow); }
+.history-score.bad   { color:var(--red); }
+.history-meta { flex:1; min-width:140px; }
+.history-meta .hm-date { font-size:12px; color:var(--text-dim); margin-bottom:3px; }
+.history-meta .hm-detail { font-size:12px; color:var(--text-dim); }
+.history-breakdown { display:flex; gap:10px; flex-wrap:wrap; }
+.history-breakdown .hb-item { font-size:12px; text-align:center; }
+.history-breakdown .hb-val { font-weight:600; font-size:14px; display:block; }
+.history-breakdown .hb-val.good { color:var(--green); }
+.history-breakdown .hb-val.bad  { color:var(--red); }
+.history-breakdown .hb-val.flag { color:var(--yellow); }
+.history-breakdown .hb-label { color:var(--text-dim); font-size:11px; }
+.history-del { background:none; border:none; color:var(--text-dim); cursor:pointer;
+  padding:4px 7px; border-radius:6px; font-size:13px; transition:all 0.1s; }
+.history-del:hover { background:rgba(242,139,130,0.15); color:var(--red); }
+
+.score-banner { background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 20px; text-align: center; margin-bottom: 16px; }
+.score-banner .score-big { font-size: 40px; font-weight: 700; color: var(--accent); }
+.score-banner .score-sub { font-size: 14px; color: var(--text-dim); margin-top: 4px; }
+.score-breakdown { display: flex; gap: 16px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.score-breakdown .sb-item { font-size: 13px; }
+.score-breakdown .sb-item .sb-val { font-weight: 600; }
+.score-breakdown .sb-item .sb-val.good { color: var(--green); }
+.score-breakdown .sb-item .sb-val.bad { color: var(--red); }
+
+.review-q { background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  margin-bottom: 8px; overflow: hidden; }
+.review-q .review-head { padding: 12px 14px; cursor: pointer; display: flex;
+  align-items: center; gap: 10px; }
+.review-q .review-head:hover { background: var(--card-hover); }
+.review-q .ri-icon { font-size: 16px; flex-shrink: 0; }
+.review-q .ri-text { font-size: 13px; color: var(--text-dim); flex: 1; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+.review-q .ri-meta { font-size: 11px; color: var(--text-dim); flex-shrink: 0; }
+.review-q .review-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
+.review-q.open .review-body { display: block; }
+
+.section-title { font-size: 13px; font-weight: 500; color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; }
+.empty-state { text-align: center; padding: 40px 20px; color: var(--text-dim); }
+
+/* Header API key button */
+.header-btn { background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+  width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 15px; font-family: inherit; flex-shrink: 0; transition: all 0.1s; }
+.header-btn:hover { background: var(--card-hover); color: var(--text); }
+.header-btn:active { opacity: 0.7; }
+
+/* API key modal */
+.modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100;
+  display: none; align-items: flex-end; }
+.modal-bg.show { display: flex; }
+.modal { background: var(--card); border-top: 1px solid var(--border);
+  border-radius: 18px 18px 0 0; width: 100%; max-width: 680px; margin: 0 auto;
+  max-height: 80vh; overflow-y: auto; padding: 20px 16px;
+  padding-bottom: calc(20px + var(--safe-bottom)); }
+.modal-handle { width: 36px; height: 4px; background: var(--border);
+  border-radius: 2px; margin: 0 auto 16px; }
+.modal-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+.action-row { display: flex; gap: 8px; }
+.edit-field { background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); padding: 9px 12px; font-family: inherit; outline: none; }
+.edit-field:focus { border-color: var(--accent); }
+
+/* AI chat overlay (bottom sheet, drag-resizable) */
+.chat-overlay { position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--sheet-height, 60vh); background: var(--bg); z-index: 200;
+  display: flex; flex-direction: column; max-width: 680px; margin: 0 auto;
+  border-radius: 16px 16px 0 0; box-shadow: 0 -4px 20px rgba(0,0,0,0.4); }
+.chat-drag-handle { display: flex; justify-content: center; align-items: center;
+  height: 18px; padding-top: 6px; cursor: row-resize; touch-action: none; flex-shrink: 0; }
+.chat-drag-handle::before { content: ''; display: block; width: 40px; height: 4px;
+  border-radius: 2px; background: var(--border); }
+.chat-topbar { display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px 10px; border-bottom: 1px solid var(--border);
+  flex-shrink: 0; background: var(--bg); }
+.chat-topbar-title { font-size: 14px; font-weight: 700; color: var(--accent); flex: 1; }
+.chat-topbar-sub { font-size: 11px; color: var(--text-dim); font-family: monospace; }
+.chat-messages { flex: 1; overflow-y: auto; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 12px; }
+.chat-msg { display: flex; flex-direction: column; gap: 4px; }
+.chat-msg.user { align-items: flex-end; }
+.chat-msg.ai { align-items: flex-start; }
+.chat-bubble { max-width: 88%; padding: 10px 13px; border-radius: 12px;
+  font-size: 13px; line-height: 1.7; }
+.chat-msg.user .chat-bubble { background: var(--accent); color: var(--bg);
+  border-bottom-right-radius: 4px; font-weight: 500; }
+.chat-msg.ai .chat-bubble { background: var(--card); border: 1px solid var(--border);
+  color: var(--text); border-bottom-left-radius: 4px; }
+.chat-msg.ai .chat-bubble h3 { font-size: 12px; font-weight: 700; color: var(--accent);
+  margin: 10px 0 4px; letter-spacing: 0.03em; }
+.chat-msg.ai .chat-bubble h3:first-child { margin-top: 0; }
+.chat-msg.ai .chat-bubble p { margin: 0 0 4px; }
+.chat-msg.ai .chat-bubble ul { margin: 0 0 6px; padding-left: 16px; }
+.chat-msg.ai .chat-bubble li { margin-bottom: 2px; }
+.chat-msg.ai .chat-bubble .tip { background: rgba(253,214,99,0.12); border-radius: 4px;
+  padding: 6px 10px; font-size: 12px; color: var(--yellow); margin: 4px 0; }
+.chat-input-bar { display: flex; align-items: flex-end; gap: 8px;
+  padding: 10px 14px; padding-bottom: calc(10px + var(--safe-bottom));
+  border-top: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
+.chat-input { flex: 1; background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 14px; line-height: 1.5;
+  padding: 9px 12px; resize: none; font-family: inherit; max-height: 100px; overflow-y: auto; }
+.chat-input:focus { outline: none; border-color: var(--accent); }
+.chat-send-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--accent);
+  border: none; color: var(--bg); font-size: 16px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: opacity .15s; font-weight: 700; }
+.chat-send-btn:disabled { opacity: 0.4; cursor: default; }
+.chat-typing { display: flex; gap: 4px; align-items: center; padding: 4px 0; }
+.chat-typing span { width: 6px; height: 6px; border-radius: 50%;
+  background: var(--text-dim); animation: ldot .9s infinite; }
+.chat-typing span:nth-child(2) { animation-delay: .2s; }
+.chat-typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes ldot { 0%,80%,100% { opacity: .2; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+
+/* AI 引導 / 錯題分析 觸發按鈕 */
+.ai-guide-btn { width: 100%; padding: 9px 14px; background: rgba(138,180,248,0.1);
+  border: 1px solid rgba(138,180,248,0.3); border-radius: 10px; color: var(--accent);
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; margin: 8px 0 4px; }
+.ai-guide-btn:active { background: rgba(138,180,248,0.18); }
+.ai-wrong-btn { display: inline-block; padding: 5px 11px; background: transparent;
+  border: 1px solid var(--accent); border-radius: 8px; color: var(--accent);
+  font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.ai-wrong-btn:active { background: rgba(138,180,248,0.1); }
+
+/* 我的筆記 */
+.notes-block { background: var(--card-hover); border: 1px solid var(--border);
+  border-left: 3px solid var(--green); border-radius: 10px;
+  padding: 12px 14px; margin-top: 12px; }
+.notes-block-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.notes-block-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--green); text-transform: uppercase; flex: 1; }
+.notes-add-btn { font-size: 11px; padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--green); background: transparent; color: var(--green);
+  cursor: pointer; font-family: inherit; }
+.note-item { display: flex; gap: 8px; padding: 8px 0; border-top: 1px solid var(--border);
+  font-size: 13px; line-height: 1.6; }
+.note-item:first-child { border-top: none; }
+.note-item-text { flex: 1; white-space: pre-wrap; color: var(--text); }
+.note-item-ts { font-size: 10px; color: var(--text-dim); margin-bottom: 4px; font-family: monospace; }
+.note-item-actions { display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; }
+.note-action-btn { width: 24px; height: 24px; border-radius: 4px;
+  border: 1px solid var(--border); background: var(--card); color: var(--text-dim);
+  font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.notes-editor { width: 100%; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 10px; color: var(--text); font-size: 13px;
+  line-height: 1.5; resize: vertical; min-height: 60px; font-family: inherit;
+  margin-top: 8px; box-sizing: border-box; }
+.notes-editor-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 6px; }
+
+@media (max-width: 600px) {
+  .container { padding: 12px; }
+  .q-detail { padding: 14px; }
+  .q-detail .question { font-size: 15px; }
+  .pill { padding: 5px 10px; font-size: 12px; }
+  .tab { padding: 8px 12px; font-size: 13px; }
+}
+</style>
 </head>
 <body>
-  <p>Redirecting to <a href="english_quiz.html">english_quiz.html</a>...</p>
+
+<header>
+  <div class="container" style="padding:0; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+    <div>
+      <h1>英文刷題系統 <span style="color:var(--text-dim);font-size:13px;font-weight:normal">v1.0</span></h1>
+      <div class="sub" id="header-sub">載入中⋯</div>
+    </div>
+    <div id="mock-timer-display" style="display:none">⏱ --:--</div>
+    <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="margin-left:auto">🔑</button>
+  </div>
+</header>
+
+<div class="container">
+<div class="tabs">
+  <div class="tab active" data-tab="vocab">字彙</div>
+  <div class="tab" data-tab="grammar">文法</div>
+  <div class="tab" data-tab="notebook">錯題本 <span class="badge" id="notebook-badge" style="display:none">0</span></div>
+  <div class="tab" data-tab="mock">模考</div>
+</div>
+
+<!-- ═══ 字彙 ═══ -->
+<div id="page-vocab">
+  <div class="sub-tabs">
+    <div class="sub-tab active" id="v-stab-browse" onclick="switchVPhase('browse')">瀏覽</div>
+    <div class="sub-tab" id="v-stab-practice" onclick="switchVPhase('practice')">練習中</div>
+  </div>
+  <div id="v-browse">
+    <div class="filters" id="v-school-filters"></div>
+    <div class="filters" id="v-diff-filters"></div>
+    <div class="filters" id="v-status-filters"></div>
+    <div class="btn-row"><button class="btn primary" id="v-smart-btn">載入中⋯</button></div>
+    <div id="v-count" style="font-size:12px;color:var(--text-dim);margin:6px 0"></div>
+    <div class="q-list" id="v-list"></div>
+  </div>
+  <div id="v-practice" style="display:none"><div id="v-practice-content"></div></div>
+</div>
+
+<!-- ═══ 文法 ═══ -->
+<div id="page-grammar" style="display:none">
+  <div class="sub-tabs">
+    <div class="sub-tab active" id="g-stab-browse" onclick="switchGPhase('browse')">瀏覽</div>
+    <div class="sub-tab" id="g-stab-practice" onclick="switchGPhase('practice')">練習中</div>
+  </div>
+  <div id="g-browse">
+    <div class="filters" id="g-topic-filters"></div>
+    <div class="filters" id="g-diff-filters"></div>
+    <div class="filters" id="g-status-filters"></div>
+    <div class="btn-row">
+      <button class="btn primary" id="g-weak-btn">🎯 從弱點練</button>
+      <button class="btn" id="g-random-btn">🎲 隨機一題</button>
+    </div>
+    <div id="g-count" style="font-size:12px;color:var(--text-dim);margin:6px 0"></div>
+    <div class="q-list" id="g-list"></div>
+  </div>
+  <div id="g-practice" style="display:none"><div id="g-practice-content"></div></div>
+</div>
+
+<!-- ═══ 錯題本 ═══ -->
+<div id="page-notebook" style="display:none">
+  <div class="summary-stats" id="nb-stats"></div>
+  <div class="filters" id="nb-type-filters"></div>
+  <div class="filters" id="nb-mastery-filters"></div>
+  <div id="nb-list"></div>
+  <div id="nb-weakness"></div>
+</div>
+
+<!-- ═══ 模考 ═══ -->
+<div id="page-mock" style="display:none">
+  <div id="mock-setup"></div>
+  <div id="mock-running" style="display:none"></div>
+  <div id="mock-review" style="display:none"></div>
+  <div id="mock-history"></div>
+</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA & STORAGE
+// ════════════════════════════════════════════════════════════
+let VOCAB_Q = [], GRAMMAR_Q = [];
+
+const VPROG_KEY  = 'vocab_progress_v1';
+const VKNOWN_KEY = 'vocab_known_v1';
+const GPROG_KEY  = 'grammar_progress_v1';
+const MOCK_HIST_KEY = 'mock_history_v1';
+
+let vProg = {}, vKnown = {}, gProg = {}, mockHistory = [];
+try { vProg  = JSON.parse(localStorage.getItem(VPROG_KEY)  || '{}'); } catch(e){}
+try { vKnown = JSON.parse(localStorage.getItem(VKNOWN_KEY) || '{}'); } catch(e){}
+try { gProg  = JSON.parse(localStorage.getItem(GPROG_KEY)  || '{}'); } catch(e){}
+try { mockHistory = JSON.parse(localStorage.getItem(MOCK_HIST_KEY) || '[]'); } catch(e){}
+
+function saveMockHistory() { try { localStorage.setItem(MOCK_HIST_KEY, JSON.stringify(mockHistory)); } catch(e){} }
+
+function saveVProg()  { try { localStorage.setItem(VPROG_KEY,  JSON.stringify(vProg));  } catch(e){} }
+function saveVKnown() { try { localStorage.setItem(VKNOWN_KEY, JSON.stringify(vKnown)); } catch(e){} }
+function saveGProg()  { try { localStorage.setItem(GPROG_KEY,  JSON.stringify(gProg));  } catch(e){} }
+
+function recordV(qid, ok) {
+  const p = vProg[qid] || {count:0, correct_count:0};
+  vProg[qid] = { result: ok?'correct':'wrong', last: today(),
+    count: p.count+1, correct_count: p.correct_count+(ok?1:0) };
+  saveVProg();
+}
+function recordG(qid, ok) {
+  const p = gProg[qid] || {count:0, correct_count:0};
+  gProg[qid] = { result: ok?'correct':'wrong', last: today(),
+    count: p.count+1, correct_count: p.correct_count+(ok?1:0) };
+  saveGProg();
+}
+
+// ════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════
+const state = {
+  tab: 'vocab',
+  // vocab
+  vPhase:'browse', vFilterSchool:'all', vFilterDiff:'all', vFilterStatus:'all',
+  vCurrentQ:null, vSelected:null, vRevealed:false,
+  // grammar
+  gPhase:'browse', gFilterTopic:'all', gFilterDiff:'all', gFilterStatus:'all',
+  gCurrentQ:null, gSelected:null, gRevealed:false,
+  // notebook
+  nbType:'all', nbMastery:'learning',
+  // mock
+  mockPhase:'setup',
+  mockSettings:{ total:30, vocabPct:70, minutes:30 },
+  mockQs:[], mockAnswers:{}, mockFlagged:{}, mockIdx:0,
+  mockTimeLeft:0, mockTimer:null
+};
+
+// ════════════════════════════════════════════════════════════
+// UTILITIES
+// ════════════════════════════════════════════════════════════
+function today() { return new Date().toISOString().slice(0,10); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function renderBlank(text, revealedWord) {
+  if (revealedWord) return text.replace(/___/g, `<span class="blank" style="color:var(--green)">${esc(revealedWord)}</span>`);
+  return text.replace(/___/g, '<span class="blank">___</span>');
+}
+function getQText(q) { return q.sentence || q.question || ''; }
+function diffClass(d) { return d==='easy'?'diff-easy':d==='hard'?'diff-hard':'diff-medium'; }
+
+// ════════════════════════════════════════════════════════════
+// VOCAB — filter + list
+// ════════════════════════════════════════════════════════════
+function vFiltered() {
+  return VOCAB_Q.filter(q => {
+    if (state.vFilterSchool !== 'all' && q.source !== state.vFilterSchool) return false;
+    if (state.vFilterDiff   !== 'all' && q.difficulty !== state.vFilterDiff) return false;
+    if (state.vFilterStatus !== 'all') {
+      const p = vProg[q.id];
+      if (state.vFilterStatus==='untouched' && p) return false;
+      if (state.vFilterStatus==='wrong'     && (!p||p.result!=='wrong')) return false;
+      if (state.vFilterStatus==='correct'   && (!p||p.result!=='correct')) return false;
+    }
+    return true;
+  });
+}
+
+function renderVFilters() {
+  const schools = [...new Set(VOCAB_Q.map(q=>q.source))].sort();
+  document.getElementById('v-school-filters').innerHTML =
+    '<span class="filter-label">學校</span>' +
+    ['all',...schools].map(s=>`<div class="pill${state.vFilterSchool===s?' active':''}" data-vs="${s}">${s==='all'?'全部':s}</div>`).join('');
+  document.getElementById('v-diff-filters').innerHTML =
+    '<span class="filter-label">難度</span>' +
+    ['all','easy','medium','hard'].map(d=>`<div class="pill${state.vFilterDiff===d?' active':''}" data-vd="${d}">${d==='all'?'全部':d}</div>`).join('');
+  document.getElementById('v-status-filters').innerHTML =
+    '<span class="filter-label">狀態</span>' +
+    [{k:'all',l:'全部'},{k:'untouched',l:'未做'},{k:'wrong',l:'答錯過'},{k:'correct',l:'答對過'}]
+    .map(x=>`<div class="pill${state.vFilterStatus===x.k?' active':''}" data-vm="${x.k}">${x.l}</div>`).join('');
+
+  document.querySelectorAll('#v-school-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterSchool=p.dataset.vs;renderVFilters();renderVList();});
+  document.querySelectorAll('#v-diff-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterDiff=p.dataset.vd;renderVFilters();renderVList();});
+  document.querySelectorAll('#v-status-filters .pill').forEach(p=>p.onclick=()=>{state.vFilterStatus=p.dataset.vm;renderVFilters();renderVList();});
+}
+
+function renderVList() {
+  const qs = vFiltered();
+  document.getElementById('v-count').textContent = `顯示 ${qs.length} / ${VOCAB_Q.length} 題`;
+  if (!qs.length) { document.getElementById('v-list').innerHTML='<div class="empty-state">沒有符合條件的題目</div>'; return; }
+  document.getElementById('v-list').innerHTML = qs.map(q => {
+    const p = vProg[q.id];
+    const dot = p ? `<span class="progress-dot ${p.result}"></span>` : '';
+    return `<div class="q-item" data-qid="${q.id}">
+      <div class="head">
+        <span class="id">${q.id}${dot}</span>
+        <div class="tags">
+          <span class="tag">${q.source}</span>
+          <span class="tag ${diffClass(q.difficulty)}">${q.difficulty}</span>
+          ${q.format==='meta_vocab'?'<span class="tag">meta</span>':''}
+        </div>
+      </div>
+      <div class="text">${esc(getQText(q).slice(0,80))}…</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#v-list .q-item').forEach(el=>el.onclick=()=>openVocab(el.dataset.qid));
+}
+
+function updateVSmartBtn() {
+  const btn = document.getElementById('v-smart-btn');
+  if (!btn) return;
+  const unseen = VOCAB_Q.filter(q=>!vProg[q.id]);
+  const wrongWords = getVWrongWords().filter(w=>!vKnown[w.word]);
+  if (unseen.length>0) {
+    btn.textContent=`📖 開始練（剩 ${unseen.length} 題）`;
+    btn.onclick=()=>openVocab(unseen[Math.floor(Math.random()*unseen.length)].id);
+  } else if (wrongWords.length>0) {
+    btn.textContent=`🔁 複習錯題（${wrongWords.length} 字）`;
+    btn.onclick=()=>{const w=wrongWords[Math.floor(Math.random()*wrongWords.length)];openVocab(w.qids[0]);};
+  } else {
+    btn.textContent='🎲 隨機複習';
+    btn.onclick=()=>openVocab(VOCAB_Q[Math.floor(Math.random()*VOCAB_Q.length)].id);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// VOCAB — practice
+// ════════════════════════════════════════════════════════════
+function openVocab(qid) {
+  state.vCurrentQ = VOCAB_Q.find(q=>q.id===qid);
+  state.vSelected = null; state.vRevealed = false;
+  switchVPhase('practice');
+}
+
+function renderVPractice() {
+  const q = state.vCurrentQ;
+  if (!q) { document.getElementById('v-practice-content').innerHTML='<div class="empty-state">請先從瀏覽頁選一題</div>'; return; }
+  const letters=['A','B','C','D'];
+  const optHTML = q.options.map((o,i)=>{
+    let cls='';
+    if (state.vRevealed) {
+      if (letters[i]===q.answer) cls='correct';
+      else if (letters[i]===state.vSelected) cls='wrong';
+    } else if (letters[i]===state.vSelected) cls='selected';
+    return `<div class="option ${cls}" data-l="${letters[i]}">
+      <span class="letter">${letters[i]}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+
+  let reveal='';
+  if (state.vRevealed) {
+    const ok = state.vSelected===q.answer;
+    reveal = `<div class="reveal ${ok?'correct':'wrong'}">
+      <h3>${ok?'✓ 答對了':'✗ 答錯了'} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</h3>
+      ${q.sentence_zh?`<div class="sentence-zh"><div class="sentence-zh-label">📖 題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
+      <div class="word-card">
+        <div class="wc-main">${esc(q.target_word)}</div>
+        <div class="wc-zh">${esc(q.chinese||'')}</div>
+        <div class="wc-def">${esc(q.definition||'')}</div>
+        ${q.example?`<div class="wc-ex">${esc(q.example)}</div>`:''}
+      </div>
+      ${q.distractor_notes?`<div class="ans-text"><strong>選項解析：</strong></div>
+      <div class="distractor-list">${Object.entries(q.distractor_notes).map(([w,n])=>
+        `<div class="item"><span class="di-word">${esc(w)}</span>　<span class="meaning">${n.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</span></div>`
+      ).join('')}</div>`:''}
+    </div>`;
+  }
+
+  const btns = state.vRevealed
+    ? `<button class="btn primary" id="v-next-btn">下一題 →</button><button class="btn ghost" id="v-back-btn">← 返回列表</button>`
+    : `<button class="btn primary" id="v-reveal-btn"${!state.vSelected?' disabled':''}>確認答案</button><button class="btn ghost" id="v-back-btn">← 返回列表</button>`;
+
+  document.getElementById('v-practice-content').innerHTML = `
+    <div class="q-detail">
+      <div class="meta">${q.id} · ${q.source} ${q.year} · ${q.difficulty}${q.format==='meta_vocab'?' · meta_vocab':''}</div>
+      <div class="question">${renderBlank(esc(getQText(q)), state.vRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">${btns}</div>
+      <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
+      ${reveal}
+      ${renderNotesBlock(q.id)}
+    </div>`;
+
+  document.querySelectorAll('#v-practice-content .option').forEach(el=>el.onclick=()=>{
+    if (state.vRevealed) return;
+    state.vSelected=el.dataset.l; renderVPractice();
+  });
+  const rb=document.getElementById('v-reveal-btn');
+  if (rb) rb.onclick=()=>{ state.vRevealed=true; recordV(q.id,state.vSelected===q.answer); updateVSmartBtn(); updateNBBadge(); renderVPractice(); };
+  const nb2=document.getElementById('v-next-btn');
+  if (nb2) nb2.onclick=()=>vSmartNext();
+  document.querySelectorAll('#v-back-btn').forEach(b=>b.onclick=()=>switchVPhase('browse'));
+}
+
+function vSmartNext() {
+  const unseen = VOCAB_Q.filter(q=>!vProg[q.id]&&q.id!==state.vCurrentQ?.id);
+  if (unseen.length) { openVocab(unseen[Math.floor(Math.random()*unseen.length)].id); return; }
+  const wrongs = VOCAB_Q.filter(q=>vProg[q.id]?.result==='wrong'&&q.id!==state.vCurrentQ?.id);
+  if (wrongs.length) { openVocab(wrongs[Math.floor(Math.random()*wrongs.length)].id); return; }
+  const others = VOCAB_Q.filter(q=>q.id!==state.vCurrentQ?.id);
+  openVocab(others[Math.floor(Math.random()*others.length)].id);
+}
+
+// ════════════════════════════════════════════════════════════
+// GRAMMAR — filter + list
+// ════════════════════════════════════════════════════════════
+function gFiltered() {
+  return GRAMMAR_Q.filter(q => {
+    if (state.gFilterTopic  !== 'all' && q.grammar_topic !== state.gFilterTopic) return false;
+    if (state.gFilterDiff   !== 'all' && q.difficulty !== state.gFilterDiff) return false;
+    if (state.gFilterStatus !== 'all') {
+      const p = gProg[q.id];
+      if (state.gFilterStatus==='untouched' && p) return false;
+      if (state.gFilterStatus==='wrong'     && (!p||p.result!=='wrong')) return false;
+      if (state.gFilterStatus==='correct'   && (!p||p.result!=='correct')) return false;
+    }
+    return true;
+  });
+}
+
+function renderGFilters() {
+  const topics = [...new Set(GRAMMAR_Q.map(q=>q.grammar_topic))].sort();
+  document.getElementById('g-topic-filters').innerHTML =
+    '<span class="filter-label">觀念</span>' +
+    ['all',...topics].map(t=>`<div class="pill${state.gFilterTopic===t?' active':''}" data-gt="${t}">${t==='all'?'全部':t}</div>`).join('');
+  document.getElementById('g-diff-filters').innerHTML =
+    '<span class="filter-label">難度</span>' +
+    ['all','easy','medium','hard'].map(d=>`<div class="pill${state.gFilterDiff===d?' active':''}" data-gd="${d}">${d==='all'?'全部':d}</div>`).join('');
+  document.getElementById('g-status-filters').innerHTML =
+    '<span class="filter-label">狀態</span>' +
+    [{k:'all',l:'全部'},{k:'untouched',l:'未做'},{k:'wrong',l:'答錯過'},{k:'correct',l:'答對過'}]
+    .map(x=>`<div class="pill${state.gFilterStatus===x.k?' active':''}" data-gm="${x.k}">${x.l}</div>`).join('');
+
+  document.querySelectorAll('#g-topic-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterTopic=p.dataset.gt;renderGFilters();renderGList();});
+  document.querySelectorAll('#g-diff-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterDiff=p.dataset.gd;renderGFilters();renderGList();});
+  document.querySelectorAll('#g-status-filters .pill').forEach(p=>p.onclick=()=>{state.gFilterStatus=p.dataset.gm;renderGFilters();renderGList();});
+}
+
+function renderGList() {
+  const qs = gFiltered();
+  document.getElementById('g-count').textContent=`顯示 ${qs.length} / ${GRAMMAR_Q.length} 題`;
+  if (!qs.length) { document.getElementById('g-list').innerHTML='<div class="empty-state">沒有符合條件的題目</div>'; return; }
+  document.getElementById('g-list').innerHTML = qs.map(q=>{
+    const p=gProg[q.id];
+    const dot=p?`<span class="progress-dot ${p.result}"></span>`:'';
+    return `<div class="q-item" data-qid="${q.id}">
+      <div class="head">
+        <span class="id">${q.id}${dot}</span>
+        <div class="tags">
+          <span class="tag topic">${q.grammar_topic}</span>
+          <span class="tag ${diffClass(q.difficulty)}">${q.difficulty}</span>
+        </div>
+      </div>
+      <div class="text">${esc(getQText(q).slice(0,80))}…</div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#g-list .q-item').forEach(el=>el.onclick=()=>openGrammar(el.dataset.qid));
+}
+
+// ════════════════════════════════════════════════════════════
+// GRAMMAR — practice
+// ════════════════════════════════════════════════════════════
+function openGrammar(qid) {
+  state.gCurrentQ = GRAMMAR_Q.find(q=>q.id===qid);
+  state.gSelected = null; state.gRevealed = false;
+  switchGPhase('practice');
+}
+
+function renderGPractice() {
+  const q = state.gCurrentQ;
+  if (!q) { document.getElementById('g-practice-content').innerHTML='<div class="empty-state">請先從瀏覽頁選一題</div>'; return; }
+  const letters=['A','B','C','D'];
+  const optHTML = q.options.map((o,i)=>{
+    let cls='';
+    if (state.gRevealed) {
+      if (letters[i]===q.answer) cls='correct';
+      else if (letters[i]===state.gSelected) cls='wrong';
+    } else if (letters[i]===state.gSelected) cls='selected';
+    return `<div class="option ${cls}" data-l="${letters[i]}"><span class="letter">${letters[i]}</span><span>${esc(o)}</span></div>`;
+  }).join('');
+
+  let reveal='';
+  if (state.gRevealed) {
+    const ok=state.gSelected===q.answer;
+    reveal=`<div class="reveal ${ok?'correct':'wrong'}">
+      <h3>${ok?'✓ 答對了':'✗ 答錯了'} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</h3>
+      <div class="ans-text"><strong>解析：</strong>${esc(q.explanation||'')}</div>
+      ${q.common_mistakes?`<div class="ans-text"><strong>常見錯誤：</strong>${esc(q.common_mistakes)}</div>`:''}
+    </div>`;
+  }
+
+  const btns = state.gRevealed
+    ? `<button class="btn primary" id="g-next-btn">下一題 →</button><button class="btn ghost" id="g-back-btn">← 返回列表</button>`
+    : `<button class="btn primary" id="g-reveal-btn"${!state.gSelected?' disabled':''}>確認答案</button><button class="btn ghost" id="g-back-btn">← 返回列表</button>`;
+
+  document.getElementById('g-practice-content').innerHTML=`
+    <div class="q-detail">
+      <div class="meta">${q.id} · ${q.grammar_topic} · ${q.difficulty}</div>
+      <div class="question">${renderBlank(esc(getQText(q)), state.gRevealed?q.options['ABCD'.indexOf(q.answer)]:null)}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">${btns}</div>
+      <button class="ai-guide-btn" onclick="openStepAIChat('${escAttr(q.id)}')">💬 AI 逐步引導（作答前/後都可問）</button>
+      ${reveal}
+      ${renderNotesBlock(q.id)}
+    </div>`;
+
+  document.querySelectorAll('#g-practice-content .option').forEach(el=>el.onclick=()=>{
+    if (state.gRevealed) return;
+    state.gSelected=el.dataset.l; renderGPractice();
+  });
+  const rb=document.getElementById('g-reveal-btn');
+  if (rb) rb.onclick=()=>{ state.gRevealed=true; recordG(q.id,state.gSelected===q.answer); updateNBBadge(); renderGPractice(); };
+  const nb2=document.getElementById('g-next-btn');
+  if (nb2) nb2.onclick=()=>gSmartNext();
+  document.querySelectorAll('#g-back-btn').forEach(b=>b.onclick=()=>switchGPhase('browse'));
+}
+
+function gSmartNext() {
+  const stats = computeTopicStats();
+  const weakTopics = stats.filter(s=>s.attempted>=2&&s.accuracy<0.7).sort((a,b)=>a.accuracy-b.accuracy);
+  let c=null;
+  for (const t of weakTopics) { c=GRAMMAR_Q.find(q=>q.grammar_topic===t.topic&&!gProg[q.id]&&q.id!==state.gCurrentQ?.id); if(c)break; }
+  if (!c) c=GRAMMAR_Q.find(q=>!gProg[q.id]&&q.id!==state.gCurrentQ?.id);
+  if (!c) { const o=GRAMMAR_Q.filter(q=>q.id!==state.gCurrentQ?.id); c=o[Math.floor(Math.random()*o.length)]; }
+  if (c) openGrammar(c.id);
+}
+
+function computeTopicStats() {
+  return [...new Set(GRAMMAR_Q.map(q=>q.grammar_topic))].map(topic=>{
+    const qs=GRAMMAR_Q.filter(q=>q.grammar_topic===topic);
+    let attempted=0,totalCount=0,totalCorrect=0;
+    qs.forEach(q=>{ const p=gProg[q.id]; if(p){attempted++;totalCount+=p.count;totalCorrect+=p.correct_count;} });
+    return {topic,total:qs.length,attempted,totalCount,totalCorrect,accuracy:totalCount>0?totalCorrect/totalCount:0};
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// NOTEBOOK
+// ════════════════════════════════════════════════════════════
+function getVWrongWords() {
+  const stats={};
+  Object.entries(vProg).forEach(([qid,p])=>{
+    const q=VOCAB_Q.find(x=>x.id===qid); if(!q) return;
+    const w=q.target_word||'';
+    if (!stats[w]) stats[w]={word:w,chinese:q.chinese||'',definition:q.definition||'',
+      example:q.example||'',wrongCount:0,totalCount:0,qids:[],lastWrong:null};
+    stats[w].totalCount+=p.count; stats[w].wrongCount+=(p.count-p.correct_count);
+    stats[w].qids.push(qid);
+    if (p.result==='wrong'&&(!stats[w].lastWrong||p.last>stats[w].lastWrong)) stats[w].lastWrong=p.last;
+  });
+  return Object.values(stats).filter(s=>s.wrongCount>0);
+}
+
+function getGWrongQs() {
+  return GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='wrong');
+}
+
+function renderNotebook() {
+  const vWrongs = getVWrongWords();
+  const gWrongs = getGWrongQs();
+  const vLearning = vWrongs.filter(w=>!vKnown[w.word]);
+  const vKnownArr = vWrongs.filter(w=>vKnown[w.word]);
+  const totalWrong = vWrongs.length + gWrongs.length;
+
+  document.getElementById('nb-stats').innerHTML=`
+    <div class="stat"><div class="num warn">${vLearning.length}</div><div class="label">字彙待熟</div></div>
+    <div class="stat"><div class="num warn">${gWrongs.length}</div><div class="label">文法待熟</div></div>
+    <div class="stat"><div class="num good">${vKnownArr.length}</div><div class="label">已標熟</div></div>
+    <div class="stat"><div class="num">${totalWrong}</div><div class="label">錯題總數</div></div>`;
+
+  // type filter
+  document.getElementById('nb-type-filters').innerHTML='<span class="filter-label">類型</span>'+
+    [{k:'all',l:'全部'},{k:'vocab',l:'字彙'},{k:'grammar',l:'文法'}]
+    .map(x=>`<div class="pill${state.nbType===x.k?' active':''}" data-nt="${x.k}">${x.l}</div>`).join('');
+  document.querySelectorAll('#nb-type-filters .pill').forEach(p=>p.onclick=()=>{state.nbType=p.dataset.nt;renderNotebook();});
+
+  // mastery filter (only for vocab)
+  const showMastery = state.nbType!=='grammar';
+  document.getElementById('nb-mastery-filters').innerHTML = showMastery ?
+    '<span class="filter-label">字彙</span>'+
+    [{k:'learning',l:`待熟記 (${vLearning.length})`},{k:'known',l:`已標熟 (${vKnownArr.length})`},{k:'all',l:`全部 (${vWrongs.length})`}]
+    .map(x=>`<div class="pill${state.nbMastery===x.k?' active':''}" data-nm="${x.k}">${x.l}</div>`).join('') : '';
+  document.querySelectorAll('#nb-mastery-filters .pill').forEach(p=>p.onclick=()=>{state.nbMastery=p.dataset.nm;renderNotebook();});
+
+  let html='';
+
+  // Vocab section
+  if (state.nbType!=='grammar') {
+    const showV = state.nbMastery==='learning'?vLearning:state.nbMastery==='known'?vKnownArr:vWrongs;
+    showV.sort((a,b)=>(b.lastWrong||'')>(a.lastWrong||'')?1:-1);
+    if (state.nbType==='vocab'&&showV.length===0) html+='<div class="empty-state">沒有字彙錯題</div>';
+    html += showV.map(w=>{
+      const isKnown=!!vKnown[w.word];
+      const acc=w.totalCount>0?Math.round((w.totalCount-w.wrongCount)/w.totalCount*100):0;
+      return `<div class="notebook-card ${isKnown?'known':''}">
+        <div class="word-row"><span class="word-en">${esc(w.word)}</span><span class="word-zh">${esc(w.chinese)}</span></div>
+        <div class="stat-line">答對 ${w.totalCount-w.wrongCount}/${w.totalCount} (${acc}%) ${w.lastWrong?`· 最近錯：${w.lastWrong}`:''}</div>
+        <div class="word-def">${esc(w.definition)}</div>
+        <div class="word-example">${esc(w.example)}</div>
+        <div class="btn-row" style="margin:0;align-items:center">
+          <button class="btn small" data-action="vpractice" data-qid="${w.qids[0]}">再練一次</button>
+          <button class="ai-wrong-btn" onclick="openWrongAIChat('${escAttr(w.qids[0])}')">💬 AI 一起看</button>
+          ${isKnown
+            ?`<button class="btn small ghost" data-action="unmark" data-word="${esc(w.word)}">取消已熟</button>`
+            :`<button class="btn small ghost" data-action="mark" data-word="${esc(w.word)}">✓ 標為已熟</button>`}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  // Grammar section
+  if (state.nbType!=='vocab') {
+    if (gWrongs.length===0 && state.nbType==='grammar') html+='<div class="empty-state">沒有文法錯題</div>';
+    else if (gWrongs.length>0) {
+      if (state.nbType==='all') html+=`<div class="section-title">文法錯題（${gWrongs.length}）</div>`;
+      html += gWrongs.map(q=>`
+        <div class="notebook-card grammar-type">
+          <div class="word-row">
+            <span class="word-en" style="font-size:14px">${esc(getQText(q).slice(0,60))}…</span>
+            <span class="word-zh"><span class="tag topic">${esc(q.grammar_topic)}</span></span>
+          </div>
+          <div class="stat-line">${q.id} · 正解 ${q.answer}: ${esc(q.options['ABCD'.indexOf(q.answer)])}</div>
+          <div class="word-def">${esc(q.explanation||'')}</div>
+          <div class="btn-row" style="margin:0;align-items:center">
+            <button class="btn small" data-action="gpractice" data-qid="${q.id}">再練一次</button>
+            <button class="ai-wrong-btn" onclick="openWrongAIChat('${escAttr(q.id)}')">💬 AI 一起看</button>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  document.getElementById('nb-list').innerHTML = html || (totalWrong===0?'<div class="empty-state">還沒有錯題，去練習吧！</div>':'');
+
+  document.querySelectorAll('#nb-list [data-action]').forEach(b=>{
+    b.onclick=()=>{
+      const a=b.dataset.action;
+      if (a==='vpractice') { openVocab(b.dataset.qid); switchTab('vocab'); }
+      else if (a==='gpractice') { openGrammar(b.dataset.qid); switchTab('grammar'); }
+      else if (a==='mark')   { vKnown[b.dataset.word]=true;  saveVKnown(); renderNotebook(); updateNBBadge(); updateVSmartBtn(); }
+      else if (a==='unmark') { delete vKnown[b.dataset.word]; saveVKnown(); renderNotebook(); updateNBBadge(); updateVSmartBtn(); }
+    };
+  });
+
+  // Weakness analysis
+  renderWeakness();
+}
+
+function renderWeakness() {
+  const stats = computeTopicStats().sort((a,b)=>{
+    if (!a.attempted&&!b.attempted) return 0;
+    if (!a.attempted) return 1; if (!b.attempted) return -1;
+    return a.accuracy-b.accuracy;
+  });
+  if (!stats.length) { document.getElementById('nb-weakness').innerHTML=''; return; }
+  let html=`<div class="section-title">文法弱點分析</div>`;
+  html+=stats.map(s=>{
+    let level='untouched';
+    if (s.attempted>0) level=s.accuracy<0.6?'weak':s.accuracy<0.85?'medium':'strong';
+    const pct=s.totalCount>0?Math.round(s.accuracy*100):0;
+    const statsText=s.attempted===0?'尚未練習':`${s.totalCorrect}/${s.totalCount} 答對 · ${s.attempted}/${s.total} 題練過`;
+    return `<div class="weakness-card ${level}">
+      <div class="top"><span class="topic-name">${esc(s.topic)}</span><span class="stats-text">${statsText}${s.attempted>0?` · <strong>${pct}%</strong>`:''}</span></div>
+      ${s.attempted>0?`<div class="bar-bg"><div class="bar-fill ${level}" style="width:${pct}%"></div></div>`:''}
+      <div class="btn-row" style="margin:8px 0 0"><button class="btn ghost" data-wtopic="${esc(s.topic)}" style="font-size:12px;padding:5px 11px">練這個觀念 →</button></div>
+    </div>`;
+  }).join('');
+  document.getElementById('nb-weakness').innerHTML=html;
+  document.querySelectorAll('[data-wtopic]').forEach(b=>b.onclick=()=>{
+    state.gFilterTopic=b.dataset.wtopic; switchTab('grammar'); renderGFilters(); renderGList();
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// MOCK EXAM
+// ════════════════════════════════════════════════════════════
+function renderMockSetup() {
+  stopMockTimer();
+  const s=state.mockSettings;
+  const nv=Math.round(s.total*s.vocabPct/100), ng=s.total-nv;
+  document.getElementById('mock-setup').innerHTML=`
+    <div class="mock-setup-card">
+      <h3>⚙️ 模考設置</h3>
+      <div class="slider-row">
+        <label>題數</label>
+        <input type="range" min="10" max="50" value="${s.total}" id="ms-total">
+        <span class="val" id="ms-total-val">${s.total} 題</span>
+      </div>
+      <div class="slider-row">
+        <label>字彙比例</label>
+        <input type="range" min="0" max="100" step="10" value="${s.vocabPct}" id="ms-ratio">
+        <span class="val" id="ms-ratio-val">${nv} 字彙 / ${ng} 文法</span>
+      </div>
+      <div class="slider-row">
+        <label>計時</label>
+        <input type="range" min="10" max="60" step="5" value="${s.minutes}" id="ms-time">
+        <span class="val" id="ms-time-val">${s.minutes} 分鐘</span>
+      </div>
+      <div class="btn-row" style="margin-top:4px">
+        <button class="btn primary" id="ms-start-btn" style="min-width:120px">開始模考 ▶</button>
+      </div>
+    </div>`;
+
+  const updateVals=()=>{
+    const t=+document.getElementById('ms-total').value;
+    const r=+document.getElementById('ms-ratio').value;
+    const m=+document.getElementById('ms-time').value;
+    state.mockSettings={total:t,vocabPct:r,minutes:m};
+    const nv2=Math.round(t*r/100);
+    document.getElementById('ms-total-val').textContent=`${t} 題`;
+    document.getElementById('ms-ratio-val').textContent=`${nv2} 字彙 / ${t-nv2} 文法`;
+    document.getElementById('ms-time-val').textContent=`${m} 分鐘`;
+  };
+  ['ms-total','ms-ratio','ms-time'].forEach(id=>document.getElementById(id).oninput=updateVals);
+  document.getElementById('ms-start-btn').onclick=startMock;
+  renderMockHistory();
+}
+
+function renderMockHistory() {
+  const el = document.getElementById('mock-history');
+  if (!el) return;
+  if (!mockHistory.length) { el.innerHTML = ''; return; }
+
+  // Trend: last 5 scores for sparkline text
+  const recent = mockHistory.slice(0, 10);
+  const best = Math.max(...recent.map(r => r.correct/r.total));
+  const avg  = Math.round(recent.reduce((s,r)=>s+r.correct/r.total,0)/recent.length*100);
+
+  const cards = mockHistory.map(r => {
+    const pct = Math.round(r.correct/r.total*100);
+    const scoreClass = pct>=90?'good':pct>=70?'ok':'bad';
+    const vPct = r.vTotal ? Math.round(r.vCorrect/r.vTotal*100) : null;
+    const gPct = r.gTotal ? Math.round(r.gCorrect/r.gTotal*100) : null;
+    const flagInfo = r.flaggedTotal
+      ? `<div class="hb-item"><span class="hb-val flag">${r.guessedRight}/${r.flaggedTotal}</span><span class="hb-label">⚑ 猜對</span></div>`
+      : '';
+    const unanswered = r.unanswered
+      ? `<div class="hb-item"><span class="hb-val bad">${r.unanswered}</span><span class="hb-label">未作答</span></div>`
+      : '';
+    return `<div class="history-card">
+      <div class="history-score ${scoreClass}">${r.correct}/${r.total}</div>
+      <div class="history-meta">
+        <div class="hm-date">${r.date} ${r.time}${r.timeUp?' · ⏰ 時間到':''}</div>
+        <div class="hm-detail">${pct}% · ${r.minutes} 分鐘</div>
+      </div>
+      <div class="history-breakdown">
+        ${vPct!==null?`<div class="hb-item"><span class="hb-val ${vPct>=70?'good':'bad'}">${r.vCorrect}/${r.vTotal}</span><span class="hb-label">字彙</span></div>`:''}
+        ${gPct!==null?`<div class="hb-item"><span class="hb-val ${gPct>=70?'good':'bad'}">${r.gCorrect}/${r.gTotal}</span><span class="hb-label">文法</span></div>`:''}
+        ${flagInfo}${unanswered}
+      </div>
+      <button class="history-del" data-hid="${r.id}" title="刪除這筆">✕</button>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="history-section-title">歷史紀錄（${mockHistory.length} 筆）</div>
+    <div style="font-size:12px;color:var(--text-dim);margin-bottom:10px">
+      近 ${recent.length} 次平均 <strong style="color:var(--accent)">${avg}%</strong>
+      ．最高 <strong style="color:var(--green)">${Math.round(best*100)}%</strong>
+    </div>
+    ${cards}`;
+
+  el.querySelectorAll('.history-del').forEach(btn => {
+    btn.onclick = () => {
+      const id = +btn.dataset.hid;
+      if (confirm('刪除這筆紀錄？')) {
+        mockHistory = mockHistory.filter(r => r.id !== id);
+        saveMockHistory();
+        renderMockHistory();
+      }
+    };
+  });
+}
+
+function pickRandom(arr, n) {
+  const shuffled=[...arr].sort(()=>Math.random()-0.5);
+  return shuffled.slice(0,Math.min(n,shuffled.length));
+}
+
+function startMock() {
+  const {total,vocabPct,minutes}=state.mockSettings;
+  const nv=Math.round(total*vocabPct/100), ng=total-nv;
+
+  const vUnseen=VOCAB_Q.filter(q=>!vProg[q.id]);
+  const vWrong=VOCAB_Q.filter(q=>vProg[q.id]?.result==='wrong');
+  const vOther=VOCAB_Q.filter(q=>vProg[q.id]?.result==='correct');
+  const gUnseen=GRAMMAR_Q.filter(q=>!gProg[q.id]);
+  const gWrong=GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='wrong');
+  const gOther=GRAMMAR_Q.filter(q=>gProg[q.id]?.result==='correct');
+
+  function drawPool(unseen, wrong, other, n) {
+    const out=[];
+    const u=pickRandom(unseen,n); out.push(...u);
+    if (out.length<n) { const w=pickRandom(wrong.filter(q=>!out.includes(q)),n-out.length); out.push(...w); }
+    if (out.length<n) { const o=pickRandom(other.filter(q=>!out.includes(q)),n-out.length); out.push(...o); }
+    return out.slice(0,n);
+  }
+
+  const vQs=drawPool(vUnseen,vWrong,vOther,nv).map(q=>({...q,_type:'vocab'}));
+  const gQs=drawPool(gUnseen,gWrong,gOther,ng).map(q=>({...q,_type:'grammar'}));
+  const combined=[...vQs,...gQs].sort(()=>Math.random()-0.5);
+
+  if (!combined.length) { alert('題庫不足，請先確認兩個 JSON 已載入。'); return; }
+
+  state.mockQs=combined;
+  state.mockAnswers={}; state.mockFlagged={};
+  state.mockIdx=0;
+  state.mockPhase='running';
+  state.mockTimeLeft=minutes*60;
+
+  document.getElementById('mock-setup').style.display='none';
+  document.getElementById('mock-running').style.display='';
+  document.getElementById('mock-review').style.display='none';
+  document.getElementById('mock-history').style.display='none';
+
+  const timerEl=document.getElementById('mock-timer-display');
+  timerEl.style.display='';
+  updateMockTimer();
+  state.mockTimer=setInterval(()=>{
+    state.mockTimeLeft--;
+    updateMockTimer();
+    if (state.mockTimeLeft<=0) submitMock(true);
+  },1000);
+
+  renderMockRunning();
+}
+
+function updateMockTimer() {
+  const m=Math.floor(state.mockTimeLeft/60), s=state.mockTimeLeft%60;
+  const txt=`⏱ ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const urgent=state.mockTimeLeft<=300;
+  const urgentStyle='color:var(--red);background:rgba(242,139,130,0.1);border-color:rgba(242,139,130,0.3)';
+  const normalStyle='color:var(--yellow);background:rgba(253,214,99,0.1);border-color:rgba(253,214,99,0.3)';
+  // header timer
+  const el=document.getElementById('mock-timer-display');
+  if (el) { el.textContent=txt; el.className=urgent?'urgent':''; }
+  // inline timer (re-rendered each question, may not exist)
+  const il=document.getElementById('mock-timer-inline');
+  if (il) { il.textContent=txt; il.style.cssText=`font-size:14px;font-weight:600;padding:3px 10px;border:1px solid;border-radius:6px;font-variant-numeric:tabular-nums;${urgent?urgentStyle:normalStyle}`; }
+}
+
+function stopMockTimer() {
+  if (state.mockTimer) { clearInterval(state.mockTimer); state.mockTimer=null; }
+  const el=document.getElementById('mock-timer-display');
+  if (el) el.style.display='none';
+}
+
+function renderMockRunning() {
+  const qs=state.mockQs, idx=state.mockIdx, q=qs[idx];
+  if (!q) return;
+  const total=qs.length;
+  const answered=Object.keys(state.mockAnswers).length;
+
+  const navDots=qs.map((qi,i)=>{
+    let cls='';
+    if (i===idx) cls='current';
+    else if (state.mockFlagged[qi.id]) cls='flagged';
+    else if (state.mockAnswers[qi.id]) cls='answered';
+    return `<div class="mock-q-dot ${cls}" data-mi="${i}">${i+1}</div>`;
+  }).join('');
+
+  const letters=['A','B','C','D'];
+  const sel=state.mockAnswers[q.id];
+  const optHTML=q.options.map((o,i)=>`
+    <div class="option ${sel===letters[i]?'selected':''}" data-ml="${letters[i]}">
+      <span class="letter">${letters[i]}</span><span>${esc(o)}</span>
+    </div>`).join('');
+
+  const isFlagged=!!state.mockFlagged[q.id];
+
+  document.getElementById('mock-running').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-dim);margin-bottom:8px">
+      <span>題目 ${idx+1} / ${total} &nbsp;·&nbsp; 已作答 ${answered}/${total}
+      &nbsp;·&nbsp; <span class="tag ${q._type==='vocab'?'':'topic'}">${q._type==='vocab'?q.source||'MOCK':q.grammar_topic}</span></span>
+      <span id="mock-timer-inline" style="font-size:14px;font-weight:600;color:var(--yellow);
+        padding:3px 10px;background:rgba(253,214,99,0.1);border:1px solid rgba(253,214,99,0.3);
+        border-radius:6px;font-variant-numeric:tabular-nums">⏱ --:--</span>
+    </div>
+    <div class="mock-progress-bar"><div class="mock-progress-fill" style="width:${(idx+1)/total*100}%"></div></div>
+    <div class="mock-q-nav">${navDots}</div>
+    <div class="q-detail" style="margin:0">
+      <div class="meta">${q.id} · ${q.difficulty}</div>
+      <div class="question">${esc(getQText(q)).replace(/___/g,'<span class="blank">___</span>')}</div>
+      <div class="options">${optHTML}</div>
+      <div class="btn-row">
+        <button class="btn" id="mock-prev-btn"${idx===0?' disabled':''}>← 上一題</button>
+        ${idx<total-1
+          ?`<button class="btn primary" id="mock-next-btn">下一題 →</button>`
+          :`<button class="btn danger" id="mock-submit-btn">交卷</button>`}
+        <button class="btn ${isFlagged?'flagged':''}" id="mock-flag-btn">${isFlagged?'⚑ 已標記':'⚐ 標記'}</button>
+        <button class="btn ghost" id="mock-abandon-btn" style="margin-left:auto;color:var(--text-dim);font-size:13px">✕ 放棄</button>
+      </div>
+    </div>`;
+
+  document.querySelectorAll('#mock-running .option').forEach(el=>el.onclick=()=>{
+    state.mockAnswers[q.id]=el.dataset.ml; renderMockRunning();
+  });
+  document.querySelectorAll('.mock-q-dot').forEach(el=>el.onclick=()=>{state.mockIdx=+el.dataset.mi;renderMockRunning();});
+  document.getElementById('mock-prev-btn').onclick=()=>{state.mockIdx--;renderMockRunning();};
+  const nb=document.getElementById('mock-next-btn');
+  if (nb) nb.onclick=()=>{state.mockIdx++;renderMockRunning();};
+  const sb=document.getElementById('mock-submit-btn');
+  if (sb) sb.onclick=()=>submitMock(false);
+  document.getElementById('mock-flag-btn').onclick=()=>{
+    state.mockFlagged[q.id]=!state.mockFlagged[q.id]; renderMockRunning();
+  };
+  document.getElementById('mock-abandon-btn').onclick=()=>{
+    if (confirm('放棄這次模考？作答進度不會儲存，也不計入歷史紀錄。')) {
+      stopMockTimer();
+      resetMock();
+    }
+  };
+}
+
+function submitMock(timeUp=false) {
+  stopMockTimer();
+  // Grade and record
+  let correct=0, vCorrect=0, gCorrect=0;
+  state.mockQs.forEach(q=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    if (ok) { correct++; if(q._type==='vocab')vCorrect++; else gCorrect++; }
+    else if(sel) {
+      if (q._type==='vocab') recordV(q.id, false);
+      else recordG(q.id, false);
+    }
+    // 答對 + 有標記（猜對）→ 記為 correct 但不升難度，僅顯示標記
+    if (ok) { if(q._type==='vocab') recordV(q.id,true); else recordG(q.id,true); }
+  });
+  updateNBBadge();
+
+  // ── 儲存歷史紀錄 ──
+  const _now = new Date();
+  const _pad = n => String(n).padStart(2,'0');
+  mockHistory.unshift({
+    id: Date.now(),
+    date: `${_now.getFullYear()}/${_pad(_now.getMonth()+1)}/${_pad(_now.getDate())}`,
+    time: `${_pad(_now.getHours())}:${_pad(_now.getMinutes())}`,
+    total: state.mockQs.length,
+    correct,
+    vTotal: state.mockQs.filter(q=>q._type==='vocab').length,
+    vCorrect,
+    gTotal: state.mockQs.filter(q=>q._type==='grammar').length,
+    gCorrect,
+    minutes: state.mockSettings.minutes,
+    timeUp,
+    flaggedTotal: Object.values(state.mockFlagged).filter(Boolean).length,
+    guessedRight: state.mockQs.filter(q=>state.mockFlagged[q.id]&&state.mockAnswers[q.id]===q.answer).length,
+    unanswered: state.mockQs.filter(q=>!state.mockAnswers[q.id]).length
+  });
+  if (mockHistory.length > 30) mockHistory = mockHistory.slice(0, 30); // 最多保留 30 筆
+  saveMockHistory();
+  document.getElementById('mock-running').style.display='none';
+  document.getElementById('mock-review').style.display='';
+
+  const total=state.mockQs.length;
+  const vTotal=state.mockQs.filter(q=>q._type==='vocab').length;
+  const gTotal=state.mockQs.filter(q=>q._type==='grammar').length;
+  const pct=total>0?Math.round(correct/total*100):0;
+  const flaggedCount=Object.values(state.mockFlagged).filter(Boolean).length;
+  const guessedRight=state.mockQs.filter(q=>state.mockFlagged[q.id]&&state.mockAnswers[q.id]===q.answer).length;
+
+  const letters=['A','B','C','D'];
+
+  const reviewItems=state.mockQs.map((q,i)=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    const noAns=!sel;
+    const isGuessed=!!state.mockFlagged[q.id]&&ok;
+    const icon=noAns?'⬜':ok?'✅':'❌';
+    const ansIdx='ABCD'.indexOf(q.answer);
+    const correctAns=q.options[ansIdx]||'';
+
+    // Build all-options rows
+    const optRows=q.options.map((o,i)=>{
+      const L=letters[i];
+      const isCorrect=L===q.answer;
+      const isUserWrong=L===sel&&!ok;
+      const cls=isCorrect?'rv-correct':isUserWrong?'rv-wrong':'';
+      let note='';
+      if (q._type==='vocab') {
+        if (isCorrect) {
+          note=`<div class="rv-note" style="color:var(--text)">
+            <strong style="color:var(--green)">${esc(q.target_word||o)}</strong>　${esc(q.chinese||'')}
+            ${q.definition?`<br>${esc(q.definition)}`:''}
+            ${q.example?`<br><em style="color:var(--text-dim)">${esc(q.example)}</em>`:''}
+          </div>`;
+        } else if (q.distractor_notes&&q.distractor_notes[o]) {
+          note=`<div class="rv-note">${q.distractor_notes[o].replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+        }
+      } else {
+        // grammar — no per-option notes, handled below
+      }
+      const selMark=L===sel?`<span style="font-size:10px;margin-left:4px;color:${ok?'var(--green)':'var(--red)'}">${ok?'← 你的選擇 ✓':'← 你的選擇 ✗'}</span>`:'';
+      return `<div class="review-opt ${cls}">
+        <span class="rv-letter">${L}</span>
+        <div class="rv-opt-text">${esc(o)}${selMark}${note}</div>
+      </div>`;
+    }).join('');
+
+    let detailHTML='';
+    if (q._type==='vocab') {
+      detailHTML=`
+        <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
+        ${q.sentence_zh?`<div class="sentence-zh" style="margin:6px 0 10px"><div class="sentence-zh-label">📖 題目翻譯</div><div class="sentence-zh-text">${esc(q.sentence_zh)}</div></div>`:''}
+        <div style="margin-top:8px">${optRows}</div>`;
+    } else {
+      detailHTML=`
+        <div class="question" style="font-size:15px;margin:10px 0">${renderBlank(esc(getQText(q)),correctAns)}</div>
+        <div style="margin:8px 0">${optRows}</div>
+        <div class="ans-text" style="margin-top:10px"><strong>解析：</strong>${esc(q.explanation||'')}</div>
+        ${q.common_mistakes?`<div class="ans-text"><strong>常見錯誤：</strong>${esc(q.common_mistakes)}</div>`:''}`;
+    }
+
+    const flagBadge=isGuessed?`<span class="flag-badge">⚑ 猜對</span>`:'';
+
+    return `<div class="review-q" id="rq-${i}">
+      <div class="review-head" onclick="toggleReview(${i})">
+        <span class="ri-icon">${icon}</span>
+        <span class="ri-text">${esc(getQText(q).slice(0,55))}…${flagBadge}</span>
+        <span class="ri-meta">${q.id}</span>
+      </div>
+      <div class="review-body">${detailHTML}</div>
+    </div>`;
+  }).join('');
+
+  // Nav dots for score banner (review mode)
+  const reviewDots=state.mockQs.map((q,i)=>{
+    const sel=state.mockAnswers[q.id];
+    const ok=sel===q.answer;
+    const isGuessed=!!state.mockFlagged[q.id]&&ok;
+    let cls=!sel?'':ok?(isGuessed?'guessed':'correct'):'review-wrong';
+    return `<div class="mock-q-dot ${cls}" onclick="document.getElementById('rq-${i}').scrollIntoView({behavior:'smooth'});toggleReview(${i})">${i+1}</div>`;
+  }).join('');
+
+  document.getElementById('mock-review').innerHTML=`
+    ${timeUp?`<div style="color:var(--yellow);font-size:14px;margin-bottom:10px;text-align:center">⏰ 時間到，自動交卷</div>`:''}
+    <div class="score-banner">
+      <div class="score-big">${correct}/${total}</div>
+      <div class="score-sub">${pct}%${pct>=90?'　🎉 目標達成！':pct>=70?'　👍 不錯！':'　繼續加油'}</div>
+      <div class="score-breakdown">
+        <div class="sb-item">字彙 <span class="sb-val ${vCorrect/Math.max(vTotal,1)>=0.7?'good':'bad'}">${vCorrect}/${vTotal}</span></div>
+        <div class="sb-item">文法 <span class="sb-val ${gCorrect/Math.max(gTotal,1)>=0.7?'good':'bad'}">${gCorrect}/${gTotal}</span></div>
+        <div class="sb-item">答錯 <span class="sb-val bad">${total-correct}</span></div>
+        ${flaggedCount?`<div class="sb-item">⚑ 猜對 <span class="sb-val" style="color:var(--yellow)">${guessedRight}/${flaggedCount}</span></div>`:''}
+      </div>
+    </div>
+    <div class="mock-q-nav" style="margin-bottom:16px">${reviewDots}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;font-size:11px;color:var(--text-dim);margin-bottom:16px;align-items:center">
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(129,201,149,0.3);border:1px solid var(--green);display:inline-block"></span>答對</span>
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(253,214,99,0.2);border:1px solid var(--yellow);display:inline-block"></span>猜對（有標記）</span>
+      <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:10px;height:10px;border-radius:2px;background:rgba(242,139,130,0.2);border:1px solid var(--red);display:inline-block"></span>答錯</span>
+    </div>
+    <div class="btn-row">
+      <button class="btn primary" onclick="resetMock()">再來一次</button>
+      <button class="btn" onclick="switchTab('notebook')">查看錯題本</button>
+    </div>
+    <div class="section-title">逐題檢討（點展開）</div>
+    ${reviewItems}`;
+}
+
+function toggleReview(i) {
+  const el=document.getElementById(`rq-${i}`);
+  if (el) el.classList.toggle('open');
+}
+
+function resetMock() {
+  state.mockPhase='setup';
+  document.getElementById('mock-running').style.display='none';
+  document.getElementById('mock-review').style.display='none';
+  document.getElementById('mock-setup').style.display='';
+  renderMockSetup();
+  document.getElementById('mock-history').style.display='';
+}
+
+// ════════════════════════════════════════════════════════════
+// TAB / PHASE SWITCHING
+// ════════════════════════════════════════════════════════════
+function switchTab(tab) {
+  if (state.tab!=='mock'||tab!=='mock') stopMockTimer();
+  state.tab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  ['vocab','grammar','notebook','mock'].forEach(t=>{
+    document.getElementById(`page-${t}`).style.display=t===tab?'':'none';
+  });
+  if (tab==='notebook') renderNotebook();
+  if (tab==='mock'&&state.mockPhase==='setup') renderMockSetup();
+}
+
+function switchVPhase(phase) {
+  state.vPhase=phase;
+  document.getElementById('v-stab-browse').classList.toggle('active',phase==='browse');
+  document.getElementById('v-stab-practice').classList.toggle('active',phase==='practice');
+  document.getElementById('v-browse').style.display=phase==='browse'?'':'none';
+  document.getElementById('v-practice').style.display=phase==='practice'?'':'none';
+  if (phase==='practice') renderVPractice();
+}
+
+function switchGPhase(phase) {
+  state.gPhase=phase;
+  document.getElementById('g-stab-browse').classList.toggle('active',phase==='browse');
+  document.getElementById('g-stab-practice').classList.toggle('active',phase==='practice');
+  document.getElementById('g-browse').style.display=phase==='browse'?'':'none';
+  document.getElementById('g-practice').style.display=phase==='practice'?'':'none';
+  if (phase==='practice') renderGPractice();
+}
+
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>switchTab(t.dataset.tab));
+
+// ════════════════════════════════════════════════════════════
+// HEADER & BADGE
+// ════════════════════════════════════════════════════════════
+function updateHeader() {
+  const vDone=Object.keys(vProg).length, gDone=Object.keys(gProg).length;
+  document.getElementById('header-sub').textContent=
+    `字彙 ${VOCAB_Q.length} 題（已練 ${vDone}）· 文法 ${GRAMMAR_Q.length} 題（已練 ${gDone}）`;
+}
+
+function updateNBBadge() {
+  const n=getVWrongWords().filter(w=>!vKnown[w.word]).length+getGWrongQs().length;
+  const badge=document.getElementById('notebook-badge');
+  badge.textContent=n; badge.style.display=n>0?'':'none';
+}
+
+// ════════════════════════════════════════════════════════════
+// 我的筆記 (port 自 psy psych_notes_v1 → eng_notes_v1)
+// ════════════════════════════════════════════════════════════
+const NOTES_KEY = 'eng_notes_v1';
+let userNotes = {};
+try { userNotes = JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch(e) {}
+
+function saveNotes() {
+  try { localStorage.setItem(NOTES_KEY, JSON.stringify(userNotes)); } catch(e) {}
+}
+function getNotes(qid) { return userNotes[qid] || []; }
+function addNote(qid, text) {
+  const t = (text || '').trim();
+  if (!t) return null;
+  if (!userNotes[qid]) userNotes[qid] = [];
+  const note = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ts: Date.now(), text: t };
+  userNotes[qid].push(note);
+  saveNotes();
+  return note;
+}
+function updateNote(qid, noteId, text) {
+  const t = (text || '').trim();
+  if (!t) return deleteNote(qid, noteId);
+  const arr = userNotes[qid] || [];
+  const n = arr.find(x => x.id === noteId);
+  if (n) { n.text = t; n.ts = Date.now(); saveNotes(); }
+}
+function deleteNote(qid, noteId) {
+  if (!userNotes[qid]) return;
+  userNotes[qid] = userNotes[qid].filter(x => x.id !== noteId);
+  if (userNotes[qid].length === 0) delete userNotes[qid];
+  saveNotes();
+}
+function renderNotesBlock(qid) {
+  const notes = getNotes(qid).slice().sort((a, b) => b.ts - a.ts);
+  const items = notes.map(n => {
+    const d = new Date(n.ts);
+    const ts = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+    return `<div class="note-item" id="note-${n.id}">
+      <div style="flex:1">
+        <div class="note-item-ts">${ts}</div>
+        <div class="note-item-text">${esc(n.text)}</div>
+      </div>
+      <div class="note-item-actions">
+        <button class="note-action-btn" onclick="startEditNote('${escAttr(qid)}','${n.id}')" title="編輯">✏</button>
+        <button class="note-action-btn" onclick="confirmDeleteNote('${escAttr(qid)}','${n.id}')" title="刪除">🗑</button>
+      </div>
+    </div>`;
+  }).join('');
+  return `<div class="notes-block" id="notes-block-${esc(qid)}">
+    <div class="notes-block-header">
+      <div class="notes-block-label">📝 我的筆記${notes.length > 0 ? ` (${notes.length})` : ''}</div>
+      <button class="notes-add-btn" onclick="startAddNote('${escAttr(qid)}')">+ 新增</button>
+    </div>
+    <div id="notes-list-${esc(qid)}">${items || '<div style="font-size:12px;color:var(--text-dim);padding:4px 0">尚無筆記</div>'}</div>
+    <div id="notes-editor-wrap-${esc(qid)}"></div>
+  </div>`;
+}
+function startAddNote(qid) {
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <textarea class="notes-editor" id="notes-editor-${esc(qid)}" placeholder="我從這題學到 / 易混淆的點..."></textarea>
+    <div class="notes-editor-actions">
+      <button class="btn ghost small" onclick="cancelEditNote('${escAttr(qid)}')">取消</button>
+      <button class="btn primary small" onclick="saveNewNote('${escAttr(qid)}')">儲存</button>
+    </div>`;
+  document.getElementById('notes-editor-' + qid).focus();
+}
+function saveNewNote(qid) {
+  const ta = document.getElementById('notes-editor-' + qid);
+  if (!ta) return;
+  addNote(qid, ta.value);
+  rerenderNotesBlock(qid);
+}
+function startEditNote(qid, noteId) {
+  const arr = getNotes(qid);
+  const n = arr.find(x => x.id === noteId);
+  if (!n) return;
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <textarea class="notes-editor" id="notes-editor-${esc(qid)}">${esc(n.text)}</textarea>
+    <div class="notes-editor-actions">
+      <button class="btn ghost small" onclick="cancelEditNote('${escAttr(qid)}')">取消</button>
+      <button class="btn primary small" onclick="saveEditedNote('${escAttr(qid)}','${n.id}')">儲存</button>
+    </div>`;
+  document.getElementById('notes-editor-' + qid).focus();
+}
+function saveEditedNote(qid, noteId) {
+  const ta = document.getElementById('notes-editor-' + qid);
+  if (!ta) return;
+  updateNote(qid, noteId, ta.value);
+  rerenderNotesBlock(qid);
+}
+function confirmDeleteNote(qid, noteId) {
+  if (!confirm('刪除這則筆記？')) return;
+  deleteNote(qid, noteId);
+  rerenderNotesBlock(qid);
+}
+function cancelEditNote(qid) {
+  const wrap = document.getElementById('notes-editor-wrap-' + qid);
+  if (wrap) wrap.innerHTML = '';
+}
+function rerenderNotesBlock(qid) {
+  const old = document.getElementById('notes-block-' + qid);
+  if (!old) return;
+  const tmp = document.createElement('div');
+  tmp.innerHTML = renderNotesBlock(qid);
+  old.replaceWith(tmp.firstElementChild);
+}
+
+// ════════════════════════════════════════════════════════════
+// AI 引導 (port 自 psy commit f0b15fe → af46765)
+// ════════════════════════════════════════════════════════════
+const API_KEY_STORAGE = 'eng_anthropic_api_key';
+const chatHistory = {};
+
+function escAttr(s) { return (s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;'); }
+function escMd(s)   { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function cleanApiKey(s) {
+  return (s || '').trim().replace(/[\u200B-\u200D\uFEFF]/g, '');
+}
+function getApiKey() { return cleanApiKey(localStorage.getItem(API_KEY_STORAGE)); }
+
+function toggleApiKeyVisibility() {
+  const inp = document.getElementById('apikey-input');
+  const btn = document.getElementById('apikey-toggle');
+  if (!inp || !btn) return;
+  if (inp.type === 'password') { inp.type = 'text'; btn.textContent = '🙈'; }
+  else { inp.type = 'password'; btn.textContent = '👁'; }
+}
+
+let savedApiKeyCallback = null;
+function promptApiKey(onSuccess) {
+  const existing = getApiKey();
+  savedApiKeyCallback = onSuccess || null;
+  const html = `
+    <div class="modal-bg show" id="apikey-modal">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-handle"></div>
+        <div class="modal-title">設定 Anthropic API Key</div>
+        <div style="font-size:12px;color:var(--text-dim);line-height:1.7;margin-bottom:14px">
+          AI 逐步引導 / 錯題分析需要 Anthropic API Key。<br>
+          Key 只存在你的裝置（localStorage），不會傳出去。<br>
+          <a href="https://console.anthropic.com/" target="_blank" style="color:var(--accent)">→ 前往 console.anthropic.com 取得 Key</a>
+        </div>
+        <div style="display:flex;gap:6px;margin-bottom:14px;align-items:stretch">
+          <input id="apikey-input" class="edit-field" type="password"
+            placeholder="sk-ant-..." value="${escMd(existing)}"
+            style="flex:1;min-width:0;font-family:monospace;font-size:12px">
+          <button type="button" id="apikey-toggle" class="btn"
+            onclick="toggleApiKeyVisibility()" title="顯示／隱藏 Key"
+            style="padding:0 12px;flex-shrink:0;font-size:14px">👁</button>
+        </div>
+        <div class="action-row">
+          <button class="btn" onclick="document.getElementById('apikey-modal').remove()">取消</button>
+          <button class="btn primary" onclick="saveApiKey()">儲存</button>
+        </div>
+      </div>
+    </div>`;
+  document.body.insertAdjacentHTML('beforeend', html);
+  setTimeout(() => document.getElementById('apikey-input')?.focus(), 100);
+}
+
+function saveApiKey() {
+  const val = cleanApiKey(document.getElementById('apikey-input')?.value);
+  if (!val.startsWith('sk-')) { alert('請輸入正確的 API Key（以 sk- 開頭）'); return; }
+  localStorage.setItem(API_KEY_STORAGE, val);
+  document.getElementById('apikey-modal')?.remove();
+  if (savedApiKeyCallback) { savedApiKeyCallback(); savedApiKeyCallback = null; }
+}
+
+function appendUserMessage(text) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg user';
+  div.innerHTML = `<div class="chat-bubble">${escMd(text)}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendAiMessage(markdown) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.innerHTML = `<div class="chat-bubble">${parseMarkdown(markdown)}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function appendTyping(hintText) {
+  const msgs = document.getElementById('chat-messages');
+  if (!msgs) return;
+  document.getElementById('chat-typing')?.remove();
+  const div = document.createElement('div');
+  div.className = 'chat-msg ai';
+  div.id = 'chat-typing';
+  div.innerHTML = hintText
+    ? `<div class="chat-bubble" style="font-size:12px;color:var(--yellow);font-style:italic">${hintText}</div>`
+    : `<div class="chat-bubble"><div class="chat-typing"><span></span><span></span><span></span></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() { document.getElementById('chat-typing')?.remove(); }
+
+function parseMarkdown(markdown) {
+  let html = '';
+  const lines = markdown.split('\n');
+  let inList = false;
+  for (const line of lines) {
+    let t = line.trim();
+    if (!t) { if (inList) { html += '</ul>'; inList = false; } continue; }
+    t = t.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    t = t.replace(/\*(.+?)\*/g, '$1');
+    if (/^#{1,3} /.test(t)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<h3>${t.replace(/^#{1,3} /, '')}</h3>`;
+    } else if (/^【.+】/.test(t)) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<h3>${t}</h3>`;
+    } else if (t.startsWith('- ') || t.startsWith('• ') || /^\d+\.\s/.test(t)) {
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += `<li>${t.replace(/^[-•]\s|^\d+\.\s/, '')}</li>`;
+    } else if (t.startsWith('⚠') || t.startsWith('💡') || t.startsWith('提醒') || t.startsWith('陷阱')) {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<div class="tip">${t}</div>`;
+    } else {
+      if (inList) { html += '</ul>'; inList = false; }
+      html += `<p>${t}</p>`;
+    }
+  }
+  if (inList) html += '</ul>';
+  return html;
+}
+
+function closeChatOverlay() {
+  document.getElementById('chat-overlay')?.remove();
+  document.documentElement.style.removeProperty('--sheet-height');
+}
+
+// Bottom-sheet drag resize
+let _sheetDragY = 0, _sheetDragH = 0;
+function chatSheetDragStart(e) {
+  const overlay = document.getElementById('chat-overlay');
+  if (!overlay) return;
+  _sheetDragY = e.clientY;
+  _sheetDragH = overlay.getBoundingClientRect().height;
+  e.target.setPointerCapture(e.pointerId);
+  e.preventDefault();
+}
+function chatSheetDragMove(e) {
+  if (!e.target.hasPointerCapture(e.pointerId)) return;
+  const delta = _sheetDragY - e.clientY;
+  const minH = 180;
+  const maxH = window.innerHeight * 0.9;
+  const newH = Math.max(minH, Math.min(maxH, _sheetDragH + delta));
+  document.documentElement.style.setProperty('--sheet-height', newH + 'px');
+}
+function chatSheetDragEnd(e) {
+  if (e.target.hasPointerCapture(e.pointerId)) e.target.releasePointerCapture(e.pointerId);
+}
+
+async function callAnthropicWithRetry(payload, apiKey, onRetry) {
+  const DELAYS = [2000, 4000, 8000];
+  let lastErr = null;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (data.error) {
+        const err = new Error(data.error.message || 'unknown error');
+        err.errorType = data.error.type;
+        if (data.error.type !== 'overloaded_error') throw err;
+        lastErr = err;
+      } else {
+        return data;
+      }
+    } catch (e) {
+      if (!e.errorType && e instanceof TypeError) e.errorType = 'network_error';
+      if (e.errorType !== 'overloaded_error') throw e;
+      lastErr = e;
+    }
+    if (attempt < 4) {
+      if (onRetry) onRetry(attempt, 3);
+      await new Promise(r => setTimeout(r, DELAYS[attempt - 1]));
+    }
+  }
+  throw lastErr;
+}
+
+function friendlyAIError(err) {
+  const t = err && err.errorType;
+  if (t === 'overloaded_error')     return '⏰ Anthropic 伺服器忙碌，通常 30 秒內會恢復，請重新點 [💬 AI 引導]';
+  if (t === 'rate_limit_error')     return '⚡ 請求太頻繁，等 30 秒再試';
+  if (t === 'authentication_error') return '🔑 API Key 失效或未設，點右上角 🔑 重設';
+  if (t === 'network_error')        return '📡 網路連線失敗，請檢查網路後重試';
+  return `⚠ ${(err && err.message) || '連線失敗'}`;
+}
+
+async function callEngAI(systemPrompt, messages, qid) {
+  const key = getApiKey();
+  if (!key) return;
+  try {
+    const data = await callAnthropicWithRetry(
+      { model: 'claude-haiku-4-5-20251001', max_tokens: 800, system: systemPrompt, messages },
+      key,
+      (n, t) => appendTyping(`⏳ Anthropic 忙碌，重試中 (${n}/${t})`)
+    );
+    const reply = data.content?.[0]?.text || '無回應';
+    removeTyping();
+    if (!chatHistory[qid]) chatHistory[qid] = [];
+    chatHistory[qid].push({ role: 'assistant', content: reply });
+    appendAiMessage(reply);
+  } catch(e) {
+    removeTyping();
+    appendAiMessage(friendlyAIError(e));
+  }
+}
+
+// ── Vocab prompt builders ─────────────────────────────────────
+function buildVocabStepSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文轉學考字彙家教，引導學生用「上下文 + 詞源 + 詞性 + 易混對比」推理單字題，**不要直接給答案**。
+
+【題目情境】
+題目：${q.sentence || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+target 單字：${q.target_word || ''}
+中文：${q.chinese || ''}
+英文定義：${q.definition || ''}
+${q.example ? '例句：' + q.example : ''}
+${q.sentence_zh ? '題目翻譯：' + q.sentence_zh : ''}
+
+【引導原則】
+1. 先問「你看到這個句子，___ 前後的語意線索是什麼？」引導從上下文猜測語意（例如 transition word、對比、因果）
+2. 帶學生分析空格需要的詞性（動詞？名詞？形容詞？）
+3. 拆 4 個選項的詞源 / 詞綴（拉丁字根、希臘字根、前後綴），引導推測意思
+4. 點出易混單字對比（例：affect/effect、principal/principle、imminent/eminent、adopt/adapt 之類常見陷阱），若選項裡有就特別強調
+5. 從同義 / 反義 / 搭配 (collocation) 角度引導確認
+6. 最後請學生說「我覺得是 X，因為 ___」自己推出答案
+7. **整個過程不要先講正解，學生自己推出來再揭曉**
+
+【風格】
+- 口語、像朋友在解釋
+- 不用 markdown 符號（# *），重點用「【】」標題
+- 一次只問一件事，蘇格拉底式漸進
+- 提到字根 / 詞綴用「字根 -spect-（看）」這種格式
+- 例句用英文，解釋用中文`;
+}
+
+function buildVocabWrongSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文字彙家教，學生剛做錯這題，要用「正解 vs 錯選對比 + 易混點」幫他釐清。
+
+【題目情境】
+題目：${q.sentence || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+target 單字：${q.target_word || ''}
+中文：${q.chinese || ''}
+英文定義：${q.definition || ''}
+${q.example ? '例句：' + q.example : ''}
+${q.distractor_notes ? '誘答選項解析：\n' + Object.entries(q.distractor_notes).map(([k,v])=>`(${k}) ${v}`).join('\n') : ''}
+
+【引導流程】
+1. 先問「你選了哪個？為什麼覺得是那個？」
+2. 從學生回答判斷他卡在「字義不熟」、「混淆同形字」、「沒看上下文」還是「詞性誤判」
+3. 對比【你選的字義 vs 正解字義】的核心差別（用中文 + 英文同義詞點出差距）
+4. ${q.distractor_notes ? '善用上述誘答選項解析點出他可能踩的雷' : '指出易混對比 / 詞綴差異'}
+5. 鼓勵學生用正解單字自己造一個英文短句驗證（送回來給你看也行）
+6. 全程不要直接給完整解答，引導他自己想出來
+
+【風格】
+- 口語、有耐心、像朋友
+- 不用 markdown 符號
+- 一次只問一件事`;
+}
+
+// ── Grammar prompt builders ───────────────────────────────────
+function buildGrammarStepSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文文法家教，引導學生用「句構辨識 + 規則對比」推理文法題，**不要直接給答案**。
+
+【題目情境】
+題目：${q.question || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+文法觀念：${q.grammar_topic || ''}
+${q.explanation ? '解析：' + q.explanation : ''}
+${q.common_mistakes ? '常見錯誤：' + q.common_mistakes : ''}
+
+【引導原則】
+1. 先帶學生**拆句構**：找主詞、找主動詞、判斷有沒有子句 / 分詞片語 / 倒裝
+2. 引導辨識本題在考的文法規則（${q.grammar_topic || '時態 / 假設語氣 / 倒裝 / 主詞動詞一致 / 分詞構句 / 關係子句 / 名詞子句 / 對等連接詞 ...'}）
+3. 對比「為什麼 A 對 B 錯」——不是死背規則，是讓學生看到兩個句子結構的差別
+4. 若涉及時態，問「事件的時間軸是什麼？」（過去 / 現在 / 未來、是否完成、是否持續）
+5. 若涉及假設語氣，問「這是真的假設還是與事實相反？」
+6. 若涉及倒裝句，找否定副詞 / 條件子句省略 if 之類的觸發器
+7. 最後請學生用自己的話複述規則
+8. **整個過程不要先講正解，學生推出答案再揭曉**
+
+【風格】
+- 口語、像朋友在解釋
+- 不用 markdown 符號（# *），重點用「【】」標題
+- 一次只問一件事，蘇格拉底式漸進
+- 文法術語用中文 + 英文（例：分詞構句 participle phrase）`;
+}
+
+function buildGrammarWrongSystemPrompt(q) {
+  const opts = (q.options || []).map((o, i) => `(${String.fromCharCode(65+i)}) ${o}`).join('\n');
+  return `你是英文文法家教，學生剛做錯這題，要用「規則對比 + 反例」幫他釐清。
+
+【題目情境】
+題目：${q.question || ''}
+${opts ? '選項：\n' + opts : ''}
+正確答案：${q.answer || ''}
+文法觀念：${q.grammar_topic || ''}
+${q.explanation ? '官方解析：' + q.explanation : ''}
+${q.common_mistakes ? '★ 典型錯誤：' + q.common_mistakes : ''}
+
+【引導流程】
+1. 先問「你選了哪個？選的時候在想哪條規則？」
+2. 從學生回答判斷他卡在「規則記錯」、「沒看清句構」、「規則衝突沒分清」還是「特殊用法不知道」
+3. 對比【你選的規則套用 vs 正解的規則套用】——用對比例句說明（兩句只差一個關鍵字、文法卻不同）
+4. ${q.common_mistakes ? '善用上述「典型錯誤」點他可能踩的雷' : '幫他歸納可能誤用的規則'}
+5. 給一個反例（同類陷阱題）讓他自己判斷一次，確認真懂
+6. 全程不要直接給完整解答，引導他自己想出來
+
+【風格】
+- 口語、有耐心、像朋友
+- 不用 markdown 符號
+- 一次只問一件事
+- 文法術語用中文 + 英文`;
+}
+
+// ── Dispatch by question type ─────────────────────────────────
+function findQ(qid) { return VOCAB_Q.find(q=>q.id===qid) || GRAMMAR_Q.find(q=>q.id===qid); }
+function isVocabId(qid) { return VOCAB_Q.some(q=>q.id===qid); }
+
+function buildStepPromptByType(qid) {
+  const q = findQ(qid); if (!q) return '';
+  return isVocabId(qid) ? buildVocabStepSystemPrompt(q) : buildGrammarStepSystemPrompt(q);
+}
+function buildWrongPromptByType(qid) {
+  const q = findQ(qid); if (!q) return '';
+  return isVocabId(qid) ? buildVocabWrongSystemPrompt(q) : buildGrammarWrongSystemPrompt(q);
+}
+
+function openStepAIChat(qid) {
+  const q = findQ(qid); if (!q) return;
+  const key = getApiKey();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'chat-overlay';
+  overlay.id = 'chat-overlay';
+  overlay.innerHTML = `
+    <div class="chat-drag-handle" onpointerdown="chatSheetDragStart(event)" onpointermove="chatSheetDragMove(event)" onpointerup="chatSheetDragEnd(event)" onpointercancel="chatSheetDragEnd(event)"></div>
+    <div class="chat-topbar">
+      <button class="header-btn" onclick="closeChatOverlay()" style="flex-shrink:0">←</button>
+      <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="flex-shrink:0">🔑</button>
+      <div class="chat-topbar-title">💬 AI 引導</div>
+      <div class="chat-topbar-sub">${escMd(q.id)}</div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input-bar">
+      <textarea class="chat-input" id="chat-input" placeholder="輸入你的想法或答案…" rows="1"
+        onkeydown="engChatKeydown(event,'${escAttr(qid)}')" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="chat-send-btn" id="chat-send-btn" onclick="sendStepMessage('${escAttr(qid)}')" disabled>↑</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('chat-input').addEventListener('input', () => {
+    document.getElementById('chat-send-btn').disabled = !document.getElementById('chat-input').value.trim();
+  });
+
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑 按鈕）'); return; }
+
+  const openLine = isVocabId(qid) ? '我要開始看這題單字題，請先引導我從上下文線索切入' : '我要開始看這題文法題，請先引導我拆句構';
+  chatHistory[qid] = [{ role: 'user', content: openLine }];
+  appendTyping();
+  callEngAI(buildStepPromptByType(qid), chatHistory[qid], qid);
+}
+
+function openWrongAIChat(qid) {
+  const q = findQ(qid); if (!q) return;
+  const key = getApiKey();
+
+  const overlay = document.createElement('div');
+  overlay.className = 'chat-overlay';
+  overlay.id = 'chat-overlay';
+  overlay.innerHTML = `
+    <div class="chat-drag-handle" onpointerdown="chatSheetDragStart(event)" onpointermove="chatSheetDragMove(event)" onpointerup="chatSheetDragEnd(event)" onpointercancel="chatSheetDragEnd(event)"></div>
+    <div class="chat-topbar">
+      <button class="header-btn" onclick="closeChatOverlay()" style="flex-shrink:0">←</button>
+      <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="flex-shrink:0">🔑</button>
+      <div class="chat-topbar-title">💬 錯題分析</div>
+      <div class="chat-topbar-sub">${escMd(q.id)}</div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input-bar">
+      <textarea class="chat-input" id="chat-input" placeholder="說說你卡在哪裡…" rows="1"
+        onkeydown="engChatKeydown(event,'${escAttr(qid)}')" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+      <button class="chat-send-btn" id="chat-send-btn" onclick="sendStepMessage('${escAttr(qid)}')" disabled>↑</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('chat-input').addEventListener('input', () => {
+    document.getElementById('chat-send-btn').disabled = !document.getElementById('chat-input').value.trim();
+  });
+
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑 按鈕）'); return; }
+
+  chatHistory[qid] = [{ role: 'user', content: '我剛做錯這題，幫我分析' }];
+  appendTyping();
+  callEngAI(buildWrongPromptByType(qid), chatHistory[qid], qid);
+}
+
+async function sendStepMessage(qid) {
+  const input = document.getElementById('chat-input');
+  const text = input.value.trim();
+  if (!text) return;
+  const key = getApiKey();
+  if (!key) { appendAiMessage('請先設定 API Key（點上方 🔑）'); return; }
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('chat-send-btn').disabled = true;
+  appendUserMessage(text);
+  if (!chatHistory[qid]) chatHistory[qid] = [];
+  chatHistory[qid].push({ role: 'user', content: text });
+  appendTyping();
+  // Continue with same system prompt as the conversation already started with
+  const sys = buildStepPromptByType(qid);
+  callEngAI(sys, chatHistory[qid], qid);
+}
+
+function engChatKeydown(e, qid) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendStepMessage(qid);
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+async function init() {
+  try {
+    const [vRes, gRes] = await Promise.all([
+      fetch('vocab_data.json',   {cache:'no-cache'}),
+      fetch('grammar_data.json', {cache:'no-cache'})
+    ]);
+    if (!vRes.ok) throw new Error(`vocab_data.json: HTTP ${vRes.status}`);
+    if (!gRes.ok) throw new Error(`grammar_data.json: HTTP ${gRes.status}`);
+    VOCAB_Q   = await vRes.json();
+    GRAMMAR_Q = await gRes.json();
+  } catch(err) {
+    document.body.innerHTML=`<div style="max-width:600px;margin:60px auto;padding:32px;color:#e2e8f0;font-family:system-ui">
+      <h2 style="color:#f87171">⚠ 題庫載入失敗</h2>
+      <p>錯誤：<code style="background:#1e293b;padding:2px 6px;border-radius:4px">${err.message}</code></p>
+      <p>請確認 <code>vocab_data.json</code> 和 <code>grammar_data.json</code> 與 HTML 在同一目錄，並透過 GitHub Pages 或 local server 開啟。</p>
+      <pre style="background:#1e293b;padding:14px;border-radius:6px">python3 -m http.server 8000</pre>
+    </div>`;
+    return;
+  }
+
+  updateHeader();
+  updateNBBadge();
+  renderVFilters();
+  renderVList();
+  updateVSmartBtn();
+  renderGFilters();
+  renderGList();
+  document.getElementById('g-weak-btn').onclick=()=>{state.gCurrentQ=null;gSmartNext();};
+  document.getElementById('g-random-btn').onclick=()=>{openGrammar(GRAMMAR_Q[Math.floor(Math.random()*GRAMMAR_Q.length)].id);};
+}
+
+init();
+</script>
 </body>
 </html>
