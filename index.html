@@ -386,6 +386,7 @@ header .sub { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
     </div>
     <div id="mock-timer-display" style="display:none">⏱ --:--</div>
     <button class="header-btn" onclick="promptApiKey()" title="AI 金鑰" style="margin-left:auto">🔑</button>
+    <button class="header-btn" onclick="exportNotes()" title="匯出筆記 (.md)">📤</button>
   </div>
 </header>
 
@@ -1501,6 +1502,41 @@ function rerenderNotesBlock(qid) {
   const tmp = document.createElement('div');
   tmp.innerHTML = renderNotesBlock(qid);
   old.replaceWith(tmp.firstElementChild);
+}
+
+// ─── EXPORT NOTES (純讀, 不動既有 localStorage) ──────────────────────────────
+function exportNotes() {
+  try { userNotes = JSON.parse(localStorage.getItem(NOTES_KEY) || '{}'); } catch(e) {}
+  const qids = Object.keys(userNotes).filter(qid => (userNotes[qid] || []).length > 0);
+  if (qids.length === 0) { alert('目前沒有筆記可匯出'); return; }
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const ts = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+  const totalNotes = qids.reduce((s, qid) => s + userNotes[qid].length, 0);
+  let md = `# 英文 筆記匯出\n匯出時間: ${ts}\n總筆數: ${totalNotes}\n\n---\n\n`;
+  qids.forEach(qid => {
+    const q = VOCAB_Q.find(x => x.id === qid) || GRAMMAR_Q.find(x => x.id === qid);
+    if (!q) return;
+    const title = (q.sentence || q.question || '').replace(/\n/g, ' ').slice(0, 50);
+    const ansText = q.options && q.answer ? `${q.answer}: ${q.options['ABCD'.indexOf(q.answer)] || ''}` : (q.answer || '');
+    md += `## ${qid}: ${title}...\n\n`;
+    md += `**正解**: ${ansText}\n\n`;
+    md += `**我的筆記**:\n`;
+    userNotes[qid].slice().sort((a, b) => a.ts - b.ts).forEach(n => {
+      md += `> ${(n.text || '').replace(/\n/g, '\n> ')}\n\n`;
+    });
+    md += `---\n\n`;
+  });
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `eng-notes-${dateStr}.md`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 // ════════════════════════════════════════════════════════════
